@@ -122,15 +122,7 @@
 
       <!-- Filtros -->
       <section class="mt-6 rounded-2xl border border-slate-200 bg-white p-4 shadow-soft">
-        <form class="grid gap-3 md:grid-cols-4">
-          <div class="md:col-span-1">
-            <label class="mb-1 block text-xs font-medium text-slate-600">Estado</label>
-            <select class="w-full rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm text-slate-800 focus:border-brand-600 focus:outline-none focus:ring-4 focus:ring-brand-600/20">
-              <option value="">Todos</option>
-              <option value="1" selected>Activas</option>
-              <option value="0">Inactivas</option>
-            </select>
-          </div>
+        <form class="grid gap-3 md:grid-cols-3">
           <div class="md:col-span-1">
             <label class="mb-1 block text-xs font-medium text-slate-600">Ubicación</label>
             <input type="text" placeholder="Departamento / Provincia / Distrito" class="w-full rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm focus:border-brand-600 focus:outline-none focus:ring-4 focus:ring-brand-600/20" />
@@ -147,9 +139,17 @@
           </div>
         </form>
       </section>
-
+	  <div class="mt-6">
+        <div class="border-b border-slate-200">
+          <nav class="-mb-px flex gap-6 text-sm">
+            <button type="button" data-tab="all" class="tab-btn border-b-2 border-brand-600 px-1 pb-2 font-medium text-brand-600">Todas las IPRESS</button>
+            <button type="button" data-tab="active" class="tab-btn border-b-2 border-transparent px-1 pb-2 font-medium text-slate-500 hover:text-slate-700">Activas</button>
+            <button type="button" data-tab="inactive" class="tab-btn border-b-2 border-transparent px-1 pb-2 font-medium text-slate-500 hover:text-slate-700">Inactivas</button>
+          </nav>
+        </div>
+      </div>
       <!-- Tabla -->
-      <section class="mt-6 rounded-2xl border border-slate-200 bg-white p-4 shadow-soft">
+      <section id="all" class="tab-panel mt-6 rounded-2xl border border-slate-200 bg-white p-4 shadow-soft">
         <div class="mb-3 flex items-center justify-between">
           <div>
             <h2 class="text-lg font-semibold">Listado de IPRESS</h2>
@@ -172,7 +172,7 @@
               </tr>
             </thead>
             <tbody class="divide-y divide-slate-100 text-slate-700">
-              <!-- Fila ejemplo -->
+              <!-- Fila Activa -->
               <tr class="hover:bg-slate-50/60">
                 <td class="px-4 py-3">
                   <a href="ipress-detalle.html" class="font-medium text-slate-900 hover:underline">Ipress San Martín</a>
@@ -195,14 +195,14 @@
                 </td>
               </tr>
 
-              <!-- Repite filas con distintos datos -->
+              <!-- Fila Inactiva -->
               <tr class="hover:bg-slate-50/60">
                 <td class="px-4 py-3"><a href="ipress-detalle.html" class="font-medium text-slate-900 hover:underline">Ipress Santa Rosa</a><div class="text-xs text-slate-500">ID: IP-0002</div></td>
                 <td class="px-4 py-3">20999888777</td>
                 <td class="px-4 py-3">Arequipa, Cercado</td>
                 <td class="px-4 py-3">3</td>
                 <td class="px-4 py-3">9</td>
-                <td class="px-4 py-3"><span class="rounded-full bg-amber-50 px-2.5 py-1 text-xs font-medium text-amber-700">Suspendida</span></td>
+                <td class="px-4 py-3"><span class="rounded-full bg-rose-50 px-2.5 py-1 text-xs font-medium text-rose-700">Inactiva</span></td>
                 <td class="px-4 py-3 text-right">
                   <div class="relative inline-block text-left">
                     <button class="dropdown-btn rounded-lg border border-slate-200 bg-white px-2 py-1.5 text-sm hover:bg-slate-50">Opciones ▾</button>
@@ -215,6 +215,127 @@
                 </td>
               </tr>
 
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Paginación -->
+        <div class="mt-4 flex items-center justify-between">
+          <p class="text-sm text-slate-500">Página 1 de 6</p>
+          <div class="flex items-center gap-2">
+            <button class="rounded-lg border border-slate-200 bg-white px-3 py-1.5 text-sm text-slate-700 hover:bg-slate-50">Anterior</button>
+            <button class="rounded-lg bg-brand-600 px-3 py-1.5 text-sm font-medium text-white">1</button>
+            <button class="rounded-lg border border-slate-200 bg-white px-3 py-1.5 text-sm text-slate-700 hover:bg-slate-50">2</button>
+            <button class="rounded-lg border border-slate-200 bg-white px-3 py-1.5 text-sm text-slate-700 hover:bg-slate-50">3</button>
+            <button class="rounded-lg border border-slate-200 bg-white px-3 py-1.5 text-sm text-slate-700 hover:bg-slate-50">Siguiente</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Panel: Activas -->
+      <section id="active" class="tab-panel hidden mt-6 rounded-2xl border border-slate-200 bg-white p-4 shadow-soft">
+        <div class="mb-3 flex items-center justify-between">
+          <div>
+            <h2 class="text-lg font-semibold">IPRESS Activas</h2>
+            <p class="text-sm text-slate-500">Listado de IPRESS activas</p>
+          </div>
+          <div class="text-sm text-slate-500">Mostrando 1–10 de 60</div>
+        </div>
+
+        <div class="overflow-x-auto">
+          <table class="min-w-full text-left text-sm">
+            <thead class="border-y border-slate-200 bg-slate-50 text-slate-500">
+              <tr>
+                <th class="px-4 py-3 font-medium">Nombre</th>
+                <th class="px-4 py-3 font-medium">RUC</th>
+                <th class="px-4 py-3 font-medium">Ubicación</th>
+                <th class="px-4 py-3 font-medium">Sedes</th>
+                <th class="px-4 py-3 font-medium">Servicios</th>
+                <th class="px-4 py-3 font-medium">Estado</th>
+                <th class="px-4 py-3 text-right font-medium">Acciones</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-slate-100 text-slate-700">
+              <tr class="hover:bg-slate-50/60">
+                <td class="px-4 py-3">
+                  <a href="ipress-detalle.html" class="font-medium text-slate-900 hover:underline">Ipress San Martín</a>
+                  <div class="text-xs text-slate-500">ID: IP-0001</div>
+                </td>
+                <td class="px-4 py-3">20123456789</td>
+                <td class="px-4 py-3">Lima, Miraflores</td>
+                <td class="px-4 py-3">5</td>
+                <td class="px-4 py-3">12</td>
+                <td class="px-4 py-3"><span class="rounded-full bg-emerald-50 px-2.5 py-1 text-xs font-medium text-emerald-700">Activa</span></td>
+                <td class="px-4 py-3 text-right">
+                  <div class="relative inline-block text-left" x-data>
+                    <button class="dropdown-btn rounded-lg border border-slate-200 bg-white px-2 py-1.5 text-sm hover:bg-slate-50">Opciones ▾</button>
+                    <div class="dropdown-menu invisible absolute right-0 z-10 mt-2 w-40 origin-top-right rounded-xl border border-slate-200 bg-white p-1 text-sm shadow-soft opacity-0 transition">
+                      <a href="ipress-form.html?id=IP-0001" class="group flex items-center gap-2 rounded-lg px-3 py-2 hover:bg-slate-50">Editar</a>
+                      <a href="ipress-eliminar.html?id=IP-0001" class="group flex items-center gap-2 rounded-lg px-3 py-2 hover:bg-rose-50"><span class='text-rose-600'>Eliminar</span></a>
+                      <a href="ipress-detalle.html?id=IP-0001" class="group flex items-center gap-2 rounded-lg px-3 py-2 hover:bg-slate-50">Ver detalles</a>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Paginación -->
+        <div class="mt-4 flex items-center justify-between">
+          <p class="text-sm text-slate-500">Página 1 de 6</p>
+          <div class="flex items-center gap-2">
+            <button class="rounded-lg border border-slate-200 bg-white px-3 py-1.5 text-sm text-slate-700 hover:bg-slate-50">Anterior</button>
+            <button class="rounded-lg bg-brand-600 px-3 py-1.5 text-sm font-medium text-white">1</button>
+            <button class="rounded-lg border border-slate-200 bg-white px-3 py-1.5 text-sm text-slate-700 hover:bg-slate-50">2</button>
+            <button class="rounded-lg border border-slate-200 bg-white px-3 py-1.5 text-sm text-slate-700 hover:bg-slate-50">3</button>
+            <button class="rounded-lg border border-slate-200 bg-white px-3 py-1.5 text-sm text-slate-700 hover:bg-slate-50">Siguiente</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Panel: Inactivas -->
+      <section id="inactive" class="tab-panel hidden mt-6 rounded-2xl border border-slate-200 bg-white p-4 shadow-soft">
+        <div class="mb-3 flex items-center justify-between">
+          <div>
+            <h2 class="text-lg font-semibold">IPRESS Inactivas</h2>
+            <p class="text-sm text-slate-500">Listado de IPRESS inactivas</p>
+          </div>
+          <div class="text-sm text-slate-500">Mostrando 1–10 de 60</div>
+        </div>
+
+        <div class="overflow-x-auto">
+          <table class="min-w-full text-left text-sm">
+            <thead class="border-y border-slate-200 bg-slate-50 text-slate-500">
+              <tr>
+                <th class="px-4 py-3 font-medium">Nombre</th>
+                <th class="px-4 py-3 font-medium">RUC</th>
+                <th class="px-4 py-3 font-medium">Ubicación</th>
+                <th class="px-4 py-3 font-medium">Sedes</th>
+                <th class="px-4 py-3 font-medium">Servicios</th>
+                <th class="px-4 py-3 font-medium">Estado</th>
+                <th class="px-4 py-3 text-right font-medium">Acciones</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-slate-100 text-slate-700">
+              <tr class="hover:bg-slate-50/60">
+                <td class="px-4 py-3"><a href="ipress-detalle.html" class="font-medium text-slate-900 hover:underline">Ipress Santa Rosa</a><div class="text-xs text-slate-500">ID: IP-0002</div></td>
+                <td class="px-4 py-3">20999888777</td>
+                <td class="px-4 py-3">Arequipa, Cercado</td>
+                <td class="px-4 py-3">3</td>
+                <td class="px-4 py-3">9</td>
+                <td class="px-4 py-3"><span class="rounded-full bg-rose-50 px-2.5 py-1 text-xs font-medium text-rose-700">Inactiva</span></td>
+                <td class="px-4 py-3 text-right">
+                  <div class="relative inline-block text-left">
+                    <button class="dropdown-btn rounded-lg border border-slate-200 bg-white px-2 py-1.5 text-sm hover:bg-slate-50">Opciones ▾</button>
+                    <div class="dropdown-menu invisible absolute right-0 z-10 mt-2 w-40 origin-top-right rounded-xl border border-slate-200 bg-white p-1 text-sm shadow-soft opacity-0 transition">
+                      <a href="ipress-form.html?id=IP-0002" class="group flex items-center gap-2 rounded-lg px-3 py-2 hover:bg-slate-50">Editar</a>
+                      <a href="ipress-eliminar.html?id=IP-0002" class="group flex items-center gap-2 rounded-lg px-3 py-2 hover:bg-rose-50"><span class='text-rose-600'>Eliminar</span></a>
+                      <a href="ipress-detalle.html?id=IP-0002" class="group flex items-center gap-2 rounded-lg px-3 py-2 hover:bg-slate-50">Ver detalles</a>
+                    </div>
+                  </div>
+                </td>
+              </tr>
             </tbody>
           </table>
         </div>
@@ -275,17 +396,31 @@
       tryNext();
     })();
 
-    // Dropdown simple sin dependencias
-    document.addEventListener('click', function(e){
-      const isBtn = e.target.closest('.dropdown-btn');
-      // Cierra todos
-      document.querySelectorAll('.dropdown-menu').forEach(m=>{ m.classList.add('invisible','opacity-0'); });
-      if(isBtn){
-        const menu = isBtn.parentElement.querySelector('.dropdown-menu');
-        menu.classList.toggle('invisible');
-        menu.classList.toggle('opacity-0');
-      }
-    });
-  </script>
-</body>
-</html>
+      document.addEventListener('click', function(e){
+        const isBtn = e.target.closest('.dropdown-btn');
+        // Cierra todos
+        document.querySelectorAll('.dropdown-menu').forEach(m=>{ m.classList.add('invisible','opacity-0'); });
+        if(isBtn){
+          const menu = isBtn.parentElement.querySelector('.dropdown-menu');
+          menu.classList.toggle('invisible');
+          menu.classList.toggle('opacity-0');
+        }
+      });
+
+      // Tabs
+      document.querySelectorAll('.tab-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const tab = btn.dataset.tab;
+          document.querySelectorAll('.tab-btn').forEach(b => {
+            b.classList.remove('border-brand-600','text-brand-600');
+            b.classList.add('border-transparent','text-slate-500');
+          });
+          btn.classList.add('border-brand-600','text-brand-600');
+          btn.classList.remove('border-transparent','text-slate-500');
+          document.querySelectorAll('.tab-panel').forEach(p => p.classList.add('hidden'));
+          document.getElementById(tab).classList.remove('hidden');
+        });
+      });
+    </script>
+  </body>
+  </html>
