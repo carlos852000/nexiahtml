@@ -1,0 +1,308 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>NextIaDoctor • App Shell</title>
+  <!-- Tailwind para prototipo. En Angular, instala Tailwind localmente. -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    // Paleta base inspirada en la landing. Ajusta si tienes HEX exactos.
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50:  '#eef2ff',
+              100: '#e0e7ff',
+              200: '#c7d2fe',
+              300: '#a5b4fc',
+              400: '#818cf8',
+              500: '#6366f1', // Indigo
+              600: '#4f46e5',
+              700: '#4338ca',
+              800: '#3730a3',
+              900: '#312e81'
+            },
+            accent: {
+              50:  '#ecfeff',
+              100: '#cffafe',
+              200: '#a5f3fc',
+              300: '#67e8f9',
+              400: '#22d3ee',
+              500: '#06b6d4', // Cyan
+              600: '#0891b2',
+              700: '#0e7490',
+              800: '#155e75',
+              900: '#164e63'
+            }
+          },
+          boxShadow: {
+            soft: '0 8px 24px rgba(2, 6, 23, 0.06)'
+          },
+          borderRadius: {
+            xl2: '1.25rem'
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    :root{ --radius: 16px; }
+    /* Scrollbar sutil */
+    *{ scrollbar-width: thin; scrollbar-color: #cbd5e1 transparent; }
+    *::-webkit-scrollbar{ height:8px; width:8px; }
+    *::-webkit-scrollbar-thumb{ background:#cbd5e1; border-radius:8px; }
+  </style>
+</head>
+<body class="min-h-screen bg-slate-50 text-slate-800">
+  <!-- Topbar -->
+  <header class="fixed inset-x-0 top-0 z-40 h-16 bg-gradient-to-r from-brand-600 to-accent-500 text-white shadow-soft">
+    <div class="mx-auto flex h-full max-w-screen-2xl items-center justify-between px-4">
+      <div class="flex items-center gap-3">
+        <img id="logo" src="" alt="NextIaCorp" class="h-8 w-auto" />
+        <div class="select-none text-lg font-semibold tracking-wide">NextIaCorp</div>
+        <span class="ml-3 hidden rounded-full bg-white/20 px-2 py-0.5 text-xs font-medium md:inline">NextIaDoctor</span>
+      </div>
+      <nav class="flex items-center gap-2">
+        <button class="hidden rounded-lg bg-white/10 px-3 py-1.5 text-sm font-medium backdrop-blur hover:bg-white/20 md:inline">Soporte</button>
+        <button class="rounded-full bg-white/10 p-2 hover:bg-white/20" aria-label="notificaciones">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" class="h-5 w-5"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M14.857 17.082a23.848 23.848 0 0 0 5.454-1.31A8.967 8.967 0 0 1 12 21a8.967 8.967 0 0 1-8.311-5.228 23.85 23.85 0 0 0 5.454 1.31m5.714 0a24.255 24.255 0 0 1-5.714 0m5.714 0a3 3 0 1 0-5.714 0"/></svg>
+        </button>
+        <img src="https://api.dicebear.com/7.x/initials/svg?seed=ND" alt="avatar" class="h-8 w-8 rounded-full ring-2 ring-white/30" />
+      </nav>
+    </div>
+  </header>
+
+  <!-- Sidebar -->
+  <aside class="fixed left-0 top-16 z-30 h-[calc(100vh-4rem)] w-64 overflow-y-auto border-r border-slate-200 bg-white">
+    <div class="px-3 py-4">
+      <div class="mb-3 px-2 text-xs font-semibold uppercase tracking-wider text-slate-400">Principal</div>
+      <ul class="space-y-1">
+        <li>
+          <a href="#" class="flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-100">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" class="h-5 w-5 text-brand-600"><path stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0h6"/></svg>
+            Dashboard
+          </a>
+        </li>
+        <li>
+          <a href="#" class="flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-100">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" class="h-5 w-5 text-brand-600"><path stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" d="M3 7h18M3 12h18M3 17h18"/></svg>
+            IPRESS
+          </a>
+        </li>
+        <li>
+          <a href="#" class="flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-100">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" class="h-5 w-5 text-brand-600"><path stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3M3 11h18M5 19h14a2 2 0 002-2v-6H3v6a2 2 0 002 2z"/></svg>
+            Agenda
+          </a>
+        </li>
+        <li>
+          <a href="#" class="flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-100">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" class="h-5 w-5 text-brand-600"><path stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" d="M12 6v12m6-6H6"/></svg>
+            Reservas
+          </a>
+        </li>
+        <li>
+          <a href="#" class="flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-100">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" class="h-5 w-5 text-brand-600"><path stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" d="M12 14l9-5-9-5-9 5 9 5z"/><path stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" d="M12 14l6.16-3.422A12.083 12.083 0 016 8.577M12 14v7"/></svg>
+            Reportes
+          </a>
+        </li>
+      </ul>
+
+      <div class="mt-6 mb-3 px-2 text-xs font-semibold uppercase tracking-wider text-slate-400">Administración</div>
+      <ul class="space-y-1">
+        <li>
+          <a href="#" class="flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-100">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" class="h-5 w-5 text-brand-600"><path stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" d="M5.5 21h13a1.5 1.5 0 001.5-1.5V9.75a1.5 1.5 0 00-.44-1.06L14.31 2.44A1.5 1.5 0 0013.25 2H6.5A1.5 1.5 0 005 3.5V19.5A1.5 1.5 0 005.5 21z"/></svg>
+            Servicios
+          </a>
+        </li>
+        <li>
+          <a href="#" class="flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-100">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" class="h-5 w-5 text-brand-600"><path stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" d="M4 7a4 4 0 118 0 4 4 0 01-8 0zm12 4h4m-2-2v4m-6 4a6 6 0 10-12 0"/></svg>
+            Médicos
+          </a>
+        </li>
+        <li>
+          <a href="#" class="flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-100">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" class="h-5 w-5 text-brand-600"><path stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0 0c-3.5 0-6.5-2-6.5-4.5S8.5 10.253 12 10.253s6.5 2 6.5 4.5-3 4.5-6.5 4.5z"/></svg>
+            Aseguradoras/Planes
+          </a>
+        </li>
+        <li>
+          <a href="#" class="flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-100">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" class="h-5 w-5 text-brand-600"><path stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" d="M12 12a5 5 0 100-10 5 5 0 000 10zm-7 9a7 7 0 0114 0v1H5v-1z"/></svg>
+            Seguridad
+          </a>
+        </li>
+      </ul>
+    </div>
+  </aside>
+
+  <!-- Main -->
+  <main class="ml-64 pt-20 pb-24">
+    <div class="mx-auto max-w-screen-2xl px-6">
+      <!-- Header -->
+      <div class="mb-6 flex flex-wrap items-center justify-between gap-3">
+        <div>
+          <h1 class="text-2xl font-semibold tracking-tight text-slate-800">Dashboard</h1>
+          <p class="text-sm text-slate-500">Resumen general del sistema</p>
+        </div>
+        <div class="flex items-center gap-2">
+          <button class="rounded-lg bg-brand-600 px-4 py-2 text-sm font-medium text-white shadow-soft hover:bg-brand-700">Nueva reserva</button>
+          <button class="rounded-lg border border-slate-200 bg-white px-4 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50">Exportar</button>
+        </div>
+      </div>
+
+      <!-- KPIs -->
+      <section class="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+        <article class="rounded-2xl border border-slate-200 bg-white p-4 shadow-soft">
+          <div class="flex items-center justify-between">
+            <div>
+              <p class="text-xs uppercase tracking-wider text-slate-400">Citas de hoy</p>
+              <h3 class="mt-1 text-2xl font-semibold">128</h3>
+            </div>
+            <div class="rounded-xl bg-brand-600/10 p-3 text-brand-600">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" class="h-6 w-6"><path stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3M3 11h18M5 19h14a2 2 0 002-2v-6H3v6a2 2 0 002 2z"/></svg>
+            </div>
+          </div>
+        </article>
+        <article class="rounded-2xl border border-slate-200 bg-white p-4 shadow-soft">
+          <div class="flex items-center justify-between">
+            <div>
+              <p class="text-xs uppercase tracking-wider text-slate-400">No-show</p>
+              <h3 class="mt-1 text-2xl font-semibold">3.4%</h3>
+            </div>
+            <div class="rounded-xl bg-brand-600/10 p-3 text-brand-600">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" class="h-6 w-6"><path stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" d="M12 6v12m6-6H6"/></svg>
+            </div>
+          </div>
+        </article>
+        <article class="rounded-2xl border border-slate-200 bg-white p-4 shadow-soft">
+          <div class="flex items-center justify-between">
+            <div>
+              <p class="text-xs uppercase tracking-wider text-slate-400">Médicos activos</p>
+              <h3 class="mt-1 text-2xl font-semibold">54</h3>
+            </div>
+            <div class="rounded-xl bg-brand-600/10 p-3 text-brand-600">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" class="h-6 w-6"><path stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" d="M4 7a4 4 0 118 0 4 4 0 01-8 0zm12 4h4m-2-2v4m-6 4a6 6 0 10-12 0"/></svg>
+            </div>
+          </div>
+        </article>
+        <article class="rounded-2xl border border-slate-200 bg-white p-4 shadow-soft">
+          <div class="flex items-center justify-between">
+            <div>
+              <p class="text-xs uppercase tracking-wider text-slate-400">Satisfacción</p>
+              <h3 class="mt-1 text-2xl font-semibold">4.7/5</h3>
+            </div>
+            <div class="rounded-xl bg-brand-600/10 p-3 text-brand-600">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" class="h-6 w-6"><path stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" d="M12 17.75L5.5 21l1.25-7.25L2 8.75l7.25-1.05L12 1.75l2.75 5.95L22 8.75l-4.75 5.99L18.5 21 12 17.75z"/></svg>
+            </div>
+          </div>
+        </article>
+      </section>
+
+      <!-- Paneles -->
+      <section class="mt-6 grid gap-6 lg:grid-cols-3">
+        <div class="rounded-2xl border border-slate-200 bg-white p-5 shadow-soft lg:col-span-2">
+          <div class="mb-4 flex items-center justify-between">
+            <h2 class="text-lg font-semibold">Próximas reservas</h2>
+            <a href="#" class="text-sm font-medium text-brand-700 hover:underline">Ver todo</a>
+          </div>
+          <ul class="divide-y divide-slate-100">
+            <li class="flex items-center justify-between py-3">
+              <div class="space-y-0.5">
+                <p class="text-sm font-medium">María López</p>
+                <p class="text-xs text-slate-500">Dr. Pérez • Cardiología • Hoy, 10:30</p>
+              </div>
+              <span class="rounded-full bg-emerald-50 px-3 py-1 text-xs font-medium text-emerald-700">Confirmada</span>
+            </li>
+            <li class="flex items-center justify-between py-3">
+              <div class="space-y-0.5">
+                <p class="text-sm font-medium">Juan Díaz</p>
+                <p class="text-xs text-slate-500">Dra. Rivera • Dermato • Hoy, 11:00</p>
+              </div>
+              <span class="rounded-full bg-amber-50 px-3 py-1 text-xs font-medium text-amber-700">Pendiente</span>
+            </li>
+            <li class="flex items-center justify-between py-3">
+              <div class="space-y-0.5">
+                <p class="text-sm font-medium">Ana Torres</p>
+                <p class="text-xs text-slate-500">Dr. Salas • Pediatría • 14:00</p>
+              </div>
+              <span class="rounded-full bg-sky-50 px-3 py-1 text-xs font-medium text-sky-700">Reprogramada</span>
+            </li>
+          </ul>
+        </div>
+        <div class="rounded-2xl border border-slate-200 bg-white p-5 shadow-soft">
+          <div class="mb-4 flex items-center justify-between">
+            <h2 class="text-lg font-semibold">Indicadores</h2>
+            <button class="text-sm font-medium text-slate-500 hover:text-slate-700">Actualizar</button>
+          </div>
+          <div class="space-y-4">
+            <div>
+              <div class="flex items-center justify-between text-sm">
+                <span>Ocupación</span><span class="font-medium">82%</span>
+              </div>
+              <div class="mt-1 h-2 w-full overflow-hidden rounded-full bg-slate-100">
+                <div class="h-full w-[82%] rounded-full bg-gradient-to-r from-brand-600 to-accent-500"></div>
+              </div>
+            </div>
+            <div>
+              <div class="flex items-center justify-between text-sm">
+                <span>Tiempo prom. espera</span><span class="font-medium">12m</span>
+              </div>
+              <div class="mt-1 h-2 w-full overflow-hidden rounded-full bg-slate-100">
+                <div class="h-full w-[60%] rounded-full bg-gradient-to-r from-brand-600 to-accent-500"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="fixed bottom-0 left-64 right-0 z-40 border-t border-slate-200 bg-white/90 backdrop-blur">
+    <div class="mx-auto flex h-12 max-w-screen-2xl items-center justify-between px-6 text-sm text-slate-600">
+      <p>© <span id="y"></span> NextIaCorp • Todos los derechos reservados</p>
+      <nav class="hidden gap-4 md:flex">
+        <a class="hover:text-slate-900" href="#">Privacidad</a>
+        <a class="hover:text-slate-900" href="#">Términos</a>
+        <a class="hover:text-slate-900" href="#">Contacto</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script>
+    // Rellenar año
+    document.getElementById('y').textContent = new Date().getFullYear();
+
+    // Intento de carga del logotipo desde la landing con fallback
+    (function loadLogo(){
+      const logoEl = document.getElementById('logo');
+      const candidates = [
+        'https://www.nextiacorp.com/logo.svg',
+        'https://www.nextiacorp.com/logo.png',
+        'https://www.nextiacorp.com/assets/logo.svg',
+        'https://www.nextiacorp.com/assets/logo.png',
+        'https://www.nextiacorp.com/img/logo.svg',
+        'https://www.nextiacorp.com/img/logo.png',
+        'https://www.nextiacorp.com/favicon.svg',
+        'https://www.nextiacorp.com/favicon.png'
+      ];
+      let i = 0;
+      function tryNext(){
+        if(i >= candidates.length){ logoEl.remove(); return; }
+        const url = candidates[i++];
+        const test = new Image();
+        test.onload = () => { logoEl.src = url; };
+        test.onerror = tryNext;
+        test.src = url + (url.includes('?') ? '&' : '?') + 'v=' + Date.now();
+      }
+      tryNext();
+    })();
+  </script>
+</body>
+</html>
