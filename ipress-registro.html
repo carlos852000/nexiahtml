@@ -1,0 +1,235 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>NextIaDoctor • IPRESS • Formulario</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {50:'#eef2ff',100:'#e0e7ff',200:'#c7d2fe',300:'#a5b4fc',400:'#818cf8',500:'#6366f1',600:'#4f46e5',700:'#4338ca',800:'#3730a3',900:'#312e81'},
+            accent: {50:'#ecfeff',100:'#cffafe',200:'#a5f3fc',300:'#67e8f9',400:'#22d3ee',500:'#06b6d4',600:'#0891b2',700:'#0e7490',800:'#155e75',900:'#164e63'}
+          },
+          boxShadow: { soft: '0 8px 24px rgba(2, 6, 23, 0.06)' }
+        }
+      }
+    }
+  </script>
+  <style>
+    *{ scrollbar-width: thin; scrollbar-color:#cbd5e1 transparent }
+    *::-webkit-scrollbar{ height:8px; width:8px }
+    *::-webkit-scrollbar-thumb{ background:#cbd5e1; border-radius:8px }
+  </style>
+</head>
+<body class="min-h-screen bg-slate-50 text-slate-800">
+  <!-- Topbar -->
+  <header class="fixed inset-x-0 top-0 z-40 h-16 bg-gradient-to-r from-brand-600 to-accent-500 text-white shadow-soft">
+    <div class="mx-auto flex h-full max-w-screen-2xl items-center justify-between px-4">
+      <div class="flex items-center gap-3">
+        <a href="dashboard.html" class="inline-flex items-center gap-3">
+          <img id="logo" src="" alt="NextIaCorp" class="h-8 w-auto" />
+          <div class="select-none text-lg font-semibold tracking-wide">NextIaCorp</div>
+        </a>
+        <span class="ml-3 hidden rounded-full bg-white/20 px-2 py-0.5 text-xs font-medium md:inline">NextIaDoctor</span>
+      </div>
+      <nav class="flex items-center gap-2">
+        <a href="reportes.html" class="hidden rounded-lg bg-white/10 px-3 py-1.5 text-sm font-medium backdrop-blur hover:bg-white/20 md:inline">Reportes</a>
+        <a href="soporte.html" class="hidden rounded-lg bg-white/10 px-3 py-1.5 text-sm font-medium backdrop-blur hover:bg-white/20 md:inline">Soporte</a>
+        <img src="https://api.dicebear.com/7.x/initials/svg?seed=ND" alt="avatar" class="h-8 w-8 rounded-full ring-2 ring-white/30" />
+      </nav>
+    </div>
+  </header>
+
+  <!-- Sidebar -->
+  <aside class="fixed left-0 top-16 z-30 h-[calc(100vh-4rem)] w-64 overflow-y-auto border-r border-slate-200 bg-white">
+    <div class="px-3 py-4">
+      <div class="mb-3 px-2 text-xs font-semibold uppercase tracking-wider text-slate-400">Principal</div>
+      <ul class="space-y-1">
+        <li><a href="dashboard.html" class="flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-100"><svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' class='h-5 w-5 text-brand-600'><path stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round' d='M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0h6'/></svg>Dashboard</a></li>
+        <li><a href="ipress.html" class="flex items-center gap-3 rounded-lg bg-slate-100 px-3 py-2 text-sm font-semibold text-slate-900"><svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' class='h-5 w-5 text-brand-600'><path stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round' d='M3 7h18M3 12h18M3 17h18'/></svg>IPRESS</a></li>
+        <li><a href="agenda.html" class="flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-100"><svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' class='h-5 w-5 text-brand-600'><path stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round' d='M8 7V3m8 4V3M3 11h18M5 19h14a2 2 0 002-2v-6H3v6a2 2 0 002 2z'/></svg>Agenda</a></li>
+        <li><a href="reservas.html" class="flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-100"><svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' class='h-5 w-5 text-brand-600'><path stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round' d='M12 6v12m6-6H6'/></svg>Reservas</a></li>
+        <li><a href="reportes.html" class="flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-100"><svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' class='h-5 w-5 text-brand-600'><path stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round' d='M12 14l9-5-9-5-9 5 9 5z'/><path stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round' d='M12 14l6.16-3.422A12.083 12.083 0 016 8.577M12 14v7'/></svg>Reportes</a></li>
+      </ul>
+    </div>
+  </aside>
+
+  <!-- Main -->
+  <main class="ml-64 pt-20 pb-24">
+    <div class="mx-auto max-w-screen-xl px-6">
+      <!-- Breadcrumbs -->
+      <nav class="text-xs text-slate-500"><a class="hover:underline" href="dashboard.html">Inicio</a> / <a class="hover:underline" href="ipress.html">IPRESS</a> / <span>Formulario</span></nav>
+
+      <!-- Header -->
+      <div class="mt-1 mb-6 flex flex-wrap items-center justify-between gap-3">
+        <div>
+          <h1 class="text-2xl font-semibold tracking-tight text-slate-800">Registrar IPRESS</h1>
+          <p class="text-sm text-slate-500">Completa los datos generales y de contacto.</p>
+        </div>
+        <div class="flex items-center gap-2">
+          <a href="ipress.html" class="rounded-lg border border-slate-200 bg-white px-4 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50">← Volver a IPRESS</a>
+        </div>
+      </div>
+
+      <!-- Form -->
+      <form id="ipressForm" class="grid gap-6 lg:grid-cols-3">
+        <!-- Columna izquierda -->
+        <section class="lg:col-span-2 space-y-6">
+          <!-- Datos de la IPRESS -->
+          <div class="rounded-2xl border border-slate-200 bg-white p-5 shadow-soft">
+            <h2 class="mb-4 text-lg font-semibold">Datos generales</h2>
+            <div class="grid gap-4 md:grid-cols-2">
+              <div class="md:col-span-2">
+                <label class="mb-1 block text-sm font-medium text-slate-700">Nombre de la IPRESS</label>
+                <input name="nombre" type="text" required placeholder="Ej. Clínica NextIa"
+                  class="w-full rounded-xl border border-slate-200 bg-white px-3 py-2.5 text-slate-800 outline-none ring-brand-600/20 placeholder:text-slate-400 focus:border-brand-600 focus:ring-4"/>
+              </div>
+              <div>
+                <label class="mb-1 block text-sm font-medium text-slate-700">RUC</label>
+                <input name="ruc" inputmode="numeric" maxlength="11" pattern="\d{11}" required placeholder="11 dígitos"
+                  class="w-full rounded-xl border border-slate-200 bg-white px-3 py-2.5 text-slate-800 outline-none ring-brand-600/20 placeholder:text-slate-400 focus:border-brand-600 focus:ring-4"/>
+                <p class="mt-1 text-xs text-slate-400">Validaremos 11 dígitos.</p>
+              </div>
+              <div>
+                <label class="mb-1 block text-sm font-medium text-slate-700">Representante legal</label>
+                <input name="representante_legal" type="text" placeholder="Nombre completo"
+                  class="w-full rounded-xl border border-slate-200 bg-white px-3 py-2.5 text-slate-800 outline-none ring-brand-600/20 placeholder:text-slate-400 focus:border-brand-600 focus:ring-4"/>
+              </div>
+              <div>
+                <label class="mb-1 block text-sm font-medium text-slate-700">Sitio web</label>
+                <input name="web" type="url" placeholder="https://..."
+                  class="w-full rounded-xl border border-slate-200 bg-white px-3 py-2.5 text-slate-800 outline-none ring-brand-600/20 placeholder:text-slate-400 focus:border-brand-600 focus:ring-4"/>
+              </div>
+            </div>
+          </div>
+
+          <!-- Contacto principal -->
+          <div class="rounded-2xl border border-slate-200 bg-white p-5 shadow-soft">
+            <h2 class="mb-4 text-lg font-semibold">Contacto principal</h2>
+            <div class="grid gap-4 md:grid-cols-3">
+              <div class="md:col-span-2">
+                <label class="mb-1 block text-sm font-medium text-slate-700">Email</label>
+                <input name="email" type="email" required placeholder="contacto@ipress.com"
+                  class="w-full rounded-xl border border-slate-200 bg-white px-3 py-2.5 text-slate-800 outline-none ring-brand-600/20 placeholder:text-slate-400 focus:border-brand-600 focus:ring-4"/>
+              </div>
+              <div>
+                <label class="mb-1 block text-sm font-medium text-slate-700">Anexo</label>
+                <input name="anexo" type="text" maxlength="6" placeholder="Opcional"
+                  class="w-full rounded-xl border border-slate-200 bg-white px-3 py-2.5 text-slate-800 outline-none ring-brand-600/20 placeholder:text-slate-400 focus:border-brand-600 focus:ring-4"/>
+              </div>
+              <div>
+                <label class="mb-1 block text-sm font-medium text-slate-700">Teléfono principal</label>
+                <input name="telefono_principal" type="tel" placeholder="Ej. (01) 123-4567"
+                  class="w-full rounded-xl border border-slate-200 bg-white px-3 py-2.5 text-slate-800 outline-none ring-brand-600/20 placeholder:text-slate-400 focus:border-brand-600 focus:ring-4"/>
+              </div>
+              <div class="md:col-span-2">
+                <label class="mb-1 block text-sm font-medium text-slate-700">Estado</label>
+                <select name="estado_auditoria" class="w-full rounded-xl border border-slate-200 bg-white px-3 py-2.5 text-slate-800 focus:border-brand-600 focus:outline-none focus:ring-4 focus:ring-brand-600/20">
+                  <option value="ACTIVO" selected>ACTIVO</option>
+                  <option value="INACTIVO">INACTIVO</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <!-- Metadatos -->
+          <div class="rounded-2xl border border-slate-200 bg-white p-5 shadow-soft">
+            <h2 class="mb-4 text-lg font-semibold">Metadatos</h2>
+            <div class="grid gap-4 md:grid-cols-2">
+              <div>
+                <label class="mb-1 block text-sm font-medium text-slate-700">Usuario registra</label>
+                <input name="usuario_registra" type="text" placeholder="usuario@nextia"
+                  class="w-full rounded-xl border border-slate-200 bg-white px-3 py-2.5 text-slate-800 outline-none ring-brand-600/20 placeholder:text-slate-400 focus:border-brand-600 focus:ring-4"/>
+              </div>
+              <div>
+                <label class="mb-1 block text-sm font-medium text-slate-700">Fecha registro</label>
+                <input name="fecha_registro" type="datetime-local" class="w-full rounded-xl border border-slate-200 bg-white px-3 py-2.5 text-slate-800 outline-none focus:border-brand-600 focus:ring-4 focus:ring-brand-600/20"/>
+              </div>
+            </div>
+            <p class="mt-2 text-xs text-slate-400">Estos campos pueden autocompletarse en backend.</p>
+          </div>
+        </section>
+
+        <!-- Columna derecha -->
+        <aside class="space-y-6">
+          <div class="rounded-2xl border border-slate-200 bg-white p-5 shadow-soft">
+            <h3 class="mb-3 text-sm font-semibold text-slate-800">Resumen</h3>
+            <ul class="space-y-2 text-sm text-slate-600">
+              <li>• Se creará una IPRESS con estado <span class="font-medium">ACTIVO</span>.</li>
+              <li>• Podrás añadir <a href="sedes.html" class="text-brand-700 hover:underline">Sedes</a> y <a href="usuarios.html" class="text-brand-700 hover:underline">Usuarios</a> después de guardar.</li>
+            </ul>
+            <div class="mt-4 grid gap-2">
+              <button type="submit" class="w-full rounded-lg bg-brand-600 px-4 py-2 text-sm font-semibold text-white hover:bg-brand-700">Guardar</button>
+              <button type="button" onclick="document.getElementById('ipressForm').reset()" class="w-full rounded-lg border border-slate-200 bg-white px-4 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50">Limpiar</button>
+              <a href="ipress.html" class="w-full rounded-lg border border-slate-200 bg-white px-4 py-2 text-center text-sm font-medium text-slate-700 hover:bg-slate-50">Cancelar</a>
+            </div>
+          </div>
+
+          <div class="rounded-2xl border border-slate-200 bg-white p-5 shadow-soft">
+            <h3 class="mb-2 text-sm font-semibold text-slate-800">Ayuda</h3>
+            <p class="text-xs text-slate-500">El <span class="font-medium">RUC</span> debe tener 11 dígitos. Usa un correo de contacto válido. El estado por defecto es <span class="font-medium">ACTIVO</span>.</p>
+          </div>
+        </aside>
+      </form>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="fixed bottom-0 left-64 right-0 z-40 border-t border-slate-200 bg-white/90 backdrop-blur">
+    <div class="mx-auto flex h-12 max-w-screen-2xl items-center justify-between px-6 text-sm text-slate-600">
+      <p>© <span id="y"></span> NextIaCorp • Todos los derechos reservados</p>
+      <nav class="hidden gap-4 md:flex">
+        <a class="hover:text-slate-900" href="privacidad.html">Privacidad</a>
+        <a class="hover:text-slate-900" href="terminos.html">Términos</a>
+        <a class="hover:text-slate-900" href="contacto.html">Contacto</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+
+    // Cargar logo desde la web
+    (function loadLogo(){
+      const logoEl = document.getElementById('logo');
+      const candidates = [
+        'https://www.nextiacorp.com/logo.svg',
+        'https://www.nextiacorp.com/logo.png',
+        'https://www.nextiacorp.com/assets/logo.svg',
+        'https://www.nextiacorp.com/assets/logo.png',
+        'https://www.nextiacorp.com/img/logo.svg',
+        'https://www.nextiacorp.com/img/logo.png',
+        'https://www.nextiacorp.com/favicon.svg',
+        'https://www.nextiacorp.com/favicon.png'
+      ];
+      let i = 0;
+      function tryNext(){
+        if(i >= candidates.length){ logoEl.remove(); return; }
+        const url = candidates[i++];
+        const test = new Image();
+        test.onload = () => { logoEl.src = url; };
+        test.onerror = tryNext;
+        test.src = url + (url.includes('?') ? '&' : '?') + 'v=' + Date.now();
+      }
+      tryNext();
+    })();
+
+    // Validación mínima del formulario (demo)
+    document.getElementById('ipressForm').addEventListener('submit', function(e){
+      e.preventDefault();
+      const data = Object.fromEntries(new FormData(e.target).entries());
+      // Validación de RUC
+      const rucOk = /^\d{11}$/.test(data.ruc || '');
+      const emailOk = !data.email || /.+@.+\..+/.test(data.email);
+      if(!rucOk){ alert('El RUC debe tener 11 dígitos.'); return; }
+      if(!emailOk){ alert('Ingresa un email válido.'); return; }
+      // Simula guardado y redirige al listado
+      alert('IPRESS guardada correctamente (demo).');
+      window.location.href = 'ipress.html';
+    });
+  </script>
+</body>
+</html>
