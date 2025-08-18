@@ -1,0 +1,367 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>NextIaDoctor • Bandeja de Atenciones</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {50:'#eef2ff',100:'#e0e7ff',200:'#c7d2fe',300:'#a5b4fc',400:'#818cf8',500:'#6366f1',600:'#4f46e5',700:'#4338ca',800:'#3730a3',900:'#312e81'},
+            accent: {50:'#ecfeff',100:'#cffafe',200:'#a5f3fc',300:'#67e8f9',400:'#22d3ee',500:'#06b6d4',600:'#0891b2',700:'#0e7490',800:'#155e75',900:'#164e63'}
+          },
+          boxShadow: { soft: '0 8px 24px rgba(2, 6, 23, 0.06)' }
+        }
+      }
+    }
+  </script>
+  <style>
+    *{ scrollbar-width: thin; scrollbar-color:#cbd5e1 transparent }
+    *::-webkit-scrollbar{ height:8px; width:8px }
+    *::-webkit-scrollbar-thumb{ background:#cbd5e1; border-radius:8px }
+    .badge{ @apply inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium; }
+  </style>
+</head>
+<body class="min-h-screen bg-slate-50 text-slate-800">
+  <!-- Topbar -->
+  <header class="fixed inset-x-0 top-0 z-40 h-16 bg-gradient-to-r from-brand-600 to-accent-500 text-white shadow-soft">
+    <div class="mx-auto flex h-full max-w-screen-2xl items-center justify-between px-4">
+      <div class="flex items-center gap-3">
+        <a href="index.html" class="inline-flex items-center gap-3">
+          <img id="logo" src="" alt="NextIaCorp" class="h-8 w-auto" />
+          <div class="select-none text-lg font-semibold tracking-wide">NextIaCorp</div>
+        </a>
+        <span class="ml-3 hidden rounded-full bg-white/20 px-2 py-0.5 text-xs font-medium md:inline">NextIaDoctor</span>
+      </div>
+      <nav class="flex items-center gap-2">
+        <a href="reportes.html" class="hidden rounded-lg bg-white/10 px-3 py-1.5 text-sm font-medium backdrop-blur hover:bg-white/20 md:inline">Reportes</a>
+        <a href="soporte.html" class="hidden rounded-lg bg-white/10 px-3 py-1.5 text-sm font-medium backdrop-blur hover:bg-white/20 md:inline">Soporte</a>
+        <img src="https://api.dicebear.com/7.x/initials/svg?seed=ND" alt="avatar" class="h-8 w-8 rounded-full ring-2 ring-white/30" />
+      </nav>
+    </div>
+  </header>
+
+  <!-- Navegación Horizontal -->
+  <nav class="fixed top-16 inset-x-0 z-30 bg-white border-b border-slate-200 shadow-soft" aria-label="Navegación principal">
+    <div class="mx-auto max-w-screen-2xl px-4">
+      <div class="flex items-center justify-between">
+        <!-- Menú Principal -->
+        <div class="flex items-center overflow-x-auto py-2 gap-1">
+          <a href="dashboard.html" class="flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-100"><svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' class='h-5 w-5 text-brand-600'><path stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round' d='M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0h6'/></svg>Dashboard</a>
+          <a href="ipress.html" class="flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-100"><svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' class='h-5 w-5 text-brand-600'><path stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round' d='M3 7h18M3 12h18M3 17h18'/></svg>IPRESS</a>
+          <a href="agenda.html" class="flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-100"><svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' class='h-5 w-5 text-brand-600'><path stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round' d='M8 7V3m8 4V3M3 11h18M5 19h14a2 2 0 002-2v-6H3v6a2 2 0 002 2z'/></svg>Agenda</a>
+          <a href="reservas.html" class="flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-100"><svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' class='h-5 w-5 text-brand-600'><path stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round' d='M12 6v12m6-6H6'/></svg>Reservas</a>
+          <a href="atenciones.html" class="flex items-center gap-2 rounded-lg bg-slate-100 px-3 py-2 text-sm font-semibold text-slate-900"><svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' class='h-5 w-5 text-brand-600'><path stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round' d='M22 12h-4l-3 7L9 5l-3 7H2'/></svg>Atenciones</a>
+          <a href="reportes.html" class="flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-100"><svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' class='h-5 w-5 text-brand-600'><path stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round' d='M12 14l9-5-9-5-9 5 9 5z'/><path stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round' d='M12 14l6.16-3.422A12.083 12.083 0 016 8.577M12 14v7'/></svg>Reportes</a>
+        </div>
+        
+        <!-- Menú Administración con desplegable -->
+        <div class="relative group">
+          <button class="flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-100">
+            <span>Administración</span>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" class="h-4 w-4"><path stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+          <div class="absolute right-0 top-full z-40 hidden group-hover:block bg-white rounded-lg shadow-soft border border-slate-200 min-w-[180px] py-1">
+            <a href="servicios.html" class="flex items-center gap-2 px-4 py-2 text-sm font-medium text-slate-700 hover:bg-slate-100"><svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' class='h-5 w-5 text-brand-600'><path stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round' d='M5.5 21h13a1.5 1.5 0 001.5-1.5V9.75a1.5 1.5 0 00-.44-1.06L14.31 2.44A1.5 1.5 0 0013.25 2H6.5A1.5 1.5 0 005 3.5V19.5A1.5 1.5 0 005.5 21z'/></svg>Servicios</a>
+            <a href="medicos.html" class="flex items-center gap-2 px-4 py-2 text-sm font-medium text-slate-700 hover:bg-slate-100"><svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' class='h-5 w-5 text-brand-600'><path stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round' d='M4 7a4 4 0 118 0 4 4 0 01-8 0zm12 4h4m-2-2v4m-6 4a6 6 0 10-12 0'/></svg>Médicos</a>
+            <a href="aseguradoras.html" class="flex items-center gap-2 px-4 py-2 text-sm font-medium text-slate-700 hover:bg-slate-100"><svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' class='h-5 w-5 text-brand-600'><path stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round' d='M12 6.253v13m0 0c-3.5 0-6.5-2-6.5-4.5S8.5 10.253 12 10.253s6.5 2 6.5 4.5-3 4.5-6.5 4.5z'/></svg>Aseguradoras/Planes</a>
+            <a href="seguridad.html" class="flex items-center gap-2 px-4 py-2 text-sm font-medium text-slate-700 hover:bg-slate-100"><svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' class='h-5 w-5 text-brand-600'><path stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round' d='M12 12a5 5 0 100-10 5 5 0 000 10zm-7 9a7 7 0 0114 0v1H5v-1z'/></svg>Seguridad</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main -->
+  <main class="pt-32 pb-24">
+    <div class="mx-auto max-w-screen-2xl px-6">
+      <!-- Header -->
+      <div class="mb-6">
+        <nav class="text-xs text-slate-500"><a class="hover:underline" href="dashboard.html">Inicio</a> / <span>Atenciones</span></nav>
+        <div class="mt-1 flex items-center justify-between">
+          <h1 class="text-2xl font-semibold tracking-tight text-slate-800">Bandeja de Atenciones Médicas</h1>
+        </div>
+        <p class="text-sm text-slate-500">Monitorea atenciones por estado, pagos y responsables. Usa los filtros para acotar por sede, especialidad o profesional.</p>
+      </div>
+
+      <!-- KPIs -->
+      <section class="grid gap-4 md:grid-cols-2 lg:grid-cols-6">
+        <article class="rounded-2xl border border-slate-200 bg-white p-5 shadow-soft">
+          <div class="flex items-center justify-between"><p class="text-xs uppercase tracking-wider text-slate-400">Atenciones de hoy</p><svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' class='h-5 w-5 text-brand-600'><path d='M8 7V3m8 4V3M3 11h18M5 19h14' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/></svg></div>
+          <h3 id="kHoy" class="mt-1 text-3xl font-semibold">—</h3>
+        </article>
+        <article class="rounded-2xl border border-slate-200 bg-white p-5 shadow-soft">
+          <p class="text-xs uppercase tracking-wider text-slate-400">En curso</p>
+          <h3 id="kCurso" class="mt-1 text-3xl font-semibold">—</h3>
+        </article>
+        <article class="rounded-2xl border border-slate-200 bg-white p-5 shadow-soft">
+          <p class="text-xs uppercase tracking-wider text-slate-400">Pendientes por iniciar</p>
+          <h3 id="kPend" class="mt-1 text-3xl font-semibold">—</h3>
+        </article>
+        <article class="rounded-2xl border border-slate-200 bg-white p-5 shadow-soft">
+          <p class="text-xs uppercase tracking-wider text-slate-400">Completadas</p>
+          <h3 id="kComp" class="mt-1 text-3xl font-semibold">—</h3>
+        </article>
+        <article class="rounded-2xl border border-slate-200 bg-white p-5 shadow-soft">
+          <p class="text-xs uppercase tracking-wider text-slate-400">Ingresos cobrados</p>
+          <h3 id="kCobra" class="mt-1 text-3xl font-semibold">S/. —</h3>
+        </article>
+        <article class="rounded-2xl border border-slate-200 bg-white p-5 shadow-soft">
+          <p class="text-xs uppercase tracking-wider text-slate-400">Saldo pendiente</p>
+          <h3 id="kSaldo" class="mt-1 text-3xl font-semibold">S/. —</h3>
+        </article>
+      </section>
+
+      <!-- Filtros -->
+      <section class="mt-6 rounded-2xl border border-slate-200 bg-white p-4 shadow-soft">
+        <div class="grid gap-3 md:grid-cols-2 lg:grid-cols-8">
+          <div>
+            <label class="text-xs font-medium text-slate-500">Sede</label>
+            <select class="mt-1 w-full rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm focus:border-brand-500"><option>Todas</option><option>Clínica Central</option><option>Centro Médico Norte</option><option>Centro Médico Sur</option></select>
+          </div>
+          <div>
+            <label class="text-xs font-medium text-slate-500">Especialidad</label>
+            <select class="mt-1 w-full rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm focus:border-brand-500"><option>Todas</option><option>Cardiología</option><option>Pediatría</option><option>Dermatología</option><option>Neurología</option></select>
+          </div>
+          <div>
+            <label class="text-xs font-medium text-slate-500">Médico</label>
+            <input class="mt-1 w-full rounded-lg border border-slate-200 px-3 py-2 text-sm focus:border-brand-500" placeholder="Nombre del médico" />
+          </div>
+          <div>
+            <label class="text-xs font-medium text-slate-500">Paciente</label>
+            <input class="mt-1 w-full rounded-lg border border-slate-200 px-3 py-2 text-sm focus:border-brand-500" placeholder="Nombre del paciente" />
+          </div>
+          <div>
+            <label class="text-xs font-medium text-slate-500">Estado</label>
+            <select id="filterEstado" class="mt-1 w-full rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm focus:border-brand-500"><option value="">Todos</option><option>Pendiente</option><option>En curso</option><option>Completada</option><option>Cancelada</option></select>
+          </div>
+          <div>
+            <label class="text-xs font-medium text-slate-500">Pago</label>
+            <select id="filterPago" class="mt-1 w-full rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm focus:border-brand-500"><option value="">Todos</option><option value="pendiente">Pendiente</option><option value="pagado">Pagado</option></select>
+          </div>
+          <div>
+            <label class="text-xs font-medium text-slate-500">Desde</label>
+            <input type="date" class="mt-1 w-full rounded-lg border border-slate-200 px-3 py-2 text-sm focus:border-brand-500" />
+          </div>
+          <div>
+            <label class="text-xs font-medium text-slate-500">Hasta</label>
+            <input type="date" class="mt-1 w-full rounded-lg border border-slate-200 px-3 py-2 text-sm focus:border-brand-500" />
+          </div>
+          <div class="lg:col-span-2">
+            <label class="text-xs font-medium text-slate-500">Buscar</label>
+            <div class="mt-1 flex gap-2">
+              <input class="w-full rounded-lg border border-slate-200 px-3 py-2 text-sm focus:border-brand-500" placeholder="N° historia, RUC, observación…" />
+              <button class="rounded-lg bg-brand-600 px-4 py-2 text-sm font-medium text-white hover:bg-brand-700">Aplicar</button>
+              <button class="rounded-lg border border-slate-200 bg-white px-4 py-2 text-sm hover:bg-slate-50">Limpiar</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Tabla -->
+      <section class="mt-4 overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-soft">
+        <div class="flex items-center justify-between border-b border-slate-200 px-4 py-3">
+          <h2 class="text-sm font-semibold">Listado de Atenciones</h2>
+          <div class="flex items-center gap-2 text-sm">
+            <span class="text-slate-500">Exportar:</span>
+            <button class="rounded-lg border border-slate-200 bg-white px-2 py-1 hover:bg-slate-50">CSV</button>
+            <button class="rounded-lg border border-slate-200 bg-white px-2 py-1 hover:bg-slate-50">XLSX</button>
+          </div>
+        </div>
+
+        <div class="overflow-x-auto">
+          <table class="min-w-full text-sm">
+            <thead class="bg-slate-50 text-left text-xs font-semibold uppercase text-slate-500">
+              <tr>
+                <th class="px-4 py-3">Sede / Consultorio</th>
+                <th class="px-4 py-3">Servicio</th>
+                <th class="px-4 py-3">Médico</th>
+                <th class="px-4 py-3">Fecha</th>
+                <th class="px-4 py-3">Paciente</th>
+                <th class="px-4 py-3">Estado</th>
+                <th class="px-4 py-3">Monto</th>
+                <th class="px-4 py-3">Saldo</th>
+                <th class="px-4 py-3">Acciones</th>
+              </tr>
+            </thead>
+            <tbody id="tbody" class="divide-y divide-slate-100"></tbody>
+          </table>
+        </div>
+
+        <div class="flex items-center justify-between border-t border-slate-200 px-4 py-3 text-sm">
+          <p class="text-slate-500">Mostrando <span id="showing">—</span> de <span id="total">—</span></p>
+          <div class="flex items-center gap-1">
+            <button class="rounded-lg border border-slate-200 bg-white px-3 py-1.5 hover:bg-slate-50" id="prev">Anterior</button>
+            <span id="page" class="rounded-lg bg-brand-600 px-3 py-1.5 font-medium text-white">1</span>
+            <button class="rounded-lg border border-slate-200 bg-white px-3 py-1.5 hover:bg-slate-50" id="next">Siguiente</button>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <!-- Modal Pago -->
+  <div id="payModal" class="invisible fixed inset-0 z-50 grid place-items-center bg-black/40 p-4 opacity-0 transition">
+    <div class="w-full max-w-lg rounded-2xl bg-white shadow-soft">
+      <div class="flex items-center justify-between border-b border-slate-200 px-5 py-3">
+        <h3 class="text-lg font-semibold">Registrar Pago</h3>
+        <button id="closePay" class="rounded-lg border border-slate-200 bg-white px-3 py-1.5 hover:bg-slate-50">✕</button>
+      </div>
+      <form id="formPay" class="px-5 py-4 text-sm">
+        <div class="grid gap-3 md:grid-cols-2">
+          <div>
+            <label class="text-xs font-medium text-slate-500">Método</label>
+            <select id="payMethod" class="mt-1 w-full rounded-lg border border-slate-200 bg-white px-3 py-2"><option>Tarjeta de Crédito</option><option>Tarjeta de Débito</option><option>Yape</option><option>Efectivo</option></select>
+          </div>
+          <div>
+            <label class="text-xs font-medium text-slate-500">Monto</label>
+            <input id="payAmount" type="number" step="0.01" min="0" class="mt-1 w-full rounded-lg border border-slate-200 px-3 py-2" />
+          </div>
+          <div class="md:col-span-2">
+            <label class="text-xs font-medium text-slate-500">Observaciones</label>
+            <textarea id="payObs" rows="3" class="mt-1 w-full rounded-lg border border-slate-200 px-3 py-2" placeholder="Opcional"></textarea>
+          </div>
+        </div>
+        <div class="mt-4 flex items-center justify-end gap-2 border-t border-slate-200 pt-4">
+          <button type="button" class="rounded-lg border border-slate-200 bg-white px-4 py-2 hover:bg-slate-50" id="cancelPay">Cancelar</button>
+          <button class="rounded-lg bg-brand-600 px-4 py-2 font-medium text-white">Guardar pago</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="fixed bottom-0 inset-x-0 z-40 border-t border-slate-200 bg-white/90 backdrop-blur">
+    <div class="mx-auto flex h-12 max-w-screen-2xl items-center justify-between px-6 text-sm text-slate-600">
+      <p>© <span id="y"></span> NextIaCorp • Todos los derechos reservados</p>
+      <nav class="hidden gap-4 md:flex">
+        <a class="hover:text-slate-900" href="privacidad.html">Privacidad</a>
+        <a class="hover:text-slate-900" href="terminos.html">Términos</a>
+        <a class="hover:text-slate-900" href="contacto.html">Contacto</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script>
+    // Año + logo
+    document.getElementById('y').textContent = new Date().getFullYear();
+    (function loadLogo(){
+      const logoEl = document.getElementById('logo');
+      const candidates = ['https://www.nextiacorp.com/logo.svg','https://www.nextiacorp.com/logo.png','https://www.nextiacorp.com/assets/logo.svg','https://www.nextiacorp.com/assets/logo.png','https://www.nextiacorp.com/img/logo.svg','https://www.nextiacorp.com/img/logo.png','https://www.nextiacorp.com/favicon.svg','https://www.nextiacorp.com/favicon.png'];
+      let i=0; function tryNext(){ if(i>=candidates.length){logoEl.remove();return;} const url=candidates[i++]; const test=new Image(); test.onload=()=>logoEl.src=url; test.onerror=tryNext; test.src=url; } tryNext(); })();
+
+    // Datos mock de atenciones
+    const rows = [
+      { sede:'Clínica Central', cons:'101', servicio:'Cardiología', medico:'Dra. Sofía Martínez', fecha:'2025-08-20 10:00', paciente:'Ana López', estado:'Pendiente', monto:150, saldo:0 },
+      { sede:'Centro Médico Norte', cons:'203', servicio:'Pediatría', medico:'Dr. Carlos Gómez', fecha:'2025-08-20 11:30', paciente:'Luis Torres', estado:'En curso', monto:120, saldo:50 },
+      { sede:'Clínica Sur', cons:'305', servicio:'Dermatología', medico:'Dra. Elena Ruíz', fecha:'2025-08-21 09:00', paciente:'María Pérez', estado:'Completada', monto:100, saldo:0 },
+      { sede:'Clínica Central', cons:'102', servicio:'Medicina General', medico:'Dr. Javier Solís', fecha:'2025-08-21 14:00', paciente:'Pedro Núñez', estado:'Pendiente', monto:80, saldo:0 },
+      { sede:'Centro Médico Norte', cons:'201', servicio:'Ginecología', medico:'Dra. Laura Díaz', fecha:'2025-08-22 15:45', paciente:'Sofía Vargas', estado:'Pendiente', monto:180, saldo:180 },
+      { sede:'Clínica Central', cons:'103', servicio:'Oftalmología', medico:'Dr. Miguel Santos', fecha:'2025-08-22 16:00', paciente:'Gabriel Castro', estado:'Pendiente', monto:95, saldo:0 },
+      { sede:'Clínica Sur', cons:'301', servicio:'Otorrinolaringología', medico:'Dra. Isabel Ferrer', fecha:'2025-08-23 08:30', paciente:'Carmen Rivera', estado:'En curso', monto:110, saldo:0 },
+      { sede:'Centro Médico Norte', cons:'202', servicio:'Neurología', medico:'Dr. Ricardo Vega', fecha:'2025-08-23 13:00', paciente:'Daniela Salazar', estado:'Pendiente', monto:200, saldo:200 },
+      { sede:'Clínica Central', cons:'104', servicio:'Urología', medico:'Dr. Fernando Morales', fecha:'2025-08-24 09:45', paciente:'Alejandro Rojas', estado:'Cancelada', monto:130, saldo:0 }
+    ];
+
+    // helpers
+    function badge(estado){
+      const map={ 'Pendiente':'bg-amber-50 text-amber-700', 'En curso':'bg-sky-50 text-sky-700', 'Completada':'bg-emerald-50 text-emerald-700', 'Cancelada':'bg-rose-50 text-rose-700' };
+      return `<span class="badge ${map[estado]||'bg-slate-100 text-slate-700'}">${estado}</span>`;
+    }
+
+    // KPIs
+    function renderKPIs(){
+      const hoy = new Date().toISOString().slice(0,10);
+      document.getElementById('kHoy').textContent = rows.filter(r=>r.fecha.slice(0,10)===hoy).length;
+      document.getElementById('kCurso').textContent = rows.filter(r=>r.estado==='En curso').length;
+      document.getElementById('kPend').textContent = rows.filter(r=>r.estado==='Pendiente').length;
+      document.getElementById('kComp').textContent = rows.filter(r=>r.estado==='Completada').length;
+      const cobrado = rows.reduce((s,r)=> s+(r.monto - r.saldo), 0);
+      const saldo = rows.reduce((s,r)=> s+r.saldo, 0);
+      document.getElementById('kCobra').textContent = 'S/. '+cobrado.toFixed(2);
+      document.getElementById('kSaldo').textContent = 'S/. '+saldo.toFixed(2);
+    }
+
+    // Tabla paginada
+    let page=1, perPage=8; const tbody=document.getElementById('tbody');
+    function renderTable(){
+      const estadoFiltro = document.getElementById('filterEstado').value;
+      const pagoFiltro = document.getElementById('filterPago').value; // pendiente/pagado
+      const filtered = rows.filter(r=>{
+        const byEstado = !estadoFiltro || r.estado===estadoFiltro;
+        const byPago = !pagoFiltro || (pagoFiltro==='pendiente'? r.saldo>0 : r.saldo===0);
+        return byEstado && byPago;
+      });
+
+      tbody.innerHTML='';
+      filtered.slice((page-1)*perPage, page*perPage).forEach((r,idx)=>{
+        const tr=document.createElement('tr');
+        tr.innerHTML=`
+          <td class='px-4 py-3'><div class='font-medium'>${r.sede}</div><div class='text-xs text-slate-500'>Consultorio ${r.cons}</div></td>
+          <td class='px-4 py-3'>${r.servicio}</td>
+          <td class='px-4 py-3 whitespace-nowrap'>${r.medico}</td>
+          <td class='px-4 py-3 whitespace-nowrap'>${r.fecha}</td>
+          <td class='px-4 py-3'>${r.paciente}</td>
+          <td class='px-4 py-3'>${badge(r.estado)}</td>
+          <td class='px-4 py-3'>S/. ${r.monto.toFixed(2)}</td>
+          <td class='px-4 py-3 ${r.saldo>0?'text-rose-600 font-medium':''}'>S/. ${r.saldo.toFixed(2)}</td>
+          <td class='px-4 py-3'>
+            <select data-act='${(page-1)*perPage+idx}' class='w-40 rounded-lg border border-slate-200 bg-white px-2 py-1 text-sm focus:border-brand-500'>
+              <option value=''>Acción…</option>
+              <option value='atender'>Atender</option>
+              <option value='pago'>Registrar pago</option>
+              <option value='historia'>Ver historia</option>
+              <option value='detalle'>Ver detalle</option>
+              <option value='cancelar'>Cancelar</option>
+            </select>
+          </td>`;
+        tbody.appendChild(tr);
+      });
+      document.getElementById('total').textContent = filtered.length;
+      document.getElementById('showing').textContent = `${(page-1)*perPage+1}–${Math.min(page*perPage, filtered.length)}`;
+      document.getElementById('page').textContent = page;
+      renderKPIs();
+    }
+
+    // paginación
+    document.getElementById('prev').onclick=()=>{ if(page>1){page--; renderTable();} };
+    document.getElementById('next').onclick=()=>{
+      const estadoFiltro=document.getElementById('filterEstado').value; const pagoFiltro=document.getElementById('filterPago').value; const total = rows.filter(r=>{ const e=!estadoFiltro || r.estado===estadoFiltro; const p=!pagoFiltro || (pagoFiltro==='pendiente'? r.saldo>0 : r.saldo===0); return e && p; }).length; if(page*perPage<total){page++; renderTable();}
+    };
+    document.getElementById('filterEstado').onchange=()=>{ page=1; renderTable(); };
+    document.getElementById('filterPago').onchange=()=>{ page=1; renderTable(); };
+
+    // Acciones
+    tbody.addEventListener('change', (e)=>{
+      const sel = e.target.closest('select'); if(!sel) return; const idx=parseInt(sel.dataset.act,10); const val=sel.value; const row = rows[idx]; sel.value='';
+      if(val==='atender'){ 
+        // Cambiar estado y redirigir al formulario de atención
+        row.estado='En curso'; 
+        renderTable(); 
+        // Redirigir al formulario de atención con el ID de la atención
+        window.location.href = `atencion-formulario.html?id=${idx}&sede=${encodeURIComponent(row.sede)}&paciente=${encodeURIComponent(row.paciente)}&medico=${encodeURIComponent(row.medico)}&servicio=${encodeURIComponent(row.servicio)}`;
+      }
+      if(val==='pago'){ openPay(idx); }
+      if(val==='historia'){ alert('Abrir historia clínica del paciente (mock).'); }
+      if(val==='detalle'){ alert('Abrir detalle de la atención (mock).'); }
+      if(val==='cancelar'){ if(confirm('¿Cancelar atención?')){ row.estado='Cancelada'; renderTable(); } }
+    });
+
+    // Pago modal
+    const payModal=document.getElementById('payModal'); let payIdx=null;
+    function openPay(i){ payIdx=i; const r=rows[i]; document.getElementById('payAmount').value=r.saldo.toFixed(2); payModal.classList.remove('invisible','opacity-0'); }
+    function closePay(){ payModal.classList.add('invisible','opacity-0'); payIdx=null; }
+    document.getElementById('closePay').onclick=closePay; document.getElementById('cancelPay').onclick=closePay; payModal.addEventListener('click', (e)=>{ if(e.target===payModal) closePay(); });
+    document.getElementById('formPay').addEventListener('submit', (e)=>{
+      e.preventDefault(); if(payIdx==null) return; const r=rows[payIdx]; const m=parseFloat(document.getElementById('payAmount').value||0); if(isNaN(m)||m<=0){ alert('Monto inválido'); return; }
+      r.saldo = Math.max(0, r.saldo - m); if(r.saldo===0 && r.estado!=='Cancelada') r.estado='Completada'; closePay(); renderTable();
+    });
+
+    // init
+    renderTable();
+  </script>
+</body>
+</html>

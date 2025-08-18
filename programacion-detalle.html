@@ -1,0 +1,415 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>NextIaDoctor • Detalle de Programaciones del Médico</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {50:'#eef2ff',100:'#e0e7ff',200:'#c7d2fe',300:'#a5b4fc',400:'#818cf8',500:'#6366f1',600:'#4f46e5',700:'#4338ca',800:'#3730a3',900:'#312e81'},
+            accent: {50:'#ecfeff',100:'#cffafe',200:'#a5f3fc',300:'#67e8f9',400:'#22d3ee',500:'#06b6d4',600:'#0891b2',700:'#0e7490',800:'#155e75',900:'#164e63'}
+          },
+          boxShadow: { soft: '0 8px 24px rgba(2, 6, 23, 0.06)' }
+        }
+      }
+    }
+  </script>
+  <style>
+    *{ scrollbar-width: thin; scrollbar-color:#cbd5e1 transparent }
+    *::-webkit-scrollbar{ height:8px; width:8px }
+    *::-webkit-scrollbar-thumb{ background:#cbd5e1; border-radius:8px }
+    .tab-active{ 
+      @apply bg-brand-600 text-white shadow-soft; 
+      transform: scale(1.02);
+    }
+    .tab-active .tab-indicator {
+      transform: scaleX(1);
+    }
+    .tab-btn:not(.tab-active) {
+      @apply bg-white text-slate-600;
+    }
+    .tab-btn:hover:not(.tab-active) {
+      @apply bg-slate-50 text-slate-700;
+    }
+    .cal-cell{ min-height: 108px; }
+    .pill{ @apply block truncate rounded-md px-2 py-1 text-xs text-slate-700; }
+  </style>
+</head>
+<body class="min-h-screen bg-slate-50 text-slate-800">
+  <!-- Topbar -->
+  <header class="fixed inset-x-0 top-0 z-40 h-16 bg-gradient-to-r from-brand-600 to-accent-500 text-white shadow-soft">
+    <div class="mx-auto flex h-full max-w-screen-2xl items-center justify-between px-4">
+      <div class="flex items-center gap-3">
+        <a href="index.html" class="inline-flex items-center gap-3">
+          <img id="logo" src="" alt="NextIaCorp" class="h-8 w-auto" />
+          <div class="select-none text-lg font-semibold tracking-wide">NextIaCorp</div>
+        </a>
+        <span class="ml-3 hidden rounded-full bg-white/20 px-2 py-0.5 text-xs font-medium md:inline">NextIaDoctor</span>
+      </div>
+      <nav class="flex items-center gap-2">
+        <a href="ipress-programacion-medicos.html" class="rounded-lg bg-white/10 px-3 py-1.5 text-sm font-medium backdrop-blur hover:bg-white/20">Volver</a>
+        <img src="https://api.dicebear.com/7.x/initials/svg?seed=ND" alt="avatar" class="h-8 w-8 rounded-full ring-2 ring-white/30" />
+      </nav>
+    </div>
+  </header>
+
+  <!-- Navegación Horizontal -->
+  <nav class="fixed top-16 inset-x-0 z-30 bg-white border-b border-slate-200 shadow-soft">
+    <div class="mx-auto max-w-screen-2xl px-4">
+      <div class="flex items-center justify-between">
+        <!-- Menú Principal -->
+        <div class="flex items-center overflow-x-auto py-2 gap-1">
+          <a href="dashboard.html" class="flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-100"><svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' class='h-5 w-5 text-brand-600'><path stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round' d='M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0h6'/></svg>Dashboard</a>
+          <a href="ipress.html" class="flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-semibold text-slate-900"><svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' class='h-5 w-5 text-brand-600'><path stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round' d='M3 7h18M3 12h18M3 17h18'/></svg>IPRESS</a>
+          <a href="agenda.html" class="flex items-center gap-2 bg-slate-100 rounded-lg px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-100"><svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' class='h-5 w-5 text-brand-600'><path stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round' d='M8 7V3m8 4V3M3 11h18M5 19h14a2 2 0 002-2v-6H3v6a2 2 0 002 2z'/></svg>Agenda</a>
+          <a href="reservas.html" class="flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-100"><svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' class='h-5 w-5 text-brand-600'><path stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round' d='M12 6v12m6-6H6'/></svg>Reservas</a>
+          <a href="atenciones.html" class="flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-100"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" class="h-5 w-5 text-brand-600"><path stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" d="M22 12h-4l-3 7L9 5l-3 7H2"/></svg>Atenciones</a>
+          <a href="reportes.html" class="flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-100"><svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' class='h-5 w-5 text-brand-600'><path stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round' d='M12 14l9-5-9-5-9 5 9 5z'/><path stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round' d='M12 14l6.16-3.422A12.083 12.083 0 016 8.577M12 14v7'/></svg>Reportes</a>
+        </div>
+        
+        <!-- Menú Administración con desplegable -->
+        <div class="relative group">
+          <button class="flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-100">
+            <span>Administración</span>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" class="h-4 w-4"><path stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+          <div class="absolute right-0 top-full z-40 hidden group-hover:block bg-white rounded-lg shadow-soft border border-slate-200 min-w-[180px] py-1">
+            <a href="servicios.html" class="flex items-center gap-2 px-4 py-2 text-sm font-medium text-slate-700 hover:bg-slate-100"><svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' class='h-5 w-5 text-brand-600'><path stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round' d='M5.5 21h13a1.5 1.5 0 001.5-1.5V9.75a1.5 1.5 0 00-.44-1.06L14.31 2.44A1.5 1.5 0 0013.25 2H6.5A1.5 1.5 0 005 3.5V19.5A1.5 1.5 0 005.5 21z'/></svg>Servicios</a>
+            <a href="medicos.html" class="flex items-center gap-2 px-4 py-2 text-sm font-medium text-slate-700 hover:bg-slate-100"><svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' class='h-5 w-5 text-brand-600'><path stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round' d='M4 7a4 4 0 118 0 4 4 0 01-8 0zm12 4h4m-2-2v4m-6 4a6 6 0 10-12 0'/></svg>Médicos</a>
+            <a href="aseguradoras.html" class="flex items-center gap-2 px-4 py-2 text-sm font-medium text-slate-700 hover:bg-slate-100"><svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' class='h-5 w-5 text-brand-600'><path stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round' d='M12 6.253v13m0 0c-3.5 0-6.5-2-6.5-4.5S8.5 10.253 12 10.253s6.5 2 6.5 4.5-3 4.5-6.5 4.5z'/></svg>Aseguradoras/Planes</a>
+            <a href="seguridad.html" class="flex items-center gap-2 px-4 py-2 text-sm font-medium text-slate-700 hover:bg-slate-100"><svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' class='h-5 w-5 text-brand-600'><path stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round' d='M12 12a5 5 0 100-10 5 5 0 000 10zm-7 9a7 7 0 0114 0v1H5v-1z'/></svg>Seguridad</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main -->
+  <main class="pt-32 pb-24">
+    <div class="mx-auto max-w-screen-2xl px-6">
+      <div class="mb-4 flex items-start justify-between gap-3">
+        <div>
+          <nav class="text-xs text-slate-500"><a class="hover:underline" href="dashboard.html">Inicio</a> / <a class="hover:underline" href="ipress-programacion-medicos.html">Programación</a> / <span>Detalle</span></nav>
+          <h1 class="mt-1 text-2xl font-semibold tracking-tight text-slate-800">Listado de Programaciones</h1>
+        </div>
+        <button id="btnNueva" class="rounded-lg bg-slate-900 px-4 py-2 text-sm font-semibold text-white shadow-soft hover:bg-slate-800">+ Nueva Programación</button>
+      </div>
+
+      <section class="grid gap-6 md:grid-cols-12">
+        <!-- Columna izquierda: ficha del médico -->
+        <aside class="md:col-span-3 space-y-4">
+          <div class="rounded-2xl border border-slate-200 bg-white p-4 shadow-soft">
+            <div class="flex items-center gap-3">
+              <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Doc" class="h-12 w-12 rounded-full"/>
+              <div>
+                <h3 class="text-lg font-semibold">Dr. Juanito Pérez</h3>
+                <p class="text-sm text-slate-500">Cardiología</p>
+              </div>
+            </div>
+            <div class="mt-4 flex items-center justify-between rounded-xl bg-slate-50 px-3 py-2 text-xs"><span class="text-slate-500">Rango de Programación</span><span class="rounded-full bg-emerald-50 px-2 py-0.5 font-medium text-emerald-700">Programado</span></div>
+            <p class="mt-1 text-xs text-slate-500">01/08/2025 – 30/08/2025</p>
+          </div>
+
+          <div class="rounded-2xl border border-slate-200 bg-white p-4 shadow-soft">
+            <h4 class="text-xs font-semibold uppercase tracking-wide text-slate-500">Sedes</h4>
+            <ul class="mt-2 space-y-1 text-sm">
+              <li>Sede 01</li>
+              <li>Sede 02</li>
+            </ul>
+          </div>
+
+          <div class="rounded-2xl border border-slate-200 bg-white p-4 shadow-soft">
+            <h4 class="text-xs font-semibold uppercase tracking-wide text-slate-500">Especialidades</h4>
+            <ul class="mt-2 space-y-1 text-sm">
+              <li>Cardiología</li>
+              <li>Neumología</li>
+            </ul>
+          </div>
+
+          <div class="rounded-2xl border border-slate-200 bg-white p-4 shadow-soft">
+            <h4 class="text-xs font-semibold uppercase tracking-wide text-slate-500">Modalidades</h4>
+            <ul class="mt-2 space-y-1 text-sm">
+              <li>Presencial</li>
+              <li>Telemedicina</li>
+            </ul>
+          </div>
+
+          <div class="rounded-2xl border border-slate-200 bg-white p-4 shadow-soft">
+            <h4 class="text-xs font-semibold uppercase tracking-wide text-slate-500">Horarios</h4>
+            <ul class="mt-2 space-y-1 text-sm">
+              <li>09:00 – 17:00</li>
+              <li>09:00 – 13:00</li>
+              <li>10:00 – 14:00</li>
+            </ul>
+          </div>
+        </aside>
+
+        <!-- Columna derecha: tabs y contenido -->
+        <section class="md:col-span-9">
+          <!-- Tabs -->
+          <div class="rounded-2xl border border-slate-200 bg-white p-2 shadow-soft">
+            <div class="grid grid-cols-2 gap-2">
+              <button id="tabListado" class="tab-btn rounded-xl px-4 py-2.5 text-sm font-medium transition-all duration-300 hover:bg-slate-50 active:scale-95 relative overflow-hidden">
+                <span class="flex items-center gap-2">
+                  <span class="text-lg">👥</span>
+                  <span>Listado</span>
+                </span>
+                <div class="tab-indicator absolute bottom-0 left-0 right-0 h-0.5 bg-brand-600 rounded-full scale-x-0 transition-transform duration-300"></div>
+              </button>
+              <button id="tabCalendario" class="tab-btn rounded-xl px-4 py-2.5 text-sm font-medium transition-all duration-300 hover:bg-slate-50 active:scale-95 relative overflow-hidden">
+                <span class="flex items-center gap-2">
+                  <span class="text-lg">📅</span>
+                  <span>Calendario</span>
+                </span>
+                <div class="tab-indicator absolute bottom-0 left-0 right-0 h-0.5 bg-brand-600 rounded-full scale-x-0 transition-transform duration-300"></div>
+              </button>
+            </div>
+          </div>
+
+          <!-- Listado -->
+          <div id="panelListado" class="mt-3 overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-soft">
+            <table class="min-w-full text-sm">
+              <thead class="bg-slate-50 text-left text-xs font-semibold uppercase text-slate-500">
+                <tr>
+                  <th class="px-4 py-3">Sede</th>
+                  <th class="px-4 py-3">Especialidad</th>
+                  <th class="px-4 py-3">Fecha</th>
+                  <th class="px-4 py-3">Horario</th>
+                  <th class="px-4 py-3">Modalidad</th>
+                  <th class="px-4 py-3">Consultorio</th>
+                  <th class="px-4 py-3">Acciones</th>
+                </tr>
+              </thead>
+              <tbody id="tbodyListado" class="divide-y divide-slate-100">
+                <!-- filas renderizadas por JS -->
+              </tbody>
+            </table>
+            <div class="flex items-center justify-between border-t border-slate-200 px-4 py-3 text-sm">
+              <p class="text-slate-500">Mostrando 1–10 de <span id="total"></span></p>
+              <div class="flex items-center gap-1">
+                <button class="rounded-lg border border-slate-200 bg-white px-3 py-1.5 hover:bg-slate-50" id="prevPage">Anterior</button>
+                <span id="pageIndicator" class="rounded-lg bg-brand-600 px-3 py-1.5 font-medium text-white">1</span>
+                <button class="rounded-lg border border-slate-200 bg-white px-3 py-1.5 hover:bg-slate-50" id="nextPage">Siguiente</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Calendario -->
+          <div id="panelCalendario" class="mt-3 hidden rounded-2xl border border-slate-200 bg-white p-4 shadow-soft">
+            <div class="mb-3 flex items-center justify-between">
+              <div class="flex items-center gap-2">
+                <button id="calPrev" class="rounded-lg border border-slate-200 bg-white px-2 py-1 hover:bg-slate-50">«</button>
+                <button id="calNext" class="rounded-lg border border-slate-200 bg-white px-2 py-1 hover:bg-slate-50">»</button>
+                <h3 id="calTitle" class="ml-2 text-lg font-semibold">agosto de 2025</h3>
+              </div>
+            </div>
+            <div class="grid grid-cols-7 gap-px rounded-lg bg-slate-200">
+              <div class="bg-slate-50 p-2 text-center text-xs font-semibold uppercase tracking-wide text-slate-500">Dom</div>
+              <div class="bg-slate-50 p-2 text-center text-xs font-semibold uppercase tracking-wide text-slate-500">Lun</div>
+              <div class="bg-slate-50 p-2 text-center text-xs font-semibold uppercase tracking-wide text-slate-500">Mar</div>
+              <div class="bg-slate-50 p-2 text-center text-xs font-semibold uppercase tracking-wide text-slate-500">Mié</div>
+              <div class="bg-slate-50 p-2 text-center text-xs font-semibold uppercase tracking-wide text-slate-500">Jue</div>
+              <div class="bg-slate-50 p-2 text-center text-xs font-semibold uppercase tracking-wide text-slate-500">Vie</div>
+              <div class="bg-slate-50 p-2 text-center text-xs font-semibold uppercase tracking-wide text-slate-500">Sáb</div>
+            </div>
+            <div id="grid" class="mt-1 grid grid-cols-7 gap-px rounded-lg bg-slate-200"></div>
+          </div>
+        </section>
+      </section>
+    </div>
+  </main>
+
+  <!-- Modal de Registro/Edición -->
+  <div id="editModal" class="invisible fixed inset-0 z-50 grid place-items-center bg-black/40 p-4 opacity-0 transition">
+    <div class="w-full max-w-xl rounded-2xl bg-white shadow-soft">
+      <div class="flex items-center justify-between border-b border-slate-200 px-5 py-3">
+        <div>
+          <h3 id="modalTitle" class="text-lg font-semibold">Edición de Programación</h3>
+          <p class="text-sm text-slate-500">Ingrese información para actualizar su programación</p>
+        </div>
+        <button id="closeModal" class="rounded-lg border border-slate-200 bg-white px-3 py-1.5 hover:bg-slate-50">✕</button>
+      </div>
+      <form id="formEdit" class="px-5 py-4 text-sm">
+        <div class="space-y-3">
+          <div>
+            <label class="text-xs font-medium text-slate-500">Sede</label>
+            <select class="mt-1 w-full rounded-lg border border-slate-200 bg-white px-3 py-2 focus:border-brand-500">
+              <option>Sede 01</option><option>Sede 02</option>
+            </select>
+          </div>
+          <div>
+            <label class="text-xs font-medium text-slate-500">Especialidad</label>
+            <select class="mt-1 w-full rounded-lg border border-slate-200 bg-white px-3 py-2 focus:border-brand-500">
+              <option>Cardiología</option><option>Neumología</option>
+            </select>
+          </div>
+          <div class="grid grid-cols-2 gap-3">
+            <div>
+              <label class="text-xs font-medium text-slate-500">Fecha</label>
+              <input type="date" class="mt-1 w-full rounded-lg border border-slate-200 px-3 py-2 focus:border-brand-500"/>
+            </div>
+            <div>
+              <label class="text-xs font-medium text-slate-500">Consultorio</label>
+              <select class="mt-1 w-full rounded-lg border border-slate-200 bg-white px-3 py-2 focus:border-brand-500"><option>Consultorio 01</option><option>Consultorio 02</option></select>
+            </div>
+          </div>
+          <div class="grid grid-cols-2 gap-3">
+            <div>
+              <label class="text-xs font-medium text-slate-500">Hora de Inicio</label>
+              <input type="time" class="mt-1 w-full rounded-lg border border-slate-200 px-3 py-2 focus:border-brand-500" />
+            </div>
+            <div>
+              <label class="text-xs font-medium text-slate-500">Hora de Fin</label>
+              <input type="time" class="mt-1 w-full rounded-lg border border-slate-200 px-3 py-2 focus:border-brand-500" />
+            </div>
+          </div>
+          <div>
+            <label class="text-xs font-medium text-slate-500">Modalidad</label>
+            <div class="mt-1 grid grid-cols-3 gap-y-2">
+              <label class="inline-flex items-center gap-2"><input type="checkbox" checked/> Presencial</label>
+              <label class="inline-flex items-center gap-2"><input type="checkbox"/> Tele Medicina</label>
+              <label class="inline-flex items-center gap-2"><input type="checkbox"/> Domiciliaria</label>
+            </div>
+          </div>
+        </div>
+        <div class="mt-4 flex items-center justify-end gap-2 border-t border-slate-200 pt-4">
+          <button type="button" id="cancelModal" class="rounded-lg border border-slate-200 bg-white px-4 py-2 hover:bg-slate-50">Cancelar</button>
+          <button class="rounded-lg bg-brand-600 px-4 py-2 font-medium text-white">Guardar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="fixed bottom-0 inset-x-0 z-40 border-t border-slate-200 bg-white/90 backdrop-blur">
+    <div class="mx-auto flex h-12 max-w-screen-2xl items-center justify-between px-6 text-sm text-slate-600">
+      <p>© <span id="y"></span> NextIaCorp • Todos los derechos reservados</p>
+      <nav class="hidden gap-4 md:flex">
+        <a class="hover:text-slate-900" href="privacidad.html">Privacidad</a>
+        <a class="hover:text-slate-900" href="terminos.html">Términos</a>
+        <a class="hover:text-slate-900" href="contacto.html">Contacto</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script>
+    // Año y logo
+    document.getElementById('y').textContent = new Date().getFullYear();
+    (function loadLogo(){
+      const logoEl = document.getElementById('logo');
+      const candidates = ['https://www.nextiacorp.com/logo.svg','https://www.nextiacorp.com/logo.png','https://www.nextiacorp.com/assets/logo.svg','https://www.nextiacorp.com/assets/logo.png','https://www.nextiacorp.com/img/logo.svg','https://www.nextiacorp.com/img/logo.png','https://www.nextiacorp.com/favicon.svg','https://www.nextiacorp.com/favicon.png'];
+      let i=0; function tryNext(){ if(i>=candidates.length){logoEl.remove();return;} const url=candidates[i++]; const test=new Image(); test.onload=()=>logoEl.src=url; test.onerror=tryNext; test.src=url; } tryNext(); })();
+
+    // Estado simple
+    const listado = [
+      { sede:'Sede 01', esp:'Especialidad 01', fecha:'2025-08-05', horario:'10:00 - 14:00', mod:'Presencial', cons:'Consultorio 01' },
+      { sede:'Sede 02', esp:'Especialidad 02', fecha:'2025-08-05', horario:'14:00 - 17:00', mod:'Presencial / Telemedicina', cons:'Consultorio 01' },
+      { sede:'Sede 03', esp:'Especialidad 03', fecha:'2025-08-05', horario:'08:00 - 15:00', mod:'Presencial', cons:'Consultorio 02' },
+      { sede:'Sede 01', esp:'Especialidad 01', fecha:'2025-08-06', horario:'10:00 - 14:00', mod:'Presencial', cons:'Consultorio 01' },
+      { sede:'Sede 02', esp:'Especialidad 02', fecha:'2025-08-06', horario:'14:00 - 17:00', mod:'Presencial / Telemedicina', cons:'Consultorio 01' },
+      { sede:'Sede 03', esp:'Especialidad 03', fecha:'2025-08-06', horario:'08:00 - 15:00', mod:'Presencial', cons:'Consultorio 02' }
+    ];
+
+    // Render tabla paginada mock
+    let page = 1, perPage = 5; const tbody = document.getElementById('tbodyListado');
+    function renderTable(){
+      document.getElementById('total').textContent = listado.length;
+      document.getElementById('pageIndicator').textContent = page;
+      tbody.innerHTML = '';
+      listado.slice((page-1)*perPage, page*perPage).forEach((r,i)=>{
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+          <td class="px-4 py-3">${r.sede}</td>
+          <td class="px-4 py-3">${r.esp}</td>
+          <td class="px-4 py-3">${r.fecha.split('-').reverse().join('/')}</td>
+          <td class="px-4 py-3">${r.horario}</td>
+          <td class="px-4 py-3">${r.mod}</td>
+          <td class="px-4 py-3">${r.cons}</td>
+          <td class="px-4 py-3">
+            <div class="flex items-center gap-2">
+              <button class="rounded-lg border border-slate-200 bg-white px-2 py-1 hover:bg-slate-50" data-edit='${(page-1)*perPage+i}'>✎</button>
+              <button class="rounded-lg border border-rose-200 bg-rose-50 px-2 py-1 text-rose-700 hover:bg-rose-100" data-del='${(page-1)*perPage+i}'>✖</button>
+            </div>
+          </td>`;
+        tbody.appendChild(tr);
+      });
+    }
+    document.getElementById('prevPage').onclick = ()=>{ if(page>1){page--; renderTable();} };
+    document.getElementById('nextPage').onclick = ()=>{ if(page*perPage<listado.length){page++; renderTable();} };
+
+    // Tabs
+    const tabListado = document.getElementById('tabListado');
+    const tabCalendario = document.getElementById('tabCalendario');
+    const panelListado = document.getElementById('panelListado');
+    const panelCalendario = document.getElementById('panelCalendario');
+    
+    function activateTab(which){
+      // Remover estado activo de todas las pestañas
+      tabListado.classList.remove('tab-active');
+      tabCalendario.classList.remove('tab-active');
+      
+      // Ocultar todos los paneles
+      panelListado.classList.add('hidden');
+      panelCalendario.classList.add('hidden');
+      
+      if(which==='listado'){
+        tabListado.classList.add('tab-active');
+        panelListado.classList.remove('hidden');
+      }else if(which==='calendario'){
+        tabCalendario.classList.add('tab-active');
+        panelCalendario.classList.remove('hidden');
+      }
+    }
+    
+    tabListado.onclick = ()=>activateTab('listado');
+    tabCalendario.onclick = ()=>activateTab('calendario');
+
+    // Calendario simple con pills desde listado
+    const calState = { current: new Date() }; calState.current.setDate(1);
+    const grid = document.getElementById('grid'); const calTitle = document.getElementById('calTitle');
+    const months = ['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];
+    function renderCalendar(){
+      const d = new Date(calState.current); calTitle.textContent = months[d.getMonth()]+' de '+d.getFullYear(); grid.innerHTML='';
+      const first = new Date(d.getFullYear(), d.getMonth(), 1); const startIdx=(first.getDay()+7)%7; const days = new Date(d.getFullYear(), d.getMonth()+1, 0).getDate();
+      const total = Math.ceil((startIdx+days)/7)*7;
+      for(let i=0;i<total;i++){
+        const cellDate = new Date(d.getFullYear(), d.getMonth(), i-startIdx+1); const inMonth = i>=startIdx && i<startIdx+days;
+        const key = cellDate.toISOString().slice(0,10);
+        const events = listado.filter(x=>x.fecha===key);
+        const cell = document.createElement('div'); cell.className = 'cal-cell bg-white p-2 '+(inMonth?'':'text-slate-400 bg-slate-50');
+        cell.innerHTML = `<div class='mb-1 flex items-center justify-between text-xs text-slate-500'><span>${cellDate.getDate()}</span><span class='rounded-full bg-slate-100 px-1'>${events.length}</span></div>`;
+        const wrap = document.createElement('div'); wrap.className='space-y-1';
+        events.slice(0,3).forEach(ev=>{ const pill=document.createElement('span'); pill.className='pill bg-brand-50'; pill.textContent = `${ev.horario} • ${ev.esp}`; wrap.appendChild(pill); });
+        if(events.length>3){ const more=document.createElement('span'); more.className='pill bg-slate-50 text-slate-500'; more.textContent = `+${events.length-3} más`; wrap.appendChild(more); }
+        cell.appendChild(wrap); grid.appendChild(cell);
+      }
+    }
+    document.getElementById('calPrev').onclick = ()=>{ calState.current.setMonth(calState.current.getMonth()-1); renderCalendar(); };
+    document.getElementById('calNext').onclick = ()=>{ calState.current.setMonth(calState.current.getMonth()+1); renderCalendar(); };
+
+    // Modal open/close
+    const modal = document.getElementById('editModal');
+    function openModal(title='Edición de Programación'){ document.getElementById('modalTitle').textContent = title; modal.classList.remove('invisible','opacity-0'); }
+    function closeModal(){ modal.classList.add('invisible','opacity-0'); }
+    document.getElementById('closeModal').onclick = closeModal;
+    document.getElementById('cancelModal').onclick = closeModal;
+    document.getElementById('btnNueva').onclick = ()=>openModal('Registro de Programación');
+
+    // Editar / Eliminar en tabla
+    tbody.addEventListener('click', (e)=>{
+      const ed = e.target.closest('[data-edit]'); const del = e.target.closest('[data-del]');
+      if(ed){ openModal('Edición de Programación'); }
+      if(del){ if(confirm('¿Eliminar programación?')){ listado.splice(parseInt(del.dataset.del,10),1); renderTable(); renderCalendar(); } }
+    });
+
+    // Init
+    activateTab('listado');
+    renderTable();
+    const today = new Date(); calState.current = new Date(today.getFullYear(), today.getMonth(), 1); renderCalendar();
+  </script>
+</body>
+</html>

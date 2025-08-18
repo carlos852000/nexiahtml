@@ -1,0 +1,496 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>NextIaDoctor • Programación de Médicos</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {50:'#eef2ff',100:'#e0e7ff',200:'#c7d2fe',300:'#a5b4fc',400:'#818cf8',500:'#6366f1',600:'#4f46e5',700:'#4338ca',800:'#3730a3',900:'#312e81'},
+            accent: {50:'#ecfeff',100:'#cffafe',200:'#a5f3fc',300:'#67e8f9',400:'#22d3ee',500:'#06b6d4',600:'#0891b2',700:'#0e7490',800:'#155e75',900:'#164e63'}
+          },
+          boxShadow: { soft: '0 8px 24px rgba(2, 6, 23, 0.06)' }
+        }
+      }
+    }
+  </script>
+  <style>
+    *{ scrollbar-width: thin; scrollbar-color:#cbd5e1 transparent }
+    *::-webkit-scrollbar{ height:8px; width:8px }
+    *::-webkit-scrollbar-thumb{ background:#cbd5e1; border-radius:8px }
+    .badge{ @apply inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium; }
+  </style>
+</head>
+<body class="min-h-screen bg-slate-50 text-slate-800">
+  <!-- Topbar -->
+  <header class="fixed inset-x-0 top-0 z-40 h-16 bg-gradient-to-r from-brand-600 to-accent-500 text-white shadow-soft">
+    <div class="mx-auto flex h-full max-w-screen-2xl items-center justify-between px-4">
+      <div class="flex items-center gap-3">
+        <a href="index.html" class="inline-flex items-center gap-3">
+          <img id="logo" src="" alt="NextIaCorp" class="h-8 w-auto" />
+          <div class="select-none text-lg font-semibold tracking-wide">NextIaCorp</div>
+        </a>
+        <span class="ml-3 hidden rounded-full bg-white/20 px-2 py-0.5 text-xs font-medium md:inline">NextIaDoctor</span>
+      </div>
+      <nav class="flex items-center gap-2">
+        <a href="reportes.html" class="hidden rounded-lg bg-white/10 px-3 py-1.5 text-sm font-medium backdrop-blur hover:bg-white/20 md:inline">Reportes</a>
+        <a href="soporte.html" class="hidden rounded-lg bg-white/10 px-3 py-1.5 text-sm font-medium backdrop-blur hover:bg-white/20 md:inline">Soporte</a>
+        <img src="https://api.dicebear.com/7.x/initials/svg?seed=ND" alt="avatar" class="h-8 w-8 rounded-full ring-2 ring-white/30" />
+      </nav>
+    </div>
+  </header>
+
+  <!-- Navegación Horizontal -->
+  <nav class="fixed top-16 inset-x-0 z-30 bg-white border-b border-slate-200 shadow-soft" aria-label="Navegación principal">
+    <div class="mx-auto max-w-screen-2xl px-4">
+      <div class="flex items-center justify-between">
+        <!-- Menú Principal -->
+        <div class="flex items-center overflow-x-auto py-2 gap-1">
+          <a href="dashboard.html" class="flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-100"><svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' class='h-5 w-5 text-brand-600'><path stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round' d='M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0h6'/></svg>Dashboard</a>
+          <a href="ipress.html" class="flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-100"><svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' class='h-5 w-5 text-brand-600'><path stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round' d='M3 7h18M3 12h18M3 17h18'/></svg>IPRESS</a>
+          <a href="agenda.html" class="flex items-center gap-2 rounded-lg bg-slate-100 px-3 py-2 text-sm font-semibold text-slate-900"><svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' class='h-5 w-5 text-brand-600'><path stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round' d='M8 7V3m8 4V3M3 11h18M5 19h14a2 2 0 002-2v-6H3v6a2 2 0 002 2z'/></svg>Agenda</a>
+          <a href="reservas.html" class="flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-100"><svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' class='h-5 w-5 text-brand-600'><path stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round' d='M12 6v12m6-6H6'/></svg>Reservas</a>
+          <a href="atenciones.html" class="flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-100"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" class="h-5 w-5 text-brand-600"><path stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" d="M22 12h-4l-3 7L9 5l-3 7H2"/></svg>Atenciones</a>
+          <a href="reportes.html" class="flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-100"><svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' class='h-5 w-5 text-brand-600'><path stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round' d='M12 14l9-5-9-5-9 5 9 5z'/><path stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round' d='M12 14l6.16-3.422A12.083 12.083 0 016 8.577M12 14v7'/></svg>Reportes</a>
+        </div>
+        
+        <!-- Menú Administración con desplegable -->
+        <div class="relative group">
+          <button class="flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-100">
+            <span>Administración</span>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" class="h-4 w-4"><path stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+          <div class="absolute right-0 top-full z-40 hidden group-hover:block bg-white rounded-lg shadow-soft border border-slate-200 min-w-[180px] py-1">
+            <a href="servicios.html" class="flex items-center gap-2 px-4 py-2 text-sm font-medium text-slate-700 hover:bg-slate-100"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" class="h-5 w-5 text-brand-600"><path stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" d="M5.5 21h13a1.5 1.5 0 001.5-1.5V9.75a1.5 1.5 0 00-.44-1.06L14.31 2.44A1.5 1.5 0 0013.25 2H6.5A1.5 1.5 0 005 3.5V19.5A1.5 1.5 0 005.5 21z"/></svg>Servicios</a>
+            <a href="medicos.html" class="flex items-center gap-2 px-4 py-2 text-sm font-medium text-slate-700 hover:bg-slate-100"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" class="h-5 w-5 text-brand-600"><path stroke-width="1.5" stroke-linecap="round" stroke-linejoin='round' d='M4 7a4 4 0 118 0 4 4 0 01-8 0zm12 4h4m-2-2v4m-6 4a6 6 0 10-12 0'></svg>Médicos</a>
+            <a href="aseguradoras.html" class="flex items-center gap-2 px-4 py-2 text-sm font-medium text-slate-700 hover:bg-slate-100"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" class="h-5 w-5 text-brand-600"><path stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0 0c-3.5 0-6.5-2-6.5-4.5S8.5 10.253 12 10.253s6.5 2 6.5 4.5-3 4.5-6.5 4.5z"/></svg>Aseguradoras/Planes</a>
+            <a href="seguridad.html" class="flex items-center gap-2 px-4 py-2 text-sm font-medium text-slate-700 hover:bg-slate-100"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" class="h-5 w-5 text-brand-600"><path stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" d="M12 12a5 5 0 100-10 5 5 0 000 10zm-7 9a7 7 0 0114 0v1H5v-1z"/></svg>Seguridad</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main -->
+  <main class="pt-32 pb-24">
+    <div class="mx-auto max-w-screen-2xl px-6">
+      <!-- Header -->
+      <div class="mb-6 flex flex-wrap items-center justify-between gap-3">
+        <div>
+          <nav class="text-xs text-slate-500"><a class="hover:underline" href="dashboard.html">Inicio</a> / <a class="hover:underline" href="ipress.html">IPRESS</a> / <span>Programación de Médicos</span></nav>
+          <h1 class="mt-1 text-2xl font-semibold tracking-tight text-slate-800">Programación de Médicos</h1>
+          <p class="text-sm text-slate-500">Gestiona la programación, publicación y estado de las agendas médicas.</p>
+        </div>
+        <div class="flex items-center gap-2">
+          <a href="programacion-form.html" class="rounded-lg bg-brand-600 px-4 py-2 text-sm font-medium text-white shadow-soft hover:bg-brand-700">+ Nueva Programación</a>
+        </div>
+      </div>
+
+      <!-- KPIs -->
+      <section class="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+        <article class="rounded-2xl border border-slate-200 bg-white p-5 shadow-soft">
+          <p class="text-xs uppercase tracking-wider text-slate-400">Programaciones Totales</p>
+          <div class="mt-1 flex items-end justify-between"><h3 class="text-3xl font-semibold">128</h3><span class="text-xs text-slate-500">últimos 30 días</span></div>
+        </article>
+        <article class="rounded-2xl border border-slate-200 bg-white p-5 shadow-soft">
+          <p class="text-xs uppercase tracking-wider text-slate-400">Programaciones Activas</p>
+          <div class="mt-1 flex items-end justify-between"><h3 class="text-3xl font-semibold">63</h3><span class="rounded-full bg-emerald-50 px-2 py-0.5 text-xs font-medium text-emerald-700">+5 hoy</span></div>
+        </article>
+        <article class="rounded-2xl border border-slate-200 bg-white p-5 shadow-soft">
+          <p class="text-xs uppercase tracking-wider text-slate-400">Publicadas</p>
+          <div class="mt-1 flex items-end justify-between"><h3 class="text-3xl font-semibold">41</h3><span class="rounded-full bg-brand-50 px-2 py-0.5 text-xs font-medium text-brand-700">64%</span></div>
+        </article>
+        <article class="rounded-2xl border border-slate-200 bg-white p-5 shadow-soft">
+          <p class="text-xs uppercase tracking-wider text-slate-400">Anuladas</p>
+          <div class="mt-1 flex items-end justify-between"><h3 class="text-3xl font-semibold">7</h3><span class="rounded-full bg-rose-50 px-2 py-0.5 text-xs font-medium text-rose-700">-</span></div>
+        </article>
+      </section>
+
+      <!-- Filtros -->
+      <section class="mt-6 rounded-2xl border border-slate-200 bg-white p-4 shadow-soft">
+        <div class="grid gap-3 md:grid-cols-2 lg:grid-cols-6">
+          <div>
+            <label class="text-xs font-medium text-slate-500">Médico</label>
+            <div class="mt-1"><input class="w-full rounded-lg border border-slate-200 px-3 py-2 text-sm focus:border-brand-500 focus:outline-none" placeholder="Buscar médico" /></div>
+          </div>
+          <div>
+            <label class="text-xs font-medium text-slate-500">Sede</label>
+            <div class="mt-1"><select class="w-full rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm focus:border-brand-500"><option>Todas</option><option>Miraflores</option><option>San Isidro</option><option>Magdalena</option></select></div>
+          </div>
+          <div>
+            <label class="text-xs font-medium text-slate-500">Consultorio</label>
+            <div class="mt-1"><select class="w-full rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm focus:border-brand-500"><option>Todos</option><option>Consultorio 1</option><option>Consultorio 2</option><option>Consultorio 3</option></select></div>
+          </div>
+          <div>
+            <label class="text-xs font-medium text-slate-500">Especialidad</label>
+            <div class="mt-1"><select class="w-full rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm focus:border-brand-500"><option>Todas</option><option>Cardiología</option><option>Odontología</option><option>Pediatría</option></select></div>
+          </div>
+          <div>
+            <label class="text-xs font-medium text-slate-500">Desde</label>
+            <div class="mt-1"><input type="date" class="w-full rounded-lg border border-slate-200 px-3 py-2 text-sm focus:border-brand-500" /></div>
+          </div>
+          <div>
+            <label class="text-xs font-medium text-slate-500">Hasta</label>
+            <div class="mt-1"><input type="date" class="w-full rounded-lg border border-slate-200 px-3 py-2 text-sm focus:border-brand-500" /></div>
+          </div>
+        </div>
+        <div class="mt-3 flex flex-wrap items-center gap-2">
+          <button class="rounded-lg border border-slate-200 bg-white px-3 py-1.5 text-sm hover:bg-slate-50">Limpiar</button>
+          <button class="rounded-lg bg-brand-600 px-3 py-1.5 text-sm font-medium text-white hover:bg-brand-700">Aplicar filtros</button>
+        </div>
+      </section>
+
+      <!-- Tabs -->
+      <div class="mt-6">
+        <div class="border-b border-slate-200">
+          <nav class="-mb-px flex gap-6 text-sm">
+            <button type="button" data-tab="all" class="tab-btn border-b-2 border-brand-600 px-1 pb-2 font-medium text-brand-600">Todas las programaciones</button>
+            <button type="button" data-tab="active" class="tab-btn border-b-2 border-transparent px-1 pb-2 font-medium text-slate-500 hover:text-slate-700">Activas</button>
+            <button type="button" data-tab="inactive" class="tab-btn border-b-2 border-transparent px-1 pb-2 font-medium text-slate-500 hover:text-slate-700">Inactivas</button>
+          </nav>
+        </div>
+      </div>
+      </section>
+
+      <!-- Tabla - Todas las programaciones -->
+      <section id="all" class="tab-panel mt-4 overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-soft">
+        <div class="flex items-center justify-between border-b border-slate-200 px-4 py-3">
+          <div>
+            <h2 class="text-sm font-semibold">Listado de Programaciones</h2>
+            <p class="text-xs text-slate-500">Gestiona y visualiza tus programaciones médicas.</p>
+          </div>
+          <div class="flex items-center gap-2 text-sm">
+            <span class="text-slate-500">Ordenar por:</span>
+            <select class="rounded-lg border border-slate-200 bg-white px-2 py-1">
+              <option>Fecha inicio</option>
+              <option>Fecha fin</option>
+              <option>Médico</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="overflow-x-auto">
+          <table class="min-w-full text-sm">
+            <thead class="bg-slate-50 text-left text-xs font-semibold uppercase text-slate-500">
+              <tr>
+                <th class="px-4 py-3">Sede</th>
+                <th class="px-4 py-3">Consultorios</th>
+                <th class="px-4 py-3">Especialidad</th>
+                <th class="px-4 py-3">Servicio</th>
+                <th class="px-4 py-3">Médico</th>
+                <th class="px-4 py-3">Fecha Inicio</th>
+                <th class="px-4 py-3">Fecha Fin</th>
+                <th class="px-4 py-3">Estado</th>
+                <th class="px-4 py-3">Opciones</th>
+                <th class="px-4 py-3">Registró</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-slate-100">
+              <!-- Row Template -->
+              <tr>
+                <td class="px-4 py-3">Magdalena</td>
+                <td class="px-4 py-3">Cons. 1 / 2</td>
+                <td class="px-4 py-3">Medicina General</td>
+                <td class="px-4 py-3">Consulta</td>
+                <td class="px-4 py-3">Dra. Zulema</td>
+                <td class="px-4 py-3">03/08/2025</td>
+                <td class="px-4 py-3">30/08/2025</td>
+                <td class="px-4 py-3"><span class="rounded-full bg-violet-100 px-2.5 py-0.5 text-violet-700">En proceso</span></td>
+                <td class="px-4 py-3">
+                  <!-- Menú de opciones grupal -->
+                  <div class="relative inline-block text-left" data-menu>
+                    <button class="inline-flex items-center gap-2 rounded-lg border border-slate-200 bg-white px-3 py-1.5 text-sm hover:bg-slate-50" data-menu-button>
+                      Opciones
+                      <svg class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor"><path d="M5.23 7.21a.75.75 0 011.06.02L10 11.147l3.71-3.916a.75.75 0 111.08 1.04l-4.243 4.475a.75.75 0 01-1.08 0L5.25 8.27a.75.75 0 01-.02-1.06z"/></svg>
+                    </button>
+                    <div class="invisible absolute right-0 z-10 mt-2 w-44 origin-top-right scale-95 rounded-lg border border-slate-200 bg-white p-1 opacity-0 shadow-soft transition" data-menu-items>
+                      <a href="#" class="block rounded-md px-3 py-2 text-sm hover:bg-slate-50">Publicar</a>
+                      <a href="#" class="block rounded-md px-3 py-2 text-sm hover:bg-slate-50">Anular</a>
+                      <a href="programacion-detalle.html?id=1" class="block rounded-md px-3 py-2 text-sm hover:bg-slate-50">Ver detalles</a>
+                    </div>
+                  </div>
+                </td>
+                <td class="px-4 py-3">Responsable</td>
+              </tr>
+
+              <tr>
+                <td class="px-4 py-3">San Isidro</td>
+                <td class="px-4 py-3">Cons. 3</td>
+                <td class="px-4 py-3">Medicina General</td>
+                <td class="px-4 py-3">Consulta</td>
+                <td class="px-4 py-3">Dr. Roberto</td>
+                <td class="px-4 py-3">10/09/2025</td>
+                <td class="px-4 py-3">10/10/2025</td>
+                <td class="px-4 py-3"><span class="rounded-full bg-slate-800/90 px-2.5 py-0.5 text-white">Programado</span></td>
+                <td class="px-4 py-3">
+                  <div class="relative inline-block text-left" data-menu>
+                    <button class="inline-flex items-center gap-2 rounded-lg border border-slate-200 bg-white px-3 py-1.5 text-sm hover:bg-slate-50" data-menu-button>Opciones<svg class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor"><path d="M5.23 7.21a.75.75 0 011.06.02L10 11.147l3.71-3.916a.75.75 0 111.08 1.04l-4.243 4.475a.75.75 0 01-1.08 0L5.25 8.27a.75.75 0 01-.02-1.06z"/></svg></button>
+                    <div class="invisible absolute right-0 z-10 mt-2 w-44 origin-top-right scale-95 rounded-lg border border-slate-200 bg-white p-1 opacity-0 shadow-soft transition" data-menu-items>
+                      <a href="#" class="block rounded-md px-3 py-2 text-sm hover:bg-slate-50">Publicar</a>
+                      <a href="#" class="block rounded-md px-3 py-2 text-sm hover:bg-slate-50">Anular</a>
+                      <a href="programacion-detalle.html?id=2" class="block rounded-md px-3 py-2 text-sm hover:bg-slate-50">Ver detalles</a>
+                    </div>
+                  </div>
+                </td>
+                <td class="px-4 py-3">Médico</td>
+              </tr>
+
+              <tr>
+                <td class="px-4 py-3">Miraflores</td>
+                <td class="px-4 py-3">Cons. 4 / 5</td>
+                <td class="px-4 py-3">Medicina General</td>
+                <td class="px-4 py-3">Consulta</td>
+                <td class="px-4 py-3">Dra. Ana</td>
+                <td class="px-4 py-3">05/10/2025</td>
+                <td class="px-4 py-3">05/11/2025</td>
+                <td class="px-4 py-3"><span class="rounded-full bg-emerald-100 px-2.5 py-0.5 text-emerald-700">Publicado</span></td>
+                <td class="px-4 py-3">
+                  <div class="relative inline-block text-left" data-menu>
+                    <button class="inline-flex items-center gap-2 rounded-lg border border-slate-200 bg-white px-3 py-1.5 text-sm hover:bg-slate-50" data-menu-button>Opciones<svg class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor"><path d="M5.23 7.21a.75.75 0 011.06.02L10 11.147l3.71-3.916a.75.75 0 111.08 1.04l-4.243 4.475a.75.75 0 01-1.08 0L5.25 8.27a.75.75 0 01-.02-1.06z"/></svg></button>
+                    <div class="invisible absolute right-0 z-10 mt-2 w-44 origin-top-right scale-95 rounded-lg border border-slate-200 bg-white p-1 opacity-0 shadow-soft transition" data-menu-items>
+                      <a href="#" class="block rounded-md px-3 py-2 text-sm hover:bg-slate-50">Despublicar</a>
+                      <a href="#" class="block rounded-md px-3 py-2 text-sm hover:bg-slate-50">Anular</a>
+                      <a href="programacion-detalle.html?id=3" class="block rounded-md px-3 py-2 text-sm hover:bg-slate-50">Ver detalles</a>
+                    </div>
+                  </div>
+                </td>
+                <td class="px-4 py-3">Administrador</td>
+              </tr>
+
+              <tr>
+                <td class="px-4 py-3">Magdalena</td>
+                <td class="px-4 py-3">Cons. 1</td>
+                <td class="px-4 py-3">Medicina General</td>
+                <td class="px-4 py-3">Consulta</td>
+                <td class="px-4 py-3">Dra. Zulema</td>
+                <td class="px-4 py-3">15/11/2025</td>
+                <td class="px-4 py-3">15/12/2025</td>
+                <td class="px-4 py-3"><span class="rounded-full bg-rose-100 px-2.5 py-0.5 text-rose-700">Anulado</span></td>
+                <td class="px-4 py-3">
+                  <div class="relative inline-block text-left" data-menu>
+                    <button class="inline-flex items-center gap-2 rounded-lg border border-slate-200 bg-white px-3 py-1.5 text-sm hover:bg-slate-50" data-menu-button>Opciones<svg class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor"><path d="M5.23 7.21a.75.75 0 011.06.02L10 11.147l3.71-3.916a.75.75 0 111.08 1.04l-4.243 4.475a.75.75 0 01-1.08 0L5.25 8.27a.75.75 0 01-.02-1.06z"/></svg></button>
+                    <div class="invisible absolute right-0 z-10 mt-2 w-44 origin-top-right scale-95 rounded-lg border border-slate-200 bg-white p-1 opacity-0 shadow-soft transition" data-menu-items>
+                      <a href="#" class="block rounded-md px-3 py-2 text-sm hover:bg-slate-50">Reactivar</a>
+                      <a href="programacion-detalle.html?id=4" class="block rounded-md px-3 py-2 text-sm hover:bg-slate-50">Ver detalles</a>
+                    </div>
+                  </div>
+                </td>
+                <td class="px-4 py-3">Responsable</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Paginación -->
+        <div class="flex items-center justify-between border-t border-slate-200 px-4 py-3 text-sm">
+          <p class="text-slate-500">Mostrando 1–10 de 128</p>
+          <div class="flex items-center gap-1">
+            <button class="rounded-lg border border-slate-200 bg-white px-3 py-1.5 hover:bg-slate-50">Anterior</button>
+            <button class="rounded-lg bg-brand-600 px-3 py-1.5 font-medium text-white">1</button>
+            <button class="rounded-lg border border-slate-200 bg-white px-3 py-1.5 hover:bg-slate-50">2</button>
+            <button class="rounded-lg border border-slate-200 bg-white px-3 py-1.5 hover:bg-slate-50">3</button>
+            <button class="rounded-lg border border-slate-200 bg-white px-3 py-1.5 hover:bg-slate-50">Siguiente</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Tabla - Programaciones Activas -->
+      <section id="active" class="tab-panel hidden mt-4 overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-soft">
+        <div class="flex items-center justify-between border-b border-slate-200 px-4 py-3">
+          <div>
+            <h2 class="text-sm font-semibold">Programaciones Activas</h2>
+            <p class="text-xs text-slate-500">Gestiona y visualiza las programaciones activas.</p>
+          </div>
+          <div class="flex items-center gap-2 text-sm">
+            <span class="text-slate-500">Ordenar por:</span>
+            <select class="rounded-lg border border-slate-200 bg-white px-2 py-1">
+              <option>Fecha inicio</option>
+              <option>Fecha fin</option>
+              <option>Médico</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="overflow-x-auto">
+          <table class="min-w-full text-sm">
+            <thead class="bg-slate-50 text-left text-xs font-semibold uppercase text-slate-500">
+              <tr>
+                <th class="px-4 py-3">Sede</th>
+                <th class="px-4 py-3">Consultorios</th>
+                <th class="px-4 py-3">Especialidad</th>
+                <th class="px-4 py-3">Servicio</th>
+                <th class="px-4 py-3">Médico</th>
+                <th class="px-4 py-3">Fecha Inicio</th>
+                <th class="px-4 py-3">Fecha Fin</th>
+                <th class="px-4 py-3">Estado</th>
+                <th class="px-4 py-3">Opciones</th>
+                <th class="px-4 py-3">Registró</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-slate-100">
+              <tr>
+                <td class="px-4 py-3">San Isidro</td>
+                <td class="px-4 py-3">Cons. 3</td>
+                <td class="px-4 py-3">Medicina General</td>
+                <td class="px-4 py-3">Consulta</td>
+                <td class="px-4 py-3">Dr. Roberto</td>
+                <td class="px-4 py-3">10/09/2025</td>
+                <td class="px-4 py-3">10/10/2025</td>
+                <td class="px-4 py-3"><span class="rounded-full bg-slate-800/90 px-2.5 py-0.5 text-white">Programado</span></td>
+                <td class="px-4 py-3">
+                  <div class="relative inline-block text-left" data-menu>
+                    <button class="inline-flex items-center gap-2 rounded-lg border border-slate-200 bg-white px-3 py-1.5 text-sm hover:bg-slate-50" data-menu-button>Opciones<svg class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor"><path d="M5.23 7.21a.75.75 0 011.06.02L10 11.147l3.71-3.916a.75.75 0 111.08 1.04l-4.243 4.475a.75.75 0 01-1.08 0L5.25 8.27a.75.75 0 01-.02-1.06z"/></svg></button>
+                    <div class="invisible absolute right-0 z-10 mt-2 w-44 origin-top-right scale-95 rounded-lg border border-slate-200 bg-white p-1 opacity-0 shadow-soft transition" data-menu-items>
+                      <a href="#" class="block rounded-md px-3 py-2 text-sm hover:bg-slate-50">Publicar</a>
+                      <a href="#" class="block rounded-md px-3 py-2 text-sm hover:bg-slate-50">Anular</a>
+                      <a href="programacion-detalle.html?id=2" class="block rounded-md px-3 py-2 text-sm hover:bg-slate-50">Ver detalles</a>
+                    </div>
+                  </div>
+                </td>
+                <td class="px-4 py-3">Médico</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Tabla - Programaciones Inactivas -->
+      <section id="inactive" class="tab-panel hidden mt-4 overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-soft">
+        <div class="flex items-center justify-between border-b border-slate-200 px-4 py-3">
+          <div>
+            <h2 class="text-sm font-semibold">Programaciones Inactivas</h2>
+            <p class="text-xs text-slate-500">Gestiona y visualiza las programaciones inactivas.</p>
+          </div>
+          <div class="flex items-center gap-2 text-sm">
+            <span class="text-slate-500">Ordenar por:</span>
+            <select class="rounded-lg border border-slate-200 bg-white px-2 py-1">
+              <option>Fecha inicio</option>
+              <option>Fecha fin</option>
+              <option>Médico</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="overflow-x-auto">
+          <table class="min-w-full text-sm">
+            <thead class="bg-slate-50 text-left text-xs font-semibold uppercase text-slate-500">
+              <tr>
+                <th class="px-4 py-3">Sede</th>
+                <th class="px-4 py-3">Consultorios</th>
+                <th class="px-4 py-3">Especialidad</th>
+                <th class="px-4 py-3">Servicio</th>
+                <th class="px-4 py-3">Médico</th>
+                <th class="px-4 py-3">Fecha Inicio</th>
+                <th class="px-4 py-3">Fecha Fin</th>
+                <th class="px-4 py-3">Estado</th>
+                <th class="px-4 py-3">Opciones</th>
+                <th class="px-4 py-3">Registró</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-slate-100">
+              <tr>
+                <td class="px-4 py-3">Miraflores</td>
+                <td class="px-4 py-3">Cons. 4 / 5</td>
+                <td class="px-4 py-3">Pediatría</td>
+                <td class="px-4 py-3">Consulta</td>
+                <td class="px-4 py-3">Dra. Carmen</td>
+                <td class="px-4 py-3">15/08/2025</td>
+                <td class="px-4 py-3">15/09/2025</td>
+                <td class="px-4 py-3"><span class="rounded-full bg-rose-100 px-2.5 py-0.5 text-rose-700">Anulada</span></td>
+                <td class="px-4 py-3">
+                  <div class="relative inline-block text-left" data-menu>
+                    <button class="inline-flex items-center gap-2 rounded-lg border border-slate-200 bg-white px-3 py-1.5 text-sm hover:bg-slate-50" data-menu-button>Opciones<svg class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor"><path d="M5.23 7.21a.75.75 0 011.06.02L10 11.147l3.71-3.916a.75.75 0 111.08 1.04l-4.243 4.475a.75.75 0 01-1.08 0L5.25 8.27a.75.75 0 01-.02-1.06z"/></svg></button>
+                    <div class="invisible absolute right-0 z-10 mt-2 w-44 origin-top-right scale-95 rounded-lg border border-slate-200 bg-white p-1 opacity-0 shadow-soft transition" data-menu-items>
+                      <a href="#" class="block rounded-md px-3 py-2 text-sm hover:bg-slate-50">Reactivar</a>
+                      <a href="programacion-detalle.html?id=3" class="block rounded-md px-3 py-2 text-sm hover:bg-slate-50">Ver detalles</a>
+                    </div>
+                  </div>
+                </td>
+                <td class="px-4 py-3">Sistema</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="fixed bottom-0 inset-x-0 z-40 border-t border-slate-200 bg-white/90 backdrop-blur">
+    <div class="mx-auto flex h-12 max-w-screen-2xl items-center justify-between px-6 text-sm text-slate-600">
+      <p>© <span id="y"></span> NextIaCorp • Todos los derechos reservados</p>
+      <nav class="hidden gap-4 md:flex">
+        <a class="hover:text-slate-900" href="privacidad.html">Privacidad</a>
+        <a class="hover:text-slate-900" href="terminos.html">Términos</a>
+        <a class="hover:text-slate-900" href="contacto.html">Contacto</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script>
+    // Año
+    document.getElementById('y').textContent = new Date().getFullYear();
+
+    // Logo dinámico (mismo mecanismo que otras pantallas)
+    (function loadLogo(){
+      const logoEl = document.getElementById('logo');
+      const candidates = [
+        'https://www.nextiacorp.com/logo.svg',
+        'https://www.nextiacorp.com/logo.png',
+        'https://www.nextiacorp.com/assets/logo.svg',
+        'https://www.nextiacorp.com/assets/logo.png',
+        'https://www.nextiacorp.com/img/logo.svg',
+        'https://www.nextiacorp.com/img/logo.png',
+        'https://www.nextiacorp.com/favicon.svg',
+        'https://www.nextiacorp.com/favicon.png'
+      ];
+      let i = 0;
+      function tryNext(){
+        if(i >= candidates.length){ logoEl.remove(); return; }
+        const url = candidates[i++];
+        const test = new Image();
+        test.onload = () => { logoEl.src = url; };
+        test.onerror = tryNext;
+        test.src = url + (url.includes('?') ? '&' : '?') + 'v=' + Date.now();
+      }
+      tryNext();
+    })();
+
+    // Menú de opciones grupal accesible
+    document.querySelectorAll('[data-menu]').forEach((wrap)=>{
+      const btn = wrap.querySelector('[data-menu-button]');
+      const menu = wrap.querySelector('[data-menu-items]');
+      function close(){ menu.classList.add('invisible','opacity-0','scale-95'); }
+      function open(){ menu.classList.remove('invisible','opacity-0','scale-95'); }
+      close();
+      btn.addEventListener('click', (e)=>{
+        e.stopPropagation();
+        const isHidden = menu.classList.contains('invisible');
+        document.querySelectorAll('[data-menu-items]').forEach(m=>{ m.classList.add('invisible','opacity-0','scale-95'); });
+        isHidden ? open() : close();
+      });
+      document.addEventListener('click', close);
+      wrap.addEventListener('keydown', (e)=>{ if(e.key==='Escape') close(); });
+    });
+
+    // Tabs
+    document.querySelectorAll('.tab-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const tab = btn.dataset.tab;
+        document.querySelectorAll('.tab-btn').forEach(b => {
+          b.classList.remove('border-brand-600','text-brand-600');
+          b.classList.add('border-transparent','text-slate-500');
+        });
+        btn.classList.add('border-brand-600','text-brand-600');
+        btn.classList.remove('border-transparent','text-slate-500');
+        document.querySelectorAll('.tab-panel').forEach(p => p.classList.add('hidden'));
+        document.getElementById(tab).classList.remove('hidden');
+      });
+    });
+  </script>
+</body>
+</html>

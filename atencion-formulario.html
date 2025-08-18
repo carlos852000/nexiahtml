@@ -1,0 +1,507 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>NextIaDoctor • Atención Médica</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand:{50:'#eef2ff',100:'#e0e7ff',200:'#c7d2fe',300:'#a5b4fc',400:'#818cf8',500:'#6366f1',600:'#4f46e5',700:'#4338ca',800:'#3730a3',900:'#312e81'},
+            accent:{50:'#ecfeff',100:'#cffafe',200:'#a5f3fc',300:'#67e8f9',400:'#22d3ee',500:'#06b6d4',600:'#0891b2',700:'#0e7490',800:'#155e75',900:'#164e63'}
+          },
+          boxShadow:{soft:'0 8px 24px rgba(2,6,23,.06)'}
+        }
+      }
+    }
+  </script>
+  <style>
+    *{scrollbar-width:thin; scrollbar-color:#cbd5e1 transparent}
+    *::-webkit-scrollbar{height:8px;width:8px}
+    *::-webkit-scrollbar-thumb{background:#cbd5e1;border-radius:8px}
+  </style>
+</head>
+<body class="min-h-screen bg-slate-50 text-slate-800">
+  <!-- Topbar -->
+  <header class="fixed inset-x-0 top-0 z-40 h-16 bg-gradient-to-r from-brand-600 to-accent-500 text-white shadow-soft">
+    <div class="mx-auto flex h-full max-w-screen-2xl items-center justify-between px-4">
+      <div class="flex items-center gap-3">
+        <a href="dashboard.html" class="inline-flex items-center gap-3">
+          <img id="logo" class="h-8 w-auto" alt="NextIaCorp"/>
+          <span class="text-lg font-semibold tracking-wide select-none">NextIaCorp</span>
+        </a>
+        <span class="ml-3 hidden rounded-full bg-white/20 px-2 py-0.5 text-xs font-medium md:inline">NextIaDoctor</span>
+      </div>
+      <nav class="flex items-center gap-2">
+        <a href="reportes.html" class="hidden rounded-lg bg-white/10 px-3 py-1.5 text-sm font-medium backdrop-blur hover:bg-white/20 md:inline">Reportes</a>
+        <a href="soporte.html" class="hidden rounded-lg bg-white/10 px-3 py-1.5 text-sm font-medium backdrop-blur hover:bg-white/20 md:inline">Soporte</a>
+        <img src="https://api.dicebear.com/7.x/initials/svg?seed=ND" class="h-8 w-8 rounded-full ring-2 ring-white/30" alt="avatar"/>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Navegación Horizontal -->
+  <nav class="fixed top-16 inset-x-0 z-30 bg-white border-b border-slate-200 shadow-soft">
+    <div class="mx-auto max-w-screen-2xl px-4">
+      <div class="flex items-center justify-between">
+        <!-- Menú Principal -->
+        <div class="flex items-center overflow-x-auto py-2 gap-1">
+          <a href="dashboard.html" class="flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-100"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" class="h-5 w-5 text-brand-600"><path stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0h6"/></svg>Dashboard</a>
+          <a href="ipress.html" class="flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-100"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" class="h-5 w-5 text-brand-600"><path stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" d="M3 7h18M3 12h18M3 17h18"/></svg>IPRESS</a>
+          <a href="agenda.html" class="flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-100"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" class="h-5 w-5 text-brand-600"><path stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3M3 11h18M5 19h14a2 2 0 002-2v-6H3v6a2 2 0 002 2z"/></svg>Agenda</a>
+          <a href="reservas.html" class="flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-100"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" class="h-5 w-5 text-brand-600"><path stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" d="M12 6v12m6-6H6"/></svg>Reservas</a>
+          <a href="atenciones.html" class="flex items-center gap-2 bg-slate-100 rounded-lg px-3 py-2 text-sm font-semibold text-slate-900"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" class="h-5 w-5 text-brand-600"><path stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" d="M22 12h-4l-3 7L9 5l-3 7H2"/></svg>Atenciones</a>
+          <a href="reportes.html" class="flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-100"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" class="h-5 w-5 text-brand-600"><path stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" d="M12 14l9-5-9-5-9 5 9 5z"/><path stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" d="M12 14l6.16-3.422A12.083 12.083 0 016 8.577M12 14v7"/></svg>Reportes</a>
+        </div>
+        
+        <!-- Menú Administración con desplegable -->
+        <div class="relative group">
+          <button class="flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-100">
+            <span>Administración</span>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" class="h-4 w-4"><path stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+          <div class="absolute right-0 top-full z-40 hidden group-hover:block bg-white rounded-lg shadow-soft border border-slate-200 min-w-[180px] py-1">
+            <a href="servicios.html" class="flex items-center gap-2 px-4 py-2 text-sm font-medium text-slate-700 hover:bg-slate-100"><svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' class='h-5 w-5 text-brand-600'><path stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round' d='M5.5 21h13a1.5 1.5 0 001.5-1.5V9.75a1.5 1.5 0 00-.44-1.06L14.31 2.44A1.5 1.5 0 0013.25 2H6.5A1.5 1.5 0 005 3.5V19.5A1.5 1.5 0 005.5 21z'/></svg>Servicios</a>
+            <a href="medicos.html" class="flex items-center gap-2 px-4 py-2 text-sm font-medium text-slate-700 hover:bg-slate-100"><svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' class='h-5 w-5 text-brand-600'><path stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round' d='M4 7a4 4 0 118 0 4 4 0 01-8 0zm12 4h4m-2-2v4m-6 4a6 6 0 10-12 0'/></svg>Médicos</a>
+            <a href="aseguradoras.html" class="flex items-center gap-2 px-4 py-2 text-sm font-medium text-slate-700 hover:bg-slate-100"><svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' class='h-5 w-5 text-brand-600'><path stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round' d='M12 6.253v13m0 0c-3.5 0-6.5-2-6.5-4.5S8.5 10.253 12 10.253s6.5 2 6.5 4.5-3 4.5-6.5 4.5z'/></svg>Aseguradoras/Planes</a>
+            <a href="seguridad.html" class="flex items-center gap-2 px-4 py-2 text-sm font-medium text-slate-700 hover:bg-slate-100"><svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' class='h-5 w-5 text-brand-600'><path stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round' d='M12 12a5 5 0 100-10 5 5 0 000 10zm-7 9a7 7 0 0114 0v1H5v-1z'/></svg>Seguridad</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main -->
+  <main class="pt-32 pb-24">
+    <div class="mx-auto max-w-screen-xl px-6">
+      <!-- Breadcrumbs -->
+      <nav class="text-xs text-slate-500"><a href="dashboard.html" class="hover:underline">Inicio</a> / <a href="atenciones.html" class="hover:underline">Atenciones</a> / <span>Nueva atención</span></nav>
+
+      <!-- Cabecera Paciente / Estado -->
+      <section class="mt-3 grid gap-4 md:grid-cols-[1.3fr_.7fr]">
+        <div class="rounded-2xl border border-slate-200 bg-white p-5 shadow-soft">
+          <div class="flex items-start justify-between">
+            <div class="flex items-center gap-4">
+              <img class="h-14 w-14 rounded-full ring-2 ring-brand-100" src="https://api.dicebear.com/7.x/adventurer/svg?seed=Sofia" alt="paciente"/>
+              <div>
+                <h1 class="text-xl font-semibold leading-6">Sofía Martínez López <span class="text-slate-400">• DNI 45213333</span></h1>
+                <p class="text-sm text-slate-500">Femenino • 34 años • +52 55 1234 5678</p>
+                <div class="mt-1 flex flex-wrap gap-2 text-xs">
+                  <span class="rounded-full bg-rose-50 px-2 py-0.5 text-rose-600 ring-1 ring-rose-200">Alergias: Penicilina</span>
+                  <span class="rounded-full bg-amber-50 px-2 py-0.5 text-amber-700 ring-1 ring-amber-200">O+</span>
+                  <span class="rounded-full bg-slate-50 px-2 py-0.5 text-slate-600 ring-1 ring-slate-200">NHC: 001-2025</span>
+                </div>
+              </div>
+            </div>
+            <div class="text-right">
+              <div class="inline-flex items-center gap-2 rounded-full bg-emerald-50 px-3 py-1 text-sm font-semibold text-emerald-700 ring-1 ring-emerald-200">
+                <span class="h-2 w-2 rounded-full bg-emerald-500"></span> En curso
+              </div>
+              <div class="mt-2 text-xs text-slate-500">Tiempo transcurrido: <span id="timer" class="font-semibold text-slate-700">00:00:00</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="rounded-2xl border border-slate-200 bg-white p-5 shadow-soft">
+          <div class="grid gap-3 sm:grid-cols-2">
+            <button id="btnBorradorTop" class="rounded-lg border border-slate-200 bg-white px-4 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50">Guardar borrador</button>
+            <button id="btnFinalizarTop" class="rounded-lg bg-brand-600 px-4 py-2 text-sm font-semibold text-white hover:bg-brand-700">Finalizar atención</button>
+          </div>
+          <p class="mt-2 text-xs text-slate-500">Se guardará automáticamente en cambios críticos.</p>
+        </div>
+      </section>
+
+      <!-- Tabs -->
+      <section class="mt-5">
+        <div class="rounded-2xl border border-slate-200 bg-white shadow-soft">
+          <div class="flex gap-2 border-b border-slate-200 px-3 pt-3">
+            <button data-tab="info" class="tab-btn active">Información del Paciente</button>
+            <button data-tab="triaje" class="tab-btn">Triaje</button>
+            <button data-tab="previas" class="tab-btn">Consultas Previas</button>
+            <button data-tab="historial" class="tab-btn">Historial Médico</button>
+            <button data-tab="meds" class="tab-btn">Medicación y Enfermedades</button>
+            <button data-tab="examen" class="tab-btn">Examen y Tratamiento</button>
+          </div>
+
+          <!-- Contenidos -->
+          <div class="p-5">
+            <!-- Info paciente -->
+            <div id="tab-info" class="tab-panel">
+              <h2 class="mb-4 text-lg font-semibold">Información del Paciente (Solo lectura)</h2>
+              <div class="grid gap-6 md:grid-cols-2">
+                <div>
+                  <label class="text-xs font-medium text-slate-500">Nombre Completo</label>
+                  <p class="mt-1 text-base font-medium">Sofía Martínez López</p>
+                </div>
+                <div>
+                  <label class="text-xs font-medium text-slate-500">Fecha de Nacimiento</label>
+                  <p class="mt-1">15 de Mayo de 1990</p>
+                </div>
+                <div>
+                  <label class="text-xs font-medium text-slate-500">Género</label>
+                  <p class="mt-1">Femenino</p>
+                </div>
+                <div>
+                  <label class="text-xs font-medium text-slate-500">Contacto</label>
+                  <p class="mt-1">+52 55 1234 5678</p>
+                </div>
+                <div class="md:col-span-2">
+                  <label class="text-xs font-medium text-slate-500">Dirección</label>
+                  <p class="mt-1">Av. Siempre Viva 742, Ciudad de México</p>
+                </div>
+                <div>
+                  <label class="text-xs font-medium text-slate-500">Alergias</label>
+                  <p class="mt-1">Penicilina</p>
+                </div>
+                <div>
+                  <label class="text-xs font-medium text-slate-500">Grupo Sanguíneo</label>
+                  <p class="mt-1">O+</p>
+                </div>
+                <div class="md:col-span-2">
+                  <label class="text-xs font-medium text-slate-500">Antecedentes Familiares</label>
+                  <p class="mt-1">Diabetes (madre), Hipertensión (padre)</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Triaje -->
+            <div id="tab-triaje" class="tab-panel hidden">
+              <h2 class="mb-4 text-lg font-semibold">Triaje</h2>
+              <div class="grid gap-6 lg:grid-cols-3">
+                <div class="lg:col-span-2 space-y-6">
+                  <div class="rounded-xl border border-slate-200 p-4">
+                    <h3 class="mb-3 text-sm font-semibold">Motivo de consulta</h3>
+                    <textarea class="w-full rounded-lg border border-slate-200 px-3 py-2" rows="3" placeholder="Describa el motivo de consulta"></textarea>
+                  </div>
+
+                  <div class="rounded-xl border border-slate-200 p-4">
+                    <h3 class="mb-3 text-sm font-semibold">Signos vitales</h3>
+                    <div class="grid gap-4 md:grid-cols-3">
+                      <div><label class="text-xs text-slate-500">PA</label><input class="mt-1 w-full rounded-lg border border-slate-200 px-3 py-2" placeholder="120/80 mmHg"></div>
+                      <div><label class="text-xs text-slate-500">FC</label><input class="mt-1 w-full rounded-lg border border-slate-200 px-3 py-2" placeholder="72 lpm"></div>
+                      <div><label class="text-xs text-slate-500">FR</label><input class="mt-1 w-full rounded-lg border border-slate-200 px-3 py-2" placeholder="18 rpm"></div>
+                      <div><label class="text-xs text-slate-500">SatO₂</label><input class="mt-1 w-full rounded-lg border border-slate-200 px-3 py-2" placeholder="96%"></div>
+                      <div><label class="text-xs text-slate-500">Temp</label><input class="mt-1 w-full rounded-lg border border-slate-200 px-3 py-2" placeholder="36.7 °C"></div>
+                      <div><label class="text-xs text-slate-500">Dolor</label>
+                        <div class="mt-2 flex items-center gap-3">
+                          <input id="dolor" type="range" min="0" max="10" value="3" class="w-full accent-brand-600">
+                          <span id="dolorVal" class="w-8 text-center text-sm font-semibold">3</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="rounded-xl border border-slate-200 p-4">
+                    <h3 class="mb-3 text-sm font-semibold">Antropometría</h3>
+                    <div class="grid gap-4 md:grid-cols-3">
+                      <div><label class="text-xs text-slate-500">Peso</label><input id="peso" type="number" step="0.1" class="mt-1 w-full rounded-lg border border-slate-200 px-3 py-2" placeholder="Kg" value="75"></div>
+                      <div><label class="text-xs text-slate-500">Talla</label><input id="talla" type="number" step="0.1" class="mt-1 w-full rounded-lg border border-slate-200 px-3 py-2" placeholder="cm" value="175"></div>
+                      <div><label class="text-xs text-slate-500">IMC</label><input id="imc" readonly class="mt-1 w-full rounded-lg border border-slate-200 bg-slate-50 px-3 py-2 font-semibold"></div>
+                    </div>
+                    <p id="imcTag" class="mt-2 text-sm"></p>
+                  </div>
+                </div>
+
+                <aside class="space-y-4">
+                  <div class="rounded-xl border border-slate-200 p-4">
+                    <h3 class="mb-2 text-sm font-semibold">Riesgos / Alarmas</h3>
+                    <label class="flex items-center gap-2 text-sm"><input type="checkbox" class="rounded text-brand-600"> Disnea en reposo</label>
+                    <label class="mt-1 flex items-center gap-2 text-sm"><input type="checkbox" class="rounded text-brand-600"> Dolor torácico</label>
+                    <label class="mt-1 flex items-center gap-2 text-sm"><input type="checkbox" class="rounded text-brand-600"> Fiebre &gt; 38.5</label>
+                  </div>
+                  <div class="rounded-xl border border-slate-200 p-4">
+                    <h3 class="mb-2 text-sm font-semibold">Notas de triaje</h3>
+                    <textarea rows="6" class="w-full rounded-lg border border-slate-200 px-3 py-2" placeholder="Observaciones rápidas..."></textarea>
+                  </div>
+                </aside>
+              </div>
+            </div>
+
+            <!-- Consultas previas -->
+            <div id="tab-previas" class="tab-panel hidden">
+              <div class="mb-4 flex items-center justify-between">
+                <h2 class="text-lg font-semibold">Historial de consultas del paciente</h2>
+                <div class="flex gap-2">
+                  <input class="w-56 rounded-lg border border-slate-200 px-3 py-2 text-sm" placeholder="Buscar por diagnóstico o médico"/>
+                  <select class="rounded-lg border border-slate-200 px-3 py-2 text-sm">
+                    <option value="">Todos los estados</option>
+                    <option>Completada</option><option>Pendiente</option><option>Cancelada</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="overflow-hidden rounded-xl border border-slate-200">
+                <table class="min-w-full divide-y divide-slate-200 text-sm">
+                  <thead class="bg-slate-50">
+                    <tr>
+                      <th class="px-4 py-2 text-left font-semibold">Fecha</th>
+                      <th class="px-4 py-2 text-left font-semibold">Especialidad</th>
+                      <th class="px-4 py-2 text-left font-semibold">Médico</th>
+                      <th class="px-4 py-2 text-left font-semibold">Diagnóstico</th>
+                      <th class="px-4 py-2 text-left font-semibold">Estado</th>
+                      <th class="px-4 py-2 text-left font-semibold">Acciones</th>
+                    </tr>
+                  </thead>
+                  <tbody class="divide-y divide-slate-100 bg-white">
+                    <tr>
+                      <td class="px-4 py-2">2024-07-20 10:00</td>
+                      <td class="px-4 py-2">Cardiología</td>
+                      <td class="px-4 py-2">Dra. Sofía Martínez</td>
+                      <td class="px-4 py-2">Dolor torácico inespecífico</td>
+                      <td class="px-4 py-2"><span class="rounded-full bg-emerald-50 px-2 py-0.5 text-emerald-700 ring-1 ring-emerald-200">Completada</span></td>
+                      <td class="px-4 py-2"><button class="rounded-md bg-brand-700 px-3 py-1 text-white" onclick="openPrevModal()">Ver</button></td>
+                    </tr>
+                    <tr>
+                      <td class="px-4 py-2">2024-07-22 15:00</td>
+                      <td class="px-4 py-2">Neumología</td>
+                      <td class="px-4 py-2">Dr. Ricardo Vega</td>
+                      <td class="px-4 py-2">Bronquitis aguda</td>
+                      <td class="px-4 py-2"><span class="rounded-full bg-amber-50 px-2 py-0.5 text-amber-700 ring-1 ring-amber-200">Pendiente</span></td>
+                      <td class="px-4 py-2"><button class="rounded-md bg-brand-700 px-3 py-1 text-white" onclick="openPrevModal()">Ver</button></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <!-- Historial médico -->
+            <div id="tab-historial" class="tab-panel hidden">
+              <h2 class="mb-4 text-lg font-semibold">Historial médico</h2>
+              <div class="space-y-6">
+                <div>
+                  <label class="mb-2 block text-sm font-semibold">Antecedentes (no neumológicos)</label>
+                  <textarea rows="4" class="w-full rounded-lg border border-slate-200 px-3 py-2">Antecedentes familiares de hipertensión. No diabetes. No enfermedades autoinmunes. Apendicectomía a los 20 años.</textarea>
+                </div>
+                <div>
+                  <label class="mb-2 block text-sm font-semibold">Antecedentes neumológicos</label>
+                  <textarea rows="3" class="w-full rounded-lg border border-slate-200 px-3 py-2">Bronquitis aguda hace 5 años, tratada con antibióticos. Niega asma o EPOC.</textarea>
+                </div>
+                <div class="grid gap-4 md:grid-cols-3">
+                  <div><label class="text-xs text-slate-500">Tabaquismo</label><select class="mt-1 w-full rounded-lg border border-slate-200 px-3 py-2"><option>No</option><option>Exfumador</option><option>Actual</option></select></div>
+                  <div><label class="text-xs text-slate-500">Alcohol</label><select class="mt-1 w-full rounded-lg border border-slate-200 px-3 py-2"><option>No</option><option>Ocasional</option><option>Frecuente</option></select></div>
+                  <div><label class="text-xs text-slate-500">Vacunas</label><input class="mt-1 w-full rounded-lg border border-slate-200 px-3 py-2" placeholder="COVID-19, Influenza ..."></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Medicación y Enfermedades -->
+            <div id="tab-meds" class="tab-panel hidden">
+              <h2 class="mb-4 text-lg font-semibold">Medicación y Enfermedades</h2>
+              <div class="grid gap-6 lg:grid-cols-2">
+                <div class="rounded-xl border border-slate-200 p-4">
+                  <h3 class="mb-3 text-sm font-semibold">Medicación actual</h3>
+                  <div class="grid gap-3 md:grid-cols-[1fr_140px_140px_auto]">
+                    <input id="rxMed" class="rounded-lg border border-slate-200 px-3 py-2" placeholder="Medicamento">
+                    <input id="rxDosis" class="rounded-lg border border-slate-200 px-3 py-2" placeholder="Dosis">
+                    <input id="rxFrec" class="rounded-lg border border-slate-200 px-3 py-2" placeholder="Frecuencia">
+                    <button id="btnAddRx" class="rounded-lg bg-slate-800 px-3 py-2 text-sm font-medium text-white hover:bg-slate-900">Agregar</button>
+                  </div>
+                  <ul id="rxList" class="mt-3 space-y-2 text-sm"></ul>
+                </div>
+
+                <div class="rounded-xl border border-slate-200 p-4">
+                  <h3 class="mb-3 text-sm font-semibold">Comorbilidades</h3>
+                  <div class="grid grid-cols-2 gap-2 text-sm">
+                    <label class="flex items-center gap-2"><input type="checkbox" class="rounded text-brand-600"> Hipertensión</label>
+                    <label class="flex items-center gap-2"><input type="checkbox" class="rounded text-brand-600"> Diabetes</label>
+                    <label class="flex items-center gap-2"><input type="checkbox" class="rounded text-brand-600"> Asma</label>
+                    <label class="flex items-center gap-2"><input type="checkbox" class="rounded text-brand-600"> EPOC</label>
+                    <label class="flex items-center gap-2"><input type="checkbox" class="rounded text-brand-600"> Dislipidemia</label>
+                    <label class="flex items-center gap-2"><input type="checkbox" class="rounded text-brand-600"> Obesidad</label>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Examen y Tratamiento -->
+            <div id="tab-examen" class="tab-panel hidden">
+              <h2 class="mb-4 text-lg font-semibold">Exámenes y Tratamiento</h2>
+              <div class="space-y-6">
+                <div>
+                  <label class="mb-2 block text-sm font-semibold">Exámenes auxiliares</label>
+                  <textarea rows="4" class="w-full rounded-lg border border-slate-200 px-3 py-2" placeholder="Solicitudes / resultados pendientes..."></textarea>
+                </div>
+                <div>
+                  <label class="mb-2 block text-sm font-semibold">Diagnóstico (CIE10 / libre)</label>
+                  <input class="w-full rounded-lg border border-slate-200 px-3 py-2" placeholder="Ej. J20 Bronquitis aguda"/>
+                </div>
+                <div>
+                  <label class="mb-2 block text-sm font-semibold">Tratamiento / Indicaciones</label>
+                  <textarea rows="4" class="w-full rounded-lg border border-slate-200 px-3 py-2" placeholder="Plan terapéutico, cuidados, recomendaciones..."></textarea>
+                </div>
+                <div class="flex flex-wrap gap-2">
+                  <button class="rounded-lg border border-slate-200 bg-white px-4 py-2 text-sm font-medium hover:bg-slate-50">Imprimir receta</button>
+                  <button class="rounded-lg border border-slate-200 bg-white px-4 py-2 text-sm font-medium hover:bg-slate-50">Generar indicaciones</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Footer actions -->
+      <div class="sticky bottom-0 z-30 mt-6 rounded-2xl border border-slate-200 bg-white/95 p-4 backdrop-blur shadow-soft">
+        <div class="flex flex-wrap items-center justify-between gap-3">
+          <div class="text-sm text-slate-500">Último guardado <span id="lastSave">—</span></div>
+          <div class="flex gap-2">
+            <button id="btnBorradorBottom" class="rounded-lg border border-slate-200 bg-white px-4 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50">Guardar borrador</button>
+            <button id="btnFinalizarBottom" class="rounded-lg bg-brand-600 px-4 py-2 text-sm font-semibold text-white hover:bg-brand-700">Finalizar atención</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Modal detalle consulta previa -->
+  <div id="prevModal" class="fixed inset-0 z-50 hidden place-items-center bg-slate-900/40 p-4">
+    <div class="w-full max-w-3xl rounded-2xl bg-white shadow-soft">
+      <div class="flex items-center justify-between border-b border-slate-200 p-4">
+        <h3 class="text-lg font-semibold">Detalle de consulta previa</h3>
+        <button class="rounded-md p-2 hover:bg-slate-50" onclick="closePrevModal()">✕</button>
+      </div>
+      <div class="p-5 text-sm">
+        <div class="grid gap-4 md:grid-cols-3">
+          <p><span class="font-medium text-slate-500">Fecha:</span> 20/07/2024 10:00</p>
+          <p><span class="font-medium text-slate-500">Médico:</span> Dra. Sofía Martínez</p>
+          <p><span class="font-medium text-slate-500">Especialidad:</span> Cardiología</p>
+        </div>
+        <div class="mt-4">
+          <p class="font-medium text-slate-500">Diagnóstico</p>
+          <p>Dolor torácico inespecífico</p>
+        </div>
+        <div class="mt-3">
+          <p class="font-medium text-slate-500">Tratamiento</p>
+          <ul class="list-inside list-disc">
+            <li>Paracetamol 500 mg VO cada 8h por 3 días.</li>
+            <li>Reposo relativo, control en 48 horas.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="flex justify-end gap-2 border-t border-slate-200 p-4">
+        <button class="rounded-lg border border-slate-200 bg-white px-4 py-2 text-sm hover:bg-slate-50" onclick="closePrevModal()">Cerrar</button>
+        <button class="rounded-lg bg-slate-800 px-4 py-2 text-sm font-medium text-white">Imprimir</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="fixed bottom-0 inset-x-0 z-40 border-t border-slate-200 bg-white/90 backdrop-blur">
+    <div class="mx-auto flex h-12 max-w-screen-2xl items-center justify-between px-6 text-sm text-slate-600">
+      <p>© <span id="y"></span> NextIaCorp • Todos los derechos reservados</p>
+      <nav class="hidden gap-4 md:flex">
+        <a class="hover:text-slate-900" href="#">Privacidad</a>
+        <a class="hover:text-slate-900" href="#">Términos</a>
+        <a class="hover:text-slate-900" href="#">Contacto</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script>
+    // Año footer
+    document.getElementById('y').textContent = new Date().getFullYear();
+
+    // Carga de logo (intenta varias rutas del sitio)
+    (function loadLogo(){
+      const logoEl = document.getElementById('logo');
+      const urls = [
+        'https://www.nextiacorp.com/logo.svg','https://www.nextiacorp.com/logo.png',
+        'https://www.nextiacorp.com/assets/logo.svg','https://www.nextiacorp.com/assets/logo.png',
+        'https://www.nextiacorp.com/img/logo.svg','https://www.nextiacorp.com/img/logo.png',
+        'https://www.nextiacorp.com/favicon.svg','https://www.nextiacorp.com/favicon.png'
+      ];
+      let i = 0;
+      function tryNext(){
+        if(i>=urls.length){logoEl.remove();return;}
+        const u = urls[i++]; const t = new Image();
+        t.onload = ()=>logoEl.src = u; t.onerror = tryNext;
+        t.src = u + (u.includes('?')?'&':'?') + 'v=' + Date.now();
+      } tryNext();
+    })();
+
+    // Tabs
+    const btns = document.querySelectorAll('.tab-btn');
+    const panels = document.querySelectorAll('.tab-panel');
+    btns.forEach(b=>b.addEventListener('click', ()=>{
+      btns.forEach(x=>x.classList.remove('active','bg-slate-900','text-white'));
+      panels.forEach(p=>p.classList.add('hidden'));
+      b.classList.add('active','bg-slate-900','text-white');
+      document.getElementById('tab-'+b.dataset.tab).classList.remove('hidden');
+    }));
+
+    // Estilos por defecto de los tabs
+    document.querySelectorAll('.tab-btn').forEach(el=>{
+      el.classList.add('rounded-t-lg','px-3','py-2','text-sm','font-medium','text-slate-700','hover:bg-slate-100');
+    });
+
+    // Timer simple
+    const start = Date.now();
+    setInterval(()=>{
+      const diff = Date.now()-start;
+      const h = String(Math.floor(diff/3600000)).padStart(2,'0');
+      const m = String(Math.floor((diff%3600000)/60000)).padStart(2,'0');
+      const s = String(Math.floor((diff%60000)/1000)).padStart(2,'0');
+      document.getElementById('timer').textContent = `${h}:${m}:${s}`;
+    },1000);
+
+    // Dolor slider
+    const dolor = document.getElementById('dolor');
+    const dolorVal = document.getElementById('dolorVal');
+    dolor && dolor.addEventListener('input',()=>dolorVal.textContent = dolor.value);
+
+    // IMC
+    function calcIMC(){
+      const p = parseFloat(document.getElementById('peso').value||0);
+      const t = parseFloat(document.getElementById('talla').value||0)/100;
+      const imc = (p && t) ? (p/(t*t)) : 0;
+      const out = document.getElementById('imc');
+      const tag = document.getElementById('imcTag');
+      if(!out) return;
+      out.value = imc ? imc.toFixed(1) : '';
+      let rango = ''; let cls = '';
+      if(!imc){rango='';}
+      else if(imc<18.5){rango='Bajo peso'; cls='text-amber-600';}
+      else if(imc<25){rango='Normal'; cls='text-emerald-600';}
+      else if(imc<30){rango='Sobrepeso'; cls='text-amber-700';}
+      else{rango='Obesidad'; cls='text-rose-600';}
+      tag.className = `mt-2 text-sm ${cls}`; tag.textContent = rango ? `Clasificación: ${rango}` : '';
+    }
+    ['peso','talla'].forEach(id=>{ const el=document.getElementById(id); el && el.addEventListener('input',calcIMC); });
+    calcIMC();
+
+    // Medicación: agregar
+    const btnAddRx = document.getElementById('btnAddRx');
+    btnAddRx && btnAddRx.addEventListener('click', ()=>{
+      const med = document.getElementById('rxMed').value.trim();
+      const dosis = document.getElementById('rxDosis').value.trim();
+      const frec = document.getElementById('rxFrec').value.trim();
+      if(!med) return;
+      const li = document.createElement('li');
+      li.className = 'flex items-center justify-between rounded-lg border border-slate-200 px-3 py-2';
+      li.innerHTML = `<span>${med} — ${dosis||'-'} • ${frec||'-'}</span>
+                      <button class="rounded-md px-2 py-1 text-xs text-rose-600 hover:bg-rose-50">Quitar</button>`;
+      li.querySelector('button').onclick = ()=>li.remove();
+      document.getElementById('rxList').appendChild(li);
+      document.getElementById('rxMed').value = '';
+      document.getElementById('rxDosis').value = '';
+      document.getElementById('rxFrec').value = '';
+    });
+
+    // Borrador / Finalizar (demo)
+    function stamped(){ const t=new Date(); return t.toLocaleString(); }
+    function guardado(){ document.getElementById('lastSave').textContent = stamped(); }
+    ['btnBorradorTop','btnBorradorBottom'].forEach(id=>{
+      const el = document.getElementById(id); el && el.addEventListener('click', ()=>{ guardado(); alert('Borrador guardado (demo).'); });
+    });
+    ['btnFinalizarTop','btnFinalizarBottom'].forEach(id=>{
+      const el = document.getElementById(id); el && el.addEventListener('click', ()=>{ guardado(); alert('Atención finalizada (demo).'); });
+    });
+
+    // Modal consultas previas
+    window.openPrevModal = ()=>document.getElementById('prevModal').classList.remove('hidden');
+    window.closePrevModal = ()=>document.getElementById('prevModal').classList.add('hidden');
+  </script>
+</body>
+</html>
