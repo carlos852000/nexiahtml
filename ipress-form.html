@@ -26,48 +26,56 @@
 </head>
 <body class="min-h-screen bg-slate-50 text-slate-800">
   <!-- Topbar -->
-  <header class="fixed inset-x-0 top-0 z-40 h-16 bg-gradient-to-r from-brand-600 to-accent-500 text-white shadow-soft">
-    <div class="mx-auto flex h-full max-w-screen-2xl items-center justify-between px-4">
-      <div class="flex items-center gap-3">
-        <a href="dashboard.html" class="inline-flex items-center gap-3">
-          <img id="logo" src="" alt="NextIaCorp" class="h-8 w-auto" />
+  <header class="fixed inset-x-0 top-0 z-40 bg-gradient-to-r from-brand-600 to-accent-500 text-white shadow-soft">
+    <!-- Barra superior principal -->
+    <div class="mx-auto flex h-16 max-w-screen-2xl items-center px-4">
+      <div class="flex-1 flex items-center gap-4">
+        <a href="index.html" class="inline-flex items-center gap-3">
           <div class="select-none text-lg font-semibold tracking-wide">NextIaCorp</div>
         </a>
-        <span class="ml-3 hidden rounded-full bg-white/20 px-2 py-0.5 text-xs font-medium md:inline">NextIaDoctor</span>
+        <!-- Información de IPRESS alineada a la izquierda -->
+        <div class="flex items-center gap-2 rounded-lg bg-white/20 px-4 py-1.5 shadow-sm backdrop-blur-sm">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" class="h-5 w-5 text-white"><path stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
+          <span class="font-semibold text-white">Ipress San Martín</span>
+          <span class="hidden text-xs text-white/70 md:inline">•</span>
+          <span class="hidden text-xs text-white/95 md:inline">Sede Miraflores</span>
+        </div>
       </div>
-      <nav class="flex items-center gap-2">
+      
+      <nav class="flex items-center gap-2" aria-label="Navegación superior">
         <a href="reportes.html" class="hidden rounded-lg bg-white/10 px-3 py-1.5 text-sm font-medium backdrop-blur hover:bg-white/20 md:inline">Reportes</a>
         <a href="soporte.html" class="hidden rounded-lg bg-white/10 px-3 py-1.5 text-sm font-medium backdrop-blur hover:bg-white/20 md:inline">Soporte</a>
         <img src="https://api.dicebear.com/7.x/initials/svg?seed=ND" alt="avatar" class="h-8 w-8 rounded-full ring-2 ring-white/30" />
       </nav>
+
     </div>
   </header>
 
   <!-- Navegación Horizontal -->
-  <nav class="fixed top-16 inset-x-0 z-30 bg-white border-b border-slate-200 shadow-soft" aria-label="Menú principal">
+  <nav class="fixed top-16 inset-x-0 z-30 bg-white border-b border-slate-200 shadow-soft">
     <div class="mx-auto max-w-screen-2xl px-4">
       <div class="flex items-center justify-between">
         <!-- Menú Principal -->
         <div class="flex items-center overflow-x-auto py-2 gap-1">
-          <a href="dashboard.html" class="flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-100"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" class="h-5 w-5 text-brand-600"><path stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0h6"/></svg>Dashboard</a>
-          <a href="ipress.html" class="flex items-center gap-2 bg-slate-100 rounded-lg px-3 py-2 text-sm font-semibold text-slate-900"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" class="h-5 w-5 text-brand-600"><path stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" d="M3 7h18M3 12h18M3 17h18"/></svg>IPRESS</a>
-          <a href="agenda.html" class="flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-100"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" class="h-5 w-5 text-brand-600"><path stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3M3 11h18M5 19h14a2 2 0 002-2v-6H3v6a2 2 0 002 2z"/></svg>Agenda</a>
-          <a href="reservas.html" class="flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-100"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" class="h-5 w-5 text-brand-600"><path stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" d="M12 6v12m6-6H6"/></svg>Reservas</a>
+          <a href="dashboard.html" class="flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-100"><svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' class='h-5 w-5 text-brand-600'><path stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round' d='M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0h6'/></svg>Dashboard</a>
+          <a href="ipress.html" class="flex items-center gap-2 rounded-lg bg-slate-100  px-3 py-2 text-sm font-semibold text-slate-900"><svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' class='h-5 w-5 text-brand-600'><path stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round' d='M3 7h18M3 12h18M3 17h18'/></svg>IPRESS</a>
+          <a href="agenda.html" class="flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-100"><svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' class='h-5 w-5 text-brand-600'><path stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round' d='M8 7V3m8 4V3M3 11h18M5 19h14a2 2 0 002-2v-6H3v6a2 2 0 002 2z'/></svg>Agenda</a>
+          <a href="reservas.html" class="flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-100"><svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' class='h-5 w-5 text-brand-600'><path stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round' d='M12 6v12m6-6H6'/></svg>Reservas</a>
           <a href="atenciones.html" class="flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-100"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" class="h-5 w-5 text-brand-600"><path stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" d="M22 12h-4l-3 7L9 5l-3 7H2"/></svg>Atenciones</a>
-          <a href="reportes.html" class="flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-100"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" class="h-5 w-5 text-brand-600"><path stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" d="M12 14l9-5-9-5-9 5 9 5z"/><path stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" d="M12 14l6.16-3.422A12.083 12.083 0 016 8.577M12 14v7"/></svg>Reportes</a>
+          <a href="reportes.html" class="flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-100"><svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' class='h-5 w-5 text-brand-600'><path stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round' d='M12 14l9-5-9-5-9 5 9 5z'/><path stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round' d='M12 14l6.16-3.422A12.083 12.083 0 016 8.577M12 14v7'/></svg>Reportes</a>
         </div>
         
         <!-- Menú Administración con desplegable -->
         <div class="relative group">
-          <button class="flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-100" aria-haspopup="true" aria-expanded="false">
+          <button class="flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-100">
             <span>Administración</span>
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" class="h-4 w-4"><path stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
           </button>
-          <div class="absolute right-0 top-full z-40 hidden group-hover:block bg-white rounded-lg shadow-soft border border-slate-200 min-w-[180px] py-1" role="menu">
-            <a href="servicios.html" class="flex items-center gap-2 px-4 py-2 text-sm font-medium text-slate-700 hover:bg-slate-100" role="menuitem"><svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' class='h-5 w-5 text-brand-600'><path stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round' d='M5.5 21h13a1.5 1.5 0 001.5-1.5V9.75a1.5 1.5 0 00-.44-1.06L14.31 2.44A1.5 1.5 0 0013.25 2H6.5A1.5 1.5 0 005 3.5V19.5A1.5 1.5 0 005.5 21z'/></svg>Servicios</a>
-            <a href="medicos.html" class="flex items-center gap-2 px-4 py-2 text-sm font-medium text-slate-700 hover:bg-slate-100" role="menuitem"><svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' class='h-5 w-5 text-brand-600'><path stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round' d='M4 7a4 4 0 118 0 4 4 0 01-8 0zm12 4h4m-2-2v4m-6 4a6 6 0 10-12 0'/></svg>Médicos</a>
-            <a href="aseguradoras.html" class="flex items-center gap-2 px-4 py-2 text-sm font-medium text-slate-700 hover:bg-slate-100" role="menuitem"><svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' class='h-5 w-5 text-brand-600'><path stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round' d='M12 6.253v13m0 0c-3.5 0-6.5-2-6.5-4.5S8.5 10.253 12 10.253s6.5 2 6.5 4.5-3 4.5-6.5 4.5z'/></svg>Aseguradoras/Planes</a>
-            <a href="seguridad.html" class="flex items-center gap-2 px-4 py-2 text-sm font-medium text-slate-700 hover:bg-slate-100" role="menuitem"><svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' class='h-5 w-5 text-brand-600'><path stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round' d='M12 12a5 5 0 100-10 5 5 0 000 10zm-7 9a7 7 0 0114 0v1H5v-1z'/></svg>Seguridad</a>
+          <div class="absolute right-0 top-full z-40 hidden group-hover:block bg-white rounded-lg shadow-soft border border-slate-200 min-w-[180px] py-1">
+            <a href="servicios.html" class="flex items-center gap-2 px-4 py-2 text-sm font-medium text-slate-700 hover:bg-slate-100"><svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' class='h-5 w-5 text-brand-600'><path stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round' d='M5.5 21h13a1.5 1.5 0 001.5-1.5V9.75a1.5 1.5 0 00-.44-1.06L14.31 2.44A1.5 1.5 0 0013.25 2H6.5A1.5 1.5 0 005 3.5V19.5A1.5 1.5 0 005.5 21z'/></svg>Servicios</a>
+            <a href="medicos.html" class="flex items-center gap-2 px-4 py-2 text-sm font-medium text-slate-700 hover:bg-slate-100"><svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' class='h-5 w-5 text-brand-600'><path stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round' d='M4 7a4 4 0 118 0 4 4 0 01-8 0zm12 4h4m-2-2v4m-6 4a6 6 0 10-12 0'/></svg>Médicos</a>
+            <a href="aseguradoras.html" class="flex items-center gap-2 px-4 py-2 text-sm font-medium text-slate-700 hover:bg-slate-100"><svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' class='h-5 w-5 text-brand-600'><path stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round' d='M12 6.253v13m0 0c-3.5 0-6.5-2-6.5-4.5S8.5 10.253 12 10.253s6.5 2 6.5 4.5-3 4.5-6.5 4.5z'/></svg>Aseguradoras/Planes</a>
+            <a href="seguridad.html" class="flex items-center gap-2 px-4 py-2 text-sm font-medium text-slate-700 hover:bg-slate-100"><svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' class='h-5 w-5 text-brand-600'><path stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round' d='M12 12a5 5 0 100-10 5 5 0 000 10zm-7 9a7 7 0 0114 0v1H5v-1z'/></svg>Seguridad</a>
           </div>
         </div>
       </div>
@@ -75,7 +83,7 @@
   </nav>
 
   <!-- Main -->
-  <main class="pt-32 pb-24">
+  <main class="pt-36 pb-24">
     <div class="mx-auto max-w-screen-xl px-6">
       <!-- Breadcrumbs -->
       <nav class="text-xs text-slate-500"><a class="hover:underline" href="dashboard.html">Inicio</a> / <a class="hover:underline" href="ipress.html">IPRESS</a> / <span>Formulario</span></nav>
