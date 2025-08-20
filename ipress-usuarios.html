@@ -1,0 +1,392 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>NextIaDoctor • IPRESS • Usuarios</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: { 50: '#eef2ff', 100: '#e0e7ff', 200: '#c7d2fe', 300: '#a5b4fc', 400: '#818cf8', 500: '#6366f1', 600: '#4f46e5', 700: '#4338ca', 800: '#3730a3', 900: '#312e81' },
+            accent: { 50: '#ecfeff', 100: '#cffafe', 200: '#a5f3fc', 300: '#67e8f9', 400: '#22d3ee', 500: '#06b6d4', 600: '#0891b2', 700: '#0e7490', 800: '#155e75', 900: '#164e63' }
+          },
+          boxShadow: { soft: '0 8px 24px rgba(2, 6, 23, 0.06)' }
+        }
+      }
+    }
+  </script>
+  <style>
+    * { scrollbar-width: thin; scrollbar-color: #cbd5e1 transparent }
+    *::-webkit-scrollbar { height: 8px; width: 8px }
+    *::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 8px }
+    .scrollbar-hide::-webkit-scrollbar { display: none }
+    .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none }
+  </style>
+</head>
+
+<body class="min-h-screen bg-slate-50 text-slate-800">
+  <!-- Topbar con info IPRESS -->
+  <header class="fixed inset-x-0 top-0 z-40 bg-gradient-to-r from-brand-600 to-accent-500 text-white shadow-soft">
+    <div class="mx-auto flex h-16 max-w-screen-2xl items-center px-4">
+      <div class="flex-1 flex items-center gap-4">
+        <a href="dashboard.html" class="inline-flex items-center gap-3">
+          <div class="select-none text-lg font-semibold tracking-wide">NextIaCorp</div>
+        </a>
+        <!-- Chip de IPRESS activa -->
+        <div class="hidden md:flex items-center gap-2 rounded-lg bg-white/20 px-4 py-1.5 shadow-sm backdrop-blur-sm">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" class="h-5 w-5 text-white">
+            <path stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+          </svg>
+          <span class="font-semibold text-white">Ipress San Martín</span>
+          <span class="hidden text-xs text-white/70 md:inline">•</span>
+          <span class="hidden text-xs text-white/95 md:inline">RUC 20123456789</span>
+        </div>
+      </div>
+      <nav class="flex items-center gap-2" aria-label="Navegación superior">
+        <a href="reportes.html" class="hidden rounded-lg bg-white/10 px-3 py-1.5 text-sm font-medium backdrop-blur hover:bg-white/20 md:inline">Reportes</a>
+        <a href="soporte.html" class="hidden rounded-lg bg-white/10 px-3 py-1.5 text-sm font-medium backdrop-blur hover:bg-white/20 md:inline">Soporte</a>
+        <img src="https://api.dicebear.com/7.x/initials/svg?seed=ND" alt="avatar" class="h-8 w-8 rounded-full ring-2 ring-white/30" />
+      </nav>
+    </div>
+  </header>
+
+  <!-- Menú Nivel 1 • IPRESS seleccionada (Usuarios activo) -->
+  <nav class="fixed top-16 inset-x-0 z-30 bg-white border-b border-slate-200 shadow-soft">
+    <div class="mx-auto max-w-screen-2xl px-4">
+      <div class="flex items-center justify-between">
+        <!-- Tabs/menú de la IPRESS -->
+        <div class="flex items-center overflow-x-auto py-2 gap-2 scrollbar-hide">
+          <a href="ipress-dashboard.html" class="flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50 transition-all"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" class="h-5 w-5 text-brand-600"><path stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0h6"/></svg><span>Dashboard</span></a>
+
+          <a href="ipress-sedes.html"  class="flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50 transition-all"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" class="h-5 w-5 text-brand-600"><path stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg><span>Sedes</span><span class="ml-1 rounded-full bg-brand-100 px-1.5 py-0.5 text-xs font-medium text-brand-800">5</span></a>
+
+          <a href="ipress-usuarios.html" aria-current="page" class="flex items-center gap-2 rounded-lg bg-brand-50 px-3 py-2 text-sm font-medium text-brand-700 border-b-2 border-brand-600 transition-all"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" class="h-5 w-5 text-brand-600"><path stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"/></svg><span>Usuarios</span></a>
+
+          <a href="ipress-medicos.html" class="flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50 transition-all"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" class="h-5 w-5 text-brand-600"><path stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" d="M4 7a4 4 0 118 0 4 4 0 01-8 0zm12 4h4m-2-2v4m-6 4a6 6 0 10-12 0"/></svg><span>Médicos</span></a>
+
+          <a href="ipress-servicios.html" class="flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50 transition-all"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" class="h-5 w-5 text-brand-600"><path stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg><span>Servicios</span></a>
+        </div>
+
+        <!-- Acciones rápidas a la derecha -->
+        <div class="flex items-center gap-2">
+          <a href="ipress-agenda.html" class="flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50 transition-all"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" class="h-5 w-5 text-brand-600"><path stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3M3 11h18M5 19h14a2 2 0 002-2v-6H3v6a2 2 0 002 2z"/></svg><span>Agenda</span></a>
+          <a href="ipress-reservas.html" class="flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50 transition-all"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" class="h-5 w-5 text-brand-600"><path stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" d="M12 6v12m6-6H6"/></svg><span>Reservas</span></a>
+          <a href="ipress-atenciones.html" class="flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50 transition-all"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" class="h-5 w-5 text-brand-600"><path stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z"/></svg><span>Atenciones</span></a>
+          <a href="ipress-reportes.html" class="flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50 transition-all"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" class="h-5 w-5 text-brand-600"><path stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" d="M12 14l9-5-9-5-9 5 9 5z"/><path stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" d="M12 14l6.16-3.422A12.083 12.083 0 016 8.577M12 14v7"/></svg><span>Reportes</span></a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main -->
+  <main class="pt-36 pb-24">
+    <div class="mx-auto max-w-screen-2xl px-6">
+      <!-- Encabezado y acciones -->
+      <div class="mb-6 flex flex-wrap items-center justify-between gap-3">
+        <div>
+          <nav class="text-xs text-slate-500"><a class="hover:underline" href="ipress.html">IPRESS</a> / <span>Ipress San Martín</span> / <span class="text-slate-700 font-medium">Usuarios</span></nav>
+          <h1 class="mt-1 text-2xl font-semibold tracking-tight text-slate-800">Usuarios de la IPRESS</h1>
+          <p class="text-sm text-slate-500">Gestiona roles, perfiles, sedes y seguridad (2FA).</p>
+        </div>
+        <div class="flex items-center gap-2">
+          <a href="ipress-usuario-form.html" class="rounded-lg bg-brand-600 px-4 py-2 text-sm font-medium text-white shadow-soft hover:bg-brand-700">+ Nuevo Usuario</a>
+          <a href="#" class="rounded-lg border border-slate-200 bg-white px-4 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50">Invitar</a>
+          <a href="#" class="rounded-lg border border-slate-200 bg-white px-4 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50">Exportar</a>
+        </div>
+      </div>
+
+      <!-- KPIs -->
+      <section class="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+        <article class="rounded-2xl border border-slate-200 bg-white p-5 shadow-soft">
+          <div class="flex items-center justify-between"><div><p class="text-xs uppercase tracking-wider text-slate-400">Total usuarios</p><h3 class="mt-1 text-3xl font-semibold">124</h3><p class="mt-1 text-xs text-emerald-600">+8 este mes</p></div><div class="rounded-xl bg-brand-600/10 p-3 text-brand-600"><svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' class='h-7 w-7'><path stroke-width='1.5' d='M16 11c1.657 0 3-1.343 3-3S17.657 5 16 5s-3 1.343-3 3 1.343 3 3 3zM8 11c1.657 0 3-1.343 3-3S9.657 5 8 5 5 6.343 5 8s1.343 3 3 3zM8 13c-2.21 0-4 1.79-4 4v1h8v-1c0-2.21-1.79-4-4-4zm8 0c-.74 0-1.43.2-2.02.55 1.22.73 2.02 2.07 2.02 3.6V18h6v-1c0-2.21-1.79-4-4-4z' /></svg></div></div>
+        </article>
+        <article class="rounded-2xl border border-slate-200 bg-white p-5 shadow-soft">
+          <div class="flex items-center justify-between"><div><p class="text-xs uppercase tracking-wider text-slate-400">Roles</p><h3 class="mt-1 text-3xl font-semibold">5</h3><p class="mt-1 text-xs text-slate-500">Perfiles: 12</p></div><div class="rounded-xl bg-brand-600/10 p-3 text-brand-600"><svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' class='h-7 w-7'><path stroke-width='1.5' d='M4 6h16v12H4zM8 6v12m8-12v12' /></svg></div></div>
+        </article>
+        <article class="rounded-2xl border border-slate-200 bg-white p-5 shadow-soft">
+          <div class="flex items-center justify-between"><div><p class="text-xs uppercase tracking-wider text-slate-400">Con 2FA</p><h3 class="mt-1 text-3xl font-semibold">80</h3><p class="mt-1 text-xs text-slate-500">64,5% habilitado</p></div><div class="rounded-xl bg-emerald-500/10 p-3 text-emerald-600"><svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' class='h-7 w-7'><path stroke-width='1.5' d='M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z' /></svg></div></div>
+        </article>
+        <article class="rounded-2xl border border-slate-200 bg-white p-5 shadow-soft">
+          <div class="flex items-center justify-between"><div><p class="text-xs uppercase tracking-wider text-slate-400">Inactivos</p><h3 class="mt-1 text-3xl font-semibold">6</h3><p class="mt-1 text-xs text-rose-600">+1 vs mes anterior</p></div><div class="rounded-xl bg-rose-500/10 p-3 text-rose-600"><svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' class='h-7 w-7'><path stroke-width='1.5' d='M19 13H5m7 7V4' /></svg></div></div>
+        </article>
+      </section>
+
+      <!-- Filtros -->
+      <section class="mt-6 rounded-2xl border border-slate-200 bg-white p-4 shadow-soft">
+        <form class="grid gap-3 md:grid-cols-8 lg:grid-cols-10">
+          <div class="md:col-span-2">
+            <label class="mb-1 block text-xs font-medium text-slate-600">Buscar</label>
+            <div class="relative">
+              <input type="text" placeholder="Nombre, usuario, correo o DNI" class="w-full rounded-lg border border-slate-200 bg-white px-9 py-2 text-sm focus:border-brand-600 focus:outline-none focus:ring-4 focus:ring-brand-600/20" />
+              <svg class="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400" xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor'><circle cx='11' cy='11' r='8' /><path d='M21 21l-4.3-4.3' /></svg>
+            </div>
+          </div>
+          <div class="md:col-span-2">
+            <label class="mb-1 block text-xs font-medium text-slate-600">Rol</label>
+            <select class="w-full rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm focus:border-brand-600 focus:outline-none">
+              <option>Todos</option><option>Administrador</option><option>Recepción</option><option>Asistente</option><option>Auditor</option>
+            </select>
+          </div>
+          <div class="md:col-span-2">
+            <label class="mb-1 block text-xs font-medium text-slate-600">Perfil</label>
+            <select class="w-full rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm focus:border-brand-600 focus:outline-none">
+              <option>Todos</option><option>IPRESS Manager</option><option>Sede Manager</option><option>Operador Caja</option>
+            </select>
+          </div>
+          <div class="md:col-span-2">
+            <label class="mb-1 block text-xs font-medium text-slate-600">Sede</label>
+            <select class="w-full rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm focus:border-brand-600 focus:outline-none">
+              <option>Todas</option><option>Miraflores</option><option>San Isidro</option><option>Surco</option>
+            </select>
+          </div>
+          <div>
+            <label class="mb-1 block text-xs font-medium text-slate-600">Estado</label>
+            <select class="w-full rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm focus:border-brand-600 focus:outline-none"><option>Todos</option><option>Activo</option><option>Inactivo</option><option>Pendiente</option></select>
+          </div>
+          <div>
+            <label class="mb-1 block text-xs font-medium text-slate-600">2FA</label>
+            <select class="w-full rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm focus:border-brand-600 focus:outline-none"><option>Todos</option><option>Habilitado</option><option>Deshabilitado</option></select>
+          </div>
+          <div>
+            <label class="mb-1 block text-xs font-medium text-slate-600">Último acceso</label>
+            <select class="w-full rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm focus:border-brand-600 focus:outline-none"><option>Cualquiera</option><option>≤ 7 días</option><option>8–30 días</option><option>> 30 días</option></select>
+          </div>
+          <div class="mt-3 flex flex-wrap items-center gap-2 md:col-span-2 lg:col-span-2">
+            <button type="button" class="rounded-lg border border-slate-200 bg-white px-3 py-1.5 text-sm hover:bg-slate-50">Limpiar</button>
+            <button type="button" class="rounded-lg bg-brand-600 px-3 py-1.5 text-sm font-medium text-white hover:bg-brand-700">Aplicar filtros</button>
+          </div>
+        </form>
+      </section>
+
+      <!-- Tabs para bandejas -->
+      <div class="mt-6 border-b border-slate-200">
+        <nav class="-mb-px flex gap-6 text-sm">
+          <button type="button" data-tab="all" class="tab-btn border-b-2 border-brand-600 px-1 pb-2 font-medium text-brand-600">Todos</button>
+          <button type="button" data-tab="active" class="tab-btn border-b-2 border-transparent px-1 pb-2 font-medium text-slate-500 hover:text-slate-700">Activos</button>
+          <button type="button" data-tab="inactive" class="tab-btn border-b-2 border-transparent px-1 pb-2 font-medium text-slate-500 hover:text-slate-700">Inactivos</button>
+          <button type="button" data-tab="pending" class="tab-btn border-b-2 border-transparent px-1 pb-2 font-medium text-slate-500 hover:text-slate-700">Pendientes</button>
+          <button type="button" data-tab="no-site" class="tab-btn border-b-2 border-transparent px-1 pb-2 font-medium text-slate-500 hover:text-slate-700">Sin sede</button>
+        </nav>
+      </div>
+
+      <!-- Barra de acciones masivas (aparece si hay selección) -->
+      <div id="bulkBar" class="sticky top-[132px] z-20 mt-2 hidden items-center justify-between rounded-xl border border-slate-200 bg-white p-3 shadow-soft">
+        <div class="text-sm text-slate-600"><span id="bulkCount" class="font-medium">0</span> seleccionados</div>
+        <div class="flex flex-wrap items-center gap-2">
+          <button class="rounded-lg border border-slate-200 bg-white px-3 py-1.5 text-sm hover:bg-slate-50">Activar</button>
+          <button class="rounded-lg border border-slate-200 bg-white px-3 py-1.5 text-sm hover:bg-slate-50">Desactivar</button>
+          <button class="rounded-lg border border-slate-200 bg-white px-3 py-1.5 text-sm hover:bg-slate-50">Asignar rol…</button>
+          <button class="rounded-lg border border-slate-200 bg-white px-3 py-1.5 text-sm hover:bg-slate-50">Forzar 2FA</button>
+          <button class="rounded-lg bg-brand-600 px-3 py-1.5 text-sm font-medium text-white hover:bg-brand-700">Aplicar</button>
+        </div>
+      </div>
+
+      <!-- Bandeja: Todos -->
+      <section id="all" class="tab-panel mt-4 rounded-2xl border border-slate-200 bg-white p-4 shadow-soft">
+        <div class="mb-3 flex items-center justify-between">
+          <div><h2 class="text-lg font-semibold">Listado de usuarios</h2><p class="text-sm text-slate-500">Usuario, rol, perfil, sedes, 2FA, último acceso y estado</p></div>
+          <div class="text-sm text-slate-500">Mostrando 1–10 de 124</div>
+        </div>
+        <div class="overflow-x-auto">
+          <table class="min-w-full text-left text-sm">
+            <thead class="border-y border-slate-200 bg-slate-50 text-slate-500">
+              <tr>
+                <th class="px-4 py-3 w-10"><input id="checkAll" type="checkbox" class="h-4 w-4 rounded border-slate-300" /></th>
+                <th class="px-4 py-3 font-medium">Usuario</th>
+                <th class="px-4 py-3 font-medium">Documento</th>
+                <th class="px-4 py-3 font-medium">Rol</th>
+                <th class="px-4 py-3 font-medium">Perfiles</th>
+                <th class="px-4 py-3 font-medium">Sedes</th>
+                <th class="px-4 py-3 font-medium">Último acceso</th>
+                <th class="px-4 py-3 font-medium">2FA</th>
+                <th class="px-4 py-3 font-medium">Estado</th>
+                <th class="px-4 py-3 text-right font-medium">Acciones</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-slate-100 text-slate-700" id="tbody">
+              <!-- Fila ejemplo 1 -->
+              <tr class="hover:bg-slate-50/60">
+                <td class="px-4 py-3"><input type="checkbox" class="rowChk h-4 w-4 rounded border-slate-300" /></td>
+                <td class="px-4 py-3">
+                  <div class="font-medium text-slate-900">María López</div>
+                  <div class="text-xs text-slate-500">maria.lopez@ipress.com • usuario: mlopez</div>
+                </td>
+                <td class="px-4 py-3">DNI 45678901</td>
+                <td class="px-4 py-3">Administrador</td>
+                <td class="px-4 py-3">
+                  <div class="flex flex-wrap gap-1">
+                    <span class="rounded-full bg-slate-100 px-2 py-0.5 text-xs">IPRESS Manager</span>
+                    <span class="rounded-full bg-slate-100 px-2 py-0.5 text-xs">Auditoría</span>
+                  </div>
+                </td>
+                <td class="px-4 py-3">
+                  <div class="flex flex-wrap gap-1">
+                    <span class="rounded-full bg-slate-100 px-2 py-0.5 text-xs">Miraflores</span>
+                    <span class="rounded-full bg-slate-100 px-2 py-0.5 text-xs">San Isidro</span>
+                  </div>
+                </td>
+                <td class="px-4 py-3">Hace 2 días</td>
+                <td class="px-4 py-3"><span class="rounded-full bg-emerald-50 px-2.5 py-1 text-xs font-medium text-emerald-700">Habilitado</span></td>
+                <td class="px-4 py-3"><span class="rounded-full bg-emerald-50 px-2.5 py-1 text-xs font-medium text-emerald-700">Activo</span></td>
+                <td class="px-4 py-3 text-right">
+                  <div class="relative inline-block text-left" data-menu>
+                    <button class="inline-flex items-center gap-2 rounded-lg border border-slate-200 bg-white px-3 py-1.5 text-sm hover:bg-slate-50" data-menu-button>
+                      Opciones
+                      <svg class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor"><path d="M5.23 7.21a.75.75 0 011.06.02L10 11.147l3.71-3.916a.75.75 0 111.08 1.04l-4.243 4.475a.75.75 0 01-1.08 0L5.25 8.27a.75.75 0 01-.02-1.06z"/></svg>
+                    </button>
+                    <div class="invisible absolute right-0 z-10 mt-2 w-60 origin-top-right scale-95 rounded-lg border border-slate-200 bg-white p-1 opacity-0 shadow-soft transition-all duration-200 ease-in-out" data-menu-items>
+                      <a href="ipress-usuario-form.html?id=mlopez" class="block rounded-md px-3 py-2 text-sm hover:bg-slate-50">Editar</a>
+                      <a href="ipress-usuario-roles.html?user=mlopez" class="block rounded-md px-3 py-2 text-sm hover:bg-slate-50">Roles y perfiles</a>
+                      <a href="ipress-usuarios-sedes.html?user=mlopez" class="block rounded-md px-3 py-2 text-sm hover:bg-slate-50">Asociar sedes</a>
+                      <a href="#" class="block rounded-md px-3 py-2 text-sm hover:bg-slate-50">Resetear contraseña</a>
+                      <a href="ipress-usuario-auditoria.html?user=mlopez" class="block rounded-md px-3 py-2 text-sm hover:bg-slate-50">Historial de accesos</a>
+                      <a href="#" class="block rounded-md px-3 py-2 text-sm hover:bg-rose-50 text-rose-600">Desactivar</a>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+              <!-- Fila ejemplo 2 -->
+              <tr class="hover:bg-slate-50/60">
+                <td class="px-4 py-3"><input type="checkbox" class="rowChk h-4 w-4 rounded border-slate-300" /></td>
+                <td class="px-4 py-3">
+                  <div class="font-medium text-slate-900">Jorge Paredes</div>
+                  <div class="text-xs text-slate-500">jorge.paredes@ipress.com • usuario: jparedes</div>
+                </td>
+                <td class="px-4 py-3">DNI 33445566</td>
+                <td class="px-4 py-3">Recepción</td>
+                <td class="px-4 py-3">
+                  <div class="flex flex-wrap gap-1">
+                    <span class="rounded-full bg-slate-100 px-2 py-0.5 text-xs">Caja</span>
+                  </div>
+                </td>
+                <td class="px-4 py-3"><span class="rounded-full bg-slate-100 px-2 py-0.5 text-xs">Miraflores</span></td>
+                <td class="px-4 py-3">Hace 45 días</td>
+                <td class="px-4 py-3"><span class="rounded-full bg-amber-50 px-2.5 py-1 text-xs font-medium text-amber-700">Deshabilitado</span></td>
+                <td class="px-4 py-3"><span class="rounded-full bg-rose-50 px-2.5 py-1 text-xs font-medium text-rose-700">Inactivo</span></td>
+                <td class="px-4 py-3 text-right">
+                  <div class="relative inline-block text-left" data-menu>
+                    <button class="inline-flex items-center gap-2 rounded-lg border border-slate-200 bg-white px-3 py-1.5 text-sm hover:bg-slate-50" data-menu-button>
+                      Opciones
+                      <svg class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor"><path d="M5.23 7.21a.75.75 0 011.06.02L10 11.147l3.71-3.916a.75.75 0 111.08 1.04l-4.243 4.475a.75.75 0 01-1.08 0L5.25 8.27a.75.75 0 01-.02-1.06z"/></svg>
+                    </button>
+                    <div class="invisible absolute right-0 z-10 mt-2 w-60 origin-top-right scale-95 rounded-lg border border-slate-200 bg-white p-1 opacity-0 shadow-soft transition-all duration-200 ease-in-out" data-menu-items>
+                      <a href="ipress-usuario-form.html?id=jparedes" class="block rounded-md px-3 py-2 text-sm hover:bg-slate-50">Editar</a>
+                      <a href="#" class="block rounded-md px-3 py-2 text-sm hover:bg-slate-50">Reactivar</a>
+                      <a href="#" class="block rounded-md px-3 py-2 text-sm hover:bg-slate-50">Forzar 2FA</a>
+                      <a href="#" class="block rounded-md px-3 py-2 text-sm hover:bg-slate-50">Reenviar invitación</a>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+              <!-- Más filas de ejemplo ... -->
+            </tbody>
+          </table>
+        </div>
+        <!-- Paginación -->
+        <div class="mt-4 flex items-center justify-between">
+          <p class="text-sm text-slate-500">Página 1 de 13</p>
+          <div class="flex items-center gap-2">
+            <button class="rounded-lg border border-slate-200 bg-white px-3 py-1.5 text-sm text-slate-700 hover:bg-slate-50">Anterior</button>
+            <button class="rounded-lg bg-brand-600 px-3 py-1.5 text-sm font-medium text-white">1</button>
+            <button class="rounded-lg border border-slate-200 bg-white px-3 py-1.5 text-sm text-slate-700 hover:bg-slate-50">2</button>
+            <button class="rounded-lg border border-slate-200 bg-white px-3 py-1.5 text-sm text-slate-700 hover:bg-slate-50">3</button>
+            <span class="px-2 text-slate-400">…</span>
+            <button class="rounded-lg border border-slate-200 bg-white px-3 py-1.5 text-sm text-slate-700 hover:bg-slate-50">Siguiente</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Bandeja: Activos -->
+      <section id="active" class="tab-panel hidden mt-6 rounded-2xl border border-slate-200 bg-white p-4 shadow-soft">
+        <h2 class="text-lg font-semibold mb-3">Usuarios Activos</h2>
+        <p class="text-sm text-slate-500">(Contenido filtrado por estado = Activo)</p>
+      </section>
+
+      <!-- Bandeja: Inactivos -->
+      <section id="inactive" class="tab-panel hidden mt-6 rounded-2xl border border-slate-200 bg-white p-4 shadow-soft">
+        <h2 class="text-lg font-semibold mb-3">Usuarios Inactivos</h2>
+        <p class="text-sm text-slate-500">(Contenido filtrado por estado = Inactivo)</p>
+      </section>
+
+      <!-- Bandeja: Pendientes -->
+      <section id="pending" class="tab-panel hidden mt-6 rounded-2xl border border-slate-200 bg-white p-4 shadow-soft">
+        <h2 class="text-lg font-semibold mb-3">Invitaciones pendientes</h2>
+        <p class="text-sm text-slate-500">(Usuarios con invitación enviada sin activar)</p>
+      </section>
+
+      <!-- Bandeja: Sin sede -->
+      <section id="no-site" class="tab-panel hidden mt-6 rounded-2xl border border-slate-200 bg-white p-4 shadow-soft">
+        <h2 class="text-lg font-semibold mb-3">Usuarios sin sede asociada</h2>
+        <p class="text-sm text-slate-500">(Asigna sedes para habilitar operaciones)</p>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="fixed bottom-0 left-0 right-0 z-40 border-t border-slate-200 bg-white/90 backdrop-blur">
+    <div class="mx-auto flex h-12 max-w-screen-2xl items-center justify-between px-6 text-sm text-slate-600">
+      <p>© <span id="y"></span> NextIaCorp • Todos los derechos reservados</p>
+      <nav class="hidden gap-4 md:flex">
+        <a class="hover:text-slate-900" href="privacidad.html">Privacidad</a>
+        <a class="hover:text-slate-900" href="terminos.html">Términos</a>
+        <a class="hover:text-slate-900" href="contacto.html">Contacto</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script>
+    // Año
+    document.getElementById('y').textContent = new Date().getFullYear();
+
+    // Toggle menús de fila
+    document.querySelectorAll('[data-menu]').forEach((wrap) => {
+      const btn = wrap.querySelector('[data-menu-button]');
+      const menu = wrap.querySelector('[data-menu-items]');
+      const close = () => menu.classList.add('invisible', 'opacity-0', 'scale-95');
+      const open = () => menu.classList.remove('invisible', 'opacity-0', 'scale-95');
+      close();
+      btn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const isHidden = menu.classList.contains('invisible');
+        document.querySelectorAll('[data-menu-items]').forEach(m => { if (m !== menu) m.classList.add('invisible','opacity-0','scale-95'); });
+        isHidden ? open() : close();
+      });
+      document.addEventListener('click', () => close());
+      wrap.addEventListener('keydown', (e) => { if (e.key === 'Escape') close(); });
+    });
+
+    // Tabs
+    document.querySelectorAll('.tab-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const tab = btn.dataset.tab;
+        document.querySelectorAll('.tab-btn').forEach(b => { b.classList.remove('border-brand-600','text-brand-600'); b.classList.add('border-transparent','text-slate-500'); });
+        btn.classList.add('border-brand-600','text-brand-600'); btn.classList.remove('border-transparent','text-slate-500');
+        document.querySelectorAll('.tab-panel').forEach(p => p.classList.add('hidden'));
+        document.getElementById(tab).classList.remove('hidden');
+      });
+    });
+
+    // Selección masiva
+    const bulkBar = document.getElementById('bulkBar');
+    const bulkCount = document.getElementById('bulkCount');
+    const rowChks = () => Array.from(document.querySelectorAll('.rowChk'));
+    const updateBulk = () => {
+      const count = rowChks().filter(c => c.checked).length;
+      bulkCount.textContent = count;
+      bulkBar.classList.toggle('hidden', count === 0);
+      bulkBar.classList.toggle('flex', count > 0);
+    };
+    document.getElementById('checkAll').addEventListener('change', (e) => {
+      rowChks().forEach(c => c.checked = e.target.checked);
+      updateBulk();
+    });
+    rowChks().forEach(c => c.addEventListener('change', updateBulk));
+  </script>
+</body>
+
+</html>
