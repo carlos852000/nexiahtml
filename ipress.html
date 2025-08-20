@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="es">
+
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -10,8 +11,8 @@
       theme: {
         extend: {
           colors: {
-            brand: {50:'#eef2ff',100:'#e0e7ff',200:'#c7d2fe',300:'#a5b4fc',400:'#818cf8',500:'#6366f1',600:'#4f46e5',700:'#4338ca',800:'#3730a3',900:'#312e81'},
-            accent: {50:'#ecfeff',100:'#cffafe',200:'#a5f3fc',300:'#67e8f9',400:'#22d3ee',500:'#06b6d4',600:'#0891b2',700:'#0e7490',800:'#155e75',900:'#164e63'}
+            brand: { 50: '#eef2ff', 100: '#e0e7ff', 200: '#c7d2fe', 300: '#a5b4fc', 400: '#818cf8', 500: '#6366f1', 600: '#4f46e5', 700: '#4338ca', 800: '#3730a3', 900: '#312e81' },
+            accent: { 50: '#ecfeff', 100: '#cffafe', 200: '#a5f3fc', 300: '#67e8f9', 400: '#22d3ee', 500: '#06b6d4', 600: '#0891b2', 700: '#0e7490', 800: '#155e75', 900: '#164e63' }
           },
           boxShadow: { soft: '0 8px 24px rgba(2, 6, 23, 0.06)' }
         }
@@ -19,11 +20,23 @@
     }
   </script>
   <style>
-    *{ scrollbar-width: thin; scrollbar-color:#cbd5e1 transparent }
-    *::-webkit-scrollbar{ height:8px; width:8px }
-    *::-webkit-scrollbar-thumb{ background:#cbd5e1; border-radius:8px }
+    * {
+      scrollbar-width: thin;
+      scrollbar-color: #cbd5e1 transparent
+    }
+
+    *::-webkit-scrollbar {
+      height: 8px;
+      width: 8px
+    }
+
+    *::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 8px
+    }
   </style>
 </head>
+
 <body class="min-h-screen bg-slate-50 text-slate-800">
   <!-- Topbar -->
   <header class="fixed inset-x-0 top-0 z-40 bg-gradient-to-r from-brand-600 to-accent-500 text-white shadow-soft">
@@ -35,17 +48,24 @@
         </a>
         <!-- Información de IPRESS alineada a la izquierda -->
         <div class="flex items-center gap-2 rounded-lg bg-white/20 px-4 py-1.5 shadow-sm backdrop-blur-sm">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" class="h-5 w-5 text-white"><path stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            class="h-5 w-5 text-white">
+            <path stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"
+              d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+          </svg>
           <span class="font-semibold text-white">Ipress San Martín</span>
           <span class="hidden text-xs text-white/70 md:inline">•</span>
           <span class="hidden text-xs text-white/95 md:inline">Sede Miraflores</span>
         </div>
       </div>
-      
+
       <nav class="flex items-center gap-2" aria-label="Navegación superior">
-        <a href="reportes.html" class="hidden rounded-lg bg-white/10 px-3 py-1.5 text-sm font-medium backdrop-blur hover:bg-white/20 md:inline">Reportes</a>
-        <a href="soporte.html" class="hidden rounded-lg bg-white/10 px-3 py-1.5 text-sm font-medium backdrop-blur hover:bg-white/20 md:inline">Soporte</a>
-        <img src="https://api.dicebear.com/7.x/initials/svg?seed=ND" alt="avatar" class="h-8 w-8 rounded-full ring-2 ring-white/30" />
+        <a href="reportes.html"
+          class="hidden rounded-lg bg-white/10 px-3 py-1.5 text-sm font-medium backdrop-blur hover:bg-white/20 md:inline">Reportes</a>
+        <a href="soporte.html"
+          class="hidden rounded-lg bg-white/10 px-3 py-1.5 text-sm font-medium backdrop-blur hover:bg-white/20 md:inline">Soporte</a>
+        <img src="https://api.dicebear.com/7.x/initials/svg?seed=ND" alt="avatar"
+          class="h-8 w-8 rounded-full ring-2 ring-white/30" />
       </nav>
 
     </div>
@@ -57,25 +77,88 @@
       <div class="flex items-center justify-between">
         <!-- Menú Principal -->
         <div class="flex items-center overflow-x-auto py-2 gap-1">
-          <a href="dashboard.html" class="flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-100"><svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' class='h-5 w-5 text-brand-600'><path stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round' d='M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0h6'/></svg>Dashboard</a>
-          <a href="ipress.html" class="flex items-center gap-2 rounded-lg bg-slate-100  px-3 py-2 text-sm font-semibold text-slate-900"><svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' class='h-5 w-5 text-brand-600'><path stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round' d='M3 7h18M3 12h18M3 17h18'/></svg>IPRESS</a>
-          <a href="agenda-medico.html" class="flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-100"><svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' class='h-5 w-5 text-brand-600'><path stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round' d='M8 7V3m8 4V3M3 11h18M5 19h14a2 2 0 002-2v-6H3v6a2 2 0 002 2z'/></svg>Agenda</a>
-          <a href="reservas.html" class="flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-100"><svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' class='h-5 w-5 text-brand-600'><path stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round' d='M12 6v12m6-6H6'/></svg>Reservas</a>
-          <a href="atenciones.html" class="flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-100"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" class="h-5 w-5 text-brand-600"><path stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" d="M22 12h-4l-3 7L9 5l-3 7H2"/></svg>Atenciones</a>
-          <a href="reportes.html" class="flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-100"><svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' class='h-5 w-5 text-brand-600'><path stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round' d='M12 14l9-5-9-5-9 5 9 5z'/><path stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round' d='M12 14l6.16-3.422A12.083 12.083 0 016 8.577M12 14v7'/></svg>Reportes</a>
+          <a href="dashboard.html"
+            class="flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-100"><svg
+              xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor'
+              class='h-5 w-5 text-brand-600'>
+              <path stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'
+                d='M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0h6' />
+            </svg>Dashboard</a>
+          <a href="ipress.html"
+            class="flex items-center gap-2 rounded-lg bg-slate-100  px-3 py-2 text-sm font-semibold text-slate-900"><svg
+              xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor'
+              class='h-5 w-5 text-brand-600'>
+              <path stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round' d='M3 7h18M3 12h18M3 17h18' />
+            </svg>IPRESS</a>
+          <a href="agenda.html"
+            class="flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-100"><svg
+              xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor'
+              class='h-5 w-5 text-brand-600'>
+              <path stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'
+                d='M8 7V3m8 4V3M3 11h18M5 19h14a2 2 0 002-2v-6H3v6a2 2 0 002 2z' />
+            </svg>Agenda</a>
+          <a href="reservas.html"
+            class="flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-100"><svg
+              xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor'
+              class='h-5 w-5 text-brand-600'>
+              <path stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round' d='M12 6v12m6-6H6' />
+            </svg>Reservas</a>
+          <a href="atenciones.html"
+            class="flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-100"><svg
+              xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              class="h-5 w-5 text-brand-600">
+              <path stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" d="M22 12h-4l-3 7L9 5l-3 7H2" />
+            </svg>Atenciones</a>
+          <a href="reportes.html"
+            class="flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-100"><svg
+              xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor'
+              class='h-5 w-5 text-brand-600'>
+              <path stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round' d='M12 14l9-5-9-5-9 5 9 5z' />
+              <path stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'
+                d='M12 14l6.16-3.422A12.083 12.083 0 016 8.577M12 14v7' />
+            </svg>Reportes</a>
         </div>
-        
+
         <!-- Menú Administración con desplegable -->
         <div class="relative group">
-          <button class="flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-100">
+          <button
+            class="flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-100">
             <span>Administración</span>
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" class="h-4 w-4"><path stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              class="h-4 w-4">
+              <path stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+            </svg>
           </button>
-          <div class="absolute right-0 top-full z-40 hidden group-hover:block bg-white rounded-lg shadow-soft border border-slate-200 min-w-[180px] py-1">
-            <a href="servicios.html" class="flex items-center gap-2 px-4 py-2 text-sm font-medium text-slate-700 hover:bg-slate-100"><svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' class='h-5 w-5 text-brand-600'><path stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round' d='M5.5 21h13a1.5 1.5 0 001.5-1.5V9.75a1.5 1.5 0 00-.44-1.06L14.31 2.44A1.5 1.5 0 0013.25 2H6.5A1.5 1.5 0 005 3.5V19.5A1.5 1.5 0 005.5 21z'/></svg>Servicios</a>
-            <a href="medicos.html" class="flex items-center gap-2 px-4 py-2 text-sm font-medium text-slate-700 hover:bg-slate-100"><svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' class='h-5 w-5 text-brand-600'><path stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round' d='M4 7a4 4 0 118 0 4 4 0 01-8 0zm12 4h4m-2-2v4m-6 4a6 6 0 10-12 0'/></svg>Médicos</a>
-            <a href="aseguradoras.html" class="flex items-center gap-2 px-4 py-2 text-sm font-medium text-slate-700 hover:bg-slate-100"><svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' class='h-5 w-5 text-brand-600'><path stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round' d='M12 6.253v13m0 0c-3.5 0-6.5-2-6.5-4.5S8.5 10.253 12 10.253s6.5 2 6.5 4.5-3 4.5-6.5 4.5z'/></svg>Aseguradoras/Planes</a>
-            <a href="seguridad.html" class="flex items-center gap-2 px-4 py-2 text-sm font-medium text-slate-700 hover:bg-slate-100"><svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' class='h-5 w-5 text-brand-600'><path stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round' d='M12 12a5 5 0 100-10 5 5 0 000 10zm-7 9a7 7 0 0114 0v1H5v-1z'/></svg>Seguridad</a>
+          <div
+            class="absolute right-0 top-full z-40 hidden group-hover:block bg-white rounded-lg shadow-soft border border-slate-200 min-w-[180px] py-1">
+            <a href="servicios.html"
+              class="flex items-center gap-2 px-4 py-2 text-sm font-medium text-slate-700 hover:bg-slate-100"><svg
+                xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor'
+                class='h-5 w-5 text-brand-600'>
+                <path stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'
+                  d='M5.5 21h13a1.5 1.5 0 001.5-1.5V9.75a1.5 1.5 0 00-.44-1.06L14.31 2.44A1.5 1.5 0 0013.25 2H6.5A1.5 1.5 0 005 3.5V19.5A1.5 1.5 0 005.5 21z' />
+              </svg>Servicios</a>
+            <a href="medicos.html"
+              class="flex items-center gap-2 px-4 py-2 text-sm font-medium text-slate-700 hover:bg-slate-100"><svg
+                xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor'
+                class='h-5 w-5 text-brand-600'>
+                <path stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'
+                  d='M4 7a4 4 0 118 0 4 4 0 01-8 0zm12 4h4m-2-2v4m-6 4a6 6 0 10-12 0' />
+              </svg>Médicos</a>
+            <a href="aseguradoras.html"
+              class="flex items-center gap-2 px-4 py-2 text-sm font-medium text-slate-700 hover:bg-slate-100"><svg
+                xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor'
+                class='h-5 w-5 text-brand-600'>
+                <path stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'
+                  d='M12 6.253v13m0 0c-3.5 0-6.5-2-6.5-4.5S8.5 10.253 12 10.253s6.5 2 6.5 4.5-3 4.5-6.5 4.5z' />
+              </svg>Aseguradoras/Planes</a>
+            <a href="seguridad.html"
+              class="flex items-center gap-2 px-4 py-2 text-sm font-medium text-slate-700 hover:bg-slate-100"><svg
+                xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor'
+                class='h-5 w-5 text-brand-600'>
+                <path stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'
+                  d='M12 12a5 5 0 100-10 5 5 0 000 10zm-7 9a7 7 0 0114 0v1H5v-1z' />
+              </svg>Seguridad</a>
           </div>
         </div>
       </div>
@@ -88,13 +171,18 @@
       <!-- Encabezado y acciones -->
       <div class="mb-6 flex flex-wrap items-center justify-between gap-3">
         <div>
-          <nav class="text-xs text-slate-500"><a class="hover:underline" href="dashboard.html">Inicio</a> / <span>IPRESS</span></nav>
+          <nav class="text-xs text-slate-500"><a class="hover:underline" href="dashboard.html">Inicio</a> /
+            <span>IPRESS</span>
+          </nav>
           <h1 class="mt-1 text-2xl font-semibold tracking-tight text-slate-800">IPRESS</h1>
           <p class="text-sm text-slate-500">Gestiona tus IPRESS, sedes y asignaciones</p>
         </div>
         <div class="flex items-center gap-2">
-          <a href="ipress-form.html" class="rounded-lg bg-brand-600 px-4 py-2 text-sm font-medium text-white shadow-soft hover:bg-brand-700">+ Agregar IPRESS</a>
-          <a href="ipress-export.html" class="rounded-lg border border-slate-200 bg-white px-4 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50">Exportar</a>
+          <a href="ipress-form.html"
+            class="rounded-lg bg-brand-600 px-4 py-2 text-sm font-medium text-white shadow-soft hover:bg-brand-700">+
+            Nueva IPRESS</a>
+          <a href="ipress-export.html"
+            class="rounded-lg border border-slate-200 bg-white px-4 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50">Exportar</a>
         </div>
       </div>
 
@@ -108,7 +196,10 @@
               <p class="mt-1 text-xs text-emerald-600">+2 desde el mes pasado</p>
             </div>
             <div class="rounded-xl bg-brand-600/10 p-3 text-brand-600">
-              <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' class='h-7 w-7'><path stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round' d='M3 7h18M3 12h18M3 17h18'/></svg>
+              <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor'
+                class='h-7 w-7'>
+                <path stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round' d='M3 7h18M3 12h18M3 17h18' />
+              </svg>
             </div>
           </div>
         </article>
@@ -120,7 +211,10 @@
               <p class="mt-1 text-xs text-emerald-600">+5 desde el mes pasado</p>
             </div>
             <div class="rounded-xl bg-emerald-500/10 p-3 text-emerald-600">
-              <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' class='h-7 w-7'><path stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round' d='M5 13l4 4L19 7'/></svg>
+              <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor'
+                class='h-7 w-7'>
+                <path stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round' d='M5 13l4 4L19 7' />
+              </svg>
             </div>
           </div>
         </article>
@@ -132,7 +226,10 @@
               <p class="mt-1 text-xs text-rose-600">+1 desde el mes pasado</p>
             </div>
             <div class="rounded-xl bg-rose-500/10 p-3 text-rose-600">
-              <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' class='h-7 w-7'><path stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round' d='M6 18L18 6M6 6l12 12'/></svg>
+              <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor'
+                class='h-7 w-7'>
+                <path stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round' d='M6 18L18 6M6 6l12 12' />
+              </svg>
             </div>
           </div>
         </article>
@@ -143,26 +240,36 @@
         <form class="grid gap-3 md:grid-cols-3">
           <div class="md:col-span-1">
             <label class="mb-1 block text-xs font-medium text-slate-600">Ubicación</label>
-            <input type="text" placeholder="Departamento / Provincia / Distrito" class="w-full rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm focus:border-brand-600 focus:outline-none focus:ring-4 focus:ring-brand-600/20" />
+            <input type="text" placeholder="Departamento / Provincia / Distrito"
+              class="w-full rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm focus:border-brand-600 focus:outline-none focus:ring-4 focus:ring-brand-600/20" />
           </div>
           <div class="md:col-span-1">
             <label class="mb-1 block text-xs font-medium text-slate-600">Buscar IPRESS</label>
             <div class="relative">
-              <input type="text" placeholder="Nombre o RUC" class="w-full rounded-lg border border-slate-200 bg-white px-9 py-2 text-sm focus:border-brand-600 focus:outline-none focus:ring-4 focus:ring-brand-600/20" />
-              <svg class="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400" xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor'><circle cx='11' cy='11' r='8' /><path d='M21 21l-4.3-4.3' /></svg>
+              <input type="text" placeholder="Nombre o RUC"
+                class="w-full rounded-lg border border-slate-200 bg-white px-9 py-2 text-sm focus:border-brand-600 focus:outline-none focus:ring-4 focus:ring-brand-600/20" />
+              <svg class="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400"
+                xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor'>
+                <circle cx='11' cy='11' r='8' />
+                <path d='M21 21l-4.3-4.3' />
+              </svg>
             </div>
           </div>
           <div class="flex items-end justify-end md:col-span-1">
-            <button type="button" class="rounded-lg border border-slate-200 bg-white px-4 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50">Limpiar</button>
+            <button type="button"
+              class="rounded-lg border border-slate-200 bg-white px-4 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50">Limpiar</button>
           </div>
         </form>
       </section>
-	  <div class="mt-6">
+      <div class="mt-6">
         <div class="border-b border-slate-200">
           <nav class="-mb-px flex gap-6 text-sm">
-            <button type="button" data-tab="all" class="tab-btn border-b-2 border-brand-600 px-1 pb-2 font-medium text-brand-600">Todas las IPRESS</button>
-            <button type="button" data-tab="active" class="tab-btn border-b-2 border-transparent px-1 pb-2 font-medium text-slate-500 hover:text-slate-700">Activas</button>
-            <button type="button" data-tab="inactive" class="tab-btn border-b-2 border-transparent px-1 pb-2 font-medium text-slate-500 hover:text-slate-700">Inactivas</button>
+            <button type="button" data-tab="all"
+              class="tab-btn border-b-2 border-brand-600 px-1 pb-2 font-medium text-brand-600">Todas las IPRESS</button>
+            <button type="button" data-tab="active"
+              class="tab-btn border-b-2 border-transparent px-1 pb-2 font-medium text-slate-500 hover:text-slate-700">Activas</button>
+            <button type="button" data-tab="inactive"
+              class="tab-btn border-b-2 border-transparent px-1 pb-2 font-medium text-slate-500 hover:text-slate-700">Inactivas</button>
           </nav>
         </div>
       </div>
@@ -200,14 +307,29 @@
                 <td class="px-4 py-3">Lima, Miraflores</td>
                 <td class="px-4 py-3">5</td>
                 <td class="px-4 py-3">12</td>
-                <td class="px-4 py-3"><span class="rounded-full bg-emerald-50 px-2.5 py-1 text-xs font-medium text-emerald-700">Activa</span></td>
+                <td class="px-4 py-3"><span
+                    class="rounded-full bg-emerald-50 px-2.5 py-1 text-xs font-medium text-emerald-700">Activa</span>
+                </td>
                 <td class="px-4 py-3 text-right">
-                  <div class="relative inline-block text-left" x-data>
-                    <button class="dropdown-btn rounded-lg border border-slate-200 bg-white px-2 py-1.5 text-sm hover:bg-slate-50">Opciones ▾</button>
-                    <div class="dropdown-menu invisible absolute right-0 z-10 mt-2 w-40 origin-top-right rounded-xl border border-slate-200 bg-white p-1 text-sm shadow-soft opacity-0 transition">
-                      <a href="ipress-form.html?id=IP-0001" class="group flex items-center gap-2 rounded-lg px-3 py-2 hover:bg-slate-50"><svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' class='h-4 w-4 text-slate-500 group-hover:text-slate-700'><path d='M15.232 5.232l3.536 3.536M4 13.5V20h6.5l8.5-8.5-6.5-6.5L4 13.5z'/></svg>Editar</a>
-                      <a href="ipress-eliminar.html?id=IP-0001" class="group flex items-center gap-2 rounded-lg px-3 py-2 hover:bg-rose-50"><svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' class='h-4 w-4 text-rose-500'><path d='M3 6h18M8 6V4h8v2m-1 0v14a2 2 0 01-2 2H9a2 2 0 01-2-2V6h10z'/></svg><span class='text-rose-600'>Eliminar</span></a>
-                      <a href="ipress-detalle.html?id=IP-0001" class="group flex items-center gap-2 rounded-lg px-3 py-2 hover:bg-slate-50"><svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' class='h-4 w-4 text-slate-500 group-hover:text-slate-700'><path d='M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.36 5 12 5c4.64 0 8.577 2.51 9.964 6.683.07.207.07.432 0 .639C20.577 16.49 16.64 19 12 19c-4.64 0-8.577-2.51-9.964-6.678z'/><circle cx='12' cy='12' r='3'/></svg>Ver detalles</a>
+                  <!-- Menú de opciones grupal -->
+                  <div class="relative inline-block text-left" data-menu>
+                    <button
+                      class="inline-flex items-center gap-2 rounded-lg border border-slate-200 bg-white px-3 py-1.5 text-sm hover:bg-slate-50"
+                      data-menu-button>
+                      Opciones
+                      <svg class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                        <path
+                          d="M5.23 7.21a.75.75 0 011.06.02L10 11.147l3.71-3.916a.75.75 0 111.08 1.04l-4.243 4.475a.75.75 0 01-1.08 0L5.25 8.27a.75.75 0 01-.02-1.06z" />
+                      </svg>
+                    </button>
+                    <div
+                      class="invisible absolute right-0 z-10 mt-2 w-44 origin-top-right scale-95 rounded-lg border border-slate-200 bg-white p-1 opacity-0 shadow-soft transition-all duration-200 ease-in-out"
+                      data-menu-items>
+                      <a href="ipress-form.html?id=IP-0001"
+                        class="block rounded-md px-3 py-2 text-sm hover:bg-slate-50">Editar</a>
+                      <a href="#" class="block rounded-md px-3 py-2 text-sm hover:bg-slate-50">Eliminar</a>
+                      <a href="ipress-detalle.html?id=IP-0001"
+                        class="block rounded-md px-3 py-2 text-sm hover:bg-slate-50">Ver detalles</a>
                     </div>
                   </div>
                 </td>
@@ -215,19 +337,35 @@
 
               <!-- Fila Inactiva -->
               <tr class="hover:bg-slate-50/60">
-                <td class="px-4 py-3"><a href="ipress-detalle.html" class="font-medium text-slate-900 hover:underline">Ipress Santa Rosa</a><div class="text-xs text-slate-500">ID: IP-0002</div></td>
+                <td class="px-4 py-3"><a href="ipress-detalle.html"
+                    class="font-medium text-slate-900 hover:underline">Ipress Santa Rosa</a>
+                  <div class="text-xs text-slate-500">ID: IP-0002</div>
+                </td>
                 <td class="px-4 py-3">20999888777</td>
                 <td class="px-4 py-3">Arequipa, Cercado</td>
                 <td class="px-4 py-3">3</td>
                 <td class="px-4 py-3">9</td>
-                <td class="px-4 py-3"><span class="rounded-full bg-rose-50 px-2.5 py-1 text-xs font-medium text-rose-700">Inactiva</span></td>
+                <td class="px-4 py-3"><span
+                    class="rounded-full bg-rose-50 px-2.5 py-1 text-xs font-medium text-rose-700">Inactiva</span></td>
                 <td class="px-4 py-3 text-right">
-                  <div class="relative inline-block text-left">
-                    <button class="dropdown-btn rounded-lg border border-slate-200 bg-white px-2 py-1.5 text-sm hover:bg-slate-50">Opciones ▾</button>
-                    <div class="dropdown-menu invisible absolute right-0 z-10 mt-2 w-40 origin-top-right rounded-xl border border-slate-200 bg-white p-1 text-sm shadow-soft opacity-0 transition">
-                      <a href="ipress-form.html?id=IP-0002" class="group flex items-center gap-2 rounded-lg px-3 py-2 hover:bg-slate-50">Editar</a>
-                      <a href="ipress-eliminar.html?id=IP-0002" class="group flex items-center gap-2 rounded-lg px-3 py-2 hover:bg-rose-50"><span class='text-rose-600'>Eliminar</span></a>
-                      <a href="ipress-detalle.html?id=IP-0002" class="group flex items-center gap-2 rounded-lg px-3 py-2 hover:bg-slate-50">Ver detalles</a>
+                  <div class="relative inline-block text-left" data-menu>
+                    <button
+                      class="inline-flex items-center gap-2 rounded-lg border border-slate-200 bg-white px-3 py-1.5 text-sm hover:bg-slate-50"
+                      data-menu-button>
+                      Opciones
+                      <svg class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                        <path
+                          d="M5.23 7.21a.75.75 0 011.06.02L10 11.147l3.71-3.916a.75.75 0 111.08 1.04l-4.243 4.475a.75.75 0 01-1.08 0L5.25 8.27a.75.75 0 01-.02-1.06z" />
+                      </svg>
+                    </button>
+                    <div
+                      class="invisible absolute right-0 z-10 mt-2 w-44 origin-top-right scale-95 rounded-lg border border-slate-200 bg-white p-1 opacity-0 shadow-soft transition-all duration-200 ease-in-out"
+                      data-menu-items>
+                      <a href="ipress-form.html?id=IP-0001"
+                        class="block rounded-md px-3 py-2 text-sm hover:bg-slate-50">Editar</a>
+                      <a href="#" class="block rounded-md px-3 py-2 text-sm hover:bg-slate-50">Eliminar</a>
+                      <a href="ipress-detalle.html?id=IP-0001"
+                        class="block rounded-md px-3 py-2 text-sm hover:bg-slate-50">Ver detalles</a>
                     </div>
                   </div>
                 </td>
@@ -241,11 +379,15 @@
         <div class="mt-4 flex items-center justify-between">
           <p class="text-sm text-slate-500">Página 1 de 6</p>
           <div class="flex items-center gap-2">
-            <button class="rounded-lg border border-slate-200 bg-white px-3 py-1.5 text-sm text-slate-700 hover:bg-slate-50">Anterior</button>
+            <button
+              class="rounded-lg border border-slate-200 bg-white px-3 py-1.5 text-sm text-slate-700 hover:bg-slate-50">Anterior</button>
             <button class="rounded-lg bg-brand-600 px-3 py-1.5 text-sm font-medium text-white">1</button>
-            <button class="rounded-lg border border-slate-200 bg-white px-3 py-1.5 text-sm text-slate-700 hover:bg-slate-50">2</button>
-            <button class="rounded-lg border border-slate-200 bg-white px-3 py-1.5 text-sm text-slate-700 hover:bg-slate-50">3</button>
-            <button class="rounded-lg border border-slate-200 bg-white px-3 py-1.5 text-sm text-slate-700 hover:bg-slate-50">Siguiente</button>
+            <button
+              class="rounded-lg border border-slate-200 bg-white px-3 py-1.5 text-sm text-slate-700 hover:bg-slate-50">2</button>
+            <button
+              class="rounded-lg border border-slate-200 bg-white px-3 py-1.5 text-sm text-slate-700 hover:bg-slate-50">3</button>
+            <button
+              class="rounded-lg border border-slate-200 bg-white px-3 py-1.5 text-sm text-slate-700 hover:bg-slate-50">Siguiente</button>
           </div>
         </div>
       </section>
@@ -283,14 +425,28 @@
                 <td class="px-4 py-3">Lima, Miraflores</td>
                 <td class="px-4 py-3">5</td>
                 <td class="px-4 py-3">12</td>
-                <td class="px-4 py-3"><span class="rounded-full bg-emerald-50 px-2.5 py-1 text-xs font-medium text-emerald-700">Activa</span></td>
+                <td class="px-4 py-3"><span
+                    class="rounded-full bg-emerald-50 px-2.5 py-1 text-xs font-medium text-emerald-700">Activa</span>
+                </td>
                 <td class="px-4 py-3 text-right">
-                  <div class="relative inline-block text-left" x-data>
-                    <button class="dropdown-btn rounded-lg border border-slate-200 bg-white px-2 py-1.5 text-sm hover:bg-slate-50">Opciones ▾</button>
-                    <div class="dropdown-menu invisible absolute right-0 z-10 mt-2 w-40 origin-top-right rounded-xl border border-slate-200 bg-white p-1 text-sm shadow-soft opacity-0 transition">
-                      <a href="ipress-form.html?id=IP-0001" class="group flex items-center gap-2 rounded-lg px-3 py-2 hover:bg-slate-50">Editar</a>
-                      <a href="ipress-eliminar.html?id=IP-0001" class="group flex items-center gap-2 rounded-lg px-3 py-2 hover:bg-rose-50"><span class='text-rose-600'>Eliminar</span></a>
-                      <a href="ipress-detalle.html?id=IP-0001" class="group flex items-center gap-2 rounded-lg px-3 py-2 hover:bg-slate-50">Ver detalles</a>
+                  <div class="relative inline-block text-left" data-menu>
+                    <button
+                      class="inline-flex items-center gap-2 rounded-lg border border-slate-200 bg-white px-3 py-1.5 text-sm hover:bg-slate-50"
+                      data-menu-button>
+                      Opciones
+                      <svg class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                        <path
+                          d="M5.23 7.21a.75.75 0 011.06.02L10 11.147l3.71-3.916a.75.75 0 111.08 1.04l-4.243 4.475a.75.75 0 01-1.08 0L5.25 8.27a.75.75 0 01-.02-1.06z" />
+                      </svg>
+                    </button>
+                    <div
+                      class="invisible absolute right-0 z-10 mt-2 w-44 origin-top-right scale-95 rounded-lg border border-slate-200 bg-white p-1 opacity-0 shadow-soft transition-all duration-200 ease-in-out"
+                      data-menu-items>
+                      <a href="ipress-form.html?id=IP-0001"
+                        class="block rounded-md px-3 py-2 text-sm hover:bg-slate-50">Editar</a>
+                      <a href="#" class="block rounded-md px-3 py-2 text-sm hover:bg-slate-50">Eliminar</a>
+                      <a href="ipress-detalle.html?id=IP-0001"
+                        class="block rounded-md px-3 py-2 text-sm hover:bg-slate-50">Ver detalles</a>
                     </div>
                   </div>
                 </td>
@@ -303,11 +459,15 @@
         <div class="mt-4 flex items-center justify-between">
           <p class="text-sm text-slate-500">Página 1 de 6</p>
           <div class="flex items-center gap-2">
-            <button class="rounded-lg border border-slate-200 bg-white px-3 py-1.5 text-sm text-slate-700 hover:bg-slate-50">Anterior</button>
+            <button
+              class="rounded-lg border border-slate-200 bg-white px-3 py-1.5 text-sm text-slate-700 hover:bg-slate-50">Anterior</button>
             <button class="rounded-lg bg-brand-600 px-3 py-1.5 text-sm font-medium text-white">1</button>
-            <button class="rounded-lg border border-slate-200 bg-white px-3 py-1.5 text-sm text-slate-700 hover:bg-slate-50">2</button>
-            <button class="rounded-lg border border-slate-200 bg-white px-3 py-1.5 text-sm text-slate-700 hover:bg-slate-50">3</button>
-            <button class="rounded-lg border border-slate-200 bg-white px-3 py-1.5 text-sm text-slate-700 hover:bg-slate-50">Siguiente</button>
+            <button
+              class="rounded-lg border border-slate-200 bg-white px-3 py-1.5 text-sm text-slate-700 hover:bg-slate-50">2</button>
+            <button
+              class="rounded-lg border border-slate-200 bg-white px-3 py-1.5 text-sm text-slate-700 hover:bg-slate-50">3</button>
+            <button
+              class="rounded-lg border border-slate-200 bg-white px-3 py-1.5 text-sm text-slate-700 hover:bg-slate-50">Siguiente</button>
           </div>
         </div>
       </section>
@@ -337,19 +497,35 @@
             </thead>
             <tbody class="divide-y divide-slate-100 text-slate-700">
               <tr class="hover:bg-slate-50/60">
-                <td class="px-4 py-3"><a href="ipress-detalle.html" class="font-medium text-slate-900 hover:underline">Ipress Santa Rosa</a><div class="text-xs text-slate-500">ID: IP-0002</div></td>
+                <td class="px-4 py-3"><a href="ipress-detalle.html"
+                    class="font-medium text-slate-900 hover:underline">Ipress Santa Rosa</a>
+                  <div class="text-xs text-slate-500">ID: IP-0002</div>
+                </td>
                 <td class="px-4 py-3">20999888777</td>
                 <td class="px-4 py-3">Arequipa, Cercado</td>
                 <td class="px-4 py-3">3</td>
                 <td class="px-4 py-3">9</td>
-                <td class="px-4 py-3"><span class="rounded-full bg-rose-50 px-2.5 py-1 text-xs font-medium text-rose-700">Inactiva</span></td>
+                <td class="px-4 py-3"><span
+                    class="rounded-full bg-rose-50 px-2.5 py-1 text-xs font-medium text-rose-700">Inactiva</span></td>
                 <td class="px-4 py-3 text-right">
-                  <div class="relative inline-block text-left">
-                    <button class="dropdown-btn rounded-lg border border-slate-200 bg-white px-2 py-1.5 text-sm hover:bg-slate-50">Opciones ▾</button>
-                    <div class="dropdown-menu invisible absolute right-0 z-10 mt-2 w-40 origin-top-right rounded-xl border border-slate-200 bg-white p-1 text-sm shadow-soft opacity-0 transition">
-                      <a href="ipress-form.html?id=IP-0002" class="group flex items-center gap-2 rounded-lg px-3 py-2 hover:bg-slate-50">Editar</a>
-                      <a href="ipress-eliminar.html?id=IP-0002" class="group flex items-center gap-2 rounded-lg px-3 py-2 hover:bg-rose-50"><span class='text-rose-600'>Eliminar</span></a>
-                      <a href="ipress-detalle.html?id=IP-0002" class="group flex items-center gap-2 rounded-lg px-3 py-2 hover:bg-slate-50">Ver detalles</a>
+                  <div class="relative inline-block text-left" data-menu>
+                    <button
+                      class="inline-flex items-center gap-2 rounded-lg border border-slate-200 bg-white px-3 py-1.5 text-sm hover:bg-slate-50"
+                      data-menu-button>
+                      Opciones
+                      <svg class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                        <path
+                          d="M5.23 7.21a.75.75 0 011.06.02L10 11.147l3.71-3.916a.75.75 0 111.08 1.04l-4.243 4.475a.75.75 0 01-1.08 0L5.25 8.27a.75.75 0 01-.02-1.06z" />
+                      </svg>
+                    </button>
+                    <div
+                      class="invisible absolute right-0 z-10 mt-2 w-44 origin-top-right scale-95 rounded-lg border border-slate-200 bg-white p-1 opacity-0 shadow-soft transition-all duration-200 ease-in-out"
+                      data-menu-items>
+                      <a href="ipress-form.html?id=IP-0001"
+                        class="block rounded-md px-3 py-2 text-sm hover:bg-slate-50">Editar</a>
+                      <a href="#" class="block rounded-md px-3 py-2 text-sm hover:bg-slate-50">Eliminar</a>
+                      <a href="ipress-detalle.html?id=IP-0001"
+                        class="block rounded-md px-3 py-2 text-sm hover:bg-slate-50">Ver detalles</a>
                     </div>
                   </div>
                 </td>
@@ -362,11 +538,15 @@
         <div class="mt-4 flex items-center justify-between">
           <p class="text-sm text-slate-500">Página 1 de 6</p>
           <div class="flex items-center gap-2">
-            <button class="rounded-lg border border-slate-200 bg-white px-3 py-1.5 text-sm text-slate-700 hover:bg-slate-50">Anterior</button>
+            <button
+              class="rounded-lg border border-slate-200 bg-white px-3 py-1.5 text-sm text-slate-700 hover:bg-slate-50">Anterior</button>
             <button class="rounded-lg bg-brand-600 px-3 py-1.5 text-sm font-medium text-white">1</button>
-            <button class="rounded-lg border border-slate-200 bg-white px-3 py-1.5 text-sm text-slate-700 hover:bg-slate-50">2</button>
-            <button class="rounded-lg border border-slate-200 bg-white px-3 py-1.5 text-sm text-slate-700 hover:bg-slate-50">3</button>
-            <button class="rounded-lg border border-slate-200 bg-white px-3 py-1.5 text-sm text-slate-700 hover:bg-slate-50">Siguiente</button>
+            <button
+              class="rounded-lg border border-slate-200 bg-white px-3 py-1.5 text-sm text-slate-700 hover:bg-slate-50">2</button>
+            <button
+              class="rounded-lg border border-slate-200 bg-white px-3 py-1.5 text-sm text-slate-700 hover:bg-slate-50">3</button>
+            <button
+              class="rounded-lg border border-slate-200 bg-white px-3 py-1.5 text-sm text-slate-700 hover:bg-slate-50">Siguiente</button>
           </div>
         </div>
       </section>
@@ -376,7 +556,7 @@
   <!-- Footer -->
   <footer class="fixed bottom-0 left-0 right-0 z-40 border-t border-slate-200 bg-white/90 backdrop-blur">
     <div class="mx-auto flex h-12 max-w-screen-2xl items-center justify-between px-6 text-sm text-slate-600">
-      <p> 2023 NextIaCorp • Todos los derechos reservados</p>
+      <p>© <span id="y"></span> NextIaCorp • Todos los derechos reservados</p>
       <nav class="hidden gap-4 md:flex">
         <a class="hover:text-slate-900" href="privacidad.html">Privacidad</a>
         <a class="hover:text-slate-900" href="terminos.html">Términos</a>
@@ -384,13 +564,14 @@
       </nav>
     </div>
   </footer>
+  
 
   <script>
     // Año
     document.getElementById('y').textContent = new Date().getFullYear();
 
     // Logo dinámico de la landing
-    (function loadLogo(){
+    /*(function loadLogo() {
       const logoEl = document.getElementById('logo');
       const candidates = [
         'https://www.nextiacorp.com/logo.svg',
@@ -403,8 +584,8 @@
         'https://www.nextiacorp.com/favicon.png'
       ];
       let i = 0;
-      function tryNext(){
-        if(i >= candidates.length){ logoEl.remove(); return; }
+      function tryNext() {
+        if (i >= candidates.length) { logoEl.remove(); return; }
         const url = candidates[i++];
         const test = new Image();
         test.onload = () => { logoEl.src = url; };
@@ -412,33 +593,71 @@
         test.src = url + (url.includes('?') ? '&' : '?') + 'v=' + Date.now();
       }
       tryNext();
-    })();
+    })();*/
 
-      document.addEventListener('click', function(e){
-        const isBtn = e.target.closest('.dropdown-btn');
-        // Cierra todos
-        document.querySelectorAll('.dropdown-menu').forEach(m=>{ m.classList.add('invisible','opacity-0'); });
-        if(isBtn){
-          const menu = isBtn.parentElement.querySelector('.dropdown-menu');
-          menu.classList.toggle('invisible');
-          menu.classList.toggle('opacity-0');
+    // Menú de opciones grupal accesible
+    document.querySelectorAll('[data-menu]').forEach((wrap) => {
+      const btn = wrap.querySelector('[data-menu-button]');
+      const menu = wrap.querySelector('[data-menu-items]');
+      
+      function close() { 
+        menu.classList.add('invisible', 'opacity-0', 'scale-95'); 
+      }
+      
+      function open() { 
+        menu.classList.remove('invisible', 'opacity-0', 'scale-95'); 
+      }
+      
+      // Inicializar cerrado
+      close();
+      
+      btn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const isHidden = menu.classList.contains('invisible');
+        
+        // Cerrar todos los otros menús
+        document.querySelectorAll('[data-menu-items]').forEach(m => { 
+          if (m !== menu) {
+            m.classList.add('invisible', 'opacity-0', 'scale-95'); 
+          }
+        });
+        
+        // Alternar el menú actual
+        if (isHidden) {
+          open();
+        } else {
+          close();
         }
       });
-
-      // Tabs
-      document.querySelectorAll('.tab-btn').forEach(btn => {
-        btn.addEventListener('click', () => {
-          const tab = btn.dataset.tab;
-          document.querySelectorAll('.tab-btn').forEach(b => {
-            b.classList.remove('border-brand-600','text-brand-600');
-            b.classList.add('border-transparent','text-slate-500');
-          });
-          btn.classList.add('border-brand-600','text-brand-600');
-          btn.classList.remove('border-transparent','text-slate-500');
-          document.querySelectorAll('.tab-panel').forEach(p => p.classList.add('hidden'));
-          document.getElementById(tab).classList.remove('hidden');
-        });
+      
+      // Cerrar al hacer clic fuera
+      document.addEventListener('click', (e) => {
+        if (!wrap.contains(e.target)) {
+          close();
+        }
       });
-    </script>
-  </body>
-  </html>
+      
+      // Cerrar con Escape
+      wrap.addEventListener('keydown', (e) => { 
+        if (e.key === 'Escape') close(); 
+      });
+    });
+
+    // Tabs
+    document.querySelectorAll('.tab-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const tab = btn.dataset.tab;
+        document.querySelectorAll('.tab-btn').forEach(b => {
+          b.classList.remove('border-brand-600', 'text-brand-600');
+          b.classList.add('border-transparent', 'text-slate-500');
+        });
+        btn.classList.add('border-brand-600', 'text-brand-600');
+        btn.classList.remove('border-transparent', 'text-slate-500');
+        document.querySelectorAll('.tab-panel').forEach(p => p.classList.add('hidden'));
+        document.getElementById(tab).classList.remove('hidden');
+      });
+    });
+  </script>
+</body>
+
+</html>
