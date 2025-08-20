@@ -410,25 +410,6 @@
   <script>
     // Año footer
     document.getElementById('y').textContent = new Date().getFullYear();
-
-    // Carga de logo (intenta varias rutas del sitio)
-    (function loadLogo(){
-      const logoEl = document.getElementById('logo');
-      const urls = [
-        'https://www.nextiacorp.com/logo.svg','https://www.nextiacorp.com/logo.png',
-        'https://www.nextiacorp.com/assets/logo.svg','https://www.nextiacorp.com/assets/logo.png',
-        'https://www.nextiacorp.com/img/logo.svg','https://www.nextiacorp.com/img/logo.png',
-        'https://www.nextiacorp.com/favicon.svg','https://www.nextiacorp.com/favicon.png'
-      ];
-      let i = 0;
-      function tryNext(){
-        if(i>=urls.length){logoEl.remove();return;}
-        const u = urls[i++]; const t = new Image();
-        t.onload = ()=>logoEl.src = u; t.onerror = tryNext;
-        t.src = u + (u.includes('?')?'&':'?') + 'v=' + Date.now();
-      } tryNext();
-    })();
-
     // Tabs
     const btns = document.querySelectorAll('.tab-btn');
     const panels = document.querySelectorAll('.tab-panel');

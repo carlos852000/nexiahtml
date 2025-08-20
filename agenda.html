@@ -443,46 +443,44 @@
     // Año
     document.getElementById('y').textContent = new Date().getFullYear();
 
-    // Logo dinámico (mismo mecanismo que otras pantallas)
-    (function loadLogo(){
-      const logoEl = document.getElementById('logo');
-      const candidates = [
-        'https://www.nextiacorp.com/logo.svg',
-        'https://www.nextiacorp.com/logo.png',
-        'https://www.nextiacorp.com/assets/logo.svg',
-        'https://www.nextiacorp.com/assets/logo.png',
-        'https://www.nextiacorp.com/img/logo.svg',
-        'https://www.nextiacorp.com/img/logo.png',
-        'https://www.nextiacorp.com/favicon.svg',
-        'https://www.nextiacorp.com/favicon.png'
-      ];
-      let i = 0;
-      function tryNext(){
-        if(i >= candidates.length){ logoEl.remove(); return; }
-        const url = candidates[i++];
-        const test = new Image();
-        test.onload = () => { logoEl.src = url; };
-        test.onerror = tryNext;
-        test.src = url + (url.includes('?') ? '&' : '?') + 'v=' + Date.now();
-      }
-      tryNext();
-    })();
-
     // Menú de opciones grupal accesible
-    document.querySelectorAll('[data-menu]').forEach((wrap)=>{
+    document.querySelectorAll('[data-menu]').forEach((wrap) => {
       const btn = wrap.querySelector('[data-menu-button]');
       const menu = wrap.querySelector('[data-menu-items]');
-      function close(){ menu.classList.add('invisible','opacity-0','scale-95'); }
-      function open(){ menu.classList.remove('invisible','opacity-0','scale-95'); }
+      function close() {
+        menu.classList.add('invisible', 'opacity-0', 'scale-95');
+      }
+      function open() {
+        menu.classList.remove('invisible', 'opacity-0', 'scale-95');
+      }
+      // Inicializar cerrado
       close();
-      btn.addEventListener('click', (e)=>{
+      btn.addEventListener('click', (e) => {
         e.stopPropagation();
         const isHidden = menu.classList.contains('invisible');
-        document.querySelectorAll('[data-menu-items]').forEach(m=>{ m.classList.add('invisible','opacity-0','scale-95'); });
-        isHidden ? open() : close();
+        // Cerrar todos los otros menús
+        document.querySelectorAll('[data-menu-items]').forEach(m => {
+          if (m !== menu) {
+            m.classList.add('invisible', 'opacity-0', 'scale-95');
+          }
+        });
+        // Alternar el menú actual
+        if (isHidden) {
+          open();
+        } else {
+          close();
+        }
       });
-      document.addEventListener('click', close);
-      wrap.addEventListener('keydown', (e)=>{ if(e.key==='Escape') close(); });
+      // Cerrar al hacer clic fuera
+      document.addEventListener('click', (e) => {
+        if (!wrap.contains(e.target)) {
+          close();
+        }
+      });
+      // Cerrar con Escape
+      wrap.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') close();
+      });
     });
 
     // Tabs

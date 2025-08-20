@@ -299,11 +299,6 @@
   <script>
     // Año y logo
     document.getElementById('y').textContent = new Date().getFullYear();
-    (function loadLogo(){
-      const logoEl = document.getElementById('logo');
-      const candidates = ['https://www.nextiacorp.com/logo.svg','https://www.nextiacorp.com/logo.png','https://www.nextiacorp.com/assets/logo.svg','https://www.nextiacorp.com/assets/logo.png','https://www.nextiacorp.com/img/logo.svg','https://www.nextiacorp.com/img/logo.png','https://www.nextiacorp.com/favicon.svg','https://www.nextiacorp.com/favicon.png'];
-      let i=0; function tryNext(){ if(i>=candidates.length){logoEl.remove();return;} const url=candidates[i++]; const test=new Image(); test.onload=()=>logoEl.src=url; test.onerror=tryNext; test.src=url; } tryNext(); })();
-
     // Utilidades de fecha
     const calState = { current: new Date() };
     calState.current.setDate(1); // al primero del mes
