@@ -1,0 +1,560 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>NextIaDoctor • Sede • Servicios – Formulario</title>
+  <!-- Tailwind para prototipo -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {50:'#eef2ff',100:'#e0e7ff',200:'#c7d2fe',300:'#a5b4fc',400:'#818cf8',500:'#6366f1',600:'#4f46e5',700:'#4338ca',800:'#3730a3',900:'#312e81'},
+            accent: {50:'#ecfeff',100:'#cffafe',200:'#a5f3fc',300:'#67e8f9',400:'#22d3ee',500:'#06b6d4',600:'#0891b2',700:'#0e7490',800:'#155e75',900:'#164e63'}
+          },
+          boxShadow: { soft:'0 8px 24px rgba(2,6,23,.06)'}
+        }
+      }
+    }
+  </script>
+  <style>
+    *{ scrollbar-width: thin; scrollbar-color: #cbd5e1 transparent; }
+    *::-webkit-scrollbar{height:8px;width:8px}
+    *::-webkit-scrollbar-thumb{background:#cbd5e1;border-radius:8px}
+    .scrollbar-hide::-webkit-scrollbar{display:none}
+    .scrollbar-hide{ -ms-overflow-style:none; scrollbar-width:none }
+    .table-input{ @apply w-full rounded-lg border border-slate-200 bg-white px-2 py-1.5 text-sm focus:border-brand-600 focus:outline-none focus:ring-4 focus:ring-brand-600/10; }
+  </style>
+</head>
+<body class="min-h-screen bg-slate-50 text-slate-800">
+  <!-- Topbar -->
+  <header class="fixed inset-x-0 top-0 z-40 bg-gradient-to-r from-brand-600 to-accent-500 text-white shadow-soft">
+    <div class="mx-auto flex h-16 max-w-screen-2xl items-center justify-between px-4">
+      <div class="flex items-center gap-3">
+        <a href="ipress-sedes.html" class="inline-flex items-center gap-3">
+          <div class="select-none text-lg font-semibold tracking-wide">NextIaCorp</div>
+        </a>
+        <!-- Breadcrumb contextual -->
+        <div class="hidden items-center gap-2 rounded-lg bg-white/15 px-3 py-1.5 md:flex">
+          <span class="font-semibold">IPRESS San Martín</span>
+          <span class="hidden text-xs text-white/70 md:inline">›</span>
+          <span class="hidden text-xs text-white/95 md:inline">Sede Miraflores</span>
+        </div>
+      </div>
+      <nav class="flex items-center gap-2">
+        <a href="#" class="hidden rounded-lg bg-white/10 px-3 py-1.5 text-sm font-medium backdrop-blur hover:bg-white/20 md:inline">Soporte</a>
+        <img src="https://api.dicebear.com/7.x/initials/svg?seed=ND" alt="avatar" class="h-8 w-8 rounded-full ring-2 ring-white/30"/>
+      </nav>
+    </div>
+  </header>
+
+  <!-- NAV NIVEL 2 (Sede) -->
+  <nav class="fixed top-16 inset-x-0 z-30 bg-white border-b border-slate-200 shadow-soft" aria-label="Navegación de Sede">
+    <div class="mx-auto max-w-screen-2xl px-4">
+      <div class="flex items-center justify-between">
+        <!-- Tabs/menú de la Sede -->
+        <div class="flex items-center overflow-x-auto py-2 gap-2 scrollbar-hide">
+          <a href="sede-dashboard.html" class="flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50 transition-all">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" class="h-5 w-5 text-brand-600"><path stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2 0v10a1 1 0 01-1 1h-3m-6 0h6"/></svg>
+            <span>Dashboard</span>
+          </a>
+          <a href="sede-consultorios.html" class="flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50 transition-all">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" class="h-5 w-5 text-brand-600"><path stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
+            <span>Consultorios</span>
+          </a>
+          <a href="sede-usuarios.html" class="flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50 transition-all">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" class="h-5 w-5 text-brand-600"><path stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+            <span>Usuarios</span>
+          </a>
+          <a href="sede-medicos.html" class="flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50 transition-all">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" class="h-5 w-5 text-brand-600"><path stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" d="M4 7a4 4 0 118 0 4 4 0 01-8 0zm12 4h4m-2-2v4m-6 4a6 6 0 10-12 0"/></svg>
+            <span>Médicos</span>
+          </a>
+          <a href="sede-especialidades.html" class="flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50 transition-all">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" class="h-5 w-5 text-brand-600"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 6a3 3 0 10-6 0v5a3 3 0 106 0V9m0 2a4 4 0 104 4h1a3 3 0 003-3V6"/></svg>
+            <span>Especialidades</span>
+          </a>
+          <!-- Servicios activo -->
+          <a href="sede-servicios.html" aria-current="page" class="flex items-center gap-2 rounded-lg bg-brand-50 px-3 py-2 text-sm font-semibold text-brand-700 border-b-2 border-brand-600 transition-all">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" class="h-5 w-5 text-brand-600"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 7l9-4 9 4-9 4-9-4m0 5l9 4 9-4m-18 5l9 4 9-4"/></svg>
+            <span>Servicios</span>
+          </a>
+          <a href="sede-horarios.html" class="flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50 transition-all">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" class="h-5 w-5 text-brand-600"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 6v6l4 2m6-2a10 10 0 11-20 0 10 10 0 0120 0z"/></svg>
+            <span>Horarios</span>
+          </a>
+        </div>
+        <!-- Acciones rápidas -->
+        <div class="flex items-center gap-2">
+          <a href="sede-servicios.html" class="flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50 transition-all"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" class="h-5 w-5 text-brand-600"><path stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" d="M3 12h18"/></svg><span>Volver</span></a>
+          <a href="reporte.html" class="hidden md:flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50 transition-all"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" class="h-5 w-5 text-brand-600"><path stroke-width="1.5" d="M12 14l9-5-9-5-9 5 9 5z"/><path stroke-width="1.5" d="M12 14l6.16-3.422A12.083 12.083 0 016 8.577M12 14v7"/></svg><span>Reportes</span></a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main -->
+  <main class="pt-36 pb-24">
+    <div class="mx-auto max-w-screen-2xl px-6">
+      <!-- Breadcrumbs -->
+      <nav class="text-xs text-slate-500">
+        <a class="hover:underline" href="ipress.html">IPRESS</a> /
+        <a class="hover:underline" href="sede-dashboard.html">Sede Miraflores</a> /
+        <a class="hover:underline" href="sede-servicios.html">Servicios</a> /
+        <span class="text-slate-700 font-medium">Registrar Servicio</span>
+      </nav>
+
+      <!-- Header -->
+      <div class="mt-1 mb-6 flex flex-wrap items-center justify-between gap-3">
+        <div>
+          <h1 class="text-2xl font-semibold tracking-tight text-slate-800">Registrar / Editar Servicio de la Sede</h1>
+          <p class="text-sm text-slate-500">Vincula un servicio del catálogo y define reglas de publicación, reserva y tarifas para esta sede.</p>
+        </div>
+        <div class="flex items-center gap-2">
+          <a href="sede-servicios.html" class="rounded-lg border border-slate-200 bg-white px-4 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50">← Volver a la bandeja</a>
+        </div>
+      </div>
+
+      <!-- Form -->
+      <form id="sedeServicioForm" class="grid gap-6 lg:grid-cols-3">
+        <!-- Columna izquierda -->
+        <section class="lg:col-span-2 space-y-6">
+
+          <!-- 1. Selección del catálogo (servicio_clinico) & overrides -->
+          <div class="rounded-2xl border border-slate-200 bg-white p-5 shadow-soft">
+            <h2 class="mb-4 text-lg font-semibold">Servicio del catálogo</h2>
+            <div class="grid gap-4 md:grid-cols-3">
+              <div class="md:col-span-2">
+                <label class="mb-1 block text-sm font-medium text-slate-700">Servicio (catálogo maestro)</label>
+                <input name="servicio_nombre" list="listaServicios" placeholder="Buscar por nombre/código…" class="w-full rounded-lg border border-slate-200 bg-white px-3 py-2.5 text-sm focus:border-brand-600 focus:outline-none focus:ring-4 focus:ring-brand-600/15" required>
+                <datalist id="listaServicios">
+                  <option value="SRV-001 • Consulta de Cardiología"></option>
+                  <option value="SRV-077 • Electrocardiograma (ECG)"></option>
+                  <option value="SRV-145 • Papanicolaou"></option>
+                  <option value="SRV-210 • Ecografía obstétrica"></option>
+                </datalist>
+                <p class="mt-1 text-xs text-slate-400">Origen: <span class="font-medium">servicio_clinico</span></p>
+              </div>
+              <div>
+                <label class="mb-1 block text-sm font-medium text-slate-700">Código interno (sede)</label>
+                <input name="codigo_interno" type="text" placeholder="Opcional" class="w-full rounded-lg border border-slate-200 bg-white px-3 py-2.5 text-sm focus:border-brand-600 focus:outline-none focus:ring-4 focus:ring-brand-600/15"/>
+              </div>
+              <div>
+                <label class="mb-1 block text-sm font-medium text-slate-700">Código CUPS/CPT</label>
+                <input name="codigo_cups" type="text" placeholder="Ej. 99213 / 89.01" class="w-full rounded-lg border border-slate-200 bg-white px-3 py-2.5 text-sm focus:border-brand-600 focus:outline-none focus:ring-4 focus:ring-brand-600/15"/>
+              </div>
+              <div>
+                <label class="mb-1 block text-sm font-medium text-slate-700">Categoría</label>
+                <select name="categoria" class="w-full rounded-lg border border-slate-200 bg-slate-50 px-3 py-2.5 text-sm" disabled>
+                  <option>Consulta</option><option>Procedimiento</option><option>Apoyo diagnóstico</option>
+                </select>
+              </div>
+              <div>
+                <label class="mb-1 block text-sm font-medium text-slate-700">Tipo</label>
+                <select name="tipo" class="w-full rounded-lg border border-slate-200 bg-white px-3 py-2.5 text-sm focus:border-brand-600 focus:outline-none">
+                  <option>Ambulatorio</option><option>Emergencia</option><option>Hospitalario</option>
+                </select>
+              </div>
+              <div>
+                <label class="mb-1 block text-sm font-medium text-slate-700">Modalidad</label>
+                <select name="modalidad" class="w-full rounded-lg border border-slate-200 bg-white px-3 py-2.5 text-sm focus:border-brand-600 focus:outline-none">
+                  <option value="HEREDAR">Heredar del catálogo</option>
+                  <option>Presencial</option><option>Virtual</option><option>Domiciliaria</option>
+                </select>
+              </div>
+              <div>
+                <label class="mb-1 block text-sm font-medium text-slate-700">Duración (min)</label>
+                <input name="duracion" type="number" min="5" step="5" placeholder="Ej. 30" class="w-full rounded-lg border border-slate-200 bg-white px-3 py-2.5 text-sm focus:border-brand-600 focus:outline-none"/>
+              </div>
+              <div>
+                <label class="mb-1 block text-sm font-medium text-slate-700">Estado</label>
+                <select name="estado" class="w-full rounded-lg border border-slate-200 bg-white px-3 py-2.5 text-sm focus:border-brand-600 focus:outline-none">
+                  <option value="ACTIVO" selected>ACTIVO</option>
+                  <option value="INACTIVO">INACTIVO</option>
+                </select>
+              </div>
+              <div class="md:col-span-3 grid gap-3 md:grid-cols-3">
+                <label class="inline-flex items-center gap-2 text-sm text-slate-700"><input type="checkbox" name="publica_web" class="h-4 w-4 rounded border-slate-300 text-brand-600 focus:ring-brand-600"> Publicar en web</label>
+                <label class="inline-flex items-center gap-2 text-sm text-slate-700"><input type="checkbox" name="visible_reserva" class="h-4 w-4 rounded border-slate-300 text-brand-600 focus:ring-brand-600"> Visible para reservas</label>
+                <label class="inline-flex items-center gap-2 text-sm text-slate-700"><input type="checkbox" name="requiere_autorizacion" class="h-4 w-4 rounded border-slate-300 text-brand-600 focus:ring-brand-600"> Requiere pre-autorización</label>
+              </div>
+            </div>
+          </div>
+
+          <!-- 2. Reglas de reserva (sede_servicio.reglas_reserva_json) -->
+          <div class="rounded-2xl border border-slate-200 bg-white p-5 shadow-soft">
+            <h2 class="mb-4 text-lg font-semibold">Reglas de reserva</h2>
+            <div class="grid gap-4 md:grid-cols-6">
+              <div>
+                <label class="mb-1 block text-xs font-medium text-slate-600">Anticipación mín. (horas)</label>
+                <input name="ant_min_h" type="number" min="0" class="w-full rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm focus:border-brand-600 focus:outline-none" placeholder="0"/>
+              </div>
+              <div>
+                <label class="mb-1 block text-xs font-medium text-slate-600">Anticipación máx. (días)</label>
+                <input name="ant_max_d" type="number" min="0" class="w-full rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm focus:border-brand-600 focus:outline-none" placeholder="30"/>
+              </div>
+              <div>
+                <label class="mb-1 block text-xs font-medium text-slate-600">Cancelación (mín. h)</label>
+                <input name="cancel_min_h" type="number" min="0" class="w-full rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm" placeholder="2"/>
+              </div>
+              <div>
+                <label class="mb-1 block text-xs font-medium text-slate-600">Intervalo (min)</label>
+                <input name="intervalo_min" type="number" min="5" step="5" class="w-full rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm" placeholder="30"/>
+              </div>
+              <div>
+                <label class="mb-1 block text-xs font-medium text-slate-600">Buffer antes (min)</label>
+                <input name="buffer_antes" type="number" min="0" step="5" class="w-full rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm"/>
+              </div>
+              <div>
+                <label class="mb-1 block text-xs font-medium text-slate-600">Buffer después (min)</label>
+                <input name="buffer_despues" type="number" min="0" step="5" class="w-full rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm"/>
+              </div>
+              <div class="md:col-span-2">
+                <label class="mb-1 block text-xs font-medium text-slate-600">Cupo por franja</label>
+                <input name="cupo_franja" type="number" min="1" class="w-full rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm" placeholder="1"/>
+              </div>
+              <div class="md:col-span-2">
+                <label class="mb-1 block text-xs font-medium text-slate-600">Canales habilitados</label>
+                <select name="canales" multiple class="w-full rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm min-h-[40px]">
+                  <option value="WEB" selected>Web</option>
+                  <option value="CALLCENTER">Call center</option>
+                  <option value="VENTANILLA">Ventanilla</option>
+                </select>
+                <p class="mt-1 text-xs text-slate-400">Ctrl/Cmd + click para múltiples</p>
+              </div>
+              <div class="md:col-span-2 grid gap-2 content-start">
+                <label class="mb-1 block text-xs font-medium text-slate-600">Restricciones</label>
+                <div class="grid grid-cols-2 gap-2">
+                  <input name="edad_min" type="number" placeholder="Edad min" class="w-full rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm"/>
+                  <input name="edad_max" type="number" placeholder="Edad max" class="w-full rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm"/>
+                </div>
+                <select name="sexo" class="w-full rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm">
+                  <option value="TODOS">Sexo: Todos</option>
+                  <option value="F">Solo Femenino</option>
+                  <option value="M">Solo Masculino</option>
+                </select>
+                <label class="inline-flex items-center gap-2 text-sm text-slate-700 mt-1"><input type="checkbox" name="requiere_orden_medica" class="h-4 w-4 rounded border-slate-300 text-brand-600 focus:ring-brand-600"> Requiere orden médica</label>
+              </div>
+            </div>
+          </div>
+
+          <!-- 3. Vinculaciones (especialidades / consultorios) -->
+          <div class="rounded-2xl border border-slate-200 bg-white p-5 shadow-soft">
+            <h2 class="mb-4 text-lg font-semibold">Vinculaciones</h2>
+            <div class="grid gap-4 md:grid-cols-2">
+              <div>
+                <label class="mb-1 block text-sm font-medium text-slate-700">Especialidades</label>
+                <select name="especialidades" multiple class="w-full rounded-lg border border-slate-200 bg-white px-3 py-2.5 text-sm min-h-[110px]">
+                  <option>Cardiología</option>
+                  <option>Dermatología</option>
+                  <option>Pediatría</option>
+                  <option>Ginecología</option>
+                  <option>Medicina Interna</option>
+                </select>
+                <p class="mt-1 text-xs text-slate-400">Pivote: <span class="font-medium">especialidad_servicio</span> o <span class="font-medium">sede_servicio_especialidad</span>.</p>
+              </div>
+              <div>
+                <label class="mb-1 block text-sm font-medium text-slate-700">Consultorios donde se atiende</label>
+                <select name="consultorios" multiple class="w-full rounded-lg border border-slate-200 bg-white px-3 py-2.5 text-sm min-h-[110px]">
+                  <option>Consultorio 101</option>
+                  <option>Consultorio 203</option>
+                  <option>Emergencia Box 5</option>
+                </select>
+                <p class="mt-1 text-xs text-slate-400">Usar tabla de relación sede_servicio_consultorio (sugerida).</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- 4. Publicación y contenidos -->
+          <div class="rounded-2xl border border-slate-200 bg-white p-5 shadow-soft">
+            <h2 class="mb-4 text-lg font-semibold">Publicación y contenidos</h2>
+            <div class="grid gap-4 md:grid-cols-3">
+              <div class="md:col-span-3">
+                <label class="mb-1 block text-sm font-medium text-slate-700">Descripción breve / SEO snippet</label>
+                <textarea name="descripcion_publica" rows="2" placeholder="Texto opcional que verán los pacientes en la web" class="w-full rounded-lg border border-slate-200 bg-white px-3 py-2.5 text-sm"></textarea>
+              </div>
+              <div>
+                <label class="mb-1 block text-sm font-medium text-slate-700">Idiomas disponibles</label>
+                <select name="idiomas" multiple class="w-full rounded-lg border border-slate-200 bg-white px-3 py-2.5 text-sm min-h-[40px]">
+                  <option value="es" selected>Español</option>
+                  <option value="en">Inglés</option>
+                </select>
+              </div>
+              <div class="md:col-span-2">
+                <label class="mb-1 block text-sm font-medium text-slate-700">Requisitos visibles</label>
+                <div class="grid gap-2 sm:grid-cols-2">
+                  <label class="inline-flex items-center gap-2 text-sm text-slate-700"><input type="checkbox" name="req_ayuno" class="h-4 w-4 rounded border-slate-300 text-brand-600 focus:ring-brand-600"> Ayuno</label>
+                  <label class="inline-flex items-center gap-2 text-sm text-slate-700"><input type="checkbox" name="req_documento" class="h-4 w-4 rounded border-slate-300 text-brand-600 focus:ring-brand-600"> Documento de identidad</label>
+                  <label class="inline-flex items-center gap-2 text-sm text-slate-700"><input type="checkbox" name="req_resultados_prev" class="h-4 w-4 rounded border-slate-300 text-brand-600 focus:ring-brand-600"> Resultados previos</label>
+                  <label class="inline-flex items-center gap-2 text-sm text-slate-700"><input type="checkbox" name="req_orden_medica" class="h-4 w-4 rounded border-slate-300 text-brand-600 focus:ring-brand-600"> Orden médica</label>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 5. Tarifas por aseguradora (tarifa_servicio_sede) -->
+          <div class="rounded-2xl border border-slate-200 bg-white p-5 shadow-soft">
+            <div class="mb-3 flex items-center justify-between">
+              <h2 class="text-lg font-semibold">Tarifas por aseguradora</h2>
+              <div class="flex items-center gap-3 text-sm">
+                <label class="inline-flex items-center gap-2"><input type="checkbox" name="usa_tarifa_base" checked class="h-4 w-4 rounded border-slate-300 text-brand-600 focus:ring-brand-600"> Usar tarifa base para particular</label>
+                <button type="button" id="addTarifa" class="rounded-md bg-brand-600 px-3 py-1.5 text-white hover:bg-brand-700">+ Agregar fila</button>
+              </div>
+            </div>
+            <div class="overflow-x-auto">
+              <table class="min-w-full text-left text-sm">
+                <thead class="border-y border-slate-200 bg-slate-50 text-slate-500">
+                  <tr>
+                    <th class="px-3 py-2">Aseguradora</th>
+                    <th class="px-3 py-2">Código convenio</th>
+                    <th class="px-3 py-2">Precio (PEN)</th>
+                    <th class="px-3 py-2">Desde</th>
+                    <th class="px-3 py-2">Hasta</th>
+                    <th class="px-3 py-2">IGV inc.</th>
+                    <th class="px-3 py-2 text-right">Acciones</th>
+                  </tr>
+                </thead>
+                <tbody id="tarifasBody" class="divide-y divide-slate-100">
+                  <tr>
+                    <td class="px-3 py-2"><select class="table-input" name="tarifa[0][aseguradora]"><option value="PARTICULAR">PARTICULAR</option><option>RIMAC</option><option>MAPFRE</option><option>PACIFICO</option></select></td>
+                    <td class="px-3 py-2"><input class="table-input" name="tarifa[0][convenio]" placeholder="Opcional"/></td>
+                    <td class="px-3 py-2"><input class="table-input" name="tarifa[0][precio]" type="number" min="0" step="0.01" placeholder="0.00"/></td>
+                    <td class="px-3 py-2"><input class="table-input" name="tarifa[0][desde]" type="date"/></td>
+                    <td class="px-3 py-2"><input class="table-input" name="tarifa[0][hasta]" type="date"/></td>
+                    <td class="px-3 py-2 text-center"><input type="checkbox" class="h-4 w-4 rounded border-slate-300 text-brand-600" name="tarifa[0][igv_inc]" checked></td>
+                    <td class="px-3 py-2 text-right"><button type="button" class="delFila rounded-md border border-slate-200 px-2 py-1 hover:bg-slate-50">Eliminar</button></td>
+                  </tr>
+                  <tr>
+                    <td class="px-3 py-2"><select class="table-input" name="tarifa[1][aseguradora]"><option>RIMAC</option><option>MAPFRE</option><option>PACIFICO</option></select></td>
+                    <td class="px-3 py-2"><input class="table-input" name="tarifa[1][convenio]" placeholder="COD-123"/></td>
+                    <td class="px-3 py-2"><input class="table-input" name="tarifa[1][precio]" type="number" min="0" step="0.01" placeholder="120.00"/></td>
+                    <td class="px-3 py-2"><input class="table-input" name="tarifa[1][desde]" type="date"/></td>
+                    <td class="px-3 py-2"><input class="table-input" name="tarifa[1][hasta]" type="date"/></td>
+                    <td class="px-3 py-2 text-center"><input type="checkbox" class="h-4 w-4 rounded border-slate-300 text-brand-600" name="tarifa[1][igv_inc]"></td>
+                    <td class="px-3 py-2 text-right"><button type="button" class="delFila rounded-md border border-slate-200 px-2 py-1 hover:bg-slate-50">Eliminar</button></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <p class="mt-2 text-xs text-slate-400">Tabla sugerida: <span class="font-medium">tarifa_servicio_sede</span> (sede_id, servicio_id, aseguradora_id, precio, vigente_desde, vigente_hasta, moneda).</p>
+          </div>
+
+          <!-- 6. Metadatos / backend -->
+          <div class="rounded-2xl border border-slate-200 bg-white p-5 shadow-soft">
+            <h2 class="mb-4 text-lg font-semibold">Metadatos</h2>
+            <div class="grid gap-4 md:grid-cols-4">
+              <div class="md:col-span-2">
+                <label class="mb-1 block text-sm font-medium text-slate-700">Usuario registra</label>
+                <input name="usuario_registra" type="text" placeholder="usuario@nextia" class="w-full rounded-lg border border-slate-200 bg-white px-3 py-2.5 text-sm"/>
+              </div>
+              <div>
+                <label class="mb-1 block text-sm font-medium text-slate-700">Fecha registro</label>
+                <input name="fecha_registro" type="datetime-local" class="w-full rounded-lg border border-slate-200 bg-white px-3 py-2.5 text-sm"/>
+              </div>
+              <div>
+                <label class="mb-1 block text-sm font-medium text-slate-700">Últ. actualización</label>
+                <input name="fecha_actualizacion" type="datetime-local" class="w-full rounded-lg border border-slate-200 bg-white px-3 py-2.5 text-sm"/>
+              </div>
+            </div>
+            <p class="mt-2 text-xs text-slate-400">Campos autocompletables por backend.</p>
+          </div>
+        </section>
+
+        <!-- Columna derecha -->
+        <aside class="space-y-6">
+          <div class="rounded-2xl border border-slate-200 bg-white p-5 shadow-soft">
+            <h3 class="mb-3 text-sm font-semibold text-slate-800">Acciones</h3>
+            <div class="grid gap-2">
+              <button type="submit" class="w-full rounded-lg bg-brand-600 px-4 py-2 text-sm font-semibold text-white hover:bg-brand-700">Guardar</button>
+              <button type="button" id="guardarNuevo" class="w-full rounded-lg border border-slate-200 bg-white px-4 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50">Guardar y nuevo</button>
+              <a href="sede-servicios.html" class="w-full rounded-lg border border-slate-200 bg-white px-4 py-2 text-center text-sm font-medium text-slate-700 hover:bg-slate-50">Cancelar</a>
+            </div>
+          </div>
+
+          <div class="rounded-2xl border border-slate-200 bg-white p-5 shadow-soft">
+            <h3 class="mb-2 text-sm font-semibold text-slate-800">Resumen</h3>
+            <ul class="space-y-2 text-sm text-slate-600">
+              <li>• Servicio: <span class="font-medium" id="sumServicio">(sin seleccionar)</span></li>
+              <li>• Modalidad: <span class="font-medium" id="sumModalidad">—</span> • Duración: <span class="font-medium" id="sumDuracion">—</span></li>
+              <li>• Publicación: <span class="font-medium" id="sumPublica">No</span> / Reservas: <span class="font-medium" id="sumVisible">No</span></li>
+              <li>• Tarifas configuradas: <span class="font-medium" id="sumTarifas">0</span></li>
+            </ul>
+          </div>
+
+          <div class="rounded-2xl border border-slate-200 bg-white p-5 shadow-soft">
+            <h3 class="mb-2 text-sm font-semibold text-slate-800">Ayuda</h3>
+            <p class="text-xs text-slate-500">Se crea/actualiza <span class="font-medium">sede_servicio</span> y, si corresponde, filas en <span class="font-medium">tarifa_servicio_sede</span> y pivotes de especialidad/consultorio.</p>
+          </div>
+        </aside>
+      </form>
+    </div>
+
+    <!-- Modal (demo) para aviso de guardado -->
+    <div id="saveModal" class="fixed inset-0 z-50 hidden items-center justify-center bg-slate-900/30 p-4">
+      <div class="w-full max-w-sm rounded-2xl border border-slate-200 bg-white p-5 shadow-soft">
+        <h3 class="text-base font-semibold text-slate-800">Servicio guardado</h3>
+        <p class="mt-1 text-sm text-slate-600">Se creó/actualizó el registro correctamente.</p>
+        <div class="mt-4 flex justify-end gap-2">
+          <a href="sede-servicios.html" class="rounded-lg border border-slate-200 bg-white px-3 py-1.5 text-sm hover:bg-slate-50">Ir a la bandeja</a>
+          <button data-close class="rounded-lg bg-brand-600 px-3 py-1.5 text-sm font-medium text-white hover:bg-brand-700">Seguir editando</button>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="fixed bottom-0 inset-x-0 z-40 border-t border-slate-200 bg-white/90 backdrop-blur">
+    <div class="mx-auto flex h-12 max-w-screen-2xl items-center justify-between px-6 text-sm text-slate-600">
+      <p>© <span id="y"></span> NextIaCorp • Sede Miraflores</p>
+      <nav class="hidden gap-4 md:flex">
+        <a class="hover:text-slate-900" href="#">Privacidad</a>
+        <a class="hover:text-slate-900" href="#">Términos</a>
+        <a class="hover:text-slate-900" href="#">Contacto</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script>
+    // Año
+    document.getElementById('y').textContent = new Date().getFullYear();
+
+    const form = document.getElementById('sedeServicioForm');
+    const tarifasBody = document.getElementById('tarifasBody');
+    const payloadTxt = document.getElementById('payload');
+
+    function buildPayload(){
+      const fd = new FormData(form);
+      // Leer tarifas
+      const tarifas = [];
+      tarifasBody.querySelectorAll('tr').forEach((tr)=>{
+        const row = {
+          aseguradora: tr.querySelector('[name*="[aseguradora]"]')?.value || null,
+          convenio: tr.querySelector('[name*="[convenio]"]')?.value || null,
+          precio: tr.querySelector('[name*="[precio]"]')?.value ? parseFloat(tr.querySelector('[name*="[precio]"]')?.value) : null,
+          vigente_desde: tr.querySelector('[name*="[desde]"]')?.value || null,
+          vigente_hasta: tr.querySelector('[name*="[hasta]"]')?.value || null,
+          igv_incluido: tr.querySelector('[name*="[igv_inc]"]')?.checked || false,
+          moneda: 'PEN'
+        };
+        if(row.aseguradora) tarifas.push(row);
+      });
+
+      // Canales
+      const canales = fd.getAll('canales');
+
+      const reglas = {
+        anticipacion_min_horas: toNumber(fd.get('ant_min_h')),
+        anticipacion_max_dias: toNumber(fd.get('ant_max_d')),
+        cancelacion_min_horas: toNumber(fd.get('cancel_min_h')),
+        intervalo_minutos: toNumber(fd.get('intervalo_min')),
+        buffer_antes_min: toNumber(fd.get('buffer_antes')),
+        buffer_despues_min: toNumber(fd.get('buffer_despues')),
+        cupo_por_franja: toNumber(fd.get('cupo_franja')),
+        canales: canales.length ? canales : ['WEB'],
+        restricciones: {
+          edad_min: toNumber(fd.get('edad_min')),
+          edad_max: toNumber(fd.get('edad_max')),
+          sexo: fd.get('sexo') || 'TODOS',
+          requiere_orden_medica: !!fd.get('requiere_orden_medica')
+        }
+      };
+
+      const payload = {
+        sede_servicio: {
+          servicio_catalogo_ref: fd.get('servicio_nombre') || null,
+          codigo_interno: fd.get('codigo_interno') || null,
+          codigo_cups_cpt: fd.get('codigo_cups') || null,
+          categoria: fd.get('categoria') || null,
+          tipo: fd.get('tipo') || null,
+          modalidad: fd.get('modalidad') === 'HEREDAR' ? null : fd.get('modalidad'),
+          duracion_min: toNumber(fd.get('duracion')),
+          estado: fd.get('estado') || 'ACTIVO',
+          publica_web: !!fd.get('publica_web'),
+          visible_reserva: !!fd.get('visible_reserva'),
+          requiere_pre_autorizacion: !!fd.get('requiere_autorizacion'),
+          descripcion_publica: fd.get('descripcion_publica') || null,
+          idiomas: fd.getAll('idiomas').length ? fd.getAll('idiomas') : ['es'],
+          reglas_reserva_json: reglas
+        },
+        especialidades: fd.getAll('especialidades'),
+        consultorios: fd.getAll('consultorios'),
+        tarifas: tarifas,
+        metadata: {
+          usuario_registra: fd.get('usuario_registra') || null,
+          fecha_registro: fd.get('fecha_registro') || null,
+          fecha_actualizacion: fd.get('fecha_actualizacion') || null
+        }
+      };
+
+      payloadTxt.value = JSON.stringify(payload, null, 2);
+      updateSummary();
+    }
+
+    function toNumber(v){ return v==null||v===''? null : Number(v); }
+
+    function updateSummary(){
+      const fd = new FormData(form);
+      document.getElementById('sumServicio').textContent = fd.get('servicio_nombre') || '(sin seleccionar)';
+      document.getElementById('sumModalidad').textContent = (fd.get('modalidad') === 'HEREDAR' ? 'Heredada' : (fd.get('modalidad')||'—'));
+      document.getElementById('sumDuracion').textContent = fd.get('duracion') ? (fd.get('duracion')+ ' min') : '—';
+      document.getElementById('sumPublica').textContent = form.publica_web.checked ? 'Sí' : 'No';
+      document.getElementById('sumVisible').textContent = form.visible_reserva.checked ? 'Sí' : 'No';
+      document.getElementById('sumTarifas').textContent = tarifasBody.querySelectorAll('tr').length;
+    }
+
+    // Eventos del form
+    form.addEventListener('input', buildPayload);
+    form.addEventListener('change', buildPayload);
+    buildPayload();
+
+    // Agregar/Eliminar filas de tarifas
+    document.getElementById('addTarifa').addEventListener('click', () => {
+      const idx = tarifasBody.querySelectorAll('tr').length;
+      const tr = document.createElement('tr');
+      tr.innerHTML = `
+        <td class="px-3 py-2"><select class="table-input" name="tarifa[${idx}][aseguradora]"><option>RIMAC</option><option>MAPFRE</option><option>PACIFICO</option><option>OTRA</option></select></td>
+        <td class="px-3 py-2"><input class="table-input" name="tarifa[${idx}][convenio]" placeholder="Opcional"/></td>
+        <td class="px-3 py-2"><input class="table-input" name="tarifa[${idx}][precio]" type="number" min="0" step="0.01" placeholder="0.00"/></td>
+        <td class="px-3 py-2"><input class="table-input" name="tarifa[${idx}][desde]" type="date"/></td>
+        <td class="px-3 py-2"><input class="table-input" name="tarifa[${idx}][hasta]" type="date"/></td>
+        <td class="px-3 py-2 text-center"><input type="checkbox" class="h-4 w-4 rounded border-slate-300 text-brand-600" name="tarifa[${idx}][igv_inc]" checked></td>
+        <td class="px-3 py-2 text-right"><button type="button" class="delFila rounded-md border border-slate-200 px-2 py-1 hover:bg-slate-50">Eliminar</button></td>`;
+      tarifasBody.appendChild(tr);
+      attachDeleteHandlers();
+      buildPayload();
+    });
+
+    function attachDeleteHandlers(){
+      tarifasBody.querySelectorAll('.delFila').forEach(btn=>{
+        btn.onclick = () => { btn.closest('tr').remove(); buildPayload(); };
+      });
+    }
+    attachDeleteHandlers();
+
+    // Copiar JSON
+    document.getElementById('copyPayload').addEventListener('click', async () => {
+      try{ await navigator.clipboard.writeText(payloadTxt.value); alert('Payload copiado'); } catch(e){ alert('No se pudo copiar'); }
+    });
+
+    // Guardado (demo)
+    form.addEventListener('submit', function(e){
+      e.preventDefault();
+      const data = payloadTxt.value; // aquí enviarías a tu API
+      const modal = document.getElementById('saveModal');
+      modal.classList.remove('hidden'); modal.classList.add('flex');
+      modal.querySelector('[data-close]').onclick = () => { modal.classList.add('hidden'); modal.classList.remove('flex'); };
+    });
+
+    document.getElementById('guardarNuevo').addEventListener('click', () => {
+      // validación mínima
+      const serv = form.servicio_nombre.value?.trim();
+      if(!serv){ alert('Selecciona un servicio del catálogo.'); return; }
+      alert('Servicio guardado (demo). Se abre un nuevo formulario.');
+      form.reset();
+      buildPayload();
+    });
+  </script>
+</body>
+</html>

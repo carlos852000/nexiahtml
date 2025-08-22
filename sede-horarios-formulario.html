@@ -1,0 +1,550 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>NextIaDoctor • Sede • Horarios (Formulario)</title>
+  <!-- Tailwind para prototipo -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {50:'#eef2ff',100:'#e0e7ff',200:'#c7d2fe',300:'#a5b4fc',400:'#818cf8',500:'#6366f1',600:'#4f46e5',700:'#4338ca',800:'#3730a3',900:'#312e81'},
+            accent: {50:'#ecfeff',100:'#cffafe',200:'#a5f3fc',300:'#67e8f9',400:'#22d3ee',500:'#06b6d4',600:'#0891b2',700:'#0e7490',800:'#155e75',900:'#164e63'}
+          },
+          boxShadow: { soft:'0 8px 24px rgba(2,6,23,.06)'}
+        }
+      }
+    }
+  </script>
+  <style>
+    *{ scrollbar-width: thin; scrollbar-color: #cbd5e1 transparent; }
+    *::-webkit-scrollbar{height:8px;width:8px}
+    *::-webkit-scrollbar-thumb{background:#cbd5e1;border-radius:8px}
+    .scrollbar-hide::-webkit-scrollbar{display:none}
+    .scrollbar-hide{ -ms-overflow-style:none; scrollbar-width:none }
+    .chip{display:inline-flex;align-items:center;gap:.4rem;border-radius:999px;padding:.2rem .6rem;font-size:.75rem}
+  </style>
+</head>
+<body class="min-h-screen bg-slate-50 text-slate-800">
+  <!-- Topbar -->
+  <header class="fixed inset-x-0 top-0 z-40 bg-gradient-to-r from-brand-600 to-accent-500 text-white shadow-soft">
+    <div class="mx-auto flex h-16 max-w-screen-2xl items-center justify-between px-4">
+      <div class="flex items-center gap-3">
+        <a href="ipress-sedes.html" class="inline-flex items-center gap-3">
+          <div class="select-none text-lg font-semibold tracking-wide">NextIaCorp</div>
+        </a>
+        <!-- Breadcrumb contextual -->
+        <div class="hidden items-center gap-2 rounded-lg bg-white/15 px-3 py-1.5 md:flex">
+          <span class="font-semibold">IPRESS San Martín</span>
+          <span class="hidden text-xs text-white/70 md:inline">›</span>
+          <span class="hidden text-xs text-white/95 md:inline">Sede Miraflores</span>
+        </div>
+      </div>
+      <nav class="flex items-center gap-2">
+        <a href="#" class="hidden rounded-lg bg-white/10 px-3 py-1.5 text-sm font-medium backdrop-blur hover:bg-white/20 md:inline">Soporte</a>
+        <img src="https://api.dicebear.com/7.x/initials/svg?seed=ND" alt="avatar" class="h-8 w-8 rounded-full ring-2 ring-white/30"/>
+      </nav>
+    </div>
+  </header>
+
+  <!-- NAV NIVEL 2 (Sede) -->
+  <nav class="fixed top-16 inset-x-0 z-30 bg-white border-b border-slate-200 shadow-soft" aria-label="Navegación de Sede">
+    <div class="mx-auto max-w-screen-2xl px-4">
+      <div class="flex items-center justify-between">
+        <!-- Tabs/menú de la Sede -->
+        <div class="flex items-center overflow-x-auto py-2 gap-2 scrollbar-hide">
+          <a href="sede-dashboard.html" class="flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50 transition-all">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" class="h-5 w-5 text-brand-600"><path stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2 0v10a1 1 0 01-1 1h-3m-6 0h6"/></svg>
+            <span>Dashboard</span>
+          </a>
+          <a href="sede-consultorios.html" class="flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50 transition-all">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" class="h-5 w-5 text-brand-600"><path stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
+            <span>Consultorios</span>
+          </a>
+          <a href="sede-usuarios.html" class="flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50 transition-all">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" class="h-5 w-5 text-brand-600"><path stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+            <span>Usuarios</span>
+          </a>
+          <a href="sede-medicos.html" class="flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50 transition-all">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" class="h-5 w-5 text-brand-600"><path stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" d="M4 7a4 4 0 118 0 4 4 0 01-8 0zm12 4h4m-2-2v4m-6 4a6 6 0 10-12 0"/></svg>
+            <span>Médicos</span>
+          </a>
+          <a href="sede-especialidades.html" class="flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50 transition-all">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" class="h-5 w-5 text-brand-600"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 6a3 3 0 10-6 0v5a3 3 0 106 0V9m0 2a4 4 0 104 4h1a3 3 0 003-3V6"/></svg>
+            <span>Especialidades</span>
+          </a>
+          <a href="sede-servicios.html" class="flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50 transition-all">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" class="h-5 w-5 text-brand-600"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 7l9-4 9 4-9 4-9-4m0 5l9 4 9-4m-18 5l9 4 9-4"/></svg>
+            <span>Servicios</span>
+          </a>
+          <!-- Horarios (activo) -->
+          <a href="sede-horarios.html" aria-current="page" class="flex items-center gap-2 rounded-lg bg-brand-50 px-3 py-2 text-sm font-semibold text-brand-700 border-b-2 border-brand-600 transition-all">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" class="h-5 w-5 text-brand-600"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 6v6l4 2m6-2a10 10 0 11-20 0 10 10 0 0120 0z"/></svg>
+            <span>Horarios</span>
+          </a>
+        </div>
+        <!-- Acciones rápidas a la derecha -->
+        <div class="flex items-center gap-2">
+          <a href="#" class="hidden md:flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50 transition-all"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" class="h-5 w-5 text-brand-600"><path stroke-width="1.5" d="M8 7V3m8 4V3M3 11h18M5 19h14a2 2 0 002-2v-6H3v6a2 2 0 002 2z"/></svg><span>Agenda</span></a>
+          <a href="#" class="hidden md:flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50 transition-all"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" class="h-5 w-5 text-brand-600"><path stroke-width="1.5" d="M12 6v12m6-6H6"/></svg><span>Reservas</span></a>
+          <a href="#" class="hidden md:flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50 transition-all"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" class="h-5 w-5 text-brand-600"><path stroke-width="1.5" d="M12 14l9-5-9-5-9 5 9 5z"/><path stroke-width="1.5" d="M12 14l6.16-3.422A12.083 12.083 0 016 8.577M12 14v7"/></svg><span>Reportes</span></a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main -->
+  <main class="pt-36 pb-24">
+    <div class="mx-auto max-w-screen-2xl px-6">
+      <!-- Breadcrumbs & Header -->
+      <div class="mb-6 flex flex-wrap items-center justify-between gap-3">
+        <div>
+          <nav class="text-xs text-slate-500"><a class="hover:underline" href="ipress.html">IPRESS</a> / <a class="hover:underline" href="sede-dashboard.html">Sede Miraflores</a> / <a class="hover:underline" href="sede-horarios.html">Horarios</a> / <span class="text-slate-700 font-medium">Registrar Horarios</span></nav>
+          <h1 class="mt-1 text-2xl font-semibold tracking-tight text-slate-800">Registrar / Editar Horario de Sede</h1>
+          <p class="text-sm text-slate-500">Estructura basada en <span class="font-medium">sede_horario</span> (cabecera) y <span class="font-medium">sede_horario_detalle</span> (franjas).</p>
+        </div>
+        <div class="flex items-center gap-2">
+          <a href="sede-horarios.html" class="rounded-lg border border-slate-200 bg-white px-4 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50">← Volver a la bandeja</a>
+        </div>
+      </div>
+
+      <!-- Form -->
+      <form id="formHorario" class="grid gap-6 lg:grid-cols-3">
+        <!-- Columna izquierda (contenido) -->
+        <section class="lg:col-span-2 space-y-6">
+          <!-- 1. Contexto y asignaciones -->
+          <div class="rounded-2xl border border-slate-200 bg-white p-5 shadow-soft">
+            <h2 class="mb-4 text-lg font-semibold">Contexto</h2>
+            <div class="grid gap-4 md:grid-cols-4">
+              <input type="hidden" name="sede_id" value="SEDE-001"/>
+              <div class="md:col-span-2">
+                <label class="mb-1 block text-sm font-medium text-slate-700">Médico</label>
+                <input name="medico_id" list="lstMedicos" placeholder="Buscar por nombre o CMP" class="w-full rounded-xl border border-slate-200 bg-white px-3 py-2.5 text-sm outline-none focus:border-brand-600 focus:ring-4 focus:ring-brand-600/20" />
+                <datalist id="lstMedicos">
+                  <option value="12345">Dr. Juan Pérez (CMP 12345)</option>
+                  <option value="98765">Dra. Ana Rivera (CMP 98765)</option>
+                  <option value="54321">Dr. Marco Ruiz (CMP 54321)</option>
+                </datalist>
+                <p class="mt-1 text-xs text-slate-400">Campo clave: <span class="font-medium">medico_id</span>.</p>
+              </div>
+              <div>
+                <label class="mb-1 block text-sm font-medium text-slate-700">Servicio de sede</label>
+                <select name="sede_servicio_id" class="w-full rounded-xl border border-slate-200 bg-white px-3 py-2.5 text-sm focus:border-brand-600 focus:outline-none focus:ring-4 focus:ring-brand-600/20">
+                  <option value="">Seleccione…</option>
+                  <option value="SS-001">Consulta cardiología</option>
+                  <option value="SS-002">Dermatología</option>
+                  <option value="SS-003">Pediatría general</option>
+                </select>
+                <p class="mt-1 text-xs text-slate-400">Relación a <span class="font-medium">sede_servicio</span>.</p>
+              </div>
+              <div>
+                <label class="mb-1 block text-sm font-medium text-slate-700">Consultorio</label>
+                <select name="sede_consultorio_id" class="w-full rounded-xl border border-slate-200 bg-white px-3 py-2.5 text-sm focus:border-brand-600 focus:outline-none focus:ring-4 focus:ring-brand-600/20">
+                  <option value="">Seleccione…</option>
+                  <option value="C-101">Consultorio 101</option>
+                  <option value="C-203">Consultorio 203</option>
+                  <option value="E-105">Emergencia Box 5</option>
+                </select>
+              </div>
+              <div>
+                <label class="mb-1 block text-sm font-medium text-slate-700">Modalidad</label>
+                <select name="modalidad" class="w-full rounded-xl border border-slate-200 bg-white px-3 py-2.5 text-sm focus:border-brand-600 focus:outline-none focus:ring-4 focus:ring-brand-600/20">
+                  <option value="PRESENCIAL">Presencial</option>
+                  <option value="VIRTUAL">Virtual</option>
+                  <option value="DOMICILIARIA">Domiciliaria</option>
+                </select>
+              </div>
+              <div class="md:col-span-2">
+                <label class="mb-1 block text-sm font-medium text-slate-700">Canales habilitados</label>
+                <div class="flex flex-wrap gap-3 text-sm">
+                  <label class="inline-flex items-center gap-2"><input type="checkbox" name="canales" value="WEB" class="h-4 w-4 rounded border-slate-300 text-brand-600 focus:ring-brand-600"> Web</label>
+                  <label class="inline-flex items-center gap-2"><input type="checkbox" name="canales" value="CALL" class="h-4 w-4 rounded border-slate-300 text-brand-600 focus:ring-brand-600"> Call center</label>
+                  <label class="inline-flex items-center gap-2"><input type="checkbox" name="canales" value="VENT" class="h-4 w-4 rounded border-slate-300 text-brand-600 focus:ring-brand-600"> Ventanilla</label>
+                  <label class="inline-flex items-center gap-2"><input type="checkbox" name="canales" value="APP" class="h-4 w-4 rounded border-slate-300 text-brand-600 focus:ring-brand-600"> App</label>
+                </div>
+              </div>
+              <div>
+                <label class="mb-1 block text-sm font-medium text-slate-700">Estado</label>
+                <select name="estado" class="w-full rounded-xl border border-slate-200 bg-white px-3 py-2.5 text-sm focus:border-brand-600 focus:outline-none focus:ring-4 focus:ring-brand-600/20">
+                  <option value="ACTIVO" selected>ACTIVO</option>
+                  <option value="INACTIVO">INACTIVO</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <!-- 2. Vigencia y recurrencia -->
+          <div class="rounded-2xl border border-slate-200 bg-white p-5 shadow-soft">
+            <h2 class="mb-4 text-lg font-semibold">Vigencia y recurrencia</h2>
+            <div class="grid gap-4 md:grid-cols-4">
+              <div>
+                <label class="mb-1 block text-sm font-medium text-slate-700">Desde</label>
+                <input type="date" name="vig_desde" class="w-full rounded-xl border border-slate-200 bg-white px-3 py-2.5 text-sm" />
+              </div>
+              <div>
+                <label class="mb-1 block text-sm font-medium text-slate-700">Hasta</label>
+                <input type="date" name="vig_hasta" class="w-full rounded-xl border border-slate-200 bg-white px-3 py-2.5 text-sm" />
+              </div>
+              <div>
+                <label class="mb-1 block text-sm font-medium text-slate-700">Recurrencia</label>
+                <select name="recurrencia" class="w-full rounded-xl border border-slate-200 bg-white px-3 py-2.5 text-sm"><option value="SEMANAL">Semanal</option><option value="RANGO">Rango de fechas</option></select>
+              </div>
+              <div>
+                <label class="mb-1 block text-sm font-medium text-slate-700">Zona horaria</label>
+                <select name="tz" class="w-full rounded-xl border border-slate-200 bg-white px-3 py-2.5 text-sm"><option value="America/Lima">America/Lima</option><option value="UTC">UTC</option></select>
+              </div>
+              <div class="md:col-span-4">
+                <label class="mb-1 block text-sm font-medium text-slate-700">Días de la semana</label>
+                <div class="flex flex-wrap gap-2">
+                  <label class="chip bg-slate-50 text-slate-700"><input type="checkbox" name="dias" value="LUN" class="h-4 w-4 rounded border-slate-300 text-brand-600"> Lun</label>
+                  <label class="chip bg-slate-50 text-slate-700"><input type="checkbox" name="dias" value="MAR" class="h-4 w-4 rounded border-slate-300 text-brand-600"> Mar</label>
+                  <label class="chip bg-slate-50 text-slate-700"><input type="checkbox" name="dias" value="MIE" class="h-4 w-4 rounded border-slate-300 text-brand-600"> Mié</label>
+                  <label class="chip bg-slate-50 text-slate-700"><input type="checkbox" name="dias" value="JUE" class="h-4 w-4 rounded border-slate-300 text-brand-600"> Jue</label>
+                  <label class="chip bg-slate-50 text-slate-700"><input type="checkbox" name="dias" value="VIE" class="h-4 w-4 rounded border-slate-300 text-brand-600"> Vie</label>
+                  <label class="chip bg-slate-50 text-slate-700"><input type="checkbox" name="dias" value="SAB" class="h-4 w-4 rounded border-slate-300 text-brand-600"> Sáb</label>
+                  <label class="chip bg-slate-50 text-slate-700"><input type="checkbox" name="dias" value="DOM" class="h-4 w-4 rounded border-slate-300 text-brand-600"> Dom</label>
+                </div>
+                <p class="mt-1 text-xs text-slate-400">Se aplican a las franjas si éstas no especifican días propios.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- 3. Franjas semanales (detalle) -->
+          <div class="rounded-2xl border border-slate-200 bg-white p-5 shadow-soft">
+            <div class="mb-4 flex items-center justify-between">
+              <h2 class="text-lg font-semibold">Franjas semanales</h2>
+              <div class="flex items-center gap-2"><button id="btnAddFranja" type="button" class="rounded-lg bg-brand-600 px-3 py-1.5 text-sm font-medium text-white hover:bg-brand-700">+ Agregar franja</button></div>
+            </div>
+            <div class="overflow-x-auto">
+              <table class="min-w-full text-left text-sm">
+                <thead class="border-y border-slate-200 bg-slate-50 text-slate-500">
+                  <tr>
+                    <th class="px-3 py-2">Días</th>
+                    <th class="px-3 py-2">Desde</th>
+                    <th class="px-3 py-2">Hasta</th>
+                    <th class="px-3 py-2">Intervalo</th>
+                    <th class="px-3 py-2">Cupo</th>
+                    <th class="px-3 py-2">Consultorio (op)</th>
+                    <th class="px-3 py-2">Canales (op)</th>
+                    <th class="px-3 py-2 text-right">Acciones</th>
+                  </tr>
+                </thead>
+                <tbody id="tblFranjas" class="divide-y divide-slate-100"></tbody>
+              </table>
+            </div>
+            <p class="mt-2 text-xs text-slate-400">Cada fila mapea a <span class="font-medium">sede_horario_detalle</span>: día(s), rango horario, <em>intervalo_minutos</em> y <em>cupo_por_intervalo</em>.</p>
+          </div>
+
+          <!-- 4. Reglas de reserva (cabecera) -->
+          <div class="rounded-2xl border border-slate-200 bg-white p-5 shadow-soft">
+            <h2 class="mb-4 text-lg font-semibold">Reglas de reserva</h2>
+            <div class="grid gap-4 md:grid-cols-4">
+              <div>
+                <label class="mb-1 block text-sm font-medium text-slate-700">Anticipación mínima</label>
+                <div class="flex items-center gap-2"><input type="number" min="0" name="res_anticipacion_min_h" value="2" class="w-24 rounded-xl border border-slate-200 bg-white px-3 py-2.5 text-sm"> <span class="text-sm text-slate-500">horas</span></div>
+              </div>
+              <div>
+                <label class="mb-1 block text-sm font-medium text-slate-700">Anticipación máxima</label>
+                <div class="flex items-center gap-2"><input type="number" min="0" name="res_anticipacion_max_d" value="30" class="w-24 rounded-xl border border-slate-200 bg-white px-3 py-2.5 text-sm"> <span class="text-sm text-slate-500">días</span></div>
+              </div>
+              <div>
+                <label class="mb-1 block text-sm font-medium text-slate-700">Cancelación hasta</label>
+                <div class="flex items-center gap-2"><input type="number" min="0" name="res_cancelacion_h" value="12" class="w-24 rounded-xl border border-slate-200 bg-white px-3 py-2.5 text-sm"> <span class="text-sm text-slate-500">horas antes</span></div>
+              </div>
+              <div>
+                <label class="mb-1 block text-sm font-medium text-slate-700">Reprogramación</label>
+                <div class="flex items-center gap-2"><input type="number" min="0" name="res_reprog_h" value="12" class="w-24 rounded-xl border border-slate-200 bg-white px-3 py-2.5 text-sm"> <span class="text-sm text-slate-500">horas antes</span></div>
+              </div>
+              <div>
+                <label class="mb-1 block text-sm font-medium text-slate-700">Tolerancia retraso</label>
+                <div class="flex items-center gap-2"><input type="number" min="0" name="tol_retraso_min" value="10" class="w-24 rounded-xl border border-slate-200 bg-white px-3 py-2.5 text-sm"> <span class="text-sm text-slate-500">min</span></div>
+              </div>
+              <div>
+                <label class="mb-1 block text-sm font-medium text-slate-700">Buffer antes</label>
+                <div class="flex items-center gap-2"><input type="number" min="0" name="buf_antes_min" value="0" class="w-24 rounded-xl border border-slate-200 bg-white px-3 py-2.5 text-sm"> <span class="text-sm text-slate-500">min</span></div>
+              </div>
+              <div>
+                <label class="mb-1 block text-sm font-medium text-slate-700">Buffer después</label>
+                <div class="flex items-center gap-2"><input type="number" min="0" name="buf_despues_min" value="0" class="w-24 rounded-xl border border-slate-200 bg-white px-3 py-2.5 text-sm"> <span class="text-sm text-slate-500">min</span></div>
+              </div>
+              <div>
+                <label class="mb-1 block text-sm font-medium text-slate-700">Límite por paciente (día)</label>
+                <div class="flex items-center gap-2"><input type="number" min="0" name="lim_x_pac_dia" value="1" class="w-24 rounded-xl border border-slate-200 bg-white px-3 py-2.5 text-sm"> <span class="text-sm text-slate-500">citas</span></div>
+              </div>
+              <div class="md:col-span-4 grid grid-cols-2 gap-3">
+                <label class="inline-flex items-center gap-2 text-sm text-slate-700"><input type="checkbox" name="permite_solape" class="h-4 w-4 rounded border-slate-300 text-brand-600 focus:ring-brand-600"> Permitir solape con otros horarios del médico</label>
+                <label class="inline-flex items-center gap-2 text-sm text-slate-700"><input type="checkbox" name="cita_doble" class="h-4 w-4 rounded border-slate-300 text-brand-600 focus:ring-brand-600"> Permitir cita doble</label>
+              </div>
+            </div>
+          </div>
+
+          <!-- 5. Etiquetas y notas -->
+          <div class="rounded-2xl border border-slate-200 bg-white p-5 shadow-soft">
+            <h2 class="mb-4 text-lg font-semibold">Etiquetas y notas</h2>
+            <div class="grid gap-4 md:grid-cols-4">
+              <div class="md:col-span-2">
+                <label class="mb-1 block text-sm font-medium text-slate-700">Etiqueta visible</label>
+                <input name="etiqueta" type="text" placeholder="Ej. Turno mañana" class="w-full rounded-xl border border-slate-200 bg-white px-3 py-2.5 text-sm"/>
+              </div>
+              <div>
+                <label class="mb-1 block text-sm font-medium text-slate-700">Color</label>
+                <input name="color" type="color" value="#4f46e5" class="h-10 w-full cursor-pointer rounded-xl border border-slate-200 bg-white p-1"/>
+              </div>
+              <div>
+                <label class="mb-1 block text-sm font-medium text-slate-700">Orden (prioridad)</label>
+                <input name="orden" type="number" min="0" value="0" class="w-full rounded-xl border border-slate-200 bg-white px-3 py-2.5 text-sm"/>
+              </div>
+              <div class="md:col-span-4">
+                <label class="mb-1 block text-sm font-medium text-slate-700">Notas internas</label>
+                <textarea name="notas" rows="2" placeholder="Observaciones u otras reglas particulares" class="w-full rounded-xl border border-slate-200 bg-white px-3 py-2.5 text-sm"></textarea>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Columna derecha (acciones y resumen) -->
+        <aside class="space-y-6">
+          <div class="rounded-2xl border border-slate-200 bg-white p-5 shadow-soft">
+            <h3 class="mb-3 text-sm font-semibold text-slate-800">Acciones</h3>
+            <div class="grid gap-2">
+              <button type="submit" class="w-full rounded-lg bg-brand-600 px-4 py-2 text-sm font-semibold text-white hover:bg-brand-700">Guardar</button>
+              <button type="button" id="btnGuardarNuevo" class="w-full rounded-lg border border-slate-200 bg-white px-4 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50">Guardar y nuevo</button>
+              <button type="button" id="btnDuplicar" class="w-full rounded-lg border border-slate-200 bg-white px-4 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50">Duplicar (demo)</button>
+              <a href="sede-horarios.html" class="w-full rounded-lg border border-slate-200 bg-white px-4 py-2 text-center text-sm font-medium text-slate-700 hover:bg-slate-50">Cancelar</a>
+            </div>
+          </div>
+
+          <div class="rounded-2xl border border-slate-200 bg-white p-5 shadow-soft">
+            <h3 class="mb-2 text-sm font-semibold text-slate-800">Resumen</h3>
+            <ul class="space-y-2 text-sm text-slate-600">
+              <li>• Médico: <span id="sumMedico" class="font-medium">—</span></li>
+              <li>• Servicio: <span id="sumServicio" class="font-medium">—</span> • Consultorio: <span id="sumConsultorio" class="font-medium">—</span></li>
+              <li>• Días: <span id="sumDias" class="font-medium">—</span></li>
+              <li>• Franjas: <span id="sumFranjas" class="font-medium">0</span> • Intervalo promedio: <span id="sumIntervalo" class="font-medium">—</span></li>
+              <li>• Canales: <span id="sumCanales" class="font-medium">—</span> • Estado: <span id="sumEstado" class="font-medium">ACTIVO</span></li>
+            </ul>
+          </div>
+
+          <div class="rounded-2xl border border-slate-200 bg-white p-5 shadow-soft">
+            <h3 class="mb-2 text-sm font-semibold text-slate-800">Payload JSON (demo)</h3>
+            <details open>
+              <summary class="cursor-pointer text-xs text-slate-500">Estructura lista para API</summary>
+              <pre id="jsonOut" class="mt-2 max-h-72 overflow-auto rounded-lg bg-slate-900/95 p-3 text-xs text-slate-100"></pre>
+            </details>
+          </div>
+        </aside>
+      </form>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="fixed bottom-0 inset-x-0 z-40 border-t border-slate-200 bg-white/90 backdrop-blur">
+    <div class="mx-auto flex h-12 max-w-screen-2xl items-center justify-between px-6 text-sm text-slate-600">
+      <p>© <span id="y"></span> NextIaCorp • Sede Miraflores</p>
+      <nav class="hidden gap-4 md:flex">
+        <a class="hover:text-slate-900" href="#">Privacidad</a>
+        <a class="hover:text-slate-900" href="#">Términos</a>
+        <a class="hover:text-slate-900" href="#">Contacto</a>
+      </nav>
+    </div>
+  </footer>
+
+  <!-- Modal guardado (demo) -->
+  <div id="mdlSave" class="fixed inset-0 z-50 hidden items-center justify-center bg-slate-900/30 p-4">
+    <div class="w-full max-w-sm rounded-2xl border border-slate-200 bg-white p-5 shadow-soft">
+      <h3 class="text-base font-semibold text-slate-800">Horario guardado</h3>
+      <p class="mt-1 text-sm text-slate-600">Se creó/actualizó el registro correctamente.</p>
+      <div class="mt-4 flex justify-end gap-2">
+        <a href="sede-horarios.html" class="rounded-lg border border-slate-200 bg-white px-3 py-1.5 text-sm hover:bg-slate-50">Ir a la bandeja</a>
+        <button data-close class="rounded-lg bg-brand-600 px-3 py-1.5 text-sm font-medium text-white hover:bg-brand-700">Seguir editando</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Templates -->
+  <template id="rowFranja">
+    <tr class="hover:bg-slate-50/60">
+      <td class="px-3 py-2">
+        <div class="flex flex-wrap gap-1 text-xs">
+          <label class="chip bg-slate-100"><input type="checkbox" value="LUN" class="h-4 w-4 rounded border-slate-300 text-brand-600"> Lun</label>
+          <label class="chip bg-slate-100"><input type="checkbox" value="MAR" class="h-4 w-4 rounded border-slate-300 text-brand-600"> Mar</label>
+          <label class="chip bg-slate-100"><input type="checkbox" value="MIE" class="h-4 w-4 rounded border-slate-300 text-brand-600"> Mié</label>
+          <label class="chip bg-slate-100"><input type="checkbox" value="JUE" class="h-4 w-4 rounded border-slate-300 text-brand-600"> Jue</label>
+          <label class="chip bg-slate-100"><input type="checkbox" value="VIE" class="h-4 w-4 rounded border-slate-300 text-brand-600"> Vie</label>
+          <label class="chip bg-slate-100"><input type="checkbox" value="SAB" class="h-4 w-4 rounded border-slate-300 text-brand-600"> Sáb</label>
+          <label class="chip bg-slate-100"><input type="checkbox" value="DOM" class="h-4 w-4 rounded border-slate-300 text-brand-600"> Dom</label>
+        </div>
+      </td>
+      <td class="px-3 py-2"><input type="time" value="09:00" class="w-[6.5rem] rounded-lg border border-slate-200 bg-white px-2 py-1.5 text-sm"></td>
+      <td class="px-3 py-2"><input type="time" value="13:00" class="w-[6.5rem] rounded-lg border border-slate-200 bg-white px-2 py-1.5 text-sm"></td>
+      <td class="px-3 py-2"><input type="number" min="5" step="5" value="20" class="w-20 rounded-lg border border-slate-200 bg-white px-2 py-1.5 text-sm"> <span class="text-xs text-slate-500">min</span></td>
+      <td class="px-3 py-2"><input type="number" min="1" step="1" value="1" class="w-16 rounded-lg border border-slate-200 bg-white px-2 py-1.5 text-sm"></td>
+      <td class="px-3 py-2">
+        <select class="min-w-[9rem] rounded-lg border border-slate-200 bg-white px-2 py-1.5 text-sm">
+          <option value="">(Usar cabecera)</option>
+          <option value="C-101">Consultorio 101</option>
+          <option value="C-203">Consultorio 203</option>
+          <option value="E-105">Emergencia Box 5</option>
+        </select>
+      </td>
+      <td class="px-3 py-2">
+        <select multiple class="min-w-[9rem] rounded-lg border border-slate-200 bg-white px-2 py-1.5 text-sm">
+          <option>WEB</option><option>CALL</option><option>VENT</option><option>APP</option>
+        </select>
+      </td>
+      <td class="px-3 py-2 text-right">
+        <div class="inline-flex gap-1">
+          <button data-dup type="button" class="rounded-md border border-slate-200 bg-white px-2 py-1 text-xs hover:bg-slate-50">Duplicar</button>
+          <button data-del type="button" class="rounded-md border border-slate-200 bg-white px-2 py-1 text-xs hover:bg-slate-50 text-rose-600">Eliminar</button>
+        </div>
+      </td>
+    </tr>
+  </template>
+
+  <script>
+    // Año
+    document.getElementById('y').textContent = new Date().getFullYear();
+
+    const f = document.getElementById('formHorario');
+    const tbl = document.getElementById('tblFranjas');
+    const tmpl = document.getElementById('rowFranja');
+    const jsonOut = document.getElementById('jsonOut');
+
+    const addFranja = (prefill) => {
+      const node = tmpl.content.cloneNode(true);
+      const tr = node.querySelector('tr');
+      // Prefill
+      if(prefill){
+        const [dias, desde, hasta, intv, cupo] = prefill;
+        Array.from(tr.querySelectorAll('td:first-child input[type="checkbox"]')).forEach(chk=>{
+          chk.checked = dias.includes(chk.value);
+        });
+        tr.children[1].querySelector('input').value = desde;
+        tr.children[2].querySelector('input').value = hasta;
+        tr.children[3].querySelector('input').value = intv;
+        tr.children[4].querySelector('input').value = cupo;
+      }
+      tr.querySelector('[data-del]').addEventListener('click', ()=>{ tr.remove(); buildSummary(); buildJSON(); });
+      tr.querySelector('[data-dup]').addEventListener('click', ()=>{
+        const dias = Array.from(tr.querySelectorAll('td:first-child input:checked')).map(i=>i.value);
+        const desde = tr.children[1].querySelector('input').value;
+        const hasta = tr.children[2].querySelector('input').value;
+        const intv = tr.children[3].querySelector('input').value;
+        const cupo = tr.children[4].querySelector('input').value;
+        addFranja([dias, desde, hasta, intv, cupo]); buildSummary(); buildJSON();
+      });
+      ['input','change'].forEach(evt=> tr.addEventListener(evt, ()=>{ buildSummary(); buildJSON(); }));
+      tbl.appendChild(node);
+    };
+
+    document.getElementById('btnAddFranja').addEventListener('click', ()=>{ addFranja(); buildSummary(); buildJSON(); });
+    // Semillas demo
+    addFranja([["LUN","MIE","VIE"], '09:00','12:00',20,1]);
+    addFranja([["MAR","JUE"], '12:00','14:00',15,1]);
+
+    const getCheckedValues = (selector) => Array.from(f.querySelectorAll(selector+':checked')).map(el=>el.value);
+
+    function buildSummary(){
+      const idToText = (sel) => { const el=f.querySelector(`[name=${sel}]`); return el && el.options ? (el.selectedOptions[0]?.text||'—') : (el?.value||'—'); };
+      document.getElementById('sumMedico').textContent = f.medico_id.value || '—';
+      document.getElementById('sumServicio').textContent = idToText('sede_servicio_id');
+      document.getElementById('sumConsultorio').textContent = idToText('sede_consultorio_id');
+      const dias = getCheckedValues('input[name="dias"]');
+      document.getElementById('sumDias').textContent = dias.length? dias.join(', '): '—';
+      const franjas = Array.from(tbl.querySelectorAll('tr'));
+      document.getElementById('sumFranjas').textContent = String(franjas.length);
+      const ints = franjas.map(tr=> parseInt(tr.children[3].querySelector('input').value||0)).filter(n=>n>0);
+      const avg = ints.length? Math.round(ints.reduce((a,b)=>a+b,0)/ints.length): 0;
+      document.getElementById('sumIntervalo').textContent = avg? (avg+' min') : '—';
+      const canales = getCheckedValues('input[name="canales"]');
+      document.getElementById('sumCanales').textContent = canales.length? canales.join(', '): '—';
+      document.getElementById('sumEstado').textContent = f.estado.value||'ACTIVO';
+    }
+
+    function buildJSON(){
+      const diasCab = getCheckedValues('input[name="dias"]');
+      const canalesCab = getCheckedValues('input[name="canales"]');
+      const franjas = Array.from(tbl.querySelectorAll('tr')).map(tr=> ({
+        dias: Array.from(tr.querySelectorAll('td:first-child input:checked')).map(i=>i.value),
+        desde: tr.children[1].querySelector('input').value,
+        hasta: tr.children[2].querySelector('input').value,
+        intervalo_minutos: parseInt(tr.children[3].querySelector('input').value||0),
+        cupo_por_intervalo: parseInt(tr.children[4].querySelector('input').value||1),
+        consultorio_id_override: tr.children[5].querySelector('select').value || null,
+        canales_override: Array.from(tr.children[6].querySelectorAll('option:checked')).map(o=>o.value)
+      }));
+      const payload = {
+        sede_horario: {
+          sede_id: f.sede_id.value || null,
+          medico_id: f.medico_id.value || null,
+          sede_servicio_id: f.sede_servicio_id.value || null,
+          sede_consultorio_id: f.sede_consultorio_id.value || null,
+          modalidad: f.modalidad.value || 'PRESENCIAL',
+          canales: canalesCab,
+          estado: f.estado.value || 'ACTIVO',
+          vigencia: { desde: f.vig_desde.value || null, hasta: f.vig_hasta.value || null },
+          recurrencia: f.recurrencia.value || 'SEMANAL',
+          tz: f.tz.value || 'America/Lima',
+          dias: diasCab,
+          reglas_reserva: {
+            anticipacion_min_horas: parseInt(f.res_anticipacion_min_h.value||0),
+            anticipacion_max_dias: parseInt(f.res_anticipacion_max_d.value||0),
+            cancelacion_horas: parseInt(f.res_cancelacion_h.value||0),
+            reprogramacion_horas: parseInt(f.res_reprog_h.value||0),
+            tolerancia_retraso_min: parseInt(f.tol_retraso_min.value||0),
+            buffer_antes_min: parseInt(f.buf_antes_min.value||0),
+            buffer_despues_min: parseInt(f.buf_despues_min.value||0),
+            limite_por_paciente_dia: parseInt(f.lim_x_pac_dia.value||0),
+            permite_solape: !!f.permite_solape.checked,
+            cita_doble: !!f.cita_doble.checked
+          },
+          etiqueta: f.etiqueta.value || null,
+          color: f.color.value || null,
+          orden: parseInt(f.orden.value||0),
+          notas: f.notas.value || null
+        },
+        sede_horario_detalle: franjas
+      };
+      jsonOut.textContent = JSON.stringify(payload, null, 2);
+      return payload;
+    }
+
+    // Inicializar resumen y JSON
+    buildSummary();
+    buildJSON();
+    f.addEventListener('input', ()=>{ buildSummary(); buildJSON(); });
+    f.addEventListener('change', ()=>{ buildSummary(); buildJSON(); });
+
+    // Guardar (demo)
+    f.addEventListener('submit', (e)=>{
+      e.preventDefault();
+      const payload = buildJSON();
+      // Validaciones mínimas
+      const required = ['medico_id','sede_servicio_id','sede_consultorio_id'];
+      for(const n of required){ if(!(f[n].value||'').trim()){ alert('Completa los campos obligatorios (médico, servicio, consultorio).'); return; } }
+      // Aquí llamarías a tu API con payload
+      const mdl = document.getElementById('mdlSave');
+      mdl.classList.remove('hidden'); mdl.classList.add('flex');
+      mdl.querySelector('[data-close]').onclick = () => { mdl.classList.add('hidden'); mdl.classList.remove('flex'); };
+    });
+
+    document.getElementById('btnGuardarNuevo').addEventListener('click', ()=>{
+      const ev = new Event('submit'); f.dispatchEvent(ev);
+      // demo: reset si pasó validación
+      // (en real, esperar respuesta API)
+      setTimeout(()=>{ f.reset(); tbl.innerHTML=''; addFranja(); buildSummary(); buildJSON(); }, 200);
+    });
+
+    document.getElementById('btnDuplicar').addEventListener('click', ()=>{
+      // Duplicar como nuevo (demo): cambia etiqueta y orden
+      f.etiqueta.value = (f.etiqueta.value||'Turno') + ' (copia)';
+      f.orden.value = (parseInt(f.orden.value||0)+1);
+      buildSummary(); buildJSON();
+      alert('Se preparó una copia en el formulario (demo).');
+    });
+  </script>
+</body>
+</html>

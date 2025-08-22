@@ -1,0 +1,365 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>NextIaDoctor • Dashboard Consultorio</title>
+  <!-- Tailwind para prototipo -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50:'#eef2ff',100:'#e0e7ff',200:'#c7d2fe',300:'#a5b4fc',400:'#818cf8',
+              500:'#6366f1',600:'#4f46e5',700:'#4338ca',800:'#3730a3',900:'#312e81'
+            },
+            accent: {
+              50:'#ecfeff',100:'#cffafe',200:'#a5f3fc',300:'#67e8f9',400:'#22d3ee',
+              500:'#06b6d4',600:'#0891b2',700:'#0e7490',800:'#155e75',900:'#164e63'
+            },
+            success: { 500:'#10b981' },
+            warning: { 500:'#f59e0b' }
+          },
+          boxShadow: { soft:'0 8px 24px rgba(2,6,23,.06)'},
+          borderRadius: { xl2:'1.25rem'}
+        }
+      }
+    }
+  </script>
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
+  <style>
+    :root{ --radius: 16px; }
+    *{ scrollbar-width: thin; scrollbar-color: #cbd5e1 transparent; }
+    *::-webkit-scrollbar{height:8px;width:8px}
+    *::-webkit-scrollbar-thumb{background:#cbd5e1;border-radius:8px}
+    .chart-container{position:relative;height:220px;width:100%;overflow:hidden}
+    .chart-container canvas{max-height:220px!important;max-width:100%!important}
+    .menu{display:none}
+    .menu[aria-expanded="true"]{display:block}
+  </style>
+</head>
+<body class="min-h-screen bg-slate-50 text-slate-800">
+  <!-- Topbar con breadcrumb Nivel 3 -->
+  <header class="fixed inset-x-0 top-0 z-40 bg-gradient-to-r from-brand-600 to-accent-500 text-white shadow-soft">
+    <div class="mx-auto flex h-16 max-w-screen-2xl items-center justify-between px-4">
+      <div class="flex items-center gap-3">
+        <a href="ipress.html" class="inline-flex items-center gap-3">
+          <div class="select-none text-lg font-semibold tracking-wide">NextIaCorp</div>
+        </a>
+        <!-- Breadcrumb contextual: IPRESS ▸ Sede ▸ Consultorio -->
+        <div class="hidden items-center gap-2 rounded-lg bg-white/15 px-3 py-1.5 md:flex">
+          <span class="font-semibold">IPRESS San Martín</span>
+          <span class="text-xs text-white/70">›</span>
+          <span class="text-xs text-white/95">Sede Miraflores</span>
+          <span class="text-xs text-white/70">›</span>
+          <span class="text-xs font-semibold text-white">Consultorio 101 · Pediatría</span>
+        </div>
+      </div>
+      <nav class="flex items-center gap-2">
+        <a href="#" class="hidden rounded-lg bg-white/10 px-3 py-1.5 text-sm font-medium backdrop-blur hover:bg-white/20 md:inline">Soporte</a>
+        <img src="https://api.dicebear.com/7.x/initials/svg?seed=AR" alt="avatar" class="h-8 w-8 rounded-full ring-2 ring-white/30"/>
+      </nav>
+    </div>
+  </header>
+
+  <!-- NAV NIVEL 3 (del Consultorio) -->
+  <nav class="fixed top-16 inset-x-0 z-30 bg-white border-b border-slate-200 shadow-soft" aria-label="Navegación de Consultorio">
+    <div class="mx-auto max-w-screen-2xl px-4">
+      <div class="flex items-center justify-between">
+        <div class="flex items-center overflow-x-auto py-2 gap-2">
+          <a href="consultorio-dashboard.html" class="flex items-center gap-2 rounded-lg bg-brand-50 px-3 py-2 text-sm font-semibold text-brand-700 border-b-2 border-brand-600 transition-all">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" class="h-5 w-5 text-brand-600"><path stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" d="M3 12l9-9 9 9m-3 0v8a2 2 0 01-2 2H8a2 2 0 01-2-2v-8"/></svg>
+            <span>Dashboard</span>
+          </a>
+          <a href="consultorio-agenda.html" class="flex items-center gap-2 px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50 transition-all">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" class="h-5 w-5 text-brand-600"><path stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3M3 11h18M5 19h14a2 2 0 002-2v-6H3v6a2 2 0 002 2z"/></svg>
+            <span>Agenda</span>
+          </a>
+          <a href="consultorio-reservas.html" class="flex items-center gap-2 px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50 transition-all">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" class="h-5 w-5 text-brand-600"><path stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" d="M12 6v12m6-6H6"/></svg>
+            <span>Reservas</span>
+          </a>
+          <a href="consultorio-atenciones.html" class="flex items-center gap-2 px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50 transition-all">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" class="h-5 w-5 text-brand-600"><path stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z"/></svg>
+            <span>Atenciones</span>
+          </a>
+          <a href="consultorio-reportes.html" class="flex items-center gap-2 px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50 transition-all">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" class="h-5 w-5 text-brand-600"><path stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" d="M12 14l9-5-9-5-9 5 9 5z"/><path stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" d="M12 14l6.16-3.422A12.083 12.083 0 016 8.577M12 14v7"/></svg>
+            <span>Reportes</span>
+          </a>
+        </div>
+        <!-- Acciones rápidas -->
+        <div class="flex items-center gap-2">
+          <button class="rounded-lg bg-brand-600 px-3 py-2 text-sm font-medium text-white shadow-soft hover:bg-brand-700">Nueva cita</button>
+          <button class="rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50">Iniciar atención</button>
+          <button class="rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50">Bloquear franja</button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main -->
+  <main class="pt-36 pb-24">
+    <div class="mx-auto max-w-screen-2xl px-6">
+      <!-- Encabezado -->
+      <div class="mb-6 flex flex-wrap items-center justify-between gap-3">
+        <div>
+          <h1 class="text-2xl font-semibold tracking-tight text-slate-800">Dashboard • Consultorio 101 · Pediatría</h1>
+          <p class="text-sm text-slate-500">Resumen operativo y clínico del consultorio</p>
+          <div class="mt-2 flex items-center gap-2">
+            <span class="inline-flex h-2 w-2 rounded-full bg-emerald-500"></span>
+            <span class="text-xs text-emerald-600 font-medium">En turno (Dra. Ana Ramos)</span>
+            <span class="text-xs text-slate-400">• Últ. actualización: <span id="lastUpdate">Hace 2 min</span></span>
+          </div>
+        </div>
+        <div class="flex items-center gap-2">
+          <button class="rounded-lg border border-slate-200 bg-white px-4 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50">Exportar</button>
+        </div>
+      </div>
+
+      <!-- KPIs del consultorio -->
+      <section class="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+        <article class="rounded-2xl border border-slate-200 bg-white p-4 shadow-soft">
+          <div class="flex items-center justify-between">
+            <div>
+              <p class="text-xs uppercase tracking-wider text-slate-400">Citas de hoy</p>
+              <h3 class="mt-1 text-2xl font-semibold">12</h3>
+              <p class="text-xs text-slate-400">Consultorio 101</p>
+            </div>
+            <div class="rounded-xl bg-brand-600/10 p-3 text-brand-600">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" class="h-6 w-6"><path stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3M3 11h18M5 19h14a2 2 0 002-2v-6H3v6a2 2 0 002 2z"/></svg>
+            </div>
+          </div>
+        </article>
+        <article class="rounded-2xl border border-slate-200 bg-white p-4 shadow-soft">
+          <div class="flex items-center justify-between">
+            <div>
+              <p class="text-xs uppercase tracking-wider text-slate-400">Ocupación</p>
+              <h3 class="mt-1 text-2xl font-semibold">65%</h3>
+              <p class="text-xs text-slate-400">Hoy</p>
+            </div>
+            <div class="rounded-xl bg-brand-600/10 p-3 text-brand-600">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" class="h-6 w-6"><path stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" d="M12 6v12m6-6H6"/></svg>
+            </div>
+          </div>
+        </article>
+        <article class="rounded-2xl border border-slate-200 bg-white p-4 shadow-soft">
+          <div class="flex items-center justify-between">
+            <div>
+              <p class="text-xs uppercase tracking-wider text-slate-400">No‑show</p>
+              <h3 class="mt-1 text-2xl font-semibold">8.3%</h3>
+              <p class="text-xs text-slate-400">Hoy</p>
+            </div>
+            <div class="rounded-xl bg-brand-600/10 p-3 text-brand-600">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" class="h-6 w-6"><path stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" d="M22 12h-4l-3 7L9 5l-3 7H2"/></svg>
+            </div>
+          </div>
+        </article>
+        <article class="rounded-2xl border border-slate-200 bg-white p-4 shadow-soft">
+          <div class="flex items-center justify-between">
+            <div>
+              <p class="text-xs uppercase tracking-wider text-slate-400">Tiempo promedio</p>
+              <h3 class="mt-1 text-2xl font-semibold">18 min</h3>
+              <p class="text-xs text-slate-400">Atención</p>
+            </div>
+            <div class="rounded-xl bg-brand-600/10 p-3 text-brand-600">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" class="h-6 w-6"><path stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" d="M12 6v6l4 2m6-2a10 10 0 11-20 0 10 10 0 0120 0z"/></svg>
+            </div>
+          </div>
+        </article>
+      </section>
+
+      <!-- Paneles principales: Agenda del día + Cola + Bloques -->
+      <section class="mt-6 grid gap-6 lg:grid-cols-3">
+        <!-- Agenda del día (Consultorio) -->
+        <div class="rounded-2xl border border-slate-200 bg-white p-5 shadow-soft lg:col-span-2">
+          <div class="mb-4 flex items-center justify-between">
+            <h2 class="text-lg font-semibold">Agenda del día</h2>
+            <div class="flex items-center gap-2">
+              <input type="date" class="rounded-lg border border-slate-200 px-2 py-1.5 text-sm" />
+              <button class="rounded-lg border border-slate-200 bg-white px-3 py-1.5 text-sm font-medium text-slate-700 hover:bg-slate-50">Actualizar</button>
+            </div>
+          </div>
+          <div class="overflow-hidden rounded-xl border border-slate-100">
+            <table class="min-w-full divide-y divide-slate-100 text-sm">
+              <thead class="bg-slate-50">
+                <tr>
+                  <th class="px-3 py-2 text-left text-xs font-semibold uppercase tracking-wider text-slate-500">Hora</th>
+                  <th class="px-3 py-2 text-left text-xs font-semibold uppercase tracking-wider text-slate-500">Paciente</th>
+                  <th class="px-3 py-2 text-left text-xs font-semibold uppercase tracking-wider text-slate-500">Servicio</th>
+                  <th class="px-3 py-2 text-left text-xs font-semibold uppercase tracking-wider text-slate-500">Estado</th>
+                  <th class="px-3 py-2 text-right text-xs font-semibold uppercase tracking-wider text-slate-500">Acciones</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-slate-100">
+                <tr class="hover:bg-slate-50">
+                  <td class="px-3 py-2">08:00</td>
+                  <td class="px-3 py-2">Juan Pérez</td>
+                  <td class="px-3 py-2">Consulta Pediátrica</td>
+                  <td class="px-3 py-2"><span class="rounded-full bg-emerald-50 px-2.5 py-0.5 text-xs font-medium text-emerald-700">En atención</span></td>
+                  <td class="px-3 py-2 text-right">
+                    <div class="relative inline-block text-left">
+                      <button type="button" class="rounded-lg border border-slate-200 bg-white px-2 py-1 text-sm hover:bg-slate-50" aria-haspopup="true" aria-controls="m1" aria-expanded="false" onclick="toggleMenu('m1',event)">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="h-4 w-4"><path d="M12 6.75a1.5 1.5 0 110-3 1.5 1.5 0 010 3zm0 6a1.5 1.5 0 110-3 1.5 1.5 0 010 3zm0 6a1.5 1.5 0 110-3 1.5 1.5 0 010 3z"/></svg>
+                      </button>
+                      <div id="m1" class="menu absolute right-0 z-20 mt-2 w-44 origin-top-right rounded-xl border border-slate-200 bg-white p-1 shadow-lg" role="menu">
+                        <button class="w-full rounded-lg px-3 py-2 text-left text-sm hover:bg-slate-50">Ver detalle</button>
+                        <button class="w-full rounded-lg px-3 py-2 text-left text-sm hover:bg-slate-50">Iniciar atención</button>
+                        <button class="w-full rounded-lg px-3 py-2 text-left text-sm hover:bg-slate-50">Reprogramar</button>
+                        <button class="w-full rounded-lg px-3 py-2 text-left text-sm hover:bg-slate-50 text-red-600">Cancelar</button>
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+                <tr class="hover:bg-slate-50">
+                  <td class="px-3 py-2">08:30</td>
+                  <td class="px-3 py-2">María López</td>
+                  <td class="px-3 py-2">Control de Crecimiento</td>
+                  <td class="px-3 py-2"><span class="rounded-full bg-amber-50 px-2.5 py-0.5 text-xs font-medium text-amber-700">Programado</span></td>
+                  <td class="px-3 py-2 text-right">
+                    <div class="relative inline-block text-left">
+                      <button type="button" class="rounded-lg border border-slate-200 bg-white px-2 py-1 text-sm hover:bg-slate-50" aria-haspopup="true" aria-controls="m2" aria-expanded="false" onclick="toggleMenu('m2',event)">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="h-4 w-4"><path d="M12 6.75a1.5 1.5 0 110-3 1.5 1.5 0 010 3zm0 6a1.5 1.5 0 110-3 1.5 1.5 0 010 3zm0 6a1.5 1.5 0 110-3 1.5 1.5 0 010 3z"/></svg>
+                      </button>
+                      <div id="m2" class="menu absolute right-0 z-20 mt-2 w-44 origin-top-right rounded-xl border border-slate-200 bg-white p-1 shadow-lg" role="menu">
+                        <button class="w-full rounded-lg px-3 py-2 text-left text-sm hover:bg-slate-50">Confirmar asistencia</button>
+                        <button class="w-full rounded-lg px-3 py-2 text-left text-sm hover:bg-slate-50">Reprogramar</button>
+                        <button class="w-full rounded-lg px-3 py-2 text-left text-sm hover:bg-slate-50 text-red-600">Cancelar</button>
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Cola de atención (espera) -->
+        <div class="rounded-2xl border border-slate-200 bg-white p-5 shadow-soft">
+          <div class="mb-4 flex items-center justify-between">
+            <h2 class="text-lg font-semibold">Cola de atención</h2>
+            <span class="rounded-full bg-slate-100 px-3 py-1 text-xs font-medium">3 en espera</span>
+          </div>
+          <ul class="divide-y divide-slate-100 text-sm">
+            <li class="flex items-center justify-between py-3"><div><p class="font-medium">Rosa Huamán</p><p class="text-xs text-slate-500">Prioridad: Normal • 09:00</p></div><span class="rounded-full bg-amber-50 px-2 py-0.5 text-xs font-medium text-amber-700">En cola</span></li>
+            <li class="flex items-center justify-between py-3"><div><p class="font-medium">Luis Soto</p><p class="text-xs text-slate-500">Prioridad: Alta • 09:15</p></div><span class="rounded-full bg-amber-50 px-2 py-0.5 text-xs font-medium text-amber-700">En cola</span></li>
+            <li class="flex items-center justify-between py-3"><div><p class="font-medium">María Rojas</p><p class="text-xs text-slate-500">Prioridad: Normal • 09:30</p></div><span class="rounded-full bg-slate-100 px-2 py-0.5 text-xs font-medium">Registrado</span></li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Gráficos del consultorio -->
+      <section class="mt-6 grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-3" aria-label="Análisis del consultorio">
+        <article class="rounded-2xl border border-slate-200 bg-white p-5 shadow-soft">
+          <div class="mb-3 flex items-center justify-between">
+            <h2 class="text-lg font-semibold">Citas por hora (hoy)</h2>
+            <span class="text-xs text-slate-500">Agenda médica</span>
+          </div>
+          <div class="chart-container"><canvas id="chPorHora"></canvas></div>
+        </article>
+        <article class="rounded-2xl border border-slate-200 bg-white p-5 shadow-soft">
+          <div class="mb-3 flex items-center justify-between">
+            <h2 class="text-lg font-semibold">Distribución por servicio</h2>
+            <span class="text-xs text-slate-500">Top servicios</span>
+          </div>
+          <div class="chart-container"><canvas id="chServicios"></canvas></div>
+        </article>
+        <article class="rounded-2xl border border-slate-200 bg-white p-5 shadow-soft md:col-span-2 xl:col-span-1">
+          <div class="mb-3 flex items-center justify-between">
+            <h2 class="text-lg font-semibold">No‑show últimos 7 días</h2>
+            <span class="text-xs text-slate-500">% por día</span>
+          </div>
+          <div class="chart-container"><canvas id="chNoShow"></canvas></div>
+        </article>
+      </section>
+
+      <!-- Estado de bloques del día -->
+      <section class="mt-6 rounded-2xl border border-slate-200 bg-white p-5 shadow-soft">
+        <div class="mb-4 flex items-center justify-between">
+          <h2 class="text-lg font-semibold">Bloques horarios de hoy</h2>
+          <button class="rounded-lg border border-slate-200 bg-white px-3 py-1.5 text-sm font-medium text-slate-700 hover:bg-slate-50">Crear bloque</button>
+        </div>
+        <div class="space-y-3 text-sm">
+          <div>
+            <div class="flex items-center justify-between"><span>08:00–09:00</span><span class="font-medium text-emerald-700">Ocupado</span></div>
+            <div class="mt-1 h-2 w-full overflow-hidden rounded-full bg-slate-100"><div class="h-full w-[100%] rounded-full bg-emerald-500"></div></div>
+          </div>
+          <div>
+            <div class="flex items-center justify-between"><span>09:00–10:00</span><span class="font-medium text-amber-700">Parcial</span></div>
+            <div class="mt-1 h-2 w-full overflow-hidden rounded-full bg-slate-100"><div class="h-full w-[60%] rounded-full bg-amber-500"></div></div>
+          </div>
+          <div>
+            <div class="flex items-center justify-between"><span>10:00–11:00</span><span class="font-medium text-slate-700">Libre</span></div>
+            <div class="mt-1 h-2 w-full overflow-hidden rounded-full bg-slate-100"><div class="h-full w-[10%] rounded-full bg-slate-400"></div></div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="fixed bottom-0 inset-x-0 z-40 border-t border-slate-200 bg-white/90 backdrop-blur">
+    <div class="mx-auto flex h-12 max-w-screen-2xl items-center justify-between px-6 text-sm text-slate-600">
+      <p>© <span id="y"></span> NextIaCorp • Consultorio 101</p>
+      <nav class="hidden gap-4 md:flex">
+        <a class="hover:text-slate-900" href="#">Privacidad</a>
+        <a class="hover:text-slate-900" href="#">Términos</a>
+        <a class="hover:text-slate-900" href="#">Contacto</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script>
+    // Año
+    document.getElementById('y').textContent = new Date().getFullYear();
+
+    // Menús de acción en tabla
+    function toggleMenu(id, ev){
+      ev?.stopPropagation();
+      document.querySelectorAll('.menu').forEach(m=>m.setAttribute('aria-expanded','false'));
+      const el = document.getElementById(id);
+      const state = el.getAttribute('aria-expanded') === 'true';
+      el.setAttribute('aria-expanded', String(!state));
+    }
+    document.addEventListener('click',()=>document.querySelectorAll('.menu').forEach(m=>m.setAttribute('aria-expanded','false')));
+
+    // Chart defaults
+    window.addEventListener('load', () => {
+      if (!window.Chart) return;
+      Chart.defaults.font.family = "ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial";
+      Chart.defaults.color = '#334155';
+      Chart.defaults.borderColor = '#e2e8f0';
+      Chart.defaults.responsive = true;
+      Chart.defaults.maintainAspectRatio = false;
+      const COLORS = { brand:'#4f46e5', accent:'#06b6d4', ok:'#10b981', warn:'#f59e0b' };
+
+      // Citas por hora (bar)
+      const elHora = document.getElementById('chPorHora');
+      if (elHora) new Chart(elHora.getContext('2d'), {
+        type:'bar',
+        data:{ labels:['08:00','08:30','09:00','09:30','10:00','10:30','11:00','11:30'], datasets:[{ label:'Citas', data:[1,2,1,2,0,2,1,3], backgroundColor:COLORS.brand, borderRadius:8, maxBarThickness:26 }]},
+        options:{ plugins:{ legend:{ display:false } }, scales:{ y:{ beginAtZero:true, ticks:{ stepSize:1 } }, x:{ grid:{ display:false } } } }
+      });
+
+      // Distribución por servicio (doughnut)
+      const elServ = document.getElementById('chServicios');
+      if (elServ) new Chart(elServ.getContext('2d'), {
+        type:'doughnut',
+        data:{ labels:['Consulta','Control crecimiento','Vacunación'], datasets:[{ data:[55,30,15], backgroundColor:[COLORS.brand,COLORS.accent, COLORS.ok], borderWidth:1, borderColor:'#fff' }]},
+        options:{ plugins:{ legend:{ position:'bottom' } }, cutout:'62%' }
+      });
+
+      // No‑show 7 días (line)
+      const elNS = document.getElementById('chNoShow');
+      if (elNS) new Chart(elNS.getContext('2d'), {
+        type:'line',
+        data:{ labels:['Lun','Mar','Mié','Jue','Vie','Sáb','Dom'], datasets:[{ label:'% No‑show', data:[4,6,5,3,8,2,4], fill:false, borderColor:COLORS.accent, tension:.35, pointRadius:3 }]},
+        options:{ plugins:{ legend:{ display:false } }, scales:{ y:{ beginAtZero:true, ticks:{ callback:v=>v+'%' } } } }
+      });
+    });
+  </script>
+</body>
+</html>

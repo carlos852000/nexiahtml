@@ -3,25 +3,18 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>NextIaDoctor • Sede • Consultorios (Bandeja)</title>
-  <!-- Tailwind para prototipo -->
+  <title>NextIaDoctor • Sede • Especialidades (Bandeja)</title>
+  <!-- TailwindCSS para prototipo -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
       theme: {
         extend: {
           colors: {
-            brand: {
-              50:'#eef2ff',100:'#e0e7ff',200:'#c7d2fe',300:'#a5b4fc',400:'#818cf8',
-              500:'#6366f1',600:'#4f46e5',700:'#4338ca',800:'#3730a3',900:'#312e81'
-            },
-            accent: {
-              50:'#ecfeff',100:'#cffafe',200:'#a5f3fc',300:'#67e8f9',400:'#22d3ee',
-              500:'#06b6d4',600:'#0891b2',700:'#0e7490',800:'#155e75',900:'#164e63'
-            }
+            brand: {50:'#eef2ff',100:'#e0e7ff',200:'#c7d2fe',300:'#a5b4fc',400:'#818cf8',500:'#6366f1',600:'#4f46e5',700:'#4338ca',800:'#3730a3',900:'#312e81'},
+            accent: {50:'#ecfeff',100:'#cffafe',200:'#a5f3fc',300:'#67e8f9',400:'#22d3ee',500:'#06b6d4',600:'#0891b2',700:'#0e7490',800:'#155e75',900:'#164e63'}
           },
-          boxShadow: { soft:'0 8px 24px rgba(2,6,23,.06)'},
-          borderRadius: { xl2:'1.25rem'}
+          boxShadow: { soft:'0 8px 24px rgba(2,6,23,.06)'}
         }
       }
     }
@@ -29,7 +22,6 @@
   <!-- Chart.js -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
   <style>
-    :root{ --radius: 16px; }
     *{ scrollbar-width: thin; scrollbar-color: #cbd5e1 transparent; }
     *::-webkit-scrollbar{height:8px;width:8px}
     *::-webkit-scrollbar-thumb{background:#cbd5e1;border-radius:8px}
@@ -67,37 +59,31 @@
       <div class="flex items-center justify-between">
         <!-- Tabs/menú de la Sede -->
         <div class="flex items-center overflow-x-auto py-2 gap-2 scrollbar-hide">
-          <!-- Dashboard -->
           <a href="sede-dashboard.html" class="flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50 transition-all">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" class="h-5 w-5 text-brand-600"><path stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2 0v10a1 1 0 01-1 1h-3m-6 0h6"/></svg>
             <span>Dashboard</span>
           </a>
-          <!-- Consultorios (activo) -->
-          <a href="sede-consultorios.html" aria-current="page" class="flex items-center gap-2 rounded-lg bg-brand-50 px-3 py-2 text-sm font-semibold text-brand-700 border-b-2 border-brand-600 transition-all">
+          <a href="sede-consultorios.html" class="flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50 transition-all">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" class="h-5 w-5 text-brand-600"><path stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
             <span>Consultorios</span>
           </a>
-          <!-- Usuarios -->
           <a href="sede-usuarios.html" class="flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50 transition-all">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" class="h-5 w-5 text-brand-600"><path stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
             <span>Usuarios</span>
           </a>
-          <!-- Médicos -->
           <a href="sede-medicos.html" class="flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50 transition-all">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" class="h-5 w-5 text-brand-600"><path stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" d="M4 7a4 4 0 118 0 4 4 0 01-8 0zm12 4h4m-2-2v4m-6 4a6 6 0 10-12 0"/></svg>
             <span>Médicos</span>
           </a>
-          <!-- Especialidades (estetoscopio) -->
-          <a href="sede-especialidades.html" class="flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50 transition-all">
+          <!-- Especialidades (activo) -->
+          <a href="sede-especialidades.html" aria-current="page" class="flex items-center gap-2 rounded-lg bg-brand-50 px-3 py-2 text-sm font-semibold text-brand-700 border-b-2 border-brand-600 transition-all">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" class="h-5 w-5 text-brand-600"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 6a3 3 0 10-6 0v5a3 3 0 106 0V9m0 2a4 4 0 104 4h1a3 3 0 003-3V6"/></svg>
             <span>Especialidades</span>
           </a>
-          <!-- Servicios (capas) -->
           <a href="sede-servicios.html" class="flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50 transition-all">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" class="h-5 w-5 text-brand-600"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 7l9-4 9 4-9 4-9-4m0 5l9 4 9-4m-18 5l9 4 9-4"/></svg>
             <span>Servicios</span>
           </a>
-          <!-- Horarios (reloj) -->
           <a href="sede-horarios.html" class="flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50 transition-all">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" class="h-5 w-5 text-brand-600"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 6v6l4 2m6-2a10 10 0 11-20 0 10 10 0 0120 0z"/></svg>
             <span>Horarios</span>
@@ -120,12 +106,12 @@
       <!-- Encabezado -->
       <div class="mb-6 flex flex-wrap items-center justify-between gap-3">
         <div>
-          <nav class="text-xs text-slate-500"><a class="hover:underline" href="ipress.html">IPRESS</a> / <a class="hover:underline" href="sede-dashboard.html">Sede Miraflores</a> / <span class="text-slate-700 font-medium">Consultorios</span></nav>
-          <h1 class="mt-1 text-2xl font-semibold tracking-tight text-slate-800">Consultorios de la Sede</h1>
-          <p class="text-sm text-slate-500">Bandeja para gestionar espacios, asignaciones y disponibilidad.</p>
+          <nav class="text-xs text-slate-500"><a class="hover:underline" href="ipress.html">IPRESS</a> / <a class="hover:underline" href="sede-dashboard.html">Sede Miraflores</a> / <span class="text-slate-700 font-medium">Especialidades</span></nav>
+          <h1 class="mt-1 text-2xl font-semibold tracking-tight text-slate-800">Especialidades de la Sede</h1>
+          <p class="text-sm text-slate-500">Bandeja para gestionar catálogo, médicos vinculados y cobertura horaria por especialidad.</p>
         </div>
         <div class="flex items-center gap-2">
-          <a href="sede-consultorios-formulario.html" class="rounded-lg bg-brand-600 px-4 py-2 text-sm font-medium text-white shadow-soft hover:bg-brand-700">+ Nuevo consultorio</a>
+          <a href="sede-especialidades-formulario.html" class="rounded-lg bg-brand-600 px-4 py-2 text-sm font-medium text-white shadow-soft hover:bg-brand-700">+ Agregar especialidad</a>
           <button class="rounded-lg border border-slate-200 bg-white px-4 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50">Exportar</button>
         </div>
       </div>
@@ -133,16 +119,52 @@
       <!-- KPIs -->
       <section class="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
         <article class="rounded-2xl border border-slate-200 bg-white p-5 shadow-soft">
-          <div class="flex items-center justify-between"><div><p class="text-xs uppercase tracking-wider text-slate-400">Total consultorios</p><h3 class="mt-1 text-3xl font-semibold">14</h3><p class="mt-1 text-xs text-emerald-600">+2 este mes</p></div><div class="rounded-xl bg-brand-600/10 p-3 text-brand-600"><svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' class='h-7 w-7'><path stroke-width='1.5' d='M4 6h16v12H4zM8 6v12m8-12v12'/></svg></div></div>
+          <div class="flex items-center justify-between">
+            <div>
+              <p class="text-xs uppercase tracking-wider text-slate-400">Total especialidades</p>
+              <h3 class="mt-1 text-3xl font-semibold">18</h3>
+              <p class="mt-1 text-xs text-emerald-600">+2 este mes</p>
+            </div>
+            <div class="rounded-xl bg-brand-600/10 p-3 text-brand-600">
+              <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' class='h-7 w-7'><path stroke-width='1.5' d='M3 7h7v7H3zM14 7h7v7h-7zM9 14h6v7H9z'/></svg>
+            </div>
+          </div>
         </article>
         <article class="rounded-2xl border border-slate-200 bg-white p-5 shadow-soft">
-          <div class="flex items-center justify-between"><div><p class="text-xs uppercase tracking-wider text-slate-400">Operativos</p><h3 class="mt-1 text-3xl font-semibold">12</h3><p class="mt-1 text-xs text-slate-500">Incluye 2 multipropósito</p></div><div class="rounded-xl bg-emerald-500/10 p-3 text-emerald-600"><svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' class='h-7 w-7'><path stroke-width='1.5' d='M5 13l4 4L19 7'/></svg></div></div>
+          <div class="flex items-center justify-between">
+            <div>
+              <p class="text-xs uppercase tracking-wider text-slate-400">Médicos vinculados</p>
+              <h3 class="mt-1 text-3xl font-semibold">64</h3>
+              <p class="mt-1 text-xs text-slate-500">prom. 3.6 por especialidad</p>
+            </div>
+            <div class="rounded-xl bg-emerald-500/10 p-3 text-emerald-600">
+              <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' class='h-7 w-7'><path stroke-width='1.5' d='M4 7a4 4 0 118 0 4 4 0 01-8 0zm12 4h4m-2-2v4M8 21a6 6 0 00-6-6h8a6 6 0 016 6'/></svg>
+            </div>
+          </div>
         </article>
         <article class="rounded-2xl border border-slate-200 bg-white p-5 shadow-soft">
-          <div class="flex items-center justify-between"><div><p class="text-xs uppercase tracking-wider text-slate-400">En mantenimiento</p><h3 class="mt-1 text-3xl font-semibold">1</h3><p class="mt-1 text-xs text-amber-600">Termina hoy 18:00</p></div><div class="rounded-xl bg-amber-500/10 p-3 text-amber-600"><svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' class='h-7 w-7'><path stroke-width='1.5' d='M12 8v4l3 2M12 2a10 10 0 100 20 10 10 0 000-20z'/></svg></div></div>
+          <div class="flex items-center justify-between">
+            <div>
+              <p class="text-xs uppercase tracking-wider text-slate-400">Servicios vinculados</p>
+              <h3 class="mt-1 text-3xl font-semibold">112</h3>
+              <p class="mt-1 text-xs text-slate-500">catálogo por especialidad</p>
+            </div>
+            <div class="rounded-xl bg-brand-600/10 p-3 text-brand-600">
+              <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' class='h-7 w-7'><path stroke-width='1.5' d='M3 7l9-4 9 4-9 4-9-4m0 5l9 4 9-4m-18 5l9 4 9-4'/></svg>
+            </div>
+          </div>
         </article>
         <article class="rounded-2xl border border-slate-200 bg-white p-5 shadow-soft">
-          <div class="flex items-center justify-between"><div><p class="text-xs uppercase tracking-wider text-slate-400">Ocupación promedio (hoy)</p><h3 class="mt-1 text-3xl font-semibold">79%</h3><p class="mt-1 text-xs text-slate-500">pico 10:00–12:00</p></div><div class="rounded-xl bg-brand-600/10 p-3 text-brand-600"><svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' class='h-7 w-7'><path stroke-width='1.5' d='M3 12h4l2 7 4-14 2 7h4'/></svg></div></div>
+          <div class="flex items-center justify-between">
+            <div>
+              <p class="text-xs uppercase tracking-wider text-slate-400">Cobertura horaria (hoy)</p>
+              <h3 class="mt-1 text-3xl font-semibold">82%</h3>
+              <p class="mt-1 text-xs text-slate-500">pico 10:00–12:00</p>
+            </div>
+            <div class="rounded-xl bg-brand-600/10 p-3 text-brand-600">
+              <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' class='h-7 w-7'><path stroke-width='1.5' d='M3 12h4l2 7 4-14 2 7h4'/></svg>
+            </div>
+          </div>
         </article>
       </section>
 
@@ -150,27 +172,27 @@
       <section class="mt-6 rounded-2xl border border-slate-200 bg-white p-4 shadow-soft">
         <form class="grid gap-3 md:grid-cols-6">
           <div class="md:col-span-2">
-            <label class="mb-1 block text-xs font-medium text-slate-600">Buscar consultorio</label>
+            <label class="mb-1 block text-xs font-medium text-slate-600">Buscar especialidad</label>
             <div class="relative">
-              <input type="text" placeholder="Código, nombre o descripción" class="w-full rounded-lg border border-slate-200 bg-white px-9 py-2 text-sm focus:border-brand-600 focus:outline-none focus:ring-4 focus:ring-brand-600/20" />
+              <input type="text" placeholder="Nombre, código interno o CIE‑10" class="w-full rounded-lg border border-slate-200 bg-white px-9 py-2 text-sm focus:border-brand-600 focus:outline-none focus:ring-4 focus:ring-brand-600/20" />
               <svg class="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400" xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor'><circle cx='11' cy='11' r='8' /><path d='M21 21l-4.3-4.3' /></svg>
             </div>
           </div>
           <div>
-            <label class="mb-1 block text-xs font-medium text-slate-600">Tipo</label>
-            <select class="w-full rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm focus:border-brand-600 focus:outline-none"><option>Todos</option><option>Consulta</option><option>Procedimiento</option><option>Emergencia</option></select>
+            <label class="mb-1 block text-xs font-medium text-slate-600">Área</label>
+            <select class="w-full rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm focus:border-brand-600 focus:outline-none"><option>Todos</option><option>Clínica</option><option>Quirúrgica</option><option>Pediátrica</option></select>
           </div>
           <div>
-            <label class="mb-1 block text-xs font-medium text-slate-600">Piso</label>
-            <select class="w-full rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm focus:border-brand-600 focus:outline-none"><option>Todos</option><option>1</option><option>2</option><option>3</option></select>
-          </div>
-          <div>
-            <label class="mb-1 block text-xs font-medium text-slate-600">Servicio</label>
-            <select class="w-full rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm focus:border-brand-600 focus:outline-none"><option>Todos</option><option>Cardiología</option><option>Dermatología</option><option>Pediatría</option></select>
+            <label class="mb-1 block text-xs font-medium text-slate-600">Categoría</label>
+            <select class="w-full rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm focus:border-brand-600 focus:outline-none"><option>Todos</option><option>Consulta</option><option>Procedimiento</option><option>Apoyo diagnóstico</option></select>
           </div>
           <div>
             <label class="mb-1 block text-xs font-medium text-slate-600">Estado</label>
-            <select class="w-full rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm focus:border-brand-600 focus:outline-none"><option>Todos</option><option>Activo</option><option>Inactivo</option><option>Mantenimiento</option></select>
+            <select class="w-full rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm focus:border-brand-600 focus:outline-none"><option>Todos</option><option>Activa</option><option>Inactiva</option></select>
+          </div>
+          <div>
+            <label class="mb-1 block text-xs font-medium text-slate-600">Con horarios</label>
+            <select class="w-full rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm focus:border-brand-600 focus:outline-none"><option>Todos</option><option>Si</option><option>No</option></select>
           </div>
           <div class="mt-3 flex flex-wrap items-center gap-2 md:col-span-2 lg:col-span-2">
             <button type="button" class="rounded-lg border border-slate-200 bg-white px-3 py-1.5 text-sm hover:bg-slate-50">Limpiar</button>
@@ -182,18 +204,21 @@
       <!-- Tabs para bandejas -->
       <div class="mt-6 border-b border-slate-200">
         <nav class="-mb-px flex gap-6 text-sm">
-          <button type="button" data-tab="all" class="tab-btn border-b-2 border-brand-600 px-1 pb-2 font-medium text-brand-600">Todos</button>
-          <button type="button" data-tab="up" class="tab-btn border-b-2 border-transparent px-1 pb-2 font-medium text-slate-500 hover:text-slate-700">Operativos</button>
-          <button type="button" data-tab="maint" class="tab-btn border-b-2 border-transparent px-1 pb-2 font-medium text-amber-600 hover:text-amber-700">Mantenimiento</button>
-          <button type="button" data-tab="off" class="tab-btn border-b-2 border-transparent px-1 pb-2 font-medium text-slate-500 hover:text-slate-700">Inactivos</button>
+          <button type="button" data-tab="all" class="tab-btn border-b-2 border-brand-600 px-1 pb-2 font-medium text-brand-600">Todas</button>
+          <button type="button" data-tab="active" class="tab-btn border-b-2 border-transparent px-1 pb-2 font-medium text-slate-500 hover:text-slate-700">Activas</button>
+          <button type="button" data-tab="nomed" class="tab-btn border-b-2 border-transparent px-1 pb-2 font-medium text-rose-600 hover:text-rose-700">Sin médicos</button>
+          <button type="button" data-tab="nohrs" class="tab-btn border-b-2 border-transparent px-1 pb-2 font-medium text-amber-600 hover:text-amber-700">Sin horarios</button>
         </nav>
       </div>
 
-      <!-- Bandeja: Todos -->
+      <!-- Bandeja: Todas -->
       <section id="all" class="tab-panel mt-6 rounded-2xl border border-slate-200 bg-white p-4 shadow-soft">
         <div class="mb-3 flex items-center justify-between">
-          <div><h2 class="text-lg font-semibold">Listado de consultorios</h2><p class="text-sm text-slate-500">Código, nombre, tipo, servicios y estado</p></div>
-          <div class="text-sm text-slate-500">Mostrando 1–10 de 14</div>
+          <div>
+            <h2 class="text-lg font-semibold">Listado de especialidades</h2>
+            <p class="text-sm text-slate-500">Nombre, área, categoría, médicos y cobertura</p>
+          </div>
+          <div class="text-sm text-slate-500">Mostrando 1–10 de 18</div>
         </div>
         <div class="overflow-x-auto">
           <table class="min-w-full text-left text-sm">
@@ -201,12 +226,13 @@
               <tr>
                 <th class="px-4 py-3"><input id="chkAll" type="checkbox" class="h-4 w-4 rounded border-slate-300 text-brand-600 focus:ring-brand-600"/></th>
                 <th class="px-4 py-3 font-medium">Código</th>
-                <th class="px-4 py-3 font-medium">Nombre</th>
-                <th class="px-4 py-3 font-medium">Tipo</th>
-                <th class="px-4 py-3 font-medium">Cap.</th>
-                <th class="px-4 py-3 font-medium">Piso</th>
+                <th class="px-4 py-3 font-medium">Especialidad</th>
+                <th class="px-4 py-3 font-medium">Área</th>
+                <th class="px-4 py-3 font-medium">Categoría</th>
+                <th class="px-4 py-3 font-medium">Médicos</th>
                 <th class="px-4 py-3 font-medium">Servicios</th>
-                <th class="px-4 py-3 font-medium">Especialidades</th>
+                <th class="px-4 py-3 font-medium">Cobertura</th>
+                <th class="px-4 py-3 font-medium">Espera prom.</th>
                 <th class="px-4 py-3 font-medium">Estado</th>
                 <th class="px-4 py-3 text-right font-medium">Acciones</th>
               </tr>
@@ -214,14 +240,17 @@
             <tbody class="divide-y divide-slate-100 text-slate-700">
               <tr class="hover:bg-slate-50/60">
                 <td class="px-4 py-3"><input type="checkbox" class="rowchk h-4 w-4 rounded border-slate-300 text-brand-600 focus:ring-brand-600"/></td>
-                <td class="px-4 py-3">C-101</td>
-                <td class="px-4 py-3"> <a href="consultorio-dashboard.html?id=SE-001" class="font-medium text-slate-900 hover:underline">Consultorio 101</a></td>
+                <td class="px-4 py-3">ESP-001</td>
+                <td class="px-4 py-3"><a href="especialidad-dashboard.html?id=SE-001" class="font-medium text-slate-900 hover:underline">Cardiología</a></td>
+                <td class="px-4 py-3">Clínica</td>
                 <td class="px-4 py-3">Consulta</td>
-                <td class="px-4 py-3">1</td>
-                <td class="px-4 py-3">1</td>
-                <td class="px-4 py-3">Cardio, Derma</td>
-                <td class="px-4 py-3">Cardiología</td>
-                <td class="px-4 py-3"><span class="rounded-full bg-emerald-50 px-2.5 py-1 text-xs font-medium text-emerald-700">Activo</span></td>
+                <td class="px-4 py-3">12</td>
+                <td class="px-4 py-3">18</td>
+                <td class="px-4 py-3">
+                  <div class="w-28 h-2 rounded-full bg-slate-100"><div class="h-2 rounded-full bg-brand-600" style="width:86%"></div></div>
+                </td>
+                <td class="px-4 py-3">12 min</td>
+                <td class="px-4 py-3"><span class="rounded-full bg-emerald-50 px-2.5 py-1 text-xs font-medium text-emerald-700">Activa</span></td>
                 <td class="px-4 py-3 text-right">
                   <div class="relative inline-block text-left" data-menu>
                     <button class="inline-flex items-center gap-2 rounded-lg border border-slate-200 bg-white px-3 py-1.5 text-sm hover:bg-slate-50" data-menu-button>
@@ -230,9 +259,9 @@
                     </button>
                     <div class="invisible absolute right-0 z-10 mt-2 w-56 origin-top-right scale-95 rounded-lg border border-slate-200 bg-white p-1 opacity-0 shadow-soft transition-all duration-200 ease-in-out" data-menu-items>
                       <a href="#" class="block rounded-md px-3 py-2 text-sm hover:bg-slate-50">Editar</a>
-                      <a href="#" class="block rounded-md px-3 py-2 text-sm hover:bg-slate-50">Horarios</a>
-                      <a href="#" class="block rounded-md px-3 py-2 text-sm hover:bg-slate-50">Servicios</a>
-                      <a href="#" class="block rounded-md px-3 py-2 text-sm hover:bg-slate-50">Ver agenda</a>
+                      <a href="#" class="block rounded-md px-3 py-2 text-sm hover:bg-slate-50">Vincular médicos</a>
+                      <a href="#" class="block rounded-md px-3 py-2 text-sm hover:bg-slate-50">Configurar servicios</a>
+                      <a href="#" class="block rounded-md px-3 py-2 text-sm hover:bg-slate-50">Gestionar horarios</a>
                       <a href="#" class="block rounded-md px-3 py-2 text-sm text-rose-600 hover:bg-rose-50">Desactivar</a>
                     </div>
                   </div>
@@ -240,46 +269,52 @@
               </tr>
               <tr class="hover:bg-slate-50/60">
                 <td class="px-4 py-3"><input type="checkbox" class="rowchk h-4 w-4 rounded border-slate-300 text-brand-600 focus:ring-brand-600"/></td>
-                <td class="px-4 py-3">C-203</td>
-                <td class="px-4 py-3"> <a href="consultorio-dashboard.html?id=SE-001" class="font-medium text-slate-900 hover:underline">Consultorio 203</a></td>
+                <td class="px-4 py-3">ESP-014</td>
+                <td class="px-4 py-3"><a href="especialidad-dashboard.html?id=SE-001" class="font-medium text-slate-900 hover:underline">Dermatología</a></td>
+                <td class="px-4 py-3">Clínica</td>
+                <td class="px-4 py-3">Consulta</td>
+                <td class="px-4 py-3">9</td>
+                <td class="px-4 py-3">10</td>
+                <td class="px-4 py-3">
+                  <div class="w-28 h-2 rounded-full bg-slate-100"><div class="h-2 rounded-full bg-brand-600" style="width:74%"></div></div>
+                </td>
+                <td class="px-4 py-3">15 min</td>
+                <td class="px-4 py-3"><span class="rounded-full bg-emerald-50 px-2.5 py-1 text-xs font-medium text-emerald-700">Activa</span></td>
+                <td class="px-4 py-3 text-right">
+                  <div class="relative inline-block text-left" data-menu>
+                    <button class="inline-flex items-center gap-2 rounded-lg border border-slate-200 bg-white px-3 py-1.5 text-sm hover:bg-slate-50" data-menu-button>Opciones<svg class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor"><path d="M5.23 7.21a.75.75 0 011.06.02L10 11.147l3.71-3.916a.75.75 0 111.08 1.04l-4.243 4.475a.75.75 0 01-1.08 0L5.25 8.27a.75.75 0 01-.02-1.06z"/></svg></button>
+                    <div class="invisible absolute right-0 z-10 mt-2 w-56 origin-top-right scale-95 rounded-lg border border-slate-200 bg-white p-1 opacity-0 shadow-soft transition-all duration-200 ease-in-out" data-menu-items>
+                      <a href="#" class="block rounded-md px-3 py-2 text-sm hover:bg-slate-50">Editar</a>
+                      <a href="#" class="block rounded-md px-3 py-2 text-sm hover:bg-slate-50">Vincular médicos</a>
+                      <a href="#" class="block rounded-md px-3 py-2 text-sm hover:bg-slate-50">Configurar servicios</a>
+                      <a href="#" class="block rounded-md px-3 py-2 text-sm hover:bg-slate-50">Gestionar horarios</a>
+                      <a href="#" class="block rounded-md px-3 py-2 text-sm text-rose-600 hover:bg-rose-50">Desactivar</a>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+              <tr class="hover:bg-slate-50/60">
+                <td class="px-4 py-3"><input type="checkbox" class="rowchk h-4 w-4 rounded border-slate-300 text-brand-600 focus:ring-brand-600"/></td>
+                <td class="px-4 py-3">ESP-021</td>
+                <td class="px-4 py-3"><a href="especialidad-dashboard.html?id=SE-001" class="font-medium text-slate-900 hover:underline">Ginecología</a></td>
+                <td class="px-4 py-3">Quirúrgica</td>
                 <td class="px-4 py-3">Procedimiento</td>
-                <td class="px-4 py-3">2</td>
-                <td class="px-4 py-3">2</td>
-                <td class="px-4 py-3">Ginecología</td>
-                <td class="px-4 py-3">Ginecología</td>
-                <td class="px-4 py-3"><span class="rounded-full bg-amber-50 px-2.5 py-1 text-xs font-medium text-amber-700">Mantenimiento</span></td>
-                <td class="px-4 py-3 text-right">
-                  <div class="relative inline-block text-left" data-menu>
-                    <button class="inline-flex items-center gap-2 rounded-lg border border-slate-200 bg-white px-3 py-1.5 text-sm hover:bg-slate-50" data-menu-button>Opciones<svg class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor"><path d="M5.23 7.21a.75.75 0 011.06.02L10 11.147l3.71-3.916a.75.75 0 111.08 1.04l-4.243 4.475a.75.75 0 01-1.08 0L5.25 8.27a.75.75 0 01-.02-1.06z"/></svg></button>
-                    <div class="invisible absolute right-0 z-10 mt-2 w-56 origin-top-right scale-95 rounded-lg border border-slate-200 bg-white p-1 opacity-0 shadow-soft transition-all duration-200 ease-in-out" data-menu-items>
-                      <a href="#" class="block rounded-md px-3 py-2 text-sm hover:bg-slate-50">Editar</a>
-                      <a href="#" class="block rounded-md px-3 py-2 text-sm hover:bg-slate-50">Horarios</a>
-                      <a href="#" class="block rounded-md px-3 py-2 text-sm hover:bg-slate-50">Servicios</a>
-                      <a href="#" class="block rounded-md px-3 py-2 text-sm hover:bg-slate-50">Ver agenda</a>
-                      <a href="#" class="block rounded-md px-3 py-2 text-sm text-emerald-700 hover:bg-emerald-50">Reactivar</a>
-                    </div>
-                  </div>
+                <td class="px-4 py-3">7</td>
+                <td class="px-4 py-3">12</td>
+                <td class="px-4 py-3">
+                  <div class="w-28 h-2 rounded-full bg-slate-100"><div class="h-2 rounded-full bg-amber-500" style="width:41%"></div></div>
                 </td>
-              </tr>
-              <tr class="hover:bg-slate-50/60">
-                <td class="px-4 py-3"><input type="checkbox" class="rowchk h-4 w-4 rounded border-slate-300 text-brand-600 focus:ring-brand-600"/></td>
-                <td class="px-4 py-3">E-105</td>
-                <td class="px-4 py-3"> <a href="consultorio-dashboard.html?id=SE-001" class="font-medium text-slate-900 hover:underline">Emergencia Box 05</a></td>
-                <td class="px-4 py-3">Emergencia</td>
-                <td class="px-4 py-3">1</td>
-                <td class="px-4 py-3">1</td>
-                <td class="px-4 py-3">Trauma</td>
-                <td class="px-4 py-3">Urgencias</td>
-                <td class="px-4 py-3"><span class="rounded-full bg-emerald-50 px-2.5 py-1 text-xs font-medium text-emerald-700">Activo</span></td>
+                <td class="px-4 py-3">28 min</td>
+                <td class="px-4 py-3"><span class="rounded-full bg-amber-50 px-2.5 py-1 text-xs font-medium text-amber-700">Sin horarios</span></td>
                 <td class="px-4 py-3 text-right">
                   <div class="relative inline-block text-left" data-menu>
                     <button class="inline-flex items-center gap-2 rounded-lg border border-slate-200 bg-white px-3 py-1.5 text-sm hover:bg-slate-50" data-menu-button>Opciones<svg class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor"><path d="M5.23 7.21a.75.75 0 011.06.02L10 11.147l3.71-3.916a.75.75 0 111.08 1.04l-4.243 4.475a.75.75 0 01-1.08 0L5.25 8.27a.75.75 0 01-.02-1.06z"/></svg></button>
                     <div class="invisible absolute right-0 z-10 mt-2 w-56 origin-top-right scale-95 rounded-lg border border-slate-200 bg-white p-1 opacity-0 shadow-soft transition-all duration-200 ease-in-out" data-menu-items>
                       <a href="#" class="block rounded-md px-3 py-2 text-sm hover:bg-slate-50">Editar</a>
-                      <a href="#" class="block rounded-md px-3 py-2 text-sm hover:bg-slate-50">Horarios</a>
-                      <a href="#" class="block rounded-md px-3 py-2 text-sm hover:bg-slate-50">Servicios</a>
-                      <a href="#" class="block rounded-md px-3 py-2 text-sm hover:bg-slate-50">Ver agenda</a>
-                      <a href="#" class="block rounded-md px-3 py-2 text-sm text-rose-600 hover:bg-rose-50">Desactivar</a>
+                      <a href="#" class="block rounded-md px-3 py-2 text-sm hover:bg-slate-50">Vincular médicos</a>
+                      <a href="#" class="block rounded-md px-3 py-2 text-sm hover:bg-slate-50">Configurar servicios</a>
+                      <a href="#" class="block rounded-md px-3 py-2 text-sm hover:bg-slate-50">Gestionar horarios</a>
+                      <a href="#" class="block rounded-md px-3 py-2 text-sm text-emerald-700 hover:bg-emerald-50">Activar</a>
                     </div>
                   </div>
                 </td>
@@ -299,22 +334,36 @@
         </div>
       </section>
 
-      <!-- Bandeja: Operativos -->
-      <section id="up" class="tab-panel hidden mt-6 rounded-2xl border border-slate-200 bg-white p-4 shadow-soft">
-        <h2 class="text-lg font-semibold mb-3">Consultorios operativos</h2>
-        <p class="text-sm text-slate-500">(Contenido filtrado por estado = Activo)</p>
+      <!-- Bandeja: Activas / Sin médicos / Sin horarios (contenidos placeholder) -->
+      <section id="active" class="tab-panel hidden mt-6 rounded-2xl border border-slate-200 bg-white p-4 shadow-soft">
+        <h2 class="text-lg font-semibold mb-3">Especialidades activas</h2>
+        <p class="text-sm text-slate-500">(Contenido filtrado por estado = Activa)</p>
+      </section>
+      <section id="nomed" class="tab-panel hidden mt-6 rounded-2xl border border-slate-200 bg-white p-4 shadow-soft">
+        <h2 class="text-lg font-semibold mb-3">Especialidades sin médicos vinculados</h2>
+        <p class="text-sm text-slate-500">(Médicos vinculados = 0)</p>
+      </section>
+      <section id="nohrs" class="tab-panel hidden mt-6 rounded-2xl border border-slate-200 bg-white p-4 shadow-soft">
+        <h2 class="text-lg font-semibold mb-3">Especialidades sin horarios configurados</h2>
+        <p class="text-sm text-slate-500">(Sin registros en agenda_medico/horario_especialidad)</p>
       </section>
 
-      <!-- Bandeja: Mantenimiento -->
-      <section id="maint" class="tab-panel hidden mt-6 rounded-2xl border border-slate-200 bg-white p-4 shadow-soft">
-        <h2 class="text-lg font-semibold mb-3">Consultorios en mantenimiento</h2>
-        <p class="text-sm text-slate-500">(Contenido filtrado por estado = Mantenimiento)</p>
-      </section>
-
-      <!-- Bandeja: Inactivos -->
-      <section id="off" class="tab-panel hidden mt-6 rounded-2xl border border-slate-200 bg-white p-4 shadow-soft">
-        <h2 class="text-lg font-semibold mb-3">Consultorios inactivos</h2>
-        <p class="text-sm text-slate-500">(Contenido filtrado por estado = Inactivo)</p>
+      <!-- Analítica lateral -->
+      <section class="mt-6 grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-3">
+        <article class="rounded-2xl border border-slate-200 bg-white p-5 shadow-soft xl:col-span-2">
+          <div class="mb-3 flex items-center justify-between">
+            <h2 class="text-lg font-semibold">Atenciones por especialidad (30 días)</h2>
+            <span class="text-xs text-slate-500">Top 6</span>
+          </div>
+          <div class="chart-container"><canvas id="chAtxEsp"></canvas></div>
+        </article>
+        <article class="rounded-2xl border border-slate-200 bg-white p-5 shadow-soft">
+          <div class="mb-3 flex items-center justify-between">
+            <h2 class="text-lg font-semibold">Tiempo de espera promedio</h2>
+            <span class="text-xs text-slate-500">minutos</span>
+          </div>
+          <div class="chart-container"><canvas id="chEspera"></canvas></div>
+        </article>
       </section>
 
       <!-- Barra de acciones masivas -->
@@ -322,14 +371,28 @@
         <div class="pointer-events-auto rounded-2xl border border-slate-200 bg-white px-4 py-2 shadow-soft">
           <div class="flex items-center gap-2 text-sm">
             <span id="bulkCount" class="font-medium">0</span>
-            <span class="text-slate-600">seleccionados</span>
+            <span class="text-slate-600">seleccionadas</span>
             <span class="text-slate-300">•</span>
             <button class="rounded-md border border-slate-200 bg-white px-2 py-1 hover:bg-slate-50">Activar</button>
             <button class="rounded-md border border-slate-200 bg-white px-2 py-1 hover:bg-slate-50">Inactivar</button>
-            <button class="rounded-md border border-slate-200 bg-white px-2 py-1 hover:bg-slate-50">Asignar servicios</button>
+            <button class="rounded-md border border-slate-200 bg-white px-2 py-1 hover:bg-slate-50">Vincular médicos</button>
           </div>
         </div>
       </div>
+
+      <!-- Notas de integración (ocultas en producción) -->
+      <details class="mt-8 rounded-xl border border-dashed border-slate-300 bg-slate-50/40 p-4 text-[13px] text-slate-600 open:shadow-soft">
+        <summary class="cursor-pointer font-semibold">Notas técnicas de integración</summary>
+        <ul class="list-disc pl-5 mt-2 space-y-1">
+          <li><strong>Catálogo</strong>: <em>especialidad</em> (id, codigo, nombre, area_id, categoria_id, estado).</li>
+          <li><strong>Vínculo sede</strong>: tabla pivote sugerida <em>sede_especialidad</em> (sede_id, especialidad_id, estado, created_at).</li>
+          <li><strong>Médicos por especialidad en sede</strong>: join <em>medico_especialidad</em> ↔ <em>medico_sede</em> (o vista), filtrando por <code>sede_id</code>.</li>
+          <li><strong>Servicios vinculados</strong>: <em>servicio_clinico</em> ↔ pivote <em>especialidad_servicio</em> (o <em>sede_servicio</em> cuando sea específico de sede).</li>
+          <li><strong>Cobertura horaria</strong>: % de slots con profesional asignado en <em>agenda_medico</em> sobre slots disponibles por rango (hoy/semana).</li>
+          <li><strong>Espera promedio</strong>: promedio de <code>reserva.hora_atencion - reserva.hora_programada</code> por especialidad (últimos 30 días).</li>
+          <li><strong>Atenciones por especialidad</strong>: de <em>consulta_medica</em> uniendo a <em>especialidad</em>, filtrando por <code>sede_id</code> y fecha &le; 30 días.</li>
+        </ul>
+      </details>
 
     </div>
   </main>
@@ -389,8 +452,27 @@
       bulkBar.classList.toggle('hidden', count === 0);
       bulkBar.classList.toggle('flex', count > 0);
     };
-    chkAll.addEventListener('change', (e)=>{ rowChks().forEach(c => c.checked = e.target.checked); updateBulk(); });
+    if(chkAll){
+      chkAll.addEventListener('change', (e)=>{ rowChks().forEach(c => c.checked = e.target.checked); updateBulk(); });
+    }
     rowChks().forEach(c => c.addEventListener('change', updateBulk));
+
+    // Charts de ejemplo
+    if(window.Chart){
+      const COLORS = { brand:'#4f46e5', accent:'#06b6d4' };
+      const ctx1 = document.getElementById('chAtxEsp');
+      if(ctx1) new Chart(ctx1.getContext('2d'),{
+        type:'bar',
+        data:{ labels:['Cardiología','Dermatología','Pediatría','Ginecología','Odontología','Trauma'], datasets:[{ label:'Atenciones', data:[420,360,310,260,240,210], backgroundColor:COLORS.brand, borderRadius:6, maxBarThickness:28 }]},
+        options:{ plugins:{ legend:{ display:false } }, scales:{ y:{ beginAtZero:true } } }
+      });
+      const ctx2 = document.getElementById('chEspera');
+      if(ctx2) new Chart(ctx2.getContext('2d'),{
+        type:'line',
+        data:{ labels:['Lun','Mar','Mié','Jue','Vie','Sáb','Dom'], datasets:[{ label:'min', data:[18,16,14,19,21,13,12], borderColor:COLORS.accent, fill:true, backgroundColor:'rgba(6,182,212,.15)' }]},
+        options:{ plugins:{ legend:{ display:false } }, scales:{ y:{ beginAtZero:true } } }
+      });
+    }
   </script>
 </body>
 </html>

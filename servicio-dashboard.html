@@ -1,0 +1,353 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>NextIaDoctor • Dashboard Servicio</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {50:'#eef2ff',100:'#e0e7ff',200:'#c7d2fe',300:'#a5b4fc',400:'#818cf8',500:'#6366f1',600:'#4f46e5',700:'#4338ca',800:'#3730a3',900:'#312e81'},
+            accent: {50:'#ecfeff',100:'#cffafe',200:'#a5f3fc',300:'#67e8f9',400:'#22d3ee',500:'#06b6d4',600:'#0891b2',700:'#0e7490',800:'#155e75',900:'#164e63'}
+          },
+          boxShadow: { soft:'0 8px 24px rgba(2,6,23,.06)' },
+          borderRadius: { xl2:'1.25rem' }
+        }
+      }
+    }
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
+  <style>
+    *{ scrollbar-width: thin; scrollbar-color:#cbd5e1 transparent }
+    *::-webkit-scrollbar{height:8px;width:8px}
+    *::-webkit-scrollbar-thumb{background:#cbd5e1;border-radius:8px}
+    .chart-container{position:relative;height:220px;width:100%}
+    .menu{display:none}
+    .menu[aria-expanded="true"]{display:block}
+  </style>
+</head>
+<body class="min-h-screen bg-slate-50 text-slate-800">
+  <!-- Topbar con breadcrumb Nivel 3 (IPRESS ▸ Sede ▸ Servicio) -->
+  <header class="fixed inset-x-0 top-0 z-40 bg-gradient-to-r from-brand-600 to-accent-500 text-white shadow-soft">
+    <div class="mx-auto flex h-16 max-w-screen-2xl items-center justify-between px-4">
+      <div class="flex items-center gap-3">
+        <a href="ipress.html" class="inline-flex items-center gap-3">
+          <div class="select-none text-lg font-semibold tracking-wide">NextIaCorp</div>
+        </a>
+        <div class="hidden items-center gap-2 rounded-lg bg-white/15 px-3 py-1.5 md:flex">
+          <span class="font-semibold">IPRESS San Martín</span>
+          <span class="text-xs text-white/70">›</span>
+          <span class="text-xs text-white/95">Sede Miraflores</span>
+          <span class="text-xs text-white/70">›</span>
+          <span class="text-xs font-semibold text-white">Servicio: Ecografías</span>
+        </div>
+      </div>
+      <nav class="flex items-center gap-2">
+        <a href="#" class="hidden rounded-lg bg-white/10 px-3 py-1.5 text-sm font-medium backdrop-blur hover:bg-white/20 md:inline">Soporte</a>
+        <img src="https://api.dicebear.com/7.x/initials/svg?seed=SV" alt="avatar" class="h-8 w-8 rounded-full ring-2 ring-white/30"/>
+      </nav>
+    </div>
+  </header>
+
+  <!-- NAV NIVEL 3 (del Servicio) -->
+  <nav class="fixed top-16 inset-x-0 z-30 bg-white border-b border-slate-200 shadow-soft" aria-label="Navegación de Servicio">
+    <div class="mx-auto max-w-screen-2xl px-4">
+      <div class="flex items-center justify-between">
+        <div class="flex items-center overflow-x-auto py-2 gap-2">
+          <a href="servicio-dashboard.html" class="flex items-center gap-2 rounded-lg bg-brand-50 px-3 py-2 text-sm font-semibold text-brand-700 border-b-2 border-brand-600">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" class="h-5 w-5 text-brand-600"><path stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0h6"/></svg>
+            <span>Dashboard</span>
+          </a>
+          <a href="servicio-agenda.html" class="flex items-center gap-2 px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" class="h-5 w-5 text-brand-600"><path stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3M3 11h18M5 19h14a2 2 0 002-2v-6H3v6a2 2 0 002 2z"/></svg>
+            <span>Agenda</span>
+          </a>
+          <a href="servicio-reservas.html" class="flex items-center gap-2 px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" class="h-5 w-5 text-brand-600"><path stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" d="M12 6v12m6-6H6"/></svg>
+            <span>Reservas</span>
+          </a>
+          <a href="servicio-atenciones.html" class="flex items-center gap-2 px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" class="h-5 w-5 text-brand-600"><path stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z"/></svg>
+            <span>Atenciones</span>
+          </a>
+          <a href="servicio-reportes.html" class="flex items-center gap-2 px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" class="h-5 w-5 text-brand-600"><path stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" d="M12 14l9-5-9-5-9 5 9 5z"/><path stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" d="M12 14l6.16-3.422A12.083 12.083 0 016 8.577M12 14v7"/></svg>
+            <span>Reportes</span>
+          </a>
+          <a href="servicio-config.html" class="flex items-center gap-2 px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" class="h-5 w-5 text-brand-600"><path stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" d="M11 4a7 7 0 100 14 7 7 0 000-14zm8 7h-3"/></svg>
+            <span>Configuración</span>
+          </a>
+        </div>
+        <!-- Acciones rápidas -->
+        <div class="flex items-center gap-2">
+          <button class="rounded-lg bg-brand-600 px-3 py-2 text-sm font-medium text-white shadow-soft hover:bg-brand-700">Nueva reserva</button>
+          <button class="rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50">Agregar horario</button>
+          <button class="rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50">Administrar tarifas</button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main -->
+  <main class="pt-36 pb-24">
+    <div class="mx-auto max-w-screen-2xl px-6">
+      <!-- Encabezado -->
+      <div class="mb-6 flex flex-wrap items-center justify-between gap-3">
+        <div>
+          <h1 class="text-2xl font-semibold tracking-tight text-slate-800">Dashboard • Servicio: Ecografías</h1>
+          <p class="text-sm text-slate-500">Resumen operativo y comercial del servicio en la sede</p>
+          <div class="mt-2 flex flex-wrap items-center gap-2">
+            <span class="inline-flex h-2 w-2 rounded-full bg-emerald-500"></span>
+            <span class="text-xs text-emerald-600 font-medium">Activo</span>
+            <span class="text-xs text-slate-400">• Últ. actualización: <span id="lastUpdate">Hace 2 min</span></span>
+            <span class="text-xs text-slate-400">• Modalidades: Presencial, Domiciliaria</span>
+          </div>
+        </div>
+        <div class="flex items-center gap-2">
+          <button class="rounded-lg border border-slate-200 bg-white px-4 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50">Exportar</button>
+        </div>
+      </div>
+
+      <!-- KPIs del servicio -->
+      <section class="grid gap-4 md:grid-cols-2 lg:grid-cols-5">
+        <article class="rounded-2xl border border-slate-200 bg-white p-4 shadow-soft">
+          <p class="text-xs uppercase tracking-wider text-slate-400">Citas de hoy</p>
+          <h3 class="mt-1 text-2xl font-semibold">34</h3>
+          <p class="text-xs text-slate-400">Programadas</p>
+        </article>
+        <article class="rounded-2xl border border-slate-200 bg-white p-4 shadow-soft">
+          <p class="text-xs uppercase tracking-wider text-slate-400">Ocupación</p>
+          <h3 class="mt-1 text-2xl font-semibold">71%</h3>
+          <p class="text-xs text-slate-400">Consultorios del servicio</p>
+        </article>
+        <article class="rounded-2xl border border-slate-200 bg-white p-4 shadow-soft">
+          <p class="text-xs uppercase tracking-wider text-slate-400">No‑show</p>
+          <h3 class="mt-1 text-2xl font-semibold">4.1%</h3>
+          <p class="text-xs text-slate-400">Hoy</p>
+        </article>
+        <article class="rounded-2xl border border-slate-200 bg-white p-4 shadow-soft">
+          <p class="text-xs uppercase tracking-wider text-slate-400">Tarifas activas</p>
+          <h3 class="mt-1 text-2xl font-semibold">3</h3>
+          <p class="text-xs text-slate-400">Vigentes</p>
+        </article>
+        <article class="rounded-2xl border border-slate-200 bg-white p-4 shadow-soft">
+          <p class="text-xs uppercase tracking-wider text-slate-400">Cupos disponibles</p>
+          <h3 class="mt-1 text-2xl font-semibold">12</h3>
+          <p class="text-xs text-slate-400">Hoy</p>
+        </article>
+      </section>
+
+      <!-- Paneles principales: Agenda del día + Próximas reservas + Tarifas -->
+      <section class="mt-6 grid gap-6 lg:grid-cols-3">
+        <!-- Agenda del día por servicio (todas las agendas de este servicio) -->
+        <div class="rounded-2xl border border-slate-200 bg-white p-5 shadow-soft lg:col-span-2">
+          <div class="mb-4 flex items-center justify-between">
+            <h2 class="text-lg font-semibold">Agenda del día • Servicio</h2>
+            <div class="flex items-center gap-2">
+              <input type="date" class="rounded-lg border border-slate-200 px-2 py-1.5 text-sm" />
+              <button class="rounded-lg border border-slate-200 bg-white px-3 py-1.5 text-sm font-medium text-slate-700 hover:bg-slate-50">Actualizar</button>
+            </div>
+          </div>
+          <div class="overflow-hidden rounded-xl border border-slate-100">
+            <table class="min-w-full divide-y divide-slate-100 text-sm">
+              <thead class="bg-slate-50">
+                <tr>
+                  <th class="px-3 py-2 text-left text-xs font-semibold uppercase tracking-wider text-slate-500">Hora</th>
+                  <th class="px-3 py-2 text-left text-xs font-semibold uppercase tracking-wider text-slate-500">Paciente</th>
+                  <th class="px-3 py-2 text-left text-xs font-semibold uppercase tracking-wider text-slate-500">Médico/Operador</th>
+                  <th class="px-3 py-2 text-left text-xs font-semibold uppercase tracking-wider text-slate-500">Consultorio</th>
+                  <th class="px-3 py-2 text-left text-xs font-semibold uppercase tracking-wider text-slate-500">Estado</th>
+                  <th class="px-3 py-2 text-right text-xs font-semibold uppercase tracking-wider text-slate-500">Acciones</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-slate-100">
+                <tr class="hover:bg-slate-50">
+                  <td class="px-3 py-2">08:00</td>
+                  <td class="px-3 py-2">Juan Pérez</td>
+                  <td class="px-3 py-2">Dra. Ana Ramos</td>
+                  <td class="px-3 py-2">101</td>
+                  <td class="px-3 py-2"><span class="rounded-full bg-emerald-50 px-2.5 py-0.5 text-xs font-medium text-emerald-700">En atención</span></td>
+                  <td class="px-3 py-2 text-right">
+                    <div class="relative inline-block text-left">
+                      <button type="button" class="rounded-lg border border-slate-200 bg-white px-2 py-1 text-sm hover:bg-slate-50" aria-haspopup="true" aria-controls="m1" aria-expanded="false" onclick="toggleMenu('m1',event)">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="h-4 w-4"><path d="M12 6.75a1.5 1.5 0 110-3 1.5 1.5 0 010 3zm0 6a1.5 1.5 0 110-3 1.5 1.5 0 010 3zm0 6a1.5 1.5 0 110-3 1.5 1.5 0 010 3z"/></svg>
+                      </button>
+                      <div id="m1" class="menu absolute right-0 z-20 mt-2 w-44 origin-top-right rounded-xl border border-slate-200 bg-white p-1 shadow-lg" role="menu">
+                        <button class="w-full rounded-lg px-3 py-2 text-left text-sm hover:bg-slate-50">Ver detalle</button>
+                        <button class="w-full rounded-lg px-3 py-2 text-left text-sm hover:bg-slate-50">Iniciar atención</button>
+                        <button class="w-full rounded-lg px-3 py-2 text-left text-sm hover:bg-slate-50">Reprogramar</button>
+                        <button class="w-full rounded-lg px-3 py-2 text-left text-sm hover:bg-slate-50 text-red-600">Cancelar</button>
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+                <tr class="hover:bg-slate-50">
+                  <td class="px-3 py-2">08:30</td>
+                  <td class="px-3 py-2">María López</td>
+                  <td class="px-3 py-2">Dr. Luis Paredes</td>
+                  <td class="px-3 py-2">102</td>
+                  <td class="px-3 py-2"><span class="rounded-full bg-amber-50 px-2.5 py-0.5 text-xs font-medium text-amber-700">Programado</span></td>
+                  <td class="px-3 py-2 text-right">
+                    <div class="relative inline-block text-left">
+                      <button type="button" class="rounded-lg border border-slate-200 bg-white px-2 py-1 text-sm hover:bg-slate-50" aria-haspopup="true" aria-controls="m2" aria-expanded="false" onclick="toggleMenu('m2',event)">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="h-4 w-4"><path d="M12 6.75a1.5 1.5 0 110-3 1.5 1.5 0 010 3zm0 6a1.5 1.5 0 110-3 1.5 1.5 0 010 3zm0 6a1.5 1.5 0 110-3 1.5 1.5 0 010 3z"/></svg>
+                      </button>
+                      <div id="m2" class="menu absolute right-0 z-20 mt-2 w-44 origin-top-right rounded-xl border border-slate-200 bg-white p-1 shadow-lg" role="menu">
+                        <button class="w-full rounded-lg px-3 py-2 text-left text-sm hover:bg-slate-50">Confirmar asistencia</button>
+                        <button class="w-full rounded-lg px-3 py-2 text-left text-sm hover:bg-slate-50">Reprogramar</button>
+                        <button class="w-full rounded-lg px-3 py-2 text-left text-sm hover:bg-slate-50 text-red-600">Cancelar</button>
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Tarifa y coberturas -->
+        <div class="rounded-2xl border border-slate-200 bg-white p-5 shadow-soft">
+          <div class="mb-4 flex items-center justify-between">
+            <h2 class="text-lg font-semibold">Tarifas vigentes</h2>
+            <button class="text-sm font-medium text-slate-500 hover:text-slate-700">Ver historial</button>
+          </div>
+          <ul class="divide-y divide-slate-100 text-sm">
+            <li class="flex items-center justify-between py-3"><div><p class="font-medium">Ecografía general</p><p class="text-xs text-slate-500">Desde 01/06/2025</p></div><span class="font-semibold">S/ 85.00</span></li>
+            <li class="flex items-center justify-between py-3"><div><p class="font-medium">Ecografía obstétrica</p><p class="text-xs text-slate-500">Desde 01/06/2025</p></div><span class="font-semibold">S/ 110.00</span></li>
+            <li class="flex items-center justify-between py-3"><div><p class="font-medium">Doppler</p><p class="text-xs text-slate-500">Desde 01/06/2025</p></div><span class="font-semibold">S/ 160.00</span></li>
+          </ul>
+          <h3 class="mt-5 text-sm font-semibold text-slate-600">Cobertura de aseguradoras</h3>
+          <ul class="mt-2 grid grid-cols-2 gap-2 text-xs">
+            <li class="rounded-lg bg-slate-50 px-3 py-2">Seguro VidaSalud • Copago S/ 20</li>
+            <li class="rounded-lg bg-slate-50 px-3 py-2">SaludPlus • 80% cobertura</li>
+            <li class="rounded-lg bg-slate-50 px-3 py-2">RedProtegida • Autorización requerida</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Gráficos del servicio -->
+      <section class="mt-6 grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-3" aria-label="Analítica del servicio">
+        <article class="rounded-2xl border border-slate-200 bg-white p-5 shadow-soft">
+          <div class="mb-3 flex items-center justify-between">
+            <h2 class="text-lg font-semibold">Demanda por hora (hoy)</h2>
+            <span class="text-xs text-slate-500">Reservas/Atenciones</span>
+          </div>
+          <div class="chart-container"><canvas id="chDemandaHora"></canvas></div>
+        </article>
+        <article class="rounded-2xl border border-slate-200 bg-white p-5 shadow-soft">
+          <div class="mb-3 flex items-center justify-between">
+            <h2 class="text-lg font-semibold">Canal de reserva</h2>
+            <span class="text-xs text-slate-500">Hoy</span>
+          </div>
+          <div class="chart-container"><canvas id="chCanal"></canvas></div>
+        </article>
+        <article class="rounded-2xl border border-slate-200 bg-white p-5 shadow-soft md:col-span-2 xl:col-span-1">
+          <div class="mb-3 flex items-center justify-between">
+            <h2 class="text-lg font-semibold">Productividad semanal</h2>
+            <span class="text-xs text-slate-500">% Atendidas</span>
+          </div>
+          <div class="chart-container"><canvas id="chProductividad"></canvas></div>
+        </article>
+      </section>
+
+      <!-- Recursos y personal vinculados al servicio -->
+      <section class="mt-6 rounded-2xl border border-slate-200 bg-white p-5 shadow-soft">
+        <div class="mb-4 flex items-center justify-between">
+          <h2 class="text-lg font-semibold">Recursos y personal del servicio</h2>
+          <button class="rounded-lg border border-slate-200 bg-white px-3 py-1.5 text-sm font-medium text-slate-700 hover:bg-slate-50">Gestionar</button>
+        </div>
+        <div class="grid grid-cols-1 gap-4 md:grid-cols-3">
+          <div class="rounded-xl border border-slate-200 p-4">
+            <p class="text-sm font-semibold">Médicos vinculados</p>
+            <ul class="mt-2 space-y-1 text-sm">
+              <li>Dra. Ana Ramos • L-M-V</li>
+              <li>Dr. Luis Paredes • M-J</li>
+              <li>Dr. Diego Silva • S</li>
+            </ul>
+          </div>
+          <div class="rounded-xl border border-slate-200 p-4">
+            <p class="text-sm font-semibold">Recursos / Equipos</p>
+            <ul class="mt-2 space-y-1 text-sm">
+              <li>Ecógrafo X300 • Operativo</li>
+              <li>Impresora DICOM • Mantenimiento</li>
+              <li>Camilla • Operativa</li>
+            </ul>
+          </div>
+          <div class="rounded-xl border border-slate-200 p-4">
+            <p class="text-sm font-semibold">Parámetros del servicio</p>
+            <ul class="mt-2 space-y-1 text-sm">
+              <li>Duración estándar: 30 min</li>
+              <li>Requiere orden: No</li>
+              <li>Prepago: Opcional</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="fixed bottom-0 inset-x-0 z-40 border-t border-slate-200 bg-white/90 backdrop-blur">
+    <div class="mx-auto flex h-12 max-w-screen-2xl items-center justify-between px-6 text-sm text-slate-600">
+      <p>© <span id="y"></span> NextIaCorp • Servicio Ecografías</p>
+      <nav class="hidden gap-4 md:flex">
+        <a class="hover:text-slate-900" href="#">Privacidad</a>
+        <a class="hover:text-slate-900" href="#">Términos</a>
+        <a class="hover:text-slate-900" href="#">Contacto</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+
+    function toggleMenu(id, ev){
+      ev?.stopPropagation();
+      document.querySelectorAll('.menu').forEach(m=>m.setAttribute('aria-expanded','false'));
+      const el = document.getElementById(id);
+      const st = el.getAttribute('aria-expanded') === 'true';
+      el.setAttribute('aria-expanded', String(!st));
+    }
+    document.addEventListener('click',()=>document.querySelectorAll('.menu').forEach(m=>m.setAttribute('aria-expanded','false')));
+
+    // Charts
+    window.addEventListener('load', () => {
+      if (!window.Chart) return;
+      Chart.defaults.font.family = "ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial";
+      Chart.defaults.color = '#334155';
+      Chart.defaults.borderColor = '#e2e8f0';
+      Chart.defaults.responsive = true;
+      Chart.defaults.maintainAspectRatio = false;
+      const COLORS = { brand:'#4f46e5', accent:'#06b6d4', ok:'#10b981', warn:'#f59e0b' };
+
+      // Demanda por hora
+      const elHora = document.getElementById('chDemandaHora');
+      if (elHora) new Chart(elHora.getContext('2d'), {
+        type:'bar',
+        data:{ labels:['08:00','08:30','09:00','09:30','10:00','10:30','11:00','11:30'], datasets:[{ label:'Reservas', data:[3,4,5,2,1,3,4,2], backgroundColor:COLORS.brand, borderRadius:8, maxBarThickness:26 }, { label:'Atenciones', data:[2,3,4,2,1,2,3,2], backgroundColor:COLORS.accent, borderRadius:8, maxBarThickness:26 }]},
+        options:{ plugins:{ legend:{ position:'bottom' } }, scales:{ x:{ grid:{ display:false } }, y:{ beginAtZero:true } } }
+      });
+
+      // Canal de reserva
+      const elCanal = document.getElementById('chCanal');
+      if (elCanal) new Chart(elCanal.getContext('2d'), {
+        type:'doughnut',
+        data:{ labels:['Web','WhatsApp','Presencial','Call center'], datasets:[{ data:[45,20,25,10], backgroundColor:[COLORS.brand,COLORS.accent, COLORS.ok, COLORS.warn], borderWidth:1, borderColor:'#fff' }]},
+        options:{ plugins:{ legend:{ position:'bottom' } }, cutout:'62%' }
+      });
+
+      // Productividad semanal
+      const elProd = document.getElementById('chProductividad');
+      if (elProd) new Chart(elProd.getContext('2d'), {
+        type:'line',
+        data:{ labels:['Lun','Mar','Mié','Jue','Vie','Sáb','Dom'], datasets:[{ label:'% Atendidas', data:[78,82,79,85,88,74,0], fill:false, borderColor:COLORS.brand, tension:.35, pointRadius:3 }]},
+        options:{ plugins:{ legend:{ display:false } }, scales:{ y:{ beginAtZero:true, ticks:{ callback:v=>v+'%' } } } }
+      });
+    });
+  </script>
+</body>
+</html>

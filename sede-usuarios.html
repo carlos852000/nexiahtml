@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>NextIaDoctor • Sede • Consultorios (Bandeja)</title>
+  <title>NextIaDoctor • Sede • Usuarios (Bandeja)</title>
   <!-- Tailwind para prototipo -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
@@ -73,12 +73,12 @@
             <span>Dashboard</span>
           </a>
           <!-- Consultorios (activo) -->
-          <a href="sede-consultorios.html" aria-current="page" class="flex items-center gap-2 rounded-lg bg-brand-50 px-3 py-2 text-sm font-semibold text-brand-700 border-b-2 border-brand-600 transition-all">
+          <a href="sede-consultorios.html" aria-current="page" class="flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50 transition-all">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" class="h-5 w-5 text-brand-600"><path stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
             <span>Consultorios</span>
           </a>
           <!-- Usuarios -->
-          <a href="sede-usuarios.html" class="flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50 transition-all">
+          <a href="sede-usuarios.html" class="flex items-center gap-2 rounded-lg bg-brand-50 px-3 py-2 text-sm font-semibold text-brand-700 border-b-2 border-brand-600 transition-all">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" class="h-5 w-5 text-brand-600"><path stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
             <span>Usuarios</span>
           </a>
@@ -117,60 +117,69 @@
   <!-- Main -->
   <main class="pt-36 pb-24">
     <div class="mx-auto max-w-screen-2xl px-6">
-      <!-- Encabezado -->
+      <!-- Encabezado y acciones -->
       <div class="mb-6 flex flex-wrap items-center justify-between gap-3">
         <div>
-          <nav class="text-xs text-slate-500"><a class="hover:underline" href="ipress.html">IPRESS</a> / <a class="hover:underline" href="sede-dashboard.html">Sede Miraflores</a> / <span class="text-slate-700 font-medium">Consultorios</span></nav>
-          <h1 class="mt-1 text-2xl font-semibold tracking-tight text-slate-800">Consultorios de la Sede</h1>
-          <p class="text-sm text-slate-500">Bandeja para gestionar espacios, asignaciones y disponibilidad.</p>
+          <nav class="text-xs text-slate-500"><a class="hover:underline" href="ipress.html">IPRESS</a> / <span>Sede Miraflores</span> / <span class="text-slate-700 font-medium">Usuarios</span></nav>
+          <h1 class="mt-1 text-2xl font-semibold tracking-tight text-slate-800">Usuarios de la Sede</h1>
+          <p class="text-sm text-slate-500">Gestiona roles, perfiles, sedes y seguridad (2FA).</p>
         </div>
         <div class="flex items-center gap-2">
-          <a href="sede-consultorios-formulario.html" class="rounded-lg bg-brand-600 px-4 py-2 text-sm font-medium text-white shadow-soft hover:bg-brand-700">+ Nuevo consultorio</a>
-          <button class="rounded-lg border border-slate-200 bg-white px-4 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50">Exportar</button>
+          <a href="sede-usuarios-formulario.html" class="rounded-lg bg-brand-600 px-4 py-2 text-sm font-medium text-white shadow-soft hover:bg-brand-700">+ Nuevo Usuario</a>
+          <a href="#" class="rounded-lg border border-slate-200 bg-white px-4 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50">Invitar</a>
+          <a href="#" class="rounded-lg border border-slate-200 bg-white px-4 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50">Exportar</a>
         </div>
       </div>
 
       <!-- KPIs -->
       <section class="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
         <article class="rounded-2xl border border-slate-200 bg-white p-5 shadow-soft">
-          <div class="flex items-center justify-between"><div><p class="text-xs uppercase tracking-wider text-slate-400">Total consultorios</p><h3 class="mt-1 text-3xl font-semibold">14</h3><p class="mt-1 text-xs text-emerald-600">+2 este mes</p></div><div class="rounded-xl bg-brand-600/10 p-3 text-brand-600"><svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' class='h-7 w-7'><path stroke-width='1.5' d='M4 6h16v12H4zM8 6v12m8-12v12'/></svg></div></div>
+          <div class="flex items-center justify-between"><div><p class="text-xs uppercase tracking-wider text-slate-400">Total usuarios</p><h3 class="mt-1 text-3xl font-semibold">124</h3><p class="mt-1 text-xs text-emerald-600">+8 este mes</p></div><div class="rounded-xl bg-brand-600/10 p-3 text-brand-600"><svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' class='h-7 w-7'><path stroke-width='1.5' d='M16 11c1.657 0 3-1.343 3-3S17.657 5 16 5s-3 1.343-3 3 1.343 3 3 3zM8 11c1.657 0 3-1.343 3-3S9.657 5 8 5 5 6.343 5 8s1.343 3 3 3zM8 13c-2.21 0-4 1.79-4 4v1h8v-1c0-2.21-1.79-4-4-4zm8 0c-.74 0-1.43.2-2.02.55 1.22.73 2.02 2.07 2.02 3.6V18h6v-1c0-2.21-1.79-4-4-4z' /></svg></div></div>
         </article>
         <article class="rounded-2xl border border-slate-200 bg-white p-5 shadow-soft">
-          <div class="flex items-center justify-between"><div><p class="text-xs uppercase tracking-wider text-slate-400">Operativos</p><h3 class="mt-1 text-3xl font-semibold">12</h3><p class="mt-1 text-xs text-slate-500">Incluye 2 multipropósito</p></div><div class="rounded-xl bg-emerald-500/10 p-3 text-emerald-600"><svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' class='h-7 w-7'><path stroke-width='1.5' d='M5 13l4 4L19 7'/></svg></div></div>
+          <div class="flex items-center justify-between"><div><p class="text-xs uppercase tracking-wider text-slate-400">Roles</p><h3 class="mt-1 text-3xl font-semibold">5</h3><p class="mt-1 text-xs text-slate-500">Perfiles: 12</p></div><div class="rounded-xl bg-brand-600/10 p-3 text-brand-600"><svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' class='h-7 w-7'><path stroke-width='1.5' d='M4 6h16v12H4zM8 6v12m8-12v12' /></svg></div></div>
         </article>
         <article class="rounded-2xl border border-slate-200 bg-white p-5 shadow-soft">
-          <div class="flex items-center justify-between"><div><p class="text-xs uppercase tracking-wider text-slate-400">En mantenimiento</p><h3 class="mt-1 text-3xl font-semibold">1</h3><p class="mt-1 text-xs text-amber-600">Termina hoy 18:00</p></div><div class="rounded-xl bg-amber-500/10 p-3 text-amber-600"><svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' class='h-7 w-7'><path stroke-width='1.5' d='M12 8v4l3 2M12 2a10 10 0 100 20 10 10 0 000-20z'/></svg></div></div>
+          <div class="flex items-center justify-between"><div><p class="text-xs uppercase tracking-wider text-slate-400">Con 2FA</p><h3 class="mt-1 text-3xl font-semibold">80</h3><p class="mt-1 text-xs text-slate-500">64,5% habilitado</p></div><div class="rounded-xl bg-emerald-500/10 p-3 text-emerald-600"><svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' class='h-7 w-7'><path stroke-width='1.5' d='M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z' /></svg></div></div>
         </article>
         <article class="rounded-2xl border border-slate-200 bg-white p-5 shadow-soft">
-          <div class="flex items-center justify-between"><div><p class="text-xs uppercase tracking-wider text-slate-400">Ocupación promedio (hoy)</p><h3 class="mt-1 text-3xl font-semibold">79%</h3><p class="mt-1 text-xs text-slate-500">pico 10:00–12:00</p></div><div class="rounded-xl bg-brand-600/10 p-3 text-brand-600"><svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' class='h-7 w-7'><path stroke-width='1.5' d='M3 12h4l2 7 4-14 2 7h4'/></svg></div></div>
+          <div class="flex items-center justify-between"><div><p class="text-xs uppercase tracking-wider text-slate-400">Inactivos</p><h3 class="mt-1 text-3xl font-semibold">6</h3><p class="mt-1 text-xs text-rose-600">+1 vs mes anterior</p></div><div class="rounded-xl bg-rose-500/10 p-3 text-rose-600"><svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' class='h-7 w-7'><path stroke-width='1.5' d='M19 13H5m7 7V4' /></svg></div></div>
         </article>
       </section>
 
       <!-- Filtros -->
       <section class="mt-6 rounded-2xl border border-slate-200 bg-white p-4 shadow-soft">
-        <form class="grid gap-3 md:grid-cols-6">
+        <form class="grid gap-3 md:grid-cols-8 lg:grid-cols-10">
           <div class="md:col-span-2">
-            <label class="mb-1 block text-xs font-medium text-slate-600">Buscar consultorio</label>
+            <label class="mb-1 block text-xs font-medium text-slate-600">Buscar</label>
             <div class="relative">
-              <input type="text" placeholder="Código, nombre o descripción" class="w-full rounded-lg border border-slate-200 bg-white px-9 py-2 text-sm focus:border-brand-600 focus:outline-none focus:ring-4 focus:ring-brand-600/20" />
+              <input type="text" placeholder="Nombre, usuario, correo o DNI" class="w-full rounded-lg border border-slate-200 bg-white px-9 py-2 text-sm focus:border-brand-600 focus:outline-none focus:ring-4 focus:ring-brand-600/20" />
               <svg class="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400" xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor'><circle cx='11' cy='11' r='8' /><path d='M21 21l-4.3-4.3' /></svg>
             </div>
           </div>
-          <div>
-            <label class="mb-1 block text-xs font-medium text-slate-600">Tipo</label>
-            <select class="w-full rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm focus:border-brand-600 focus:outline-none"><option>Todos</option><option>Consulta</option><option>Procedimiento</option><option>Emergencia</option></select>
+          <div class="md:col-span-2">
+            <label class="mb-1 block text-xs font-medium text-slate-600">Rol</label>
+            <select class="w-full rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm focus:border-brand-600 focus:outline-none">
+              <option>Todos</option><option>Administrador</option><option>Recepción</option><option>Asistente</option><option>Auditor</option>
+            </select>
           </div>
-          <div>
-            <label class="mb-1 block text-xs font-medium text-slate-600">Piso</label>
-            <select class="w-full rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm focus:border-brand-600 focus:outline-none"><option>Todos</option><option>1</option><option>2</option><option>3</option></select>
-          </div>
-          <div>
-            <label class="mb-1 block text-xs font-medium text-slate-600">Servicio</label>
-            <select class="w-full rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm focus:border-brand-600 focus:outline-none"><option>Todos</option><option>Cardiología</option><option>Dermatología</option><option>Pediatría</option></select>
+          <div class="md:col-span-2">
+            <label class="mb-1 block text-xs font-medium text-slate-600">Perfil</label>
+            <select class="w-full rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm focus:border-brand-600 focus:outline-none">
+              <option>Todos</option><option>IPRESS Manager</option><option>Sede Manager</option><option>Operador Caja</option>
+            </select>
           </div>
           <div>
             <label class="mb-1 block text-xs font-medium text-slate-600">Estado</label>
-            <select class="w-full rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm focus:border-brand-600 focus:outline-none"><option>Todos</option><option>Activo</option><option>Inactivo</option><option>Mantenimiento</option></select>
+            <select class="w-full rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm focus:border-brand-600 focus:outline-none"><option>Todos</option><option>Activo</option><option>Inactivo</option><option>Pendiente</option></select>
+          </div>
+          <div>
+            <label class="mb-1 block text-xs font-medium text-slate-600">2FA</label>
+            <select class="w-full rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm focus:border-brand-600 focus:outline-none"><option>Todos</option><option>Habilitado</option><option>Deshabilitado</option></select>
+          </div>
+          <div>
+            <label class="mb-1 block text-xs font-medium text-slate-600">Último acceso</label>
+            <select class="w-full rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm focus:border-brand-600 focus:outline-none"><option>Cualquiera</option><option>≤ 7 días</option><option>8–30 días</option><option>> 30 días</option></select>
           </div>
           <div class="mt-3 flex flex-wrap items-center gap-2 md:col-span-2 lg:col-span-2">
             <button type="button" class="rounded-lg border border-slate-200 bg-white px-3 py-1.5 text-sm hover:bg-slate-50">Limpiar</button>
@@ -183,44 +192,64 @@
       <div class="mt-6 border-b border-slate-200">
         <nav class="-mb-px flex gap-6 text-sm">
           <button type="button" data-tab="all" class="tab-btn border-b-2 border-brand-600 px-1 pb-2 font-medium text-brand-600">Todos</button>
-          <button type="button" data-tab="up" class="tab-btn border-b-2 border-transparent px-1 pb-2 font-medium text-slate-500 hover:text-slate-700">Operativos</button>
-          <button type="button" data-tab="maint" class="tab-btn border-b-2 border-transparent px-1 pb-2 font-medium text-amber-600 hover:text-amber-700">Mantenimiento</button>
-          <button type="button" data-tab="off" class="tab-btn border-b-2 border-transparent px-1 pb-2 font-medium text-slate-500 hover:text-slate-700">Inactivos</button>
+          <button type="button" data-tab="active" class="tab-btn border-b-2 border-transparent px-1 pb-2 font-medium text-slate-500 hover:text-slate-700">Activos</button>
+          <button type="button" data-tab="inactive" class="tab-btn border-b-2 border-transparent px-1 pb-2 font-medium text-slate-500 hover:text-slate-700">Inactivos</button>
+          <button type="button" data-tab="pending" class="tab-btn border-b-2 border-transparent px-1 pb-2 font-medium text-slate-500 hover:text-slate-700">Pendientes</button>
+          <button type="button" data-tab="no-site" class="tab-btn border-b-2 border-transparent px-1 pb-2 font-medium text-slate-500 hover:text-slate-700">Sin sede</button>
         </nav>
       </div>
 
+      <!-- Barra de acciones masivas (aparece si hay selección) -->
+      <div id="bulkBar" class="sticky top-[132px] z-20 mt-2 hidden items-center justify-between rounded-xl border border-slate-200 bg-white p-3 shadow-soft">
+        <div class="text-sm text-slate-600"><span id="bulkCount" class="font-medium">0</span> seleccionados</div>
+        <div class="flex flex-wrap items-center gap-2">
+          <button class="rounded-lg border border-slate-200 bg-white px-3 py-1.5 text-sm hover:bg-slate-50">Activar</button>
+          <button class="rounded-lg border border-slate-200 bg-white px-3 py-1.5 text-sm hover:bg-slate-50">Desactivar</button>
+          <button class="rounded-lg border border-slate-200 bg-white px-3 py-1.5 text-sm hover:bg-slate-50">Asignar rol…</button>
+          <button class="rounded-lg border border-slate-200 bg-white px-3 py-1.5 text-sm hover:bg-slate-50">Forzar 2FA</button>
+          <button class="rounded-lg bg-brand-600 px-3 py-1.5 text-sm font-medium text-white hover:bg-brand-700">Aplicar</button>
+        </div>
+      </div>
+
       <!-- Bandeja: Todos -->
-      <section id="all" class="tab-panel mt-6 rounded-2xl border border-slate-200 bg-white p-4 shadow-soft">
+      <section id="all" class="tab-panel mt-4 rounded-2xl border border-slate-200 bg-white p-4 shadow-soft">
         <div class="mb-3 flex items-center justify-between">
-          <div><h2 class="text-lg font-semibold">Listado de consultorios</h2><p class="text-sm text-slate-500">Código, nombre, tipo, servicios y estado</p></div>
-          <div class="text-sm text-slate-500">Mostrando 1–10 de 14</div>
+          <div><h2 class="text-lg font-semibold">Listado de usuarios</h2><p class="text-sm text-slate-500">Usuario, rol, perfil, sedes, 2FA, último acceso y estado</p></div>
+          <div class="text-sm text-slate-500">Mostrando 1–10 de 124</div>
         </div>
         <div class="overflow-x-auto">
           <table class="min-w-full text-left text-sm">
             <thead class="border-y border-slate-200 bg-slate-50 text-slate-500">
               <tr>
-                <th class="px-4 py-3"><input id="chkAll" type="checkbox" class="h-4 w-4 rounded border-slate-300 text-brand-600 focus:ring-brand-600"/></th>
-                <th class="px-4 py-3 font-medium">Código</th>
-                <th class="px-4 py-3 font-medium">Nombre</th>
-                <th class="px-4 py-3 font-medium">Tipo</th>
-                <th class="px-4 py-3 font-medium">Cap.</th>
-                <th class="px-4 py-3 font-medium">Piso</th>
-                <th class="px-4 py-3 font-medium">Servicios</th>
-                <th class="px-4 py-3 font-medium">Especialidades</th>
+                <th class="px-4 py-3 w-10"><input id="checkAll" type="checkbox" class="h-4 w-4 rounded border-slate-300" /></th>
+                <th class="px-4 py-3 font-medium">Usuario</th>
+                <th class="px-4 py-3 font-medium">Documento</th>
+                <th class="px-4 py-3 font-medium">Rol</th>
+                <th class="px-4 py-3 font-medium">Perfiles</th>
+                <th class="px-4 py-3 font-medium">Último acceso</th>
+                <th class="px-4 py-3 font-medium">2FA</th>
                 <th class="px-4 py-3 font-medium">Estado</th>
                 <th class="px-4 py-3 text-right font-medium">Acciones</th>
               </tr>
             </thead>
-            <tbody class="divide-y divide-slate-100 text-slate-700">
+            <tbody class="divide-y divide-slate-100 text-slate-700" id="tbody">
+              <!-- Fila ejemplo 1 -->
               <tr class="hover:bg-slate-50/60">
-                <td class="px-4 py-3"><input type="checkbox" class="rowchk h-4 w-4 rounded border-slate-300 text-brand-600 focus:ring-brand-600"/></td>
-                <td class="px-4 py-3">C-101</td>
-                <td class="px-4 py-3"> <a href="consultorio-dashboard.html?id=SE-001" class="font-medium text-slate-900 hover:underline">Consultorio 101</a></td>
-                <td class="px-4 py-3">Consulta</td>
-                <td class="px-4 py-3">1</td>
-                <td class="px-4 py-3">1</td>
-                <td class="px-4 py-3">Cardio, Derma</td>
-                <td class="px-4 py-3">Cardiología</td>
+                <td class="px-4 py-3"><input type="checkbox" class="rowChk h-4 w-4 rounded border-slate-300" /></td>
+                <td class="px-4 py-3">
+                  <div class="font-medium text-slate-900">María López</div>
+                  <div class="text-xs text-slate-500">maria.lopez@ipress.com • usuario: mlopez</div>
+                </td>
+                <td class="px-4 py-3">DNI 45678901</td>
+                <td class="px-4 py-3">Administrador</td>
+                <td class="px-4 py-3">
+                  <div class="flex flex-wrap gap-1">
+                    <span class="rounded-full bg-slate-100 px-2 py-0.5 text-xs">IPRESS Manager</span>
+                    <span class="rounded-full bg-slate-100 px-2 py-0.5 text-xs">Auditoría</span>
+                  </div>
+                </td>
+                <td class="px-4 py-3">Hace 2 días</td>
+                <td class="px-4 py-3"><span class="rounded-full bg-emerald-50 px-2.5 py-1 text-xs font-medium text-emerald-700">Habilitado</span></td>
                 <td class="px-4 py-3"><span class="rounded-full bg-emerald-50 px-2.5 py-1 text-xs font-medium text-emerald-700">Activo</span></td>
                 <td class="px-4 py-3 text-right">
                   <div class="relative inline-block text-left" data-menu>
@@ -228,120 +257,102 @@
                       Opciones
                       <svg class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor"><path d="M5.23 7.21a.75.75 0 011.06.02L10 11.147l3.71-3.916a.75.75 0 111.08 1.04l-4.243 4.475a.75.75 0 01-1.08 0L5.25 8.27a.75.75 0 01-.02-1.06z"/></svg>
                     </button>
-                    <div class="invisible absolute right-0 z-10 mt-2 w-56 origin-top-right scale-95 rounded-lg border border-slate-200 bg-white p-1 opacity-0 shadow-soft transition-all duration-200 ease-in-out" data-menu-items>
-                      <a href="#" class="block rounded-md px-3 py-2 text-sm hover:bg-slate-50">Editar</a>
-                      <a href="#" class="block rounded-md px-3 py-2 text-sm hover:bg-slate-50">Horarios</a>
-                      <a href="#" class="block rounded-md px-3 py-2 text-sm hover:bg-slate-50">Servicios</a>
-                      <a href="#" class="block rounded-md px-3 py-2 text-sm hover:bg-slate-50">Ver agenda</a>
-                      <a href="#" class="block rounded-md px-3 py-2 text-sm text-rose-600 hover:bg-rose-50">Desactivar</a>
+                    <div class="invisible absolute right-0 z-10 mt-2 w-60 origin-top-right scale-95 rounded-lg border border-slate-200 bg-white p-1 opacity-0 shadow-soft transition-all duration-200 ease-in-out" data-menu-items>
+                      <a href="sede-usuarios-formulario.html?id=mlopez" class="block rounded-md px-3 py-2 text-sm hover:bg-slate-50">Editar</a>
+                      <a href="ipress-usuario-roles.html?user=mlopez" class="block rounded-md px-3 py-2 text-sm hover:bg-slate-50">Roles y perfiles</a>
+                      <a href="ipress-usuarios-sedes.html?user=mlopez" class="block rounded-md px-3 py-2 text-sm hover:bg-slate-50">Asociar sedes</a>
+                      <a href="#" class="block rounded-md px-3 py-2 text-sm hover:bg-slate-50">Resetear contraseña</a>
+                      <a href="ipress-usuario-auditoria.html?user=mlopez" class="block rounded-md px-3 py-2 text-sm hover:bg-slate-50">Historial de accesos</a>
+                      <a href="#" class="block rounded-md px-3 py-2 text-sm hover:bg-rose-50 text-rose-600">Desactivar</a>
                     </div>
                   </div>
                 </td>
               </tr>
+              <!-- Fila ejemplo 2 -->
               <tr class="hover:bg-slate-50/60">
-                <td class="px-4 py-3"><input type="checkbox" class="rowchk h-4 w-4 rounded border-slate-300 text-brand-600 focus:ring-brand-600"/></td>
-                <td class="px-4 py-3">C-203</td>
-                <td class="px-4 py-3"> <a href="consultorio-dashboard.html?id=SE-001" class="font-medium text-slate-900 hover:underline">Consultorio 203</a></td>
-                <td class="px-4 py-3">Procedimiento</td>
-                <td class="px-4 py-3">2</td>
-                <td class="px-4 py-3">2</td>
-                <td class="px-4 py-3">Ginecología</td>
-                <td class="px-4 py-3">Ginecología</td>
-                <td class="px-4 py-3"><span class="rounded-full bg-amber-50 px-2.5 py-1 text-xs font-medium text-amber-700">Mantenimiento</span></td>
+                <td class="px-4 py-3"><input type="checkbox" class="rowChk h-4 w-4 rounded border-slate-300" /></td>
+                <td class="px-4 py-3">
+                  <div class="font-medium text-slate-900">Jorge Paredes</div>
+                  <div class="text-xs text-slate-500">jorge.paredes@ipress.com • usuario: jparedes</div>
+                </td>
+                <td class="px-4 py-3">DNI 33445566</td>
+                <td class="px-4 py-3">Recepción</td>
+                <td class="px-4 py-3">
+                  <div class="flex flex-wrap gap-1">
+                    <span class="rounded-full bg-slate-100 px-2 py-0.5 text-xs">Caja</span>
+                  </div>
+                </td>
+                <td class="px-4 py-3">Hace 45 días</td>
+                <td class="px-4 py-3"><span class="rounded-full bg-amber-50 px-2.5 py-1 text-xs font-medium text-amber-700">Deshabilitado</span></td>
+                <td class="px-4 py-3"><span class="rounded-full bg-rose-50 px-2.5 py-1 text-xs font-medium text-rose-700">Inactivo</span></td>
                 <td class="px-4 py-3 text-right">
                   <div class="relative inline-block text-left" data-menu>
-                    <button class="inline-flex items-center gap-2 rounded-lg border border-slate-200 bg-white px-3 py-1.5 text-sm hover:bg-slate-50" data-menu-button>Opciones<svg class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor"><path d="M5.23 7.21a.75.75 0 011.06.02L10 11.147l3.71-3.916a.75.75 0 111.08 1.04l-4.243 4.475a.75.75 0 01-1.08 0L5.25 8.27a.75.75 0 01-.02-1.06z"/></svg></button>
-                    <div class="invisible absolute right-0 z-10 mt-2 w-56 origin-top-right scale-95 rounded-lg border border-slate-200 bg-white p-1 opacity-0 shadow-soft transition-all duration-200 ease-in-out" data-menu-items>
-                      <a href="#" class="block rounded-md px-3 py-2 text-sm hover:bg-slate-50">Editar</a>
-                      <a href="#" class="block rounded-md px-3 py-2 text-sm hover:bg-slate-50">Horarios</a>
-                      <a href="#" class="block rounded-md px-3 py-2 text-sm hover:bg-slate-50">Servicios</a>
-                      <a href="#" class="block rounded-md px-3 py-2 text-sm hover:bg-slate-50">Ver agenda</a>
-                      <a href="#" class="block rounded-md px-3 py-2 text-sm text-emerald-700 hover:bg-emerald-50">Reactivar</a>
+                    <button class="inline-flex items-center gap-2 rounded-lg border border-slate-200 bg-white px-3 py-1.5 text-sm hover:bg-slate-50" data-menu-button>
+                      Opciones
+                      <svg class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor"><path d="M5.23 7.21a.75.75 0 011.06.02L10 11.147l3.71-3.916a.75.75 0 111.08 1.04l-4.243 4.475a.75.75 0 01-1.08 0L5.25 8.27a.75.75 0 01-.02-1.06z"/></svg>
+                    </button>
+                    <div class="invisible absolute right-0 z-10 mt-2 w-60 origin-top-right scale-95 rounded-lg border border-slate-200 bg-white p-1 opacity-0 shadow-soft transition-all duration-200 ease-in-out" data-menu-items>
+                      <a href="sede-usuarios-formulario.html?id=jparedes" class="block rounded-md px-3 py-2 text-sm hover:bg-slate-50">Editar</a>
+                      <a href="#" class="block rounded-md px-3 py-2 text-sm hover:bg-slate-50">Reactivar</a>
+                      <a href="#" class="block rounded-md px-3 py-2 text-sm hover:bg-slate-50">Forzar 2FA</a>
+                      <a href="#" class="block rounded-md px-3 py-2 text-sm hover:bg-slate-50">Reenviar invitación</a>
                     </div>
                   </div>
                 </td>
               </tr>
-              <tr class="hover:bg-slate-50/60">
-                <td class="px-4 py-3"><input type="checkbox" class="rowchk h-4 w-4 rounded border-slate-300 text-brand-600 focus:ring-brand-600"/></td>
-                <td class="px-4 py-3">E-105</td>
-                <td class="px-4 py-3"> <a href="consultorio-dashboard.html?id=SE-001" class="font-medium text-slate-900 hover:underline">Emergencia Box 05</a></td>
-                <td class="px-4 py-3">Emergencia</td>
-                <td class="px-4 py-3">1</td>
-                <td class="px-4 py-3">1</td>
-                <td class="px-4 py-3">Trauma</td>
-                <td class="px-4 py-3">Urgencias</td>
-                <td class="px-4 py-3"><span class="rounded-full bg-emerald-50 px-2.5 py-1 text-xs font-medium text-emerald-700">Activo</span></td>
-                <td class="px-4 py-3 text-right">
-                  <div class="relative inline-block text-left" data-menu>
-                    <button class="inline-flex items-center gap-2 rounded-lg border border-slate-200 bg-white px-3 py-1.5 text-sm hover:bg-slate-50" data-menu-button>Opciones<svg class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor"><path d="M5.23 7.21a.75.75 0 011.06.02L10 11.147l3.71-3.916a.75.75 0 111.08 1.04l-4.243 4.475a.75.75 0 01-1.08 0L5.25 8.27a.75.75 0 01-.02-1.06z"/></svg></button>
-                    <div class="invisible absolute right-0 z-10 mt-2 w-56 origin-top-right scale-95 rounded-lg border border-slate-200 bg-white p-1 opacity-0 shadow-soft transition-all duration-200 ease-in-out" data-menu-items>
-                      <a href="#" class="block rounded-md px-3 py-2 text-sm hover:bg-slate-50">Editar</a>
-                      <a href="#" class="block rounded-md px-3 py-2 text-sm hover:bg-slate-50">Horarios</a>
-                      <a href="#" class="block rounded-md px-3 py-2 text-sm hover:bg-slate-50">Servicios</a>
-                      <a href="#" class="block rounded-md px-3 py-2 text-sm hover:bg-slate-50">Ver agenda</a>
-                      <a href="#" class="block rounded-md px-3 py-2 text-sm text-rose-600 hover:bg-rose-50">Desactivar</a>
-                    </div>
-                  </div>
-                </td>
-              </tr>
+              <!-- Más filas de ejemplo ... -->
             </tbody>
           </table>
         </div>
         <!-- Paginación -->
         <div class="mt-4 flex items-center justify-between">
-          <p class="text-sm text-slate-500">Página 1 de 2</p>
+          <p class="text-sm text-slate-500">Página 1 de 13</p>
           <div class="flex items-center gap-2">
             <button class="rounded-lg border border-slate-200 bg-white px-3 py-1.5 text-sm text-slate-700 hover:bg-slate-50">Anterior</button>
             <button class="rounded-lg bg-brand-600 px-3 py-1.5 text-sm font-medium text-white">1</button>
             <button class="rounded-lg border border-slate-200 bg-white px-3 py-1.5 text-sm text-slate-700 hover:bg-slate-50">2</button>
+            <button class="rounded-lg border border-slate-200 bg-white px-3 py-1.5 text-sm text-slate-700 hover:bg-slate-50">3</button>
+            <span class="px-2 text-slate-400">…</span>
             <button class="rounded-lg border border-slate-200 bg-white px-3 py-1.5 text-sm text-slate-700 hover:bg-slate-50">Siguiente</button>
           </div>
         </div>
       </section>
 
-      <!-- Bandeja: Operativos -->
-      <section id="up" class="tab-panel hidden mt-6 rounded-2xl border border-slate-200 bg-white p-4 shadow-soft">
-        <h2 class="text-lg font-semibold mb-3">Consultorios operativos</h2>
+      <!-- Bandeja: Activos -->
+      <section id="active" class="tab-panel hidden mt-6 rounded-2xl border border-slate-200 bg-white p-4 shadow-soft">
+        <h2 class="text-lg font-semibold mb-3">Usuarios Activos</h2>
         <p class="text-sm text-slate-500">(Contenido filtrado por estado = Activo)</p>
       </section>
 
-      <!-- Bandeja: Mantenimiento -->
-      <section id="maint" class="tab-panel hidden mt-6 rounded-2xl border border-slate-200 bg-white p-4 shadow-soft">
-        <h2 class="text-lg font-semibold mb-3">Consultorios en mantenimiento</h2>
-        <p class="text-sm text-slate-500">(Contenido filtrado por estado = Mantenimiento)</p>
-      </section>
-
       <!-- Bandeja: Inactivos -->
-      <section id="off" class="tab-panel hidden mt-6 rounded-2xl border border-slate-200 bg-white p-4 shadow-soft">
-        <h2 class="text-lg font-semibold mb-3">Consultorios inactivos</h2>
+      <section id="inactive" class="tab-panel hidden mt-6 rounded-2xl border border-slate-200 bg-white p-4 shadow-soft">
+        <h2 class="text-lg font-semibold mb-3">Usuarios Inactivos</h2>
         <p class="text-sm text-slate-500">(Contenido filtrado por estado = Inactivo)</p>
       </section>
 
-      <!-- Barra de acciones masivas -->
-      <div id="bulkBar" class="pointer-events-none fixed bottom-14 left-0 right-0 z-30 hidden justify-center">
-        <div class="pointer-events-auto rounded-2xl border border-slate-200 bg-white px-4 py-2 shadow-soft">
-          <div class="flex items-center gap-2 text-sm">
-            <span id="bulkCount" class="font-medium">0</span>
-            <span class="text-slate-600">seleccionados</span>
-            <span class="text-slate-300">•</span>
-            <button class="rounded-md border border-slate-200 bg-white px-2 py-1 hover:bg-slate-50">Activar</button>
-            <button class="rounded-md border border-slate-200 bg-white px-2 py-1 hover:bg-slate-50">Inactivar</button>
-            <button class="rounded-md border border-slate-200 bg-white px-2 py-1 hover:bg-slate-50">Asignar servicios</button>
-          </div>
-        </div>
-      </div>
+      <!-- Bandeja: Pendientes -->
+      <section id="pending" class="tab-panel hidden mt-6 rounded-2xl border border-slate-200 bg-white p-4 shadow-soft">
+        <h2 class="text-lg font-semibold mb-3">Invitaciones pendientes</h2>
+        <p class="text-sm text-slate-500">(Usuarios con invitación enviada sin activar)</p>
+      </section>
+
+      <!-- Bandeja: Sin sede -->
+      <section id="no-site" class="tab-panel hidden mt-6 rounded-2xl border border-slate-200 bg-white p-4 shadow-soft">
+        <h2 class="text-lg font-semibold mb-3">Usuarios sin sede asociada</h2>
+        <p class="text-sm text-slate-500">(Asigna sedes para habilitar operaciones)</p>
+      </section>
 
     </div>
   </main>
 
   <!-- Footer -->
-  <footer class="fixed bottom-0 inset-x-0 z-40 border-t border-slate-200 bg-white/90 backdrop-blur">
+  <footer class="fixed bottom-0 left-0 right-0 z-40 border-t border-slate-200 bg-white/90 backdrop-blur">
     <div class="mx-auto flex h-12 max-w-screen-2xl items-center justify-between px-6 text-sm text-slate-600">
-      <p>© <span id="y"></span> NextIaCorp • Sede Miraflores</p>
+      <p>© <span id="y"></span> NextIaCorp • Todos los derechos reservados</p>
       <nav class="hidden gap-4 md:flex">
-        <a class="hover:text-slate-900" href="#">Privacidad</a>
-        <a class="hover:text-slate-900" href="#">Términos</a>
-        <a class="hover:text-slate-900" href="#">Contacto</a>
+        <a class="hover:text-slate-900" href="privacidad.html">Privacidad</a>
+        <a class="hover:text-slate-900" href="terminos.html">Términos</a>
+        <a class="hover:text-slate-900" href="contacto.html">Contacto</a>
       </nav>
     </div>
   </footer>
@@ -350,7 +361,7 @@
     // Año
     document.getElementById('y').textContent = new Date().getFullYear();
 
-    // Toggle menús de fila accesibles
+    // Toggle menús de fila
     document.querySelectorAll('[data-menu]').forEach((wrap) => {
       const btn = wrap.querySelector('[data-menu-button]');
       const menu = wrap.querySelector('[data-menu-items]');
@@ -381,16 +392,19 @@
     // Selección masiva
     const bulkBar = document.getElementById('bulkBar');
     const bulkCount = document.getElementById('bulkCount');
-    const chkAll = document.getElementById('chkAll');
-    const rowChks = () => Array.from(document.querySelectorAll('.rowchk'));
+    const rowChks = () => Array.from(document.querySelectorAll('.rowChk'));
     const updateBulk = () => {
       const count = rowChks().filter(c => c.checked).length;
       bulkCount.textContent = count;
       bulkBar.classList.toggle('hidden', count === 0);
       bulkBar.classList.toggle('flex', count > 0);
     };
-    chkAll.addEventListener('change', (e)=>{ rowChks().forEach(c => c.checked = e.target.checked); updateBulk(); });
+    document.getElementById('checkAll').addEventListener('change', (e) => {
+      rowChks().forEach(c => c.checked = e.target.checked);
+      updateBulk();
+    });
     rowChks().forEach(c => c.addEventListener('change', updateBulk));
   </script>
 </body>
+
 </html>

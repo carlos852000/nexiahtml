@@ -1,85 +1,114 @@
 <!doctype html>
 <html lang="es">
-
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>NextIaDoctor • IPRESS • Médicos</title>
+  <title>NextIaDoctor • Sede • Médicos (Bandeja)</title>
+  <!-- Tailwind para prototipo -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
       theme: {
         extend: {
           colors: {
-            brand: { 50: '#eef2ff', 100: '#e0e7ff', 200: '#c7d2fe', 300: '#a5b4fc', 400: '#818cf8', 500: '#6366f1', 600: '#4f46e5', 700: '#4338ca', 800: '#3730a3', 900: '#312e81' },
-            accent: { 50: '#ecfeff', 100: '#cffafe', 200: '#a5f3fc', 300: '#67e8f9', 400: '#22d3ee', 500: '#06b6d4', 600: '#0891b2', 700: '#0e7490', 800: '#155e75', 900: '#164e63' }
+            brand: {
+              50:'#eef2ff',100:'#e0e7ff',200:'#c7d2fe',300:'#a5b4fc',400:'#818cf8',
+              500:'#6366f1',600:'#4f46e5',700:'#4338ca',800:'#3730a3',900:'#312e81'
+            },
+            accent: {
+              50:'#ecfeff',100:'#cffafe',200:'#a5f3fc',300:'#67e8f9',400:'#22d3ee',
+              500:'#06b6d4',600:'#0891b2',700:'#0e7490',800:'#155e75',900:'#164e63'
+            }
           },
-          boxShadow: { soft: '0 8px 24px rgba(2, 6, 23, 0.06)' }
+          boxShadow: { soft:'0 8px 24px rgba(2,6,23,.06)'},
+          borderRadius: { xl2:'1.25rem'}
         }
       }
     }
   </script>
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
   <style>
-    * { scrollbar-width: thin; scrollbar-color: #cbd5e1 transparent }
-    *::-webkit-scrollbar { height: 8px; width: 8px }
-    *::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 8px }
-    .scrollbar-hide::-webkit-scrollbar { display: none }
-    .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none }
+    :root{ --radius: 16px; }
+    *{ scrollbar-width: thin; scrollbar-color: #cbd5e1 transparent; }
+    *::-webkit-scrollbar{height:8px;width:8px}
+    *::-webkit-scrollbar-thumb{background:#cbd5e1;border-radius:8px}
+    .chart-container{position:relative;height:220px;width:100%;overflow:hidden}
+    .chart-container canvas{max-height:220px!important;max-width:100%!important}
+    .scrollbar-hide::-webkit-scrollbar{display:none}
+    .scrollbar-hide{ -ms-overflow-style:none; scrollbar-width:none }
   </style>
 </head>
-
 <body class="min-h-screen bg-slate-50 text-slate-800">
-  <!-- Topbar con info IPRESS -->
+  <!-- Topbar -->
   <header class="fixed inset-x-0 top-0 z-40 bg-gradient-to-r from-brand-600 to-accent-500 text-white shadow-soft">
-    <div class="mx-auto flex h-16 max-w-screen-2xl items-center px-4">
-      <div class="flex-1 flex items-center gap-4">
-        <a href="dashboard.html" class="inline-flex items-center gap-3">
+    <div class="mx-auto flex h-16 max-w-screen-2xl items-center justify-between px-4">
+      <div class="flex items-center gap-3">
+        <a href="ipress-sedes.html" class="inline-flex items-center gap-3">
           <div class="select-none text-lg font-semibold tracking-wide">NextIaCorp</div>
         </a>
-        <!-- Chip de IPRESS activa -->
-        <div class="hidden md:flex items-center gap-2 rounded-lg bg-white/20 px-4 py-1.5 shadow-sm backdrop-blur-sm">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" class="h-5 w-5 text-white">
-            <path stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
-          </svg>
-          <span class="font-semibold text-white">Ipress San Martín</span>
-          <!--<span class="hidden text-xs text-white/70 md:inline">•</span>
-          <span class="hidden text-xs text-white/95 md:inline">RUC 20123456789</span>-->
+        <!-- Breadcrumb contextual -->
+        <div class="hidden items-center gap-2 rounded-lg bg-white/15 px-3 py-1.5 md:flex">
+          <span class="font-semibold">IPRESS San Martín</span>
+          <span class="hidden text-xs text-white/70 md:inline">›</span>
+          <span class="hidden text-xs text-white/95 md:inline">Sede Miraflores</span>
         </div>
       </div>
-      <nav class="flex items-center gap-2" aria-label="Navegación superior">
-        <a href="reportes.html" class="hidden rounded-lg bg-white/10 px-3 py-1.5 text-sm font-medium backdrop-blur hover:bg-white/20 md:inline">Reportes</a>
-        <a href="soporte.html" class="hidden rounded-lg bg-white/10 px-3 py-1.5 text-sm font-medium backdrop-blur hover:bg-white/20 md:inline">Soporte</a>
-        <img src="https://api.dicebear.com/7.x/initials/svg?seed=ND" alt="avatar" class="h-8 w-8 rounded-full ring-2 ring-white/30" />
+      <nav class="flex items-center gap-2">
+        <a href="#" class="hidden rounded-lg bg-white/10 px-3 py-1.5 text-sm font-medium backdrop-blur hover:bg-white/20 md:inline">Soporte</a>
+        <img src="https://api.dicebear.com/7.x/initials/svg?seed=ND" alt="avatar" class="h-8 w-8 rounded-full ring-2 ring-white/30"/>
       </nav>
     </div>
   </header>
 
-  <!-- Menú Nivel 1 • IPRESS seleccionada (Médicos activo) -->
-  <nav class="fixed top-16 inset-x-0 z-30 bg-white border-b border-slate-200 shadow-soft">
+  <!-- NAV NIVEL 2 (Sede) -->
+  <nav class="fixed top-16 inset-x-0 z-30 bg-white border-b border-slate-200 shadow-soft" aria-label="Navegación de Sede">
     <div class="mx-auto max-w-screen-2xl px-4">
       <div class="flex items-center justify-between">
-        <!-- Tabs/menú de la IPRESS -->
+        <!-- Tabs/menú de la Sede -->
         <div class="flex items-center overflow-x-auto py-2 gap-2 scrollbar-hide">
-          <a href="ipress-dashboard.html" class="flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50 transition-all"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" class="h-5 w-5 text-brand-600"><path stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0h6"/></svg><span>Dashboard</span></a>
-
-          <a href="ipress-sedes.html"  class="flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50 transition-all"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" class="h-5 w-5 text-brand-600"><path stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg><span>Sedes</span><span class="ml-1 rounded-full bg-brand-100 px-1.5 py-0.5 text-xs font-medium text-brand-800">5</span></a>
-
-          <a href="ipress-usuarios.html" class="flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50 transition-all"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" class="h-5 w-5 text-brand-600"><path stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"/></svg><span>Usuarios</span></a>
-
-          <a href="ipress-medicos.html" aria-current="page" class="flex items-center gap-2 rounded-lg bg-brand-50 px-3 py-2 text-sm font-medium text-brand-700 border-b-2 border-brand-600 transition-all"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" class="h-5 w-5 text-brand-600"><path stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" d="M4 7a4 4 0 118 0 4 4 0 01-8 0zm12 4h4m-2-2v4m-6 4a6 6 0 10-12 0"/></svg><span>Médicos</span></a>
-
-          <a href="ipress-servicios.html" class="flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50 transition-all"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" class="h-5 w-5 text-brand-600"><path stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg><span>Servicios</span></a>
-          
-          <a href="ipress-configuracion.html" class="flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50 transition-all"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-5 w-5 text-brand-600"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.757.427 1.757 2.925 0 3.351a1.724 1.724 0 00-1.066 2.572c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.757-2.924 1.757-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.757-.426-1.757-2.924 0-3.35.427-.427.684-1.03 1.065-2.573-.94-1.543.826-3.31 2.37-2.37.94.54 2.146.27 2.573-1.066z" /><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /></svg><span>Configuración</span></a>
-        
+          <!-- Dashboard -->
+          <a href="sede-dashboard.html" class="flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50 transition-all">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" class="h-5 w-5 text-brand-600"><path stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2 0v10a1 1 0 01-1 1h-3m-6 0h6"/></svg>
+            <span>Dashboard</span>
+          </a>
+          <!-- Consultorios (activo) -->
+          <a href="sede-consultorios.html" class="flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50 transition-all">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" class="h-5 w-5 text-brand-600"><path stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
+            <span>Consultorios</span>
+          </a>
+          <!-- Usuarios -->
+          <a href="sede-usuarios.html" class="flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50 transition-all">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" class="h-5 w-5 text-brand-600"><path stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+            <span>Usuarios</span>
+          </a>
+          <!-- Médicos -->
+          <a href="sede-medicos.html" aria-current="page"  class="flex items-center gap-2 rounded-lg bg-brand-50 px-3 py-2 text-sm font-semibold text-brand-700 border-b-2 border-brand-600 transition-all">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" class="h-5 w-5 text-brand-600"><path stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" d="M4 7a4 4 0 118 0 4 4 0 01-8 0zm12 4h4m-2-2v4m-6 4a6 6 0 10-12 0"/></svg>
+            <span>Médicos</span>
+          </a>
+          <!-- Especialidades (estetoscopio) -->
+          <a href="sede-especialidades.html" class="flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50 transition-all">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" class="h-5 w-5 text-brand-600"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 6a3 3 0 10-6 0v5a3 3 0 106 0V9m0 2a4 4 0 104 4h1a3 3 0 003-3V6"/></svg>
+            <span>Especialidades</span>
+          </a>
+          <!-- Servicios (capas) -->
+          <a href="sede-servicios.html" class="flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50 transition-all">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" class="h-5 w-5 text-brand-600"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 7l9-4 9 4-9 4-9-4m0 5l9 4 9-4m-18 5l9 4 9-4"/></svg>
+            <span>Servicios</span>
+          </a>
+          <!-- Horarios (reloj) -->
+          <a href="sede-horarios.html" class="flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50 transition-all">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" class="h-5 w-5 text-brand-600"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 6v6l4 2m6-2a10 10 0 11-20 0 10 10 0 0120 0z"/></svg>
+            <span>Horarios</span>
+          </a>
         </div>
-
         <!-- Acciones rápidas a la derecha -->
         <div class="flex items-center gap-2">
-          <a href="ipress-agenda.html" class="flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50 transition-all"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" class="h-5 w-5 text-brand-600"><path stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3M3 11h18M5 19h14a2 2 0 002-2v-6H3v6a2 2 0 002 2z"/></svg><span>Agenda</span></a>
-          <a href="ipress-reserva.html" class="flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50 transition-all"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" class="h-5 w-5 text-brand-600"><path stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" d="M12 6v12m6-6H6"/></svg><span>Reservas</span></a>
-          <a href="ipress-atenciones.html" class="flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50 transition-all"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" class="h-5 w-5 text-brand-600"><path stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z"/></svg><span>Atenciones</span></a>
-          <a href="ipress-reportes.html" class="flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50 transition-all"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" class="h-5 w-5 text-brand-600"><path stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" d="M12 14l9-5-9-5-9 5 9 5z"/><path stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" d="M12 14l6.16-3.422A12.083 12.083 0 016 8.577M12 14v7"/></svg><span>Reportes</span></a>
+          <a href="agenda.html" class="flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50 transition-all"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" class="h-5 w-5 text-brand-600"><path stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3M3 11h18M5 19h14a2 2 0 002-2v-6H3v6a2 2 0 002 2z"/></svg><span>Agenda</span></a>
+          <a href="reserva.html" class="flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50 transition-all"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" class="h-5 w-5 text-brand-600"><path stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" d="M12 6v12m6-6H6"/></svg><span>Reservas</span></a>
+          <a href="atencion.html" class="flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50 transition-all"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" class="h-5 w-5 text-brand-600"><path stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" d="M18 9v3m0 0v3m0-3h3m-3 0h-3M8 7a4 4 0 100 8 4 4 0 000-8zM3 20a6 6 0 0112 0v1H3v-1z"/></svg><span>Atenciones</span></a>
+          <a href="reporte.html" class="flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50 transition-all"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" class="h-5 w-5 text-brand-600"><path stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" d="M12 14l9-5-9-5-9 5 9 5z"/><path stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" d="M12 14l6.16-3.422A12.083 12.083 0 016 8.577M12 14v7"/></svg><span>Reportes</span></a>
         </div>
       </div>
     </div>
@@ -91,12 +120,12 @@
       <!-- Encabezado y acciones -->
       <div class="mb-6 flex flex-wrap items-center justify-between gap-3">
         <div>
-          <nav class="text-xs text-slate-500"><a class="hover:underline" href="ipress.html">IPRESS</a> / <span>Ipress San Martín</span> / <span class="text-slate-700 font-medium">Médicos</span></nav>
-          <h1 class="mt-1 text-2xl font-semibold tracking-tight text-slate-800">Médicos de la IPRESS</h1>
+          <nav class="text-xs text-slate-500"><a class="hover:underline" href="ipress.html">IPRESS</a> / <span>Sede Miraflores</span> / <span class="text-slate-700 font-medium">Médicos</span></nav>
+          <h1 class="mt-1 text-2xl font-semibold tracking-tight text-slate-800">Médicos de la Sede</h1>
           <p class="text-sm text-slate-500">Gestiona colegiaturas, especialidades, sedes y horarios.</p>
         </div>
         <div class="flex items-center gap-2">
-          <a href="ipress-medico-form.html" class="rounded-lg bg-brand-600 px-4 py-2 text-sm font-medium text-white shadow-soft hover:bg-brand-700">+ Nuevo Médico</a>
+          <a href="sede-medicos-formulario.html" class="rounded-lg bg-brand-600 px-4 py-2 text-sm font-medium text-white shadow-soft hover:bg-brand-700">+ Nuevo Médico</a>
           <a href="#" class="rounded-lg border border-slate-200 bg-white px-4 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50">Importar</a>
         </div>
       </div>
@@ -131,12 +160,6 @@
             <label class="mb-1 block text-xs font-medium text-slate-600">Especialidad</label>
             <select class="w-full rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm focus:border-brand-600 focus:outline-none">
               <option>Todos</option><option>Medicina Interna</option><option>Pediatría</option><option>Ginecología</option>
-            </select>
-          </div>
-          <div class="md:col-span-2">
-            <label class="mb-1 block text-xs font-medium text-slate-600">Sede</label>
-            <select class="w-full rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm focus:border-brand-600 focus:outline-none">
-              <option>Todas</option><option>Miraflores</option><option>San Isidro</option><option>Surco</option>
             </select>
           </div>
           <div>
@@ -177,7 +200,6 @@
                 <th class="px-4 py-3 font-medium">CMP</th>
                 <th class="px-4 py-3 font-medium">Médico</th>
                 <th class="px-4 py-3 font-medium">Especialidad</th>
-                <th class="px-4 py-3 font-medium">Sedes</th>
                 <th class="px-4 py-3 font-medium">Consultorios</th>
                 <th class="px-4 py-3 font-medium">Agenda hoy</th>
                 <th class="px-4 py-3 font-medium">Estado</th>
@@ -193,12 +215,6 @@
                   <div class="text-xs text-slate-500">ana.rojas@ipress.com • (01) 555-0134</div>
                 </td>
                 <td class="px-4 py-3">Ginecología</td>
-                <td class="px-4 py-3">
-                  <div class="flex flex-wrap gap-1">
-                    <span class="rounded-full bg-slate-100 px-2 py-0.5 text-xs">Miraflores</span>
-                    <span class="rounded-full bg-slate-100 px-2 py-0.5 text-xs">San Isidro</span>
-                  </div>
-                </td>
                 <td class="px-4 py-3">4</td>
                 <td class="px-4 py-3">6 citas</td>
                 <td class="px-4 py-3"><span class="rounded-full bg-emerald-50 px-2.5 py-1 text-xs font-medium text-emerald-700">Activo</span></td>
@@ -209,7 +225,7 @@
                       <svg class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor"><path d="M5.23 7.21a.75.75 0 011.06.02L10 11.147l3.71-3.916a.75.75 0 111.08 1.04l-4.243 4.475a.75.75 0 01-1.08 0L5.25 8.27a.75.75 0 01-.02-1.06z"/></svg>
                     </button>
                     <div class="invisible absolute right-0 z-10 mt-2 w-56 origin-top-right scale-95 rounded-lg border border-slate-200 bg-white p-1 opacity-0 shadow-soft transition-all duration-200 ease-in-out" data-menu-items>
-                      <a href="ipress-medico-form.html?id=123456" class="block rounded-md px-3 py-2 text-sm hover:bg-slate-50">Editar</a>
+                      <a href="sede-medicos-formulario.html?id=123456" class="block rounded-md px-3 py-2 text-sm hover:bg-slate-50">Editar</a>
                       <a href="ipress-servicios.html?medico=123456" class="block rounded-md px-3 py-2 text-sm hover:bg-slate-50">Asignar especialidades</a>
                       <a href="ipress-sedes.html?medico=123456" class="block rounded-md px-3 py-2 text-sm hover:bg-slate-50">Asignar sedes/consultorios</a>
                       <a href="ipress-agenda.html?medico=123456" class="block rounded-md px-3 py-2 text-sm hover:bg-slate-50">Ver agenda</a>
@@ -226,11 +242,6 @@
                   <div class="text-xs text-slate-500">c.mendez@ipress.com • 999 888 777</div>
                 </td>
                 <td class="px-4 py-3">Medicina Interna</td>
-                <td class="px-4 py-3">
-                  <div class="flex flex-wrap gap-1">
-                    <span class="rounded-full bg-slate-100 px-2 py-0.5 text-xs">Miraflores</span>
-                  </div>
-                </td>
                 <td class="px-4 py-3">2</td>
                 <td class="px-4 py-3">—</td>
                 <td class="px-4 py-3"><span class="rounded-full bg-amber-50 px-2.5 py-1 text-xs font-medium text-amber-700">Sin agenda</span></td>
@@ -241,7 +252,7 @@
                       <svg class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor"><path d="M5.23 7.21a.75.75 0 011.06.02L10 11.147l3.71-3.916a.75.75 0 111.08 1.04l-4.243 4.475a.75.75 0 01-1.08 0L5.25 8.27a.75.75 0 01-.02-1.06z"/></svg>
                     </button>
                     <div class="invisible absolute right-0 z-10 mt-2 w-56 origin-top-right scale-95 rounded-lg border border-slate-200 bg-white p-1 opacity-0 shadow-soft transition-all duration-200 ease-in-out" data-menu-items>
-                      <a href="ipress-medico-form.html?id=789012" class="block rounded-md px-3 py-2 text-sm hover:bg-slate-50">Editar</a>
+                      <a href="sede-medicos-formulario.html?id=789012" class="block rounded-md px-3 py-2 text-sm hover:bg-slate-50">Editar</a>
                       <a href="ipress-agenda.html?medico=789012" class="block rounded-md px-3 py-2 text-sm hover:bg-slate-50">Crear agenda</a>
                       <a href="#" class="block rounded-md px-3 py-2 text-sm hover:bg-rose-50 text-rose-600">Desactivar</a>
                     </div>
